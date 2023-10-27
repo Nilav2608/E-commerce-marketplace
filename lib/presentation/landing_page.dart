@@ -3,6 +3,7 @@ import 'package:fluxestore/Business_Logic/bloc/landing_page_bloc.dart';
 import 'package:fluxestore/presentation/Icons/primary_icons_icons.dart';
 // ignore: depend_on_referenced_packages
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluxestore/presentation/screens/home.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({super.key});
@@ -16,54 +17,55 @@ class _LandingPageState extends State<LandingPage> {
   Widget build(BuildContext context) {
     final LandingPageBloc landingPageBloc = LandingPageBloc();
     return BlocConsumer<LandingPageBloc, LandingPageInitial>(
-      bloc: landingPageBloc,
-      listener: (context, state) {},
-      builder: (context, state) {
-        return Scaffold(
-          appBar: AppBar(
-            title: const Center(
-                child: Text(
-              "FluxeStore",
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            )),
-            // backgroundColor: const Color.fromARGB(0, 165, 24, 24),
-            elevation: 0,
-            leading: Builder(
-              builder: (context) => Padding(
-                padding: const EdgeInsets.only(left: 20.0),
-                child: IconButton(
-                    onPressed: () {
-                      Scaffold.of(context).openDrawer();
-                    },
-                    icon: const Icon(
-                      Icons.menu_rounded,
-                      grade: 10,
-                    )),
+        bloc: landingPageBloc,
+        listener: (context, state) {},
+        builder: (context, state) {
+          return Scaffold(
+              appBar: AppBar(
+                title: const Center(
+                    child: Text(
+                  "FluxeStore",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                )),
+                // backgroundColor: const Color.fromARGB(0, 165, 24, 24),
+                elevation: 0,
+                leading: Builder(
+                  builder: (context) => Padding(
+                    padding: const EdgeInsets.only(left: 20.0),
+                    child: IconButton(
+                        onPressed: () {
+                          Scaffold.of(context).openDrawer();
+                        },
+                        icon: const Icon(
+                          Icons.menu_rounded,
+                          grade: 10,
+                        )),
+                  ),
+                ),
+                actions: [
+                  Padding(
+                    padding: const EdgeInsets.only(right: 20.0),
+                    child: IconButton(
+                        onPressed: () {},
+                        icon: const Icon(PrimaryIcons.bell_pin)),
+                  )
+                ],
               ),
-            ),
-            actions: [
-              Padding(
-                padding: const EdgeInsets.only(right: 20.0),
-                child: IconButton(
-                    onPressed: () {}, icon: const Icon(PrimaryIcons.bell_pin)),
-              )
-            ],
-          ),
-          drawer: drawer(),
-          bottomNavigationBar: BottomNavigationBar(
-            items: bottomNavItems,
-            currentIndex: state.tabIndex,
-              selectedItemColor: const Color.fromARGB(255, 0, 0, 0),
-              unselectedItemColor: Colors.grey,
-              showSelectedLabels: false,
-              elevation: 10,
-              onTap: (index) {
-                landingPageBloc.add(LandingPageTabChangeEvent(tabIndex: index));
-              },
-          ),
-        );
-      },
-    );
+              drawer: drawer(),
+              bottomNavigationBar: BottomNavigationBar(
+                items: bottomNavItems,
+                currentIndex: state.tabIndex,
+                selectedItemColor: const Color.fromARGB(255, 0, 0, 0),
+                unselectedItemColor: Colors.grey,
+                showSelectedLabels: false,
+                elevation: 10,
+                onTap: (index) {
+                  landingPageBloc
+                      .add(LandingPageTabChangeEvent(tabIndex: index));
+                },
+              ),
+              body: pages[state.tabIndex]);
+        });
   }
 
   Widget drawer() {
@@ -85,8 +87,14 @@ class _LandingPageState extends State<LandingPage> {
         label: "Shop"),
     BottomNavigationBarItem(icon: Icon(PrimaryIcons.profile), label: "Account"),
   ];
-}
 
+  List<Widget> pages = const [
+    HomePage(),
+    Text("search"),
+    Text("cart"),
+    Text("account"),
+  ];
+}
 
 // If image looks not as expected please convert to compound path manually.
 
