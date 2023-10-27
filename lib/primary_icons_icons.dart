@@ -6,10 +6,10 @@
 /// following in your pubspec.yaml
 ///
 /// flutter:
-///   fonts:
-///    - family:  PrimaryIcons
-///      fonts:
-///       - asset: fonts/PrimaryIcons.ttf
+  //  fonts:
+  //   - family:  PrimaryIcons
+  //     fonts:
+  //      - asset: fonts/PrimaryIcons.ttf
 ///
 /// 
 ///
