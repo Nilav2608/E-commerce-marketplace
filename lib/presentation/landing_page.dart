@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluxestore/Business_Logic/bloc/landing_page_bloc.dart';
-import 'package:fluxestore/primary_icons_icons.dart';
+import 'package:fluxestore/presentation/Icons/primary_icons_icons.dart';
 // ignore: depend_on_referenced_packages
 import 'package:flutter_bloc/flutter_bloc.dart';
 
