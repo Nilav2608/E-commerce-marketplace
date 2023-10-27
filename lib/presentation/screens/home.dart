@@ -40,7 +40,7 @@ class _HomePageState extends State<HomePage> {
                       width: 30,
                     ),
                     CircleTab(
-                      icon: PrimaryIcons.vector_2,
+                      icon: PrimaryIcons.glasses,
                       isSelected: false,
                       data: "Accessories",
                       // iconSize: 20,

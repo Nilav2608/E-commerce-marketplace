@@ -22,10 +22,12 @@ class CircleTab extends StatelessWidget {
         CircleAvatar(
           backgroundColor: const Color(0xFFF3F3F3),
           radius: 20,
-          child: Icon(
-            // size: iconSize,
-            icon,
-            color: const Color(0xFF9D9D9D),
+          child: Center(
+            child: Icon(
+              icon,
+              size: 18,
+              color: const Color(0xFF9D9D9D),
+            ),
           ),
         ),
         const SizedBox(
