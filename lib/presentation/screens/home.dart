@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:fluxestore/data/products_data.dart';
-import 'package:fluxestore/models/productModel.dart';
 import 'package:fluxestore/presentation/Icons/primary_icons_icons.dart';
 import 'package:fluxestore/presentation/components/home_utils/circle_tabs.dart';
 import 'package:fluxestore/presentation/components/home_utils/curosal_slider.dart';
+import 'package:fluxestore/presentation/components/home_utils/listViewBuilder.dart';
 import 'package:fluxestore/presentation/components/home_utils/product_list_card.dart';
 import 'package:fluxestore/presentation/components/home_utils/row_heading_seemore.dart';
 
@@ -17,13 +16,14 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return  const Scaffold(
       body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
         child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 15),
+            padding:EdgeInsets.symmetric(horizontal: 25, vertical: 15),
             child: Column(
               children: [
-                const Row(
+              Row(
                   children: [
                     // SizedBox(width: 15,),
                     CircleTab(
@@ -61,30 +61,27 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ],
                 ),
-                const SizedBox(
+             SizedBox(
                   height: 20,
                 ),
-                const CurosalSliderWidget(),
-                const SizedBox(
+              CurosalSliderWidget(),
+             SizedBox(
                   height: 20,
                 ),
-                const RowHeadsSeeMore(
+             RowHeadsSeeMore(
                     text1: "Feature Products", text2: "Show all"),
-                const SizedBox(
+             SizedBox(
                   height: 20,
                 ),
-                ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                    itemCount: productsList.length,
-                    itemBuilder: (context, index) {
-                      ProducDatatModel data = productsList[index];
-                      return Container();
-                    }
-                    //   return ProductCardTile(
-                    //     product: data,
-                    //   );
-                    // },
-                    )
+                //  Container(
+                //   height: 221,
+                //   child: SingleChildScrollView(
+                //     scrollDirection: Axis.horizontal,
+                //     child: ProductListViewBuilder()),
+                // )
+
+                 ProductListViewBuilder(),
+                 ProductListViewBuilder(),
               ],
             )),
       ),
