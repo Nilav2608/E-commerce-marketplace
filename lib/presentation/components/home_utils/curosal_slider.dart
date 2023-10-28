@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:carousel_indicator/carousel_indicator.dart';
-import 'package:fluxestore/data/carosal_list.dart';
+import 'package:fluxestore/data/banner_carosal_list.dart';
 
 // ignore: must_be_immutable
 class CurosalSliderWidget extends StatefulWidget {

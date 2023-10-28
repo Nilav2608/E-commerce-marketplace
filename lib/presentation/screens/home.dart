@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:fluxestore/data/products_data.dart';
+import 'package:fluxestore/models/productModel.dart';
 import 'package:fluxestore/presentation/Icons/primary_icons_icons.dart';
 import 'package:fluxestore/presentation/components/home_utils/circle_tabs.dart';
 import 'package:fluxestore/presentation/components/home_utils/curosal_slider.dart';
+import 'package:fluxestore/presentation/components/home_utils/product_list_card.dart';
+import 'package:fluxestore/presentation/components/home_utils/row_heading_seemore.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -13,14 +17,13 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 15),
             child: Column(
               children: [
-                
-               const Row(
+                const Row(
                   children: [
                     // SizedBox(width: 15,),
                     CircleTab(
@@ -56,12 +59,32 @@ class _HomePageState extends State<HomePage> {
                       data: "Beauty",
                       // iconSize: 20,
                     ),
-                  
                   ],
                 ),
-
-                const SizedBox(height: 20,),
-                CurosalSliderWidget()
+                const SizedBox(
+                  height: 20,
+                ),
+                const CurosalSliderWidget(),
+                const SizedBox(
+                  height: 20,
+                ),
+                const RowHeadsSeeMore(
+                    text1: "Feature Products", text2: "Show all"),
+                const SizedBox(
+                  height: 20,
+                ),
+                ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                    itemCount: productsList.length,
+                    itemBuilder: (context, index) {
+                      ProducDatatModel data = productsList[index];
+                      return Container();
+                    }
+                    //   return ProductCardTile(
+                    //     product: data,
+                    //   );
+                    // },
+                    )
               ],
             )),
       ),
