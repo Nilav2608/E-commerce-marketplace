@@ -90,9 +90,9 @@ class _LandingPageState extends State<LandingPage> {
 
   List<Widget> pages = const [
     HomePage(),
-    Text("search"),
-    Text("cart"),
-    Text("account"),
+    Center(child: Text("Comming soon")),
+    Center(child: Text("Comming soon")),
+    Center(child: Text("Comming soon ")),
   ];
 }
 
