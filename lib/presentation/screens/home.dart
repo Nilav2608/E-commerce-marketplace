@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluxestore/presentation/Icons/primary_icons_icons.dart';
-import 'package:fluxestore/presentation/components/circle_tabs.dart';
-import 'package:fluxestore/presentation/components/curosal_slider.dart';
+import 'package:fluxestore/presentation/components/home_utils/circle_tabs.dart';
+import 'package:fluxestore/presentation/components/home_utils/curosal_slider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
