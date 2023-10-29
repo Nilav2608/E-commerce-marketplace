@@ -2,34 +2,12 @@ import 'package:fluxestore/models/productModel.dart';
 
 final List<ProducDatatModel> productsList = [
   ProducDatatModel(
-    id: 1,
-    productName: "Turtleneck Sweater",
-    descriptionn: "xxxxxxx",
-    price: "39.99",
-    //imageUrl: "https://firebasestorage.googleapis.com/v0/b/fluxestore-b6cb3.appspot.com/o/TurtleNeck.svg?alt=media&token=23c14b86-9afc-443c-973d-c9cc5808ec5d",
-    // imageUrl: "assets/images/TurtleNeck.svg",
-    imageUrl: "https://firebasestorage.googleapis.com/v0/b/fluxestore-b6cb3.appspot.com/o/ElagantDress.png?alt=media&token=1794fee5-cea0-483f-a466-99f82e10351c",
-    sizes: ["S","M","L","XL"],
-    ratings: 4
-  ),
-  ProducDatatModel(
-    id: 2,
-    productName: "Long Sleeve Dress",
-    descriptionn: "xxxxxxx",
-    price: "45.00",
-   // imageUrl: "https://firebasestorage.googleapis.com/v0/b/fluxestore-b6cb3.appspot.com/o/LongSleeve.svg?alt=media&token=aeb143e3-40e6-4c9e-8fc6-948e498ca545",
-   imageUrl: "https://firebasestorage.googleapis.com/v0/b/fluxestore-b6cb3.appspot.com/o/LongSleeve.png?alt=media&token=bd9be7bd-bb77-47d3-a520-99de3be8c77e",
-    // imageUrl: "assets/images/LongSleeve.svg",
-    sizes: ["S","M","L","XL"],
-    ratings: 4
-  ),
-  ProducDatatModel(
     id: 3,
     productName: "Street Wear",
     descriptionn: "xxxxxxx",
     price: "80.00",
-    //  imageUrl: "https://firebasestorage.googleapis.com/v0/b/fluxestore-b6cb3.appspot.com/o/StreetWear.svg?alt=media&token=3fff941a-3b25-4f53-95ee-2d5b3adbaf7f",
-     imageUrl: "https://firebasestorage.googleapis.com/v0/b/fluxestore-b6cb3.appspot.com/o/StreetWear.png?alt=media&token=f40e7bb5-f8b7-4f06-a8e1-1a32da385eb9",
+     imageUrl: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=60&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y2xvdGhpbmclMjBtb2RlbCUyMHBvc2V8ZW58MHx8MHx8fDA%3D",
+    //  imageUrl: "https://firebasestorage.googleapis.com/v0/b/fluxestore-b6cb3.appspot.com/o/StreetWear.png?alt=media&token=f40e7bb5-f8b7-4f06-a8e1-1a32da385eb9",
     // imageUrl: "assets/images/StreetWear.svg",
     sizes: ["S","M","L","XL"],
     ratings: 4
@@ -39,11 +17,34 @@ final List<ProducDatatModel> productsList = [
     productName: "Elegant Dress",
     descriptionn: "xxxxxxx",
     price: "75.00",
-    // imageUrl: "https://firebasestorage.googleapis.com/v0/b/fluxestore-b6cb3.appspot.com/o/ElagantDress.svg?alt=media&token=5090249c-a2d6-44c2-8410-d602137ad19d",
-    imageUrl: "https://firebasestorage.googleapis.com/v0/b/fluxestore-b6cb3.appspot.com/o/TurtleNeck.png?alt=media&token=25a11671-3246-4164-bb1c-c8f5ebb925de",
+    imageUrl: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&q=60&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y2xvdGhpbmclMjBtb2RlbCUyMHBvc2V8ZW58MHx8MHx8fDA%3D",
+    // imageUrl: "https://firebasestorage.googleapis.com/v0/b/fluxestore-b6cb3.appspot.com/o/TurtleNeck.png?alt=media&token=25a11671-3246-4164-bb1c-c8f5ebb925de",
     // imageUrl: "assets/images/ElagantDress.svg",
     sizes: ["S","M","L","XL"],
     ratings: 4
-  )
+  ),
+  ProducDatatModel(
+    id: 1,
+    productName: "Turtleneck Sweater",
+    descriptionn: "xxxxxxx",
+    price: "39.99",
+    imageUrl: "https://images.unsplash.com/photo-1562572159-4efc207f5aff?auto=format&fit=crop&q=60&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjh8fGNsb3RoaW5nJTIwbW9kZWwlMjBwb3NlfGVufDB8fDB8fHww",
+    // imageUrl: "assets/images/TurtleNeck.svg",
+    // imageUrl: "https://img.freepik.com/free-vector/graphic-designer-workplace_23-2148117172.jpg?size=626&ext=jpg&ga=GA1.1.851752253.1698389242&semt=ais",
+    sizes: ["S","M","L","XL"],
+    ratings: 4
+  ),
+  ProducDatatModel(
+    id: 2,
+    productName: "Long Sleeve Dress",
+    descriptionn: "xxxxxxx",
+    price: "45.00",
+  //  imageUrl: "https://firebasestorage.googleapis.com/v0/b/fluxestore-b6cb3.appspot.com/o/LongSleeve.svg?alt=media&token=78afa31e-730e-4a83-9f32-2b3ed8ce335f",
+   imageUrl: "https://images.unsplash.com/photo-1579101098056-6bf296535b8e?auto=format&fit=crop&q=60&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzB8fGZmYXNoaW9uJTIwbW9kZWwlMjBwb3NlfGVufDB8fDB8fHww",
+    // imageUrl: "assets/images/LongSleeve.svg",
+    sizes: ["S","M","L","XL"],
+    ratings: 4
+  ),
+  
 
 ];

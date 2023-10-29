@@ -3,7 +3,6 @@ import 'package:fluxestore/presentation/Icons/primary_icons_icons.dart';
 import 'package:fluxestore/presentation/components/home_utils/circle_tabs.dart';
 import 'package:fluxestore/presentation/components/home_utils/curosal_slider.dart';
 import 'package:fluxestore/presentation/components/home_utils/listViewBuilder.dart';
-import 'package:fluxestore/presentation/components/home_utils/product_list_card.dart';
 import 'package:fluxestore/presentation/components/home_utils/row_heading_seemore.dart';
 
 class HomePage extends StatefulWidget {
@@ -70,15 +69,7 @@ class _HomePageState extends State<HomePage> {
                 ),
              RowHeadsSeeMore(
                     text1: "Feature Products", text2: "Show all"),
-             SizedBox(
-                  height: 20,
-                ),
-                //  Container(
-                //   height: 221,
-                //   child: SingleChildScrollView(
-                //     scrollDirection: Axis.horizontal,
-                //     child: ProductListViewBuilder()),
-                // )
+            
 
                  ProductListViewBuilder(),
                  ProductListViewBuilder(),

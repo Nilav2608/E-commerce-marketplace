@@ -18,12 +18,12 @@ class _CurosalSliderWidgetState extends State<CurosalSliderWidget> {
   Widget build(BuildContext context) {
     return 
         Stack(children: [
-          Container(
+          SizedBox(
             width: 312,
             height: 158,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20)
-            ),
+            // decoration: BoxDecoration(
+              // borderRadius: BorderRadius.circular(20)
+            // ),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(15),
               
@@ -35,7 +35,7 @@ class _CurosalSliderWidgetState extends State<CurosalSliderWidget> {
                                 e["image_path"],
                                 //  fit: BoxFit.cover,
                                 // width: 412
-                                 width: 312
+                                 width: 412
                               ),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.end,
