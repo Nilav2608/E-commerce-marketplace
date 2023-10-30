@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluxestore/presentation/Icons/primary_icons_icons.dart';
+import 'package:fluxestore/presentation/components/home_utils/banner_cards.dart';
 import 'package:fluxestore/presentation/components/home_utils/circle_tabs.dart';
 import 'package:fluxestore/presentation/components/home_utils/curosal_slider.dart';
 import 'package:fluxestore/presentation/components/home_utils/listViewBuilder.dart';
@@ -15,14 +16,14 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return  const Scaffold(
+    return const Scaffold(
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Padding(
-            padding:EdgeInsets.symmetric(horizontal: 25, vertical: 15),
+            padding: EdgeInsets.symmetric(horizontal: 25, vertical: 15),
             child: Column(
               children: [
-              Row(
+                Row(
                   children: [
                     // SizedBox(width: 15,),
                     CircleTab(
@@ -60,19 +61,23 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ],
                 ),
-             SizedBox(
+                SizedBox(
                   height: 20,
                 ),
-              CurosalSliderWidget(),
-             SizedBox(
+                CurosalSliderWidget(),
+                SizedBox(
                   height: 20,
                 ),
-             RowHeadsSeeMore(
-                    text1: "Feature Products", text2: "Show all"),
-            
-
-                 ProductListViewBuilder(),
-                 ProductListViewBuilder(),
+                RowHeadsSeeMore(text1: "Feature Products", text2: "Show all"),
+                ProductListViewBuilder(),
+                BannerCards(
+                    width: 312,
+                    height: 158,
+                    liteText: "| NEW COLLECTION",
+                    mainText: "HANG OUT & PARTY",
+                    // imagePath: "assets/images/glassGirl.svg"
+                    imagePath: "assets/images/glass.png"
+                  )
               ],
             )),
       ),
