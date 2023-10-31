@@ -48,7 +48,7 @@ class BannerCards extends StatelessWidget {
               ],
             ),
           ),
-          const SizedBox(width: 40,),
+          const SizedBox(width: 20,),
            Stack(
             alignment: Alignment.center,
             children: [
