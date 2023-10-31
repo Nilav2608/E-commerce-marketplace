@@ -4,6 +4,7 @@ import 'package:fluxestore/presentation/components/home_utils/banner_cards.dart'
 import 'package:fluxestore/presentation/components/home_utils/circle_tabs.dart';
 import 'package:fluxestore/presentation/components/home_utils/curosal_slider.dart';
 import 'package:fluxestore/presentation/components/home_utils/listViewBuilder.dart';
+import 'package:fluxestore/presentation/components/home_utils/recommended_products_ListTile.dart';
 import 'package:fluxestore/presentation/components/home_utils/row_heading_seemore.dart';
 
 class HomePage extends StatefulWidget {
@@ -12,54 +13,58 @@ class HomePage extends StatefulWidget {
   @override
   State<HomePage> createState() => _HomePageState();
 }
-
+//horizontal: 25, vertical: 15
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: SingleChildScrollView(
+    return   Scaffold(
+      body: ListView(
         scrollDirection: Axis.vertical,
-        child: Padding(
+        children:const [ Padding(
             padding: EdgeInsets.symmetric(horizontal: 25, vertical: 15),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
-                  children: [
-                    // SizedBox(width: 15,),
-                    CircleTab(
-                      icon: PrimaryIcons.vector,
-                      isSelected: true,
-                      data: "Women",
-                      // iconSize: 20,
-                    ),
-                    SizedBox(
-                      width: 35,
-                    ),
-                    CircleTab(
-                      icon: PrimaryIcons.vector_1,
-                      isSelected: false,
-                      data: "Men",
-                      // iconSize: 20,
-                    ),
-                    SizedBox(
-                      width: 35,
-                    ),
-                    CircleTab(
-                      icon: PrimaryIcons.glasses,
-                      isSelected: false,
-                      data: "Accessories",
-                      // iconSize: 20,
-                    ),
-                    SizedBox(
-                      width: 35,
-                    ),
-                    CircleTab(
-                      icon: PrimaryIcons.group_33110,
-                      isSelected: false,
-                      data: "Beauty",
-                      // iconSize: 20,
-                    ),
-                  ],
+                SizedBox(
+                 
+                  child: Row(
+                    children: [
+                      // SizedBox(width: 15,),
+                      CircleTab(
+                        icon: PrimaryIcons.vector,
+                        isSelected: true,
+                        data: "Women",
+                        // iconSize: 20,
+                      ),
+                      SizedBox(
+                        width: 35,
+                      ),
+                      CircleTab(
+                        icon: PrimaryIcons.vector_1,
+                        isSelected: false,
+                        data: "Men",
+                        // iconSize: 20,
+                      ),
+                      SizedBox(
+                        width: 35,
+                      ),
+                      CircleTab(
+                        icon: PrimaryIcons.glasses,
+                        isSelected: false,
+                        data: "Accessories",
+                        // iconSize: 20,
+                      ),
+                      SizedBox(
+                        width: 35,
+                      ),
+                      CircleTab(
+                        icon: PrimaryIcons.group_33110,
+                        isSelected: false,
+                        data: "Beauty",
+                        // iconSize: 20,
+                      ),
+                    ],
+                  ),
                 ),
                 SizedBox(
                   height: 20,
@@ -77,10 +82,21 @@ class _HomePageState extends State<HomePage> {
                     mainText: "HANG OUT & PARTY",
                     // imagePath: "assets/images/glassGirl.svg"
                     imagePath: "assets/images/glass.png"
-                  )
+                  ),
+                               SizedBox(
+                  height: 20,
+                ),
+                RowHeadsSeeMore(text1: "Recommended", text2: "Show all"),   
+                SizedBox(
+                  height: 20,
+                ),
+                RecomendedProductsListTile()
+                
               ],
             )),
+      ]
       ),
+      
     );
   }
 }
