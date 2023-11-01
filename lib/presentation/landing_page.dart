@@ -3,7 +3,10 @@ import 'package:fluxestore/Business_Logic/bloc/landing_page_bloc.dart';
 import 'package:fluxestore/presentation/Icons/primary_icons_icons.dart';
 // ignore: depend_on_referenced_packages
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluxestore/presentation/components/home_utils/drawer.dart';
 import 'package:fluxestore/presentation/screens/home.dart';
+import 'package:flutter_toggle_tab/flutter_toggle_tab.dart';
+import 'package:sliding_switch/sliding_switch.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({super.key});
@@ -51,7 +54,7 @@ class _LandingPageState extends State<LandingPage> {
                   )
                 ],
               ),
-              drawer: drawer(),
+              drawer: const HomeDrawer(),
               bottomNavigationBar: BottomNavigationBar(
                 items: bottomNavItems,
                 currentIndex: state.tabIndex,
@@ -68,9 +71,7 @@ class _LandingPageState extends State<LandingPage> {
         });
   }
 
-  Widget drawer() {
-    return const Drawer();
-  }
+
 
   List<BottomNavigationBarItem> bottomNavItems =
       const <BottomNavigationBarItem>[
