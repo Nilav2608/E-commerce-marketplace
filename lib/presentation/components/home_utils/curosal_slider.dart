@@ -16,84 +16,77 @@ class _CurosalSliderWidgetState extends State<CurosalSliderWidget> {
   int pageIndex = 0;
   @override
   Widget build(BuildContext context) {
-    return 
-        Stack(children: [
-          SizedBox(
-            width: 312,
-            height: 158,
-            // decoration: BoxDecoration(
-              // borderRadius: BorderRadius.circular(20)
-            // ),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(15),
-              
-              child: CarouselSlider(
-                  carouselController: caroselController,
-                  items: items
-                      .map((e) => Stack(children: [
-                              Image.network(
-                                e["image_path"],
-                                //  fit: BoxFit.cover,
-                                // width: 412
-                                 width: 412
+    return Container(
+      width: 312,
+      height: 168,
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(15)),
+      child: Stack(children: [
+        ClipRRect(
+          borderRadius: BorderRadius.circular(15),
+          child: CarouselSlider(
+              carouselController: caroselController,
+              items: items
+                  .map(
+                    (e) => Stack(children: [
+                      Image.network(e["image_path"],
+                          fit: BoxFit.cover,
+                          // width: 412
+                          width: 500),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Column(
+                            children: [
+                              const SizedBox(
+                                height: 20,
                               ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  const SizedBox(
-                                        height: 10,
-                                      ),
-                                  Column(
-                                    children: [
-                                      const SizedBox(
-                                        height: 20,
-                                      ),
-                                      SizedBox(
-                                        width: 116,
-                                        height: 93,
-                                        child: Text(
-                                          e["text"],
-                                          style: const TextStyle(
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.white),
-                                        ),
-                                      ),
-                                    ],
-                                  )
-                                ],
-                              )
-                            ]),
-                          
-                        )
-                      .toList(),
-                  options: CarouselOptions(
-                      onPageChanged: (index, reason) {
-                        setState(() {
-                          pageIndex = index;
-                        });
-                      },
-                      autoPlay: true,
-                      aspectRatio: 16 / 9)),
-            ),
-          ),
-          Positioned(
-              bottom: 20, // Adjust the position as needed
-              left: 0,
-              right: 30,
-              child: Center(
-                child: CarouselIndicator(
-                  index: pageIndex,
-                  cornerRadius: 10,
-                  width: 5,
-                  height: 5,
-                  activeColor: Colors.white,
-                  color: Colors.grey,
-                  count: 3,
-                ),
-              ))
-        ]);
+                              SizedBox(
+                                width: 116,
+                                height: 93,
+                                child: Text(
+                                  e["text"],
+                                  style: const TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white),
+                                ),
+                              ),
+                            ],
+                          )
+                        ],
+                      )
+                    ]),
+                  )
+                  .toList(),
+              options: CarouselOptions(
+                  onPageChanged: (index, reason) {
+                    setState(() {
+                      pageIndex = index;
+                    });
+                  },
+                  viewportFraction: 1,
+                  autoPlay: true,
+                  aspectRatio: 16 / 9)),
+        ),
+        Positioned(
+            bottom: 20, // Adjust the position as needed
+            left: 0,
+            right: 30,
+            child: Center(
+              child: CarouselIndicator(
+                index: pageIndex,
+                cornerRadius: 10,
+                width: 5,
+                height: 5,
+                activeColor: Colors.white,
+                color: Colors.grey,
+                count: 3,
+              ),
+            ))
+      ]),
+    );
   }
-
-
 }
