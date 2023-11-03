@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+// ignore: depend_on_referenced_packages
 import 'package:carousel_indicator/carousel_indicator.dart';
 import 'package:fluxestore/data/banner_carosal_list.dart';
 

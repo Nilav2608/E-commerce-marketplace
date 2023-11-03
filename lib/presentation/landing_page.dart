@@ -3,10 +3,8 @@ import 'package:fluxestore/Business_Logic/bloc/landing_page_bloc.dart';
 import 'package:fluxestore/presentation/Icons/primary_icons_icons.dart';
 // ignore: depend_on_referenced_packages
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fluxestore/presentation/components/home_utils/drawer.dart';
+import 'package:fluxestore/presentation/home_utils/drawer.dart';
 import 'package:fluxestore/presentation/screens/home.dart';
-import 'package:flutter_toggle_tab/flutter_toggle_tab.dart';
-import 'package:sliding_switch/sliding_switch.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({super.key});

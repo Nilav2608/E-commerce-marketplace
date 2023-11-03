@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluxestore/presentation/Icons/primary_icons_icons.dart';
+// ignore: depend_on_referenced_packages
 import 'package:sliding_switch/sliding_switch.dart';
 
 class HomeDrawer extends StatefulWidget {
@@ -103,7 +104,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
           //       color: Colors.blue, fontSize: 14, fontWeight: FontWeight.w400),
           //    labels: [],
           // )
-          SizedBox(
+          const SizedBox(
             height: 275,
           ),
           SlidingSwitch(

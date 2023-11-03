@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:fluxestore/presentation/Icons/primary_icons_icons.dart';
-import 'package:fluxestore/presentation/components/home_utils/banner_cards.dart';
-import 'package:fluxestore/presentation/components/home_utils/circle_tabs.dart';
-import 'package:fluxestore/presentation/components/home_utils/curosal_slider.dart';
-import 'package:fluxestore/presentation/components/home_utils/listViewBuilder.dart';
-import 'package:fluxestore/presentation/components/home_utils/recommended_products_ListTile.dart';
-import 'package:fluxestore/presentation/components/home_utils/row_heading_seemore.dart';
-import 'package:fluxestore/presentation/components/home_utils/vertical_banner_last.dart';
+import 'package:fluxestore/presentation/reuseables/banner_cards.dart';
+import 'package:fluxestore/presentation/reuseables/circle_tabs.dart';
+import 'package:fluxestore/presentation/home_utils/curosal_slide_widget_banner.dart';
+import 'package:fluxestore/presentation/home_utils/listViewBuilder.dart';
+import 'package:fluxestore/presentation/reuseables/recommended_products_ListTile.dart';
+import 'package:fluxestore/presentation/reuseables/row_heading_seemore.dart';
+import 'package:fluxestore/presentation/home_utils/vertical_banner_last.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -90,6 +90,7 @@ class _HomePageState extends State<HomePage> {
                   height: 20,
                 ),
                 RecomendedProductsListTile(),
+               
                 SizedBox(
                   height: 20,
                 ),

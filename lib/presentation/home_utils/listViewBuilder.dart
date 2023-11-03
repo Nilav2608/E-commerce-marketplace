@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluxestore/data/products_data.dart';
 import 'package:fluxestore/models/productModel.dart';
-import 'package:fluxestore/presentation/components/home_utils/product_list_card.dart';
+import 'package:fluxestore/presentation/reuseables/product_list_tile.dart';
 
 class ProductListViewBuilder extends StatelessWidget {
   const ProductListViewBuilder({super.key});
