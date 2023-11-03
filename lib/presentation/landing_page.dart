@@ -4,6 +4,7 @@ import 'package:fluxestore/presentation/Icons/primary_icons_icons.dart';
 // ignore: depend_on_referenced_packages
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluxestore/presentation/home_utils/drawer.dart';
+import 'package:fluxestore/presentation/pages/notification_page.dart';
 import 'package:fluxestore/presentation/screens/home.dart';
 
 class LandingPage extends StatefulWidget {
@@ -47,7 +48,13 @@ class _LandingPageState extends State<LandingPage> {
                   Padding(
                     padding: const EdgeInsets.only(right: 20.0),
                     child: IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const NotificationPage(),
+                              ));
+                        },
                         icon: const Icon(PrimaryIcons.bell_pin)),
                   )
                 ],
@@ -68,8 +75,6 @@ class _LandingPageState extends State<LandingPage> {
               body: pages[state.tabIndex]);
         });
   }
-
-
 
   List<BottomNavigationBarItem> bottomNavItems =
       const <BottomNavigationBarItem>[
