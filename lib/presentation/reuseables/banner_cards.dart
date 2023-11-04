@@ -31,7 +31,9 @@ class BannerCards extends StatelessWidget {
                 Text(
                   liteText,
                   style:
-                      const TextStyle(color: Color(0xFF777E90), fontSize: 12),
+                      const TextStyle(
+                        fontWeight: FontWeight.w100,
+                        color: Color(0xFF777E90), fontSize: 12),
                   // const TextStyle(color: Color(0xFF353945), fontSize: 12),
                 ),
                 const SizedBox(
@@ -43,7 +45,9 @@ class BannerCards extends StatelessWidget {
                   child: Text(
                     mainText,
                     style:
-                        const TextStyle(color: Color(0xFF353945), fontSize: 20),
+                        const TextStyle(
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xFF353945), fontSize: 20),
                   ),
                 ),
               ],

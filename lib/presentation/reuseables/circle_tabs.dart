@@ -38,7 +38,10 @@ class CircleTab extends StatelessWidget {
         ),
         Text(
           data,
-          style: TextStyle(color: nameColor),
+          style: TextStyle(
+            fontWeight: FontWeight.w100,
+            fontSize: 10,
+            color: nameColor),
         )
       ],
     );

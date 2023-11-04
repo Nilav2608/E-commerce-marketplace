@@ -33,7 +33,7 @@ class ProductCardTile extends StatelessWidget {
           "\$${product.price}",
           style: const TextStyle(
             fontSize: 16,
-            fontWeight: FontWeight.bold,
+            fontWeight: FontWeight.w700,
             color: Colors.black,
           ),
         ),

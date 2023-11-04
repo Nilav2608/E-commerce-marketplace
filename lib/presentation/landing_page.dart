@@ -26,7 +26,7 @@ class _LandingPageState extends State<LandingPage> {
                 title: const Center(
                     child: Text(
                   "FluxeStore",
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
                 )),
                 // backgroundColor: const Color.fromARGB(0, 165, 24, 24),
                 elevation: 0,
@@ -90,8 +90,12 @@ class _LandingPageState extends State<LandingPage> {
   List<Widget> pages = const [
     HomePage(),
     Center(child: Text("Comming soon")),
-    Center(child: Text("Comming soon")),
     Center(child: Text("Comming soon ")),
+    Center(
+        child: Text(
+      "Comming soon - Account info page",
+      style: TextStyle(fontWeight: FontWeight.w400),
+    )),
   ];
 }
 

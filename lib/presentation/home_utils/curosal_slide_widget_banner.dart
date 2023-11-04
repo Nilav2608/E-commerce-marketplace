@@ -51,7 +51,7 @@ class _CurosalSliderWidgetState extends State<CurosalSliderWidget> {
                                   e["text"],
                                   style: const TextStyle(
                                       fontSize: 18,
-                                      fontWeight: FontWeight.bold,
+                                      fontWeight: FontWeight.w700,
                                       color: Colors.white),
                                 ),
                               ),

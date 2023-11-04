@@ -10,11 +10,11 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-    TextTheme _buildTextTheme(TextTheme base) {
-    return GoogleFonts.ptSansTextTheme(base).copyWith(
-        // Customize other TextTheme properties as needed
-        );
-  }
+  //   TextTheme _buildTextTheme(TextTheme base) {
+  //   return GoogleFonts.ptSansTextTheme(base).copyWith(
+  //       // Customize other TextTheme properties as needed
+  //       );
+  // }
 
   
 
@@ -24,7 +24,8 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-         textTheme:  _buildTextTheme(ThemeData.light().textTheme),
+        //  textTheme:  _buildTextTheme(ThemeData.light().textTheme),
+        fontFamily: "ProductSans",
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,

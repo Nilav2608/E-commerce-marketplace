@@ -11,21 +11,14 @@ class RowHeadsSeeMore extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
-        text1,
-         style: const TextStyle(
-          fontSize: 20,
-          fontWeight: FontWeight.bold,
-          color: Colors.black
-         ),
-         
+          text1,
+          style: const TextStyle(
+              fontSize: 18, fontWeight: FontWeight.w700, color: Colors.black),
         ),
-         Text(
-        text2,
-         style: const TextStyle(
-          fontSize: 13,
-          fontWeight: FontWeight.bold,
-          color: Colors.grey
-         ),
+        Text(
+          text2,
+          style: const TextStyle(
+              fontSize: 13, fontWeight: FontWeight.w400, color: Colors.grey),
         ),
       ],
     );

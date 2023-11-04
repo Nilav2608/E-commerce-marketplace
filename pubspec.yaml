@@ -96,6 +96,8 @@ flutter:
           weight: 700
         - asset: assets/fonts/Product_Sans_Regular.ttf
           weight: 400
+        - asset: assets/fonts/ProductSans_Light.ttf
+          weight: 100
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

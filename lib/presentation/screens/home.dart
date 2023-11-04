@@ -28,6 +28,7 @@ class _HomePageState extends State<HomePage> {
               children: [
                 SizedBox(
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       // SizedBox(width: 15,),
                       CircleTab(
@@ -36,27 +37,27 @@ class _HomePageState extends State<HomePage> {
                         data: "Women",
                         // iconSize: 20,
                       ),
-                      SizedBox(
-                        width: 35,
-                      ),
+                      // SizedBox(
+                      //   width: 35,
+                      // ),
                       CircleTab(
                         icon: PrimaryIcons.vector_1,
                         isSelected: false,
                         data: "Men",
                         // iconSize: 20,
                       ),
-                      SizedBox(
-                        width: 35,
-                      ),
+                      // SizedBox(
+                      //   width: 35,
+                      // ),
                       CircleTab(
                         icon: PrimaryIcons.glasses,
                         isSelected: false,
                         data: "Accessories",
                         // iconSize: 20,
                       ),
-                      SizedBox(
-                        width: 35,
-                      ),
+                      // SizedBox(
+                      //   width: 35,
+                      // ),
                       CircleTab(
                         icon: PrimaryIcons.group_33110,
                         isSelected: false,
