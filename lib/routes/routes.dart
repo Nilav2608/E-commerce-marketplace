@@ -1,0 +1,44 @@
+import "package:flutter/material.dart";
+import 'package:fluxestore/Business_Logic/bloc/landing_page_bloc.dart';
+import 'package:fluxestore/presentation/landing_page.dart';
+
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluxestore/presentation/pages/notification_page.dart';
+import 'package:fluxestore/routes/custom_transition_routes.dart';
+
+class MyGenerateRoute {
+  final LandingPageBloc landingPageBloc = LandingPageBloc();
+  Route<dynamic> generateRoute(RouteSettings settings) {
+    switch (settings.name) {
+      case "/":
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider<LandingPageBloc>.value(
+            value: landingPageBloc,
+            child: const LandingPage(),
+          ),
+        );
+
+      case 'notifications':
+        // return MaterialPageRoute(
+        //   builder: (context) => const NotificationPage(),
+        //   settings: settings
+        // );
+        return CustomPageTransition(child: const NotificationPage());
+      default:
+        return _errorRoute();
+    }
+  }
+
+  Route<dynamic> _errorRoute() {
+    return MaterialPageRoute(builder: (_) {
+      return Scaffold(
+        appBar: AppBar(
+          title: const Text("Error"),
+        ),
+        body: const Center(
+          child: Text("Error"),
+        ),
+      );
+    });
+  }
+}

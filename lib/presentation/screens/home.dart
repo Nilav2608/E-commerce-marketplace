@@ -113,7 +113,7 @@ class _HomePageState extends State<HomePage> {
                     width: 312,
                     height: 210,
                     liteText: "| WINTER COLLECTION ",
-                    mainText: "FOR SLIM & BEAUTY",
+                    mainText: "Most sexy & fabulous design ",
                     // imagePath: "assets/images/glassGirl.svg"
                     imagePath: "assets/images/coatNew.png"
                 ),

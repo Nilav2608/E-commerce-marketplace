@@ -24,8 +24,9 @@ class BannerCards extends StatelessWidget {
       child: Row(
         children: [
           Padding(
-            padding: const EdgeInsets.only(top: 30.0, left: 20),
+            padding: const EdgeInsets.only(top: 20.0, left: 10),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   liteText,
@@ -37,8 +38,8 @@ class BannerCards extends StatelessWidget {
                   height: 20,
                 ),
                 SizedBox(
-                  width: 100,
-                  height: 55,
+                  width: 120,
+                  height: 90,
                   child: Text(
                     mainText,
                     style:

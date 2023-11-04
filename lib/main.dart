@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fluxestore/presentation/landing_page.dart';
+import 'package:fluxestore/routes/routes.dart';
 // ignore: depend_on_referenced_packages
 import 'package:google_fonts/google_fonts.dart';
 
@@ -29,7 +29,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const LandingPage(),
+      initialRoute: '/',
+      onGenerateRoute: MyGenerateRoute().generateRoute,
     
     );
   }

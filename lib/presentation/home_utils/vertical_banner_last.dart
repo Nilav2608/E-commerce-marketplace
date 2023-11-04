@@ -65,23 +65,26 @@ class VerticalCards extends StatelessWidget {
             child: Row(
               children: [
                 
-                const Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(height: 50,),
-                    Text(
-                      "Dresses",
-                      style: TextStyle(fontSize: 13, color: Color(0xff737680)),
-                    ),
-                    SizedBox(
-                        width: 61,
-                        height: 67,
-                        child: Text(
-                          "Elegant Design",
-                          style:
-                              TextStyle(fontSize: 17, color: Color(0xff1D1F22)),
-                        )),
-                  ],
+                const Padding(
+                  padding: EdgeInsets.only(left:8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(height: 50,),
+                      Text(
+                        "Dresses",
+                        style: TextStyle(fontSize: 13, color: Color(0xff737680)),
+                      ),
+                      SizedBox(
+                          width: 61,
+                          height: 67,
+                          child: Text(
+                            "Elegant Design",
+                            style:
+                                TextStyle(fontSize: 17, color: Color(0xff1D1F22)),
+                          )),
+                    ],
+                  ),
                 ),
                 ClipRRect(
                    borderRadius: BorderRadius.circular(10),
