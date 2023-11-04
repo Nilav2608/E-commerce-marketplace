@@ -32,12 +32,12 @@ class RecomendedTileWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(right: 10.0),
+      padding: const EdgeInsets.only(left: 20),
       child: Container(
           width: 213,
           // height: 66,
           decoration: BoxDecoration(
-            color: Color.fromARGB(26, 251, 251, 251),
+            color: const Color.fromARGB(26, 251, 251, 251),
             border:
                 Border.all(width: 2.0, color: const Color(0xffF9F9F9)),
             borderRadius: BorderRadius.circular(10),

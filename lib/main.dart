@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluxestore/routes/routes.dart';
 // ignore: depend_on_referenced_packages
-import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(const MyApp());
@@ -9,14 +8,6 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
-  //   TextTheme _buildTextTheme(TextTheme base) {
-  //   return GoogleFonts.ptSansTextTheme(base).copyWith(
-  //       // Customize other TextTheme properties as needed
-  //       );
-  // }
-
-  
 
   @override
   Widget build(BuildContext context) {
@@ -32,8 +23,6 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/',
       onGenerateRoute: MyGenerateRoute().generateRoute,
-    
     );
   }
 }
-

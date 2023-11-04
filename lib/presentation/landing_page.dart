@@ -4,7 +4,7 @@ import 'package:fluxestore/presentation/Icons/primary_icons_icons.dart';
 // ignore: depend_on_referenced_packages
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluxestore/presentation/home_utils/drawer.dart';
-import 'package:fluxestore/presentation/screens/home.dart';
+import 'package:fluxestore/presentation/pages/home.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({super.key});

@@ -19,7 +19,7 @@ class _CurosalSliderWidgetState extends State<CurosalSliderWidget> {
   Widget build(BuildContext context) {
     return Container(
       width: 312,
-      height: 168,
+      height: 172,
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(15)),
       child: Stack(children: [
         ClipRRect(

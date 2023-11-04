@@ -11,7 +11,7 @@ class ProductListViewBuilder extends StatelessWidget {
     return SizedBox(
       height: 250,
       
-      width: 340,
+      width: 400,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         // physics: ,
@@ -19,7 +19,7 @@ class ProductListViewBuilder extends StatelessWidget {
         itemBuilder: (context, index) {
           ProducDatatModel data = productsList[index];
           return Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.only(left:20.0,right: 0),
             child: ProductCardTile(product: data),
           );
         },
