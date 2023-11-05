@@ -5,6 +5,7 @@ import 'package:fluxestore/presentation/Icons/primary_icons_icons.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluxestore/presentation/home_utils/drawer.dart';
 import 'package:fluxestore/presentation/pages/home.dart';
+import 'package:fluxestore/presentation/pages/search.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({super.key});
@@ -89,7 +90,7 @@ class _LandingPageState extends State<LandingPage> {
 
   List<Widget> pages = const [
     HomePage(),
-    Center(child: Text("Comming soon")),
+    SearchPage(),
     Center(child: Text("Comming soon ")),
     Center(
         child: Text(

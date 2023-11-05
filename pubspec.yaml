@@ -98,6 +98,9 @@ flutter:
           weight: 400
         - asset: assets/fonts/ProductSans_Light.ttf
           weight: 100
-  #
+    - family:  NewIcon
+      fonts:
+        - asset: assets/fonts/NewIcon.ttf
+          weight: 700
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
