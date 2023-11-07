@@ -64,6 +64,7 @@ class _LandingPageState extends State<LandingPage> {
                 selectedItemColor: const Color.fromARGB(255, 0, 0, 0),
                 unselectedItemColor: Colors.grey,
                 showSelectedLabels: false,
+                
                 elevation: 10,
                 onTap: (index) {
                   var appBartext = appBarText[index];

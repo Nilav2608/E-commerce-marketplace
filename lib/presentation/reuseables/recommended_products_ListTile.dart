@@ -38,15 +38,14 @@ class RecomendedTileWidget extends StatelessWidget {
           // height: 66,
           decoration: BoxDecoration(
             color: const Color.fromARGB(26, 251, 251, 251),
-            border:
-                Border.all(width: 2.0, color: const Color(0xffF9F9F9)),
+            border: Border.all(width: 2.0, color: const Color(0xffF9F9F9)),
             borderRadius: BorderRadius.circular(10),
-            //  boxShadow: [
+            // boxShadow: const [
             //   BoxShadow(
-            //     color: Colors.grey,
-            //     blurRadius: 51
-            //   )
-            //  ]
+            //       color: Color(0xffe8e8e8),
+            //       blurRadius: 5.0,
+            //       offset: Offset(0, 5))
+            // ],
           ),
           child: Row(
             children: [
@@ -71,8 +70,8 @@ class RecomendedTileWidget extends StatelessWidget {
                   ),
                   Text(
                     list.productName ?? "",
-                    style: const TextStyle(
-                        fontSize: 12, color: Color(0xff1D1F22)),
+                    style:
+                        const TextStyle(fontSize: 12, color: Color(0xff1D1F22)),
                   ),
                   Text(
                     "\$${list.price ?? ""}",
