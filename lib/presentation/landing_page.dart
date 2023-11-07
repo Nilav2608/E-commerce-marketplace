@@ -24,10 +24,12 @@ class _LandingPageState extends State<LandingPage> {
         builder: (context, state) {
           return Scaffold(
               appBar: AppBar(
-                title: const Center(
+                title:  Center(
                     child: Text(
-                  "FluxeStore",
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
+                  state.appBarName,
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 20, fontWeight: FontWeight.w700),
                 )),
                 // backgroundColor: const Color.fromARGB(0, 165, 24, 24),
                 elevation: 0,
@@ -64,13 +66,16 @@ class _LandingPageState extends State<LandingPage> {
                 showSelectedLabels: false,
                 elevation: 10,
                 onTap: (index) {
-                  landingPageBloc
-                      .add(LandingPageTabChangeEvent(tabIndex: index));
+                  var appBartext = appBarText[index];
+                  landingPageBloc.add(LandingPageTabChangeEvent(
+                      tabIndex: index, appBarName: appBartext));
                 },
               ),
               body: pages[state.tabIndex]);
         });
   }
+
+  List<String> appBarText = ["Fluxestore", "Search", "My Orders", "Account"];
 
   List<BottomNavigationBarItem> bottomNavItems =
       const <BottomNavigationBarItem>[
@@ -89,9 +94,8 @@ class _LandingPageState extends State<LandingPage> {
   ];
 
   List<Widget> pages = const [
-     SearchPage(),
     HomePage(),
-   
+    SearchPage(),
     Center(child: Text("Comming soon ")),
     Center(
         child: Text(

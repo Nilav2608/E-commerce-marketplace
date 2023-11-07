@@ -90,6 +90,10 @@ flutter:
       fonts:
         - asset: assets/fonts/PrimaryIcons.ttf
           weight: 700
+    - family:  SecondaryIcons
+      fonts:
+        - asset: assets/fonts/SecondaryIcons.ttf
+          weight: 700        
     - family: ProductSans
       fonts:
         - asset: assets/fonts/Product_Sans_Bold.ttf
