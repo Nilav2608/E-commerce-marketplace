@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:fluxestore/Business_Logic/bloc/landing_page_bloc.dart';
+import 'package:fluxestore/constants/constants.dart';
 import 'package:fluxestore/presentation/Icons/primary_icons_icons.dart';
 // ignore: depend_on_referenced_packages
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluxestore/presentation/home_utils/drawer.dart';
-import 'package:fluxestore/presentation/pages/home.dart';
-import 'package:fluxestore/presentation/pages/search.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({super.key});
@@ -24,12 +23,13 @@ class _LandingPageState extends State<LandingPage> {
         builder: (context, state) {
           return Scaffold(
               appBar: AppBar(
-                title:  Center(
+                title: Center(
                     child: Text(
                   state.appBarName,
                   style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 20, fontWeight: FontWeight.w700),
+                      color: Colors.black,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w700),
                 )),
                 // backgroundColor: const Color.fromARGB(0, 165, 24, 24),
                 elevation: 0,
@@ -75,34 +75,7 @@ class _LandingPageState extends State<LandingPage> {
         });
   }
 
-  List<String> appBarText = ["Fluxestore", "Search", "My Orders", "Account"];
-
-  List<BottomNavigationBarItem> bottomNavItems =
-      const <BottomNavigationBarItem>[
-    BottomNavigationBarItem(
-        icon: Icon(
-          PrimaryIcons.home,
-        ),
-        label: "Home"),
-    BottomNavigationBarItem(icon: Icon(PrimaryIcons.search), label: "Search"),
-    BottomNavigationBarItem(
-        icon: Icon(
-          PrimaryIcons.shop,
-        ),
-        label: "Shop"),
-    BottomNavigationBarItem(icon: Icon(PrimaryIcons.profile), label: "Account"),
-  ];
-
-  List<Widget> pages = const [
-    HomePage(),
-    SearchPage(),
-    Center(child: Text("Comming soon ")),
-    Center(
-        child: Text(
-      "Comming soon - Account info page",
-      style: TextStyle(fontWeight: FontWeight.w400),
-    )),
-  ];
+  
 }
 
 // If image looks not as expected please convert to compound path manually.
