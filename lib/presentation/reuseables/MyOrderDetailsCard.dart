@@ -1,10 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:fluxestore/models/MyOrdersDataModel.dart';
 
 class MyOrderDetailsCard extends StatelessWidget {
-  const MyOrderDetailsCard({super.key});
+  final MyOrdersDataModel data;
+  const MyOrderDetailsCard({super.key, required this.data});
 
   @override
   Widget build(BuildContext context) {
+    String delivaryStatus = data.deliveryStatus.toString();
+
+    Color statusTextColor;
+    if (delivaryStatus == "PENDING") {
+      statusTextColor = const Color(0xffCF6212);
+    } else if (delivaryStatus == "DELIVERED") {
+      statusTextColor = const Color(0xff009254);
+    } else if (delivaryStatus == "CANCELLED") {
+      statusTextColor = const Color(0xffC50000);
+    } else {
+      statusTextColor = Colors.black;
+    }
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 19.0),
       child: Container(
@@ -24,19 +38,19 @@ class MyOrderDetailsCard extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 14.0, vertical: 10),
           child: Column(
             children: [
-              const Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "Order #1514",
-                    style: TextStyle(
+                    data.orderID ?? '',
+                    style: const TextStyle(
                         fontSize: 18,
                         color: Colors.black,
                         fontWeight: FontWeight.w700),
                   ),
                   Text(
-                    "13/05/2021",
-                    style: TextStyle(
+                    data.date ?? '',
+                    style: const TextStyle(
                         fontSize: 14,
                         color: Color(0xff777E90),
                         fontWeight: FontWeight.w400),
@@ -46,9 +60,9 @@ class MyOrderDetailsCard extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              const Row(
+              Row(
                 children: [
-                  Text(
+                  const Text(
                     "Tracking number:",
                     style: TextStyle(
                         fontSize: 14,
@@ -56,8 +70,8 @@ class MyOrderDetailsCard extends StatelessWidget {
                         fontWeight: FontWeight.w700),
                   ),
                   Text(
-                    " IK287368838",
-                    style: TextStyle(
+                    data.trackingNumber ?? "",
+                    style: const TextStyle(
                         fontSize: 14,
                         color: Color(0xff141416),
                         fontWeight: FontWeight.w400),
@@ -67,12 +81,12 @@ class MyOrderDetailsCard extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              const Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(
                     children: [
-                      Text(
+                      const Text(
                         "Quantity: ",
                         style: TextStyle(
                             fontSize: 14,
@@ -80,8 +94,8 @@ class MyOrderDetailsCard extends StatelessWidget {
                             fontWeight: FontWeight.w700),
                       ),
                       Text(
-                        "2",
-                        style: TextStyle(
+                        data.quantity.toString(),
+                        style: const TextStyle(
                             fontSize: 14,
                             color: Color(0xff141416),
                             fontWeight: FontWeight.w400),
@@ -90,7 +104,7 @@ class MyOrderDetailsCard extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      Text(
+                      const Text(
                         "Subtotal: ",
                         style: TextStyle(
                             fontSize: 14,
@@ -98,8 +112,8 @@ class MyOrderDetailsCard extends StatelessWidget {
                             fontWeight: FontWeight.w700),
                       ),
                       Text(
-                        "\$110",
-                        style: TextStyle(
+                        "\$${data.subTotal}",
+                        style: const TextStyle(
                             fontSize: 16,
                             color: Color(0xff141416),
                             fontWeight: FontWeight.w700),
@@ -115,16 +129,16 @@ class MyOrderDetailsCard extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text(
-                      "PENDING",
+                    Text(
+                      data.deliveryStatus ?? '',
                       style: TextStyle(
                           fontSize: 14,
-                          color: Color(0xffCF6212),
+                          //data.deliveryStatus == 'PENDING' ? Color(0xffCF6212)
+                          color: statusTextColor,
                           fontWeight: FontWeight.w400),
                     ),
                     OutlinedButton(
                         onPressed: () {},
-                        
                         child: const Text("Details",
                             style: TextStyle(
                                 fontSize: 14,

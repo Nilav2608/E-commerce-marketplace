@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fluxestore/presentation/reuseables/MyOrderDetailsCard.dart';
+import 'package:fluxestore/constants/constants.dart';
 
 class MyOrdersPage extends StatefulWidget {
   const MyOrdersPage({super.key});
@@ -7,6 +7,9 @@ class MyOrdersPage extends StatefulWidget {
   @override
   State<MyOrdersPage> createState() => _MyOrdersPageState();
 }
+
+int tabIndex = 0;
+PageController _pageController = PageController();
 
 class _MyOrdersPageState extends State<MyOrdersPage> {
   @override
@@ -33,7 +36,9 @@ class _MyOrdersPageState extends State<MyOrdersPage> {
                           }
                           setState(() {
                             categoryList[index].isSelected = true;
+                            tabIndex = index;
                           });
+                          // print(tabIndex);
                         },
                       ),
                     );
@@ -44,16 +49,22 @@ class _MyOrdersPageState extends State<MyOrdersPage> {
             height: 10,
           ),
           Expanded(
-            child: ListView.builder(
-              itemCount: 7,
-              itemBuilder: (context, index) {
-                return const Padding(
-                  padding: EdgeInsets.symmetric(vertical:8.0),
-                  child: MyOrderDetailsCard(),
-                );
-              },
+            child: Container(
+              margin: const EdgeInsets.only(top: 10),
+              width: double.infinity,
+              height: double.infinity,
+              child: PageView.builder(
+                itemCount: 3,
+                controller: _pageController,
+                physics: const NeverScrollableScrollPhysics(),
+                itemBuilder: (context, index) {
+                  return Column(
+                    children: [myOrderStatusContainer[tabIndex]],
+                  );
+                },
+              ),
             ),
-          )
+          ),
         ],
       ),
     );

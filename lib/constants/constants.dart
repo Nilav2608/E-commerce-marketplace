@@ -1,8 +1,10 @@
 import 'package:flutter/widgets.dart';
+import 'package:fluxestore/data/myOrderStatus_data.dart';
 import 'package:fluxestore/presentation/Icons/primary_icons_icons.dart';
 import 'package:fluxestore/presentation/pages/home.dart';
 import 'package:fluxestore/presentation/pages/my_orders.dart';
 import 'package:fluxestore/presentation/pages/search.dart';
+import 'package:fluxestore/presentation/reuseables/myOrdersList.dart';
 
 List<String> appBarText = ["Fluxestore", "Search", "My Orders", "Account"];
 
@@ -22,12 +24,18 @@ List<BottomNavigationBarItem> bottomNavItems = const <BottomNavigationBarItem>[
 ];
 
 List<Widget> pages = const [
-  MyOrdersPage(),
   HomePage(),
   SearchPage(),
+  MyOrdersPage(),
   Center(
       child: Text(
     "Comming soon - Account info page",
     style: TextStyle(fontWeight: FontWeight.w400),
   )),
+];
+
+List<Widget> myOrderStatusContainer = [
+     OrdersList(items: pendingItems),
+     OrdersList(items: deliveredItems),
+     OrdersList(items: cancelledItems),
 ];
