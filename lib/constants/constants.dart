@@ -1,14 +1,20 @@
 import 'package:flutter/widgets.dart';
 import 'package:fluxestore/data/myOrderStatus_data.dart';
 import 'package:fluxestore/presentation/Icons/primary_icons_icons.dart';
+import 'package:fluxestore/presentation/pages/account.dart';
 import 'package:fluxestore/presentation/pages/home.dart';
 import 'package:fluxestore/presentation/pages/my_orders.dart';
 import 'package:fluxestore/presentation/pages/search.dart';
 import 'package:fluxestore/presentation/reuseables/myOrdersList.dart';
 
-List<String> appBarText = ["Fluxestore", "Search", "My Orders", "Account"];
+const List<String> appBarText = [
+  "Fluxestore",
+  "Search",
+  "My Orders",
+  "Account"
+];
 
-List<BottomNavigationBarItem> bottomNavItems = const <BottomNavigationBarItem>[
+const List<BottomNavigationBarItem> bottomNavItems = <BottomNavigationBarItem>[
   BottomNavigationBarItem(
       icon: Icon(
         PrimaryIcons.home,
@@ -23,19 +29,15 @@ List<BottomNavigationBarItem> bottomNavItems = const <BottomNavigationBarItem>[
   BottomNavigationBarItem(icon: Icon(PrimaryIcons.profile), label: "Account"),
 ];
 
-List<Widget> pages = const [
+const List<Widget> pages = [
+  AccountPage(),
   HomePage(),
   SearchPage(),
   MyOrdersPage(),
-  Center(
-      child: Text(
-    "Comming soon - Account info page",
-    style: TextStyle(fontWeight: FontWeight.w400),
-  )),
 ];
 
 List<Widget> myOrderStatusContainer = [
-     OrdersList(items: pendingItems),
-     OrdersList(items: deliveredItems),
-     OrdersList(items: cancelledItems),
+  OrdersList(items: pendingItems),
+  OrdersList(items: deliveredItems),
+  OrdersList(items: cancelledItems),
 ];

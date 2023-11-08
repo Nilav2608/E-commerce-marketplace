@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:fluxestore/models/MyOrdersDataModel.dart';
 import 'package:fluxestore/presentation/reuseables/MyOrderDetailsCard.dart';
 
-PageController _pageController = PageController();
 
 class OrdersList extends StatelessWidget {
   final List<MyOrdersDataModel> items;

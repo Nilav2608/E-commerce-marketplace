@@ -18,11 +18,13 @@ class _MyOrdersPageState extends State<MyOrdersPage> {
       body: Column(
         children: [
           Padding(
-              padding: const EdgeInsets.only(left: 20.0),
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: SizedBox(
                 height: 50,
                 width: MediaQuery.of(context).size.width,
                 child: ListView.builder(
+                  physics: const BouncingScrollPhysics(
+                      decelerationRate: ScrollDecelerationRate.normal),
                   scrollDirection: Axis.horizontal,
                   itemCount: categoryList.length,
                   itemBuilder: (context, index) {
@@ -38,6 +40,11 @@ class _MyOrdersPageState extends State<MyOrdersPage> {
                             categoryList[index].isSelected = true;
                             tabIndex = index;
                           });
+                          _pageController.animateToPage(
+                            tabIndex,
+                            duration: const Duration(milliseconds: 500),
+                            curve: Curves.ease,
+                          );
                           // print(tabIndex);
                         },
                       ),
@@ -83,7 +90,7 @@ List<Category> categoryList = [
   Category("Cancelled", false),
 ];
 
-class CategoryCard extends StatefulWidget {
+class CategoryCard extends StatelessWidget {
   final Category category;
   final Function(bool) onPressed;
 
@@ -92,11 +99,6 @@ class CategoryCard extends StatefulWidget {
       : super(key: key);
 
   @override
-  State<CategoryCard> createState() => _CategoryCardState();
-}
-
-class _CategoryCardState extends State<CategoryCard> {
-  @override
   Widget build(BuildContext context) {
     return Container(
       width: 91,
@@ -104,7 +106,7 @@ class _CategoryCardState extends State<CategoryCard> {
       // padding: const EdgeInsets.all(5.0),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(30.0),
-          color: widget.category.isSelected
+          color: category.isSelected
               ? const Color(0xff43484B)
               : Colors.white),
       child: TextButton(
@@ -112,11 +114,11 @@ class _CategoryCardState extends State<CategoryCard> {
             overlayColor: MaterialStateProperty.all(Colors.transparent),
           ),
           onPressed: () {
-            widget.onPressed(true);
+            onPressed(true);
           },
-          child: Text(widget.category.title,
+          child: Text(category.title,
               style: TextStyle(
-                  color: widget.category.isSelected
+                  color: category.isSelected
                       ? Colors.white
                       : Colors.black))),
     );
@@ -124,45 +126,3 @@ class _CategoryCardState extends State<CategoryCard> {
 }
 
 
-//DefaultTabController(
-    //     length: 3,
-    //     child: Scaffold(
-    //       appBar: AppBar(
-    //         backgroundColor: Colors.white,
-    //         elevation: 0,
-    //         bottom: TabBar(
-    //             unselectedLabelColor: Colors.redAccent,
-    //             indicatorSize: TabBarIndicatorSize.tab,
-    //             indicator: BoxDecoration(
-    //                 gradient: const LinearGradient(
-    //                     colors: [Colors.redAccent, Colors.orangeAccent]),
-    //                 borderRadius: BorderRadius.circular(50),
-    //                 color: Colors.redAccent),
-    //             tabs: const [
-    //               Tab(
-    //                 child: Align(
-    //                   alignment: Alignment.center,
-    //                   child: Text("APPS"),
-    //                 ),
-    //               ),
-    //               Tab(
-    //                 child: Align(
-    //                   alignment: Alignment.center,
-    //                   child: Text("MOVIES"),
-    //                 ),
-    //               ),
-    //               Tab(
-    //                 child: Align(
-    //                   alignment: Alignment.center,
-    //                   child: Text("GAMES"),
-    //                 ),
-    //               ),
-    //             ]),
-    //       ),
-    //       body: const TabBarView(children: [
-    //         Icon(Icons.apps),
-    //         Icon(Icons.movie),
-    //         Icon(Icons.games),
-    //       ]),
-    //     )
-    //  );

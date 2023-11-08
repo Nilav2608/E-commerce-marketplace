@@ -1,15 +1,24 @@
-import 'package:flutter/material.dart';
-import 'package:fluxestore/models/MyOrdersDataModel.dart';
+// ignore: file_names
 
+import 'package:fluxestore/models/MyOrdersDataModel.dart';
+// ignore: depend_on_referenced_packages
+import 'package:intl/intl.dart';
+import 'package:flutter/material.dart';
 class MyOrderDetailsCard extends StatelessWidget {
   final MyOrdersDataModel data;
   const MyOrderDetailsCard({super.key, required this.data});
 
   @override
   Widget build(BuildContext context) {
-    String delivaryStatus = data.deliveryStatus.toString();
+    String unFormattedDate = data.date.toString();
 
+    DateTime dateTime = DateTime.parse(unFormattedDate);
+
+    String formattedDate = DateFormat("dd/MM/yyyy").format(dateTime);
+
+    String delivaryStatus = data.deliveryStatus.toString();
     Color statusTextColor;
+
     if (delivaryStatus == "PENDING") {
       statusTextColor = const Color(0xffCF6212);
     } else if (delivaryStatus == "DELIVERED") {
@@ -19,6 +28,7 @@ class MyOrderDetailsCard extends StatelessWidget {
     } else {
       statusTextColor = Colors.black;
     }
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 19.0),
       child: Container(
@@ -49,7 +59,7 @@ class MyOrderDetailsCard extends StatelessWidget {
                         fontWeight: FontWeight.w700),
                   ),
                   Text(
-                    data.date ?? '',
+                    formattedDate,
                     style: const TextStyle(
                         fontSize: 14,
                         color: Color(0xff777E90),
