@@ -7,6 +7,15 @@ class NotificationPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+         leading: Container(
+          width: 35,
+          height: 35,
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
+           child: IconButton(
+              onPressed: () => Navigator.of(context).pop(),
+              
+            icon:  const Icon(Icons.arrow_back_ios,size: 20,)),
+         ),
           title: const Text(
             "Notification",
             style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),

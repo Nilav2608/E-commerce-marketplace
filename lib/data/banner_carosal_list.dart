@@ -2,18 +2,13 @@
 
 
 final  List items = [
-    // {
-    //   'id': 1,
-    //   "text" : "Autumn Collections 2023",
-    //   "image_path":
-    //       "https://plus.unsplash.com/premium_photo-1664474889359-7b2a6d500d4b?auto=format&fit=crop&q=60&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTA1fHxtb2RlbCUyMHBvc2UlMjBob3Jpem9udGFsfGVufDB8fDB8fHww"
-    // },
     {
       'id': 1,
-      "text": "Autumn Collections 2023",
+      "text" : "Autumn Collections 2023",
       "image_path":
-          "https://www.fashiongonerogue.com/wp-content/uploads/2021/04/Woman-Smart-Casual-Matching-Top-Pants-Outfit-Rust-Orange.jpg"
+          "https://fashinza.com/textile/wp-content/uploads/2023/03/Mononchromes-1024x683.jpg"
     },
+    
     {
       'id': 2,
       "text": "Beauty starts from \$5.00",

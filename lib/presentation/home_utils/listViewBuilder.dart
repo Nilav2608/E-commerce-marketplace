@@ -11,7 +11,7 @@ class ProductListViewBuilder extends StatelessWidget {
     return SizedBox(
       height: 250,
       
-      width: 400,
+      width: double.infinity,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         // physics: ,
