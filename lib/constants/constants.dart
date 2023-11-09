@@ -30,10 +30,10 @@ const List<BottomNavigationBarItem> bottomNavItems = <BottomNavigationBarItem>[
 ];
 
 const List<Widget> pages = [
-  AccountPage(),
   HomePage(),
   SearchPage(),
   MyOrdersPage(),
+  AccountPage(),
 ];
 
 List<Widget> myOrderStatusContainer = [

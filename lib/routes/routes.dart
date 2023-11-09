@@ -4,6 +4,7 @@ import 'package:fluxestore/presentation/landing_page.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluxestore/presentation/pages/notification_page.dart';
+import 'package:fluxestore/presentation/pages/product_details_page.dart';
 import 'package:fluxestore/routes/custom_transition_routes.dart';
 
 class MyGenerateRoute {
@@ -14,7 +15,7 @@ class MyGenerateRoute {
         return MaterialPageRoute(
           builder: (context) => BlocProvider<LandingPageBloc>.value(
             value: landingPageBloc,
-            child: const LandingPage(),
+            child: const ProductDetailsPage(),
           ),
         );
 
