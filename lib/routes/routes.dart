@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import 'package:fluxestore/Business_Logic/bloc/landing_page_bloc.dart';
 import 'package:fluxestore/presentation/landing_page.dart';
 
+// ignore: depend_on_referenced_packages
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluxestore/presentation/pages/notification_page.dart';
 import 'package:fluxestore/presentation/pages/product_details_page.dart';

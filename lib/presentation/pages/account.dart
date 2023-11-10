@@ -96,7 +96,8 @@ class AccountPage extends StatelessWidget {
                   padding: EdgeInsets.symmetric(horizontal: 8.0),
                   child: Divider(
                     color: Color(0xffF3F3F6),
-                )),
+                )
+                ),
                 AccountPageUtilsRow(
                   icon: SecondaryIcons.ticket,
                   text: "Voucher",
