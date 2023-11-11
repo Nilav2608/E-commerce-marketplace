@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluxestore/constants/constants.dart';
+import 'package:fluxestore/models/TabCatagoryModel.dart';
 
 class MyOrdersPage extends StatefulWidget {
   const MyOrdersPage({super.key});
@@ -78,20 +79,16 @@ class _MyOrdersPageState extends State<MyOrdersPage> {
   }
 }
 
-class Category {
-  final String title;
-  bool isSelected;
-  Category(this.title, this.isSelected);
-}
 
-List<Category> categoryList = [
-  Category("Pending", true),
-  Category("Delivered", false),
-  Category("Cancelled", false),
+
+List<TabCategoryModel> categoryList = [
+  TabCategoryModel("Pending", true),
+  TabCategoryModel("Delivered", false),
+  TabCategoryModel("Cancelled", false),
 ];
 
 class CategoryCard extends StatelessWidget {
-  final Category category;
+  final TabCategoryModel category;
   final Function(bool) onPressed;
 
   const CategoryCard(
