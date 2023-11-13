@@ -6,11 +6,15 @@ import 'package:fluxestore/presentation/Icons/primary_icons_icons.dart';
 // ignore: depend_on_referenced_packages
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:fluxestore/presentation/home_utils/listViewBuilder.dart';
-import 'package:fluxestore/presentation/reuseables/ProductDetailsExpansionPanel.dart';
+import 'package:fluxestore/presentation/reuseables/ExpansionPanel.dart';
 import 'package:fluxestore/presentation/reuseables/ProductRatingProgressBars.dart';
 
 class ProductDetailsPage extends StatefulWidget {
-  const ProductDetailsPage({super.key});
+  // final ProducDatatModel data;
+  const ProductDetailsPage({
+    super.key,
+    //  required this.data
+    });
 
   @override
   State<ProductDetailsPage> createState() => _ProductDetailsPageState();
@@ -48,12 +52,12 @@ List<ProductReviewModel> reviews = [
       stars: 5,
       productImages: []),
 ];
-bool selectedColor = true;
-bool selectedSize = false;
 int currentColorIndex = 0;
 int currentSizeIndex = 0;
+bool selectedColor = true;
+bool selectedSize = false;
 bool _isDescriptionExpanded = true;
-bool _isReviewsExpanded = false;
+bool _isReviewsExpanded = true;
 bool _isSimilarProductsExpanded = false;
 bool favorite = false;
 
@@ -85,7 +89,9 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                           Colors.grey.withOpacity(0.5),
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
                       icon: const Icon(Icons.arrow_back_ios_new_rounded)),
                 ),
                 Padding(
@@ -105,10 +111,12 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                           favorite = !favorite;
                         });
                       },
-                      icon:  Icon(
+                      icon: Icon(
                         PrimaryIcons.heart,
                         size: 19,
-                        color: favorite ?const Color(0xffFF6E6E) : const Color(0xffD8D8D8),
+                        color: favorite
+                            ? const Color(0xffFF6E6E)
+                            : const Color(0xffD8D8D8),
                       )),
                 ),
               ],
@@ -131,7 +139,6 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                       padding: const EdgeInsets.all(20.0),
                       child: Column(
                         children: [
-                 
                           const SizedBox(
                             height: 20,
                           ),
@@ -506,7 +513,3 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
     );
   }
 }
-
-
-
-

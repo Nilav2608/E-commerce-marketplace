@@ -19,7 +19,11 @@ class ProductListViewBuilder extends StatelessWidget {
           ProducDatatModel data = items[index];
           return Padding(
             padding: const EdgeInsets.only(left: 20.0, right: 0),
-            child: ProductCardTile(product: data),
+            child: InkWell(
+                onTap: () {
+                  Navigator.of(context).pushNamed("productDetails",);
+                },
+                child: ProductCardTile(product: data)),
           );
         },
       ),

@@ -16,7 +16,7 @@ class MyGenerateRoute {
         return MaterialPageRoute(
           builder: (context) => BlocProvider<LandingPageBloc>.value(
             value: landingPageBloc,
-            child: const ProductDetailsPage(),
+            child: const LandingPage(),
           ),
         );
 
@@ -25,7 +25,16 @@ class MyGenerateRoute {
         //   builder: (context) => const NotificationPage(),
         //   settings: settings
         // );
-        return CustomPageTransition(child: const NotificationPage());
+        return CustomPageTransition(
+          child: const NotificationPage(),
+          dx: 1.0,
+          dy:0.0
+          );
+      case 'productDetails':
+        return CustomPageTransition(
+          dx:0.0,
+          dy: 1.0,
+          child: const ProductDetailsPage());
       default:
         return _errorRoute();
     }
