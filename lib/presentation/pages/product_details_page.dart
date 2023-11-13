@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:fluxestore/data/product_recomendation_data.dart';
 import 'package:fluxestore/models/ColorsCatagoryModel.dart';
+import 'package:fluxestore/models/ProductReviewModel.dart';
 import 'package:fluxestore/presentation/Icons/primary_icons_icons.dart';
 // ignore: depend_on_referenced_packages
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:expandable/expandable.dart';
+import 'package:fluxestore/presentation/home_utils/listViewBuilder.dart';
+import 'package:fluxestore/presentation/reuseables/ProductDetailsExpansionPanel.dart';
+import 'package:fluxestore/presentation/reuseables/ProductRatingProgressBars.dart';
 
 class ProductDetailsPage extends StatefulWidget {
   const ProductDetailsPage({super.key});
@@ -18,12 +22,40 @@ List<ColorsCatagoryModel> colorsIsSelected = [
   ColorsCatagoryModel(0xffEE6969, false)
 ];
 
+List ratingData = [
+  ["5", 0.8, 80],
+  ["4", 0.6, 12],
+  ["3", 0.4, 5],
+  ["2", 0.20, 3],
+  ["1", 0.0, 0],
+];
+
+List<ProductReviewModel> reviews = [
+  ProductReviewModel(
+      name: "Jennifer Rose",
+      profileImage: "assets/images/girl1.png",
+      description:
+          "I love it.  Awesome customer service!! Helped me out with adding an additional item to my order. Thanks again!",
+      date: DateTime.now().toString(),
+      stars: 5,
+      productImages: []),
+  ProductReviewModel(
+      name: "Kelly Rihana",
+      profileImage: "assets/images/girl2.png",
+      description:
+          "I'm very happy with order, It was delivered on and good quality. Recommended!",
+      date: DateTime.now().toString(),
+      stars: 5,
+      productImages: []),
+];
 bool selectedColor = true;
 bool selectedSize = false;
 int currentColorIndex = 0;
 int currentSizeIndex = 0;
-bool _isDescriptionExpanded = false;
+bool _isDescriptionExpanded = true;
 bool _isReviewsExpanded = false;
+bool _isSimilarProductsExpanded = false;
+bool favorite = false;
 
 class _ProductDetailsPageState extends State<ProductDetailsPage> {
   @override
@@ -68,11 +100,15 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                           Colors.grey.withOpacity(0.5),
                         ),
                       ),
-                      onPressed: () {},
-                      icon: const Icon(
+                      onPressed: () {
+                        setState(() {
+                          favorite = !favorite;
+                        });
+                      },
+                      icon:  Icon(
                         PrimaryIcons.heart,
                         size: 19,
-                        color: Color(0xffD8D8D8),
+                        color: favorite ?const Color(0xffFF6E6E) : const Color(0xffD8D8D8),
                       )),
                 ),
               ],
@@ -95,11 +131,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                       padding: const EdgeInsets.all(20.0),
                       child: Column(
                         children: [
-                          // Container(
-                          //   height: 5,
-                          //   width: 35,
-                          //   color: Colors.black12,
-                          // ),
+                 
                           const SizedBox(
                             height: 20,
                           ),
@@ -305,135 +337,161 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                             color: Color(0xffF3F3F6),
                           ),
 
-                          //*Description------------------------->
-                          ExpansionPanelList(
-                            elevation: 0,
-                            expandedHeaderPadding: EdgeInsets.zero,
-                            expandIconColor: const Color(0xff33302E),
-                            expansionCallback: (int index, bool isExpanded) {
+                          //*<-----------------------Description Section------------------------->
+
+                          ProductDetailsExpansionPanel(
+                            expansionCallback: (p0, p1) {
                               setState(() {
                                 _isDescriptionExpanded =
                                     !_isDescriptionExpanded;
                               });
                             },
-                            children: [
-                              ExpansionPanel(
-                                backgroundColor: Colors.white,
-                                isExpanded: _isDescriptionExpanded,
-                                canTapOnHeader: true,
-                                headerBuilder:
-                                    (BuildContext context, bool isExpanded) {
-                                  return const ListTile(
-                                    contentPadding: EdgeInsets.zero,
-                                    title: Text(
-                                      'Description',
-                                      style: TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w700),
-                                    ),
-                                  );
-                                },
-                                body: const SizedBox(
-                                  width: 305,
-                                  height: 90,
-                                  child: Text(
-                                      'Sportswear is no longer under culture, it is no longer indie or cobbled together as it once was. Sport is fashion today. The top is oversized in fit and style, may need to size down.',
-                                      style: TextStyle(
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w400)),
-                                ),
-                              ),
-                            ],
+                            isExpanded: _isDescriptionExpanded,
+                            headingText: "Description",
+                            body: const SizedBox(
+                              width: 305,
+                              height: 90,
+                              child: Text(
+                                  'Sportswear is no longer under culture, it is no longer indie or cobbled together as it once was. Sport is fashion today. The top is oversized in fit and style, may need to size down.',
+                                  style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w400)),
+                            ),
                           ),
 
                           const Divider(
                             color: Color(0xffF3F3F6),
                           ),
-                          //*Reviews------------------------->
-                          ExpansionPanelList(
-                            elevation: 0,
-                            expandedHeaderPadding: EdgeInsets.zero,
-                            expandIconColor: const Color(0xff33302E),
-                            expansionCallback: (int index, bool isExpanded) {
+
+                          //*<---------------------------Reviews Section------------------------->
+                          ProductDetailsExpansionPanel(
+                            expansionCallback: (p0, p1) {
                               setState(() {
                                 _isReviewsExpanded = !_isReviewsExpanded;
                               });
                             },
-                            children: [
-                              ExpansionPanel(
-                                backgroundColor: Colors.white,
-                                isExpanded: _isReviewsExpanded,
-                                canTapOnHeader: true,
-                                headerBuilder:
-                                    (BuildContext context, bool isExpanded) {
-                                  return const ListTile(
-                                    contentPadding: EdgeInsets.zero,
-                                    title: Text(
-                                      'Reviews',
-                                      style: TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w700),
-                                    ),
-                                  );
-                                },
-                                body: Column(
+                            isExpanded: _isReviewsExpanded,
+                            headingText: "Reviews",
+                            body: Column(
+                              children: [
+                                //? AVERAGE RATINGS-------------------------->
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
+                                    const Row(
                                       children: [
-                                        const Row(
-                                          children: [
-                                            Padding(
-                                              padding:
-                                                  EdgeInsets.only(right: 5.0),
-                                              child: Text('4.9',
-                                                  style: TextStyle(
-                                                      fontSize: 40,
-                                                      fontWeight:
-                                                          FontWeight.w700)),
-                                            ),
-                                            Text('OUT OF 5',
-                                                style: TextStyle(
-                                                    color: Color(0XFF8A8A8F),
-                                                    fontSize: 11,
-                                                    fontWeight:
-                                                        FontWeight.w400)),
-                                          ],
+                                        Padding(
+                                          padding: EdgeInsets.only(right: 5.0),
+                                          child: Text('4.9',
+                                              style: TextStyle(
+                                                  fontSize: 40,
+                                                  fontWeight: FontWeight.w700)),
                                         ),
-                                        Column(
-                                          crossAxisAlignment: CrossAxisAlignment.end,
-                                          children: [
-                                            RatingBarIndicator(
-                                              rating: 4,
-                                              itemBuilder: (context, index) =>
-                                                  const Icon(
-                                                Icons.star,
-                                                color: Color(0xff508A7B),
-                                              ),
-                                              itemCount: 5,
-                                              itemSize: 20.0,
-                                              direction: Axis.horizontal,
-                                            ),
-                                             const Padding(
-                                               padding: EdgeInsets.all( 5.0),
-                                               child: Text('83 ratings',
-                                                  style: TextStyle(
-                                                    color: Color(0XFF8A8A8F),
-                                                      fontSize: 11,
-                                                      fontWeight:FontWeight.w400
-                                                )
-                                              ),
-                                             ),
-                                          ],
-                                        )
+                                        Text('OUT OF 5',
+                                            style: TextStyle(
+                                                color: Color(0XFF8A8A8F),
+                                                fontSize: 11,
+                                                fontWeight: FontWeight.w400)),
+                                      ],
+                                    ),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.end,
+                                      children: [
+                                        RatingBarIndicator(
+                                          rating: 4,
+                                          itemBuilder: (context, index) =>
+                                              const Icon(
+                                            Icons.star,
+                                            color: Color(0xff508A7B),
+                                          ),
+                                          itemCount: 5,
+                                          itemSize: 20.0,
+                                          direction: Axis.horizontal,
+                                        ),
+                                        const Padding(
+                                          padding: EdgeInsets.all(5.0),
+                                          child: Text('83 ratings',
+                                              style: TextStyle(
+                                                  color: Color(0XFF8A8A8F),
+                                                  fontSize: 11,
+                                                  fontWeight: FontWeight.w400)),
+                                        ),
                                       ],
                                     )
                                   ],
                                 ),
-                              ),
-                            ],
+                                // for (int i = 0; i < ratingData.length;i++)
+
+                                ListView.builder(
+                                  itemCount: ratingData.length,
+                                  shrinkWrap: true,
+                                  physics: const NeverScrollableScrollPhysics(),
+                                  scrollDirection: Axis.vertical,
+                                  itemBuilder: (context, index) =>
+                                      ProductRatingProgressBar(
+                                    percentage: ratingData[index][2],
+                                    starNumber: ratingData[index][0],
+                                    value: ratingData[index][1],
+                                  ),
+                                ),
+
+                                const Padding(
+                                  padding: EdgeInsets.only(top: 8.0),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text("47 Reviews",
+                                          style: TextStyle(
+                                              color: Color(0xff8A8A8F),
+                                              fontSize: 12,
+                                              fontWeight: FontWeight.w400)),
+                                      Row(
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                EdgeInsets.only(right: 4.0),
+                                            child: Text("WRITE A REVIEW",
+                                                style: TextStyle(
+                                                    color: Color(0xff8A8A8F),
+                                                    fontSize: 12,
+                                                    fontWeight:
+                                                        FontWeight.w400)),
+                                          ),
+                                          Icon(
+                                            Icons.edit,
+                                            weight: 100,
+                                            size: 16,
+                                            fill: 1.0,
+                                            color: Color(0xffC8C7CC),
+                                          )
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
+                          const Divider(
+                            color: Color(0xffF3F3F6),
+                          ),
+
+                          ProductDetailsExpansionPanel(
+                              expansionCallback: (p0, p1) {
+                                setState(() {
+                                  _isSimilarProductsExpanded =
+                                      !_isSimilarProductsExpanded;
+                                });
+                              },
+                              isExpanded: _isSimilarProductsExpanded,
+                              headingText: "Similar Product",
+                              body: ProductListViewBuilder(
+                                items: recomendationsList,
+                              )),
+
                           //Divider
                         ],
                       ),
@@ -449,163 +507,6 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
   }
 }
 
-//scroll() {
-//   return DraggableScrollableSheet(
-//     initialChildSize: 0.6,
-//     maxChildSize: 1.0,
-//     minChildSize: 0.6,
-//     builder: (context, scrollController) {
-//       return Container(
-//         decoration: const BoxDecoration(
-//             color: Colors.white,
-//             borderRadius: BorderRadius.only(
-//                 topLeft: Radius.circular(20), topRight: Radius.circular(20))),
-//         child: SingleChildScrollView(
-//           controller: scrollController,
-//           child: Padding(
-//             padding: const EdgeInsets.all(20.0),
-//             child: Column(
-//               children: [
-//                 // Container(
-//                 //   height: 5,
-//                 //   width: 35,
-//                 //   color: Colors.black12,
-//                 // ),
-//                 const SizedBox(
-//                   height: 20,
-//                 ),
 
-//                 //* -->      Product Name-starrating and price
-//                 Row(
-//                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                   children: [
-//                     Column(
-//                       crossAxisAlignment: CrossAxisAlignment.start,
-//                       children: [
-//                         const Text(
-//                           "Street Wear",
-//                           style: TextStyle(
-//                               fontSize: 18,
-//                               fontWeight: FontWeight.w700,
-//                               color: Color(0xff1D1F22)),
-//                         ),
-//                         Row(
-//                           children: [
-//                             RatingBarIndicator(
-//                               rating: 4,
-//                               itemBuilder: (context, index) => const Icon(
-//                                 Icons.star,
-//                                 color: Color(0xff508A7B),
-//                               ),
-//                               itemCount: 5,
-//                               itemSize: 20.0,
-//                               direction: Axis.horizontal,
-//                             ),
-//                             const Text(
-//                               "(83)",
-//                               style: TextStyle(
-//                                   fontSize: 12,
-//                                   fontWeight: FontWeight.w400,
-//                                   color: Color(0xff1D1F22)),
-//                             ),
-//                           ],
-//                         ),
-//                       ],
-//                     ),
-//                     const Text(
-//                       "\$80.00",
-//                       style: TextStyle(
-//                           fontSize: 26,
-//                           fontWeight: FontWeight.w700,
-//                           color: Color(0xff1D1F22)),
-//                     ),
-//                   ],
-//                 ),
-//                 const SizedBox(
-//                   height: 16,
-//                 ),
-//                 const Divider(
-//                   color: Color(0xffF3F3F6),
-//                 ),
-//                 Row(
-//                   // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                   children: [
-//                     Column(
-//                       crossAxisAlignment: CrossAxisAlignment.start,
-//                       children: [
-//                         const Text(
-//                           "Color",
-//                           style: TextStyle(
-//                               fontSize: 14,
-//                               fontWeight: FontWeight.w400,
-//                               color: Color(0xff777E90)),
-//                         ),
-//                         Row(
-//                           children: [
-//                             for (int i = 0; i < colorsIsSelected.length; i++)
-//                               GestureDetector(
-//                                 onTap: () {},
-//                                 child: Padding(
-//                                   padding: const EdgeInsets.all(4.0),
-//                                   child: Stack(
-//                                     children: [
-//                                       Material(
-//                                         // shape: const CircleBorder(side:  BorderSide(width: 1) ),
-//                                         borderRadius: BorderRadius.circular(20),
-//                                         elevation: 2,
-//                                         child: Container(
-//                                             // color: Colors.white,
-//                                             decoration: BoxDecoration(
-//                                                 color: Colors.white,
-//                                                 shape: BoxShape.circle,
-//                                                 border: Border.all(
-//                                                     width: colorsIsSelected[i]
-//                                                             .selectedColor
-//                                                         ? 3
-//                                                         : 0,
-//                                                     color: Colors.white),
-//                                                 boxShadow: [
-//                                                   colorsIsSelected[i]
-//                                                           .selectedColor
-//                                                       ? BoxShadow(
-//                                                           blurRadius: 6,
-//                                                           color: Colors
-//                                                               .grey.shade400,
-//                                                           offset: const Offset(
-//                                                               0.001, 6),
-//                                                           spreadRadius: 0.5)
-//                                                       : const BoxShadow()
-//                                                 ]),
-//                                             child: CircleAvatar(
-//                                               radius: 12,
-//                                               backgroundColor: Color(
-//                                                   colorsIsSelected[i].color),
-//                                             )),
-//                                       ),
-//                                     ],
-//                                   ),
-//                                 ),
-//                               )
-//                           ],
-//                         ),
-//                       ],
-//                     ),
-//                     const Text(
-//                       "Size",
-//                       style: TextStyle(
-//                           fontSize: 14,
-//                           fontWeight: FontWeight.w400,
-//                           color: Color(0xff777E90)),
-//                     )
-//                   ],
-//                 ),
-//               ],
-//             ),
-//           ),
-//         ),
-//       );
-//     },
-//   );
-// }
 
 

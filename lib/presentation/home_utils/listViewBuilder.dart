@@ -1,25 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:fluxestore/data/products_data.dart';
 import 'package:fluxestore/models/productModel.dart';
 import 'package:fluxestore/presentation/reuseables/product_list_tile.dart';
 
 class ProductListViewBuilder extends StatelessWidget {
-  const ProductListViewBuilder({super.key});
+  final dynamic items;
+  const ProductListViewBuilder({super.key, required this.items});
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 250,
-      
       width: double.infinity,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         // physics: ,
-        itemCount: productsList.length,
+        itemCount: items.length,
         itemBuilder: (context, index) {
-          ProducDatatModel data = productsList[index];
+          ProducDatatModel data = items[index];
           return Padding(
-            padding: const EdgeInsets.only(left:20.0,right: 0),
+            padding: const EdgeInsets.only(left: 20.0, right: 0),
             child: ProductCardTile(product: data),
           );
         },

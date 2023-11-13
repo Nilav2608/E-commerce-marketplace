@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluxestore/data/products_data.dart';
 import 'package:fluxestore/presentation/Icons/primary_icons_icons.dart';
 import 'package:fluxestore/presentation/reuseables/banner_cards.dart';
 import 'package:fluxestore/presentation/reuseables/circle_tabs.dart';
@@ -86,7 +87,7 @@ class _HomePageState extends State<HomePage> {
             // SizedBox(
             //   height: 15,
             // ),
-            const ProductListViewBuilder(),
+             ProductListViewBuilder(items: productsList),
             const BannerCards(
                 width: 400,
                 height: 162,

@@ -14,6 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
+      // debugShowPerformanceOverlay: true,
       theme: ThemeData(
         //  textTheme:  _buildTextTheme(ThemeData.light().textTheme),
         fontFamily: "ProductSans",
