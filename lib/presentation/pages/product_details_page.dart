@@ -5,16 +5,16 @@ import 'package:fluxestore/models/ProductReviewModel.dart';
 import 'package:fluxestore/presentation/Icons/primary_icons_icons.dart';
 // ignore: depend_on_referenced_packages
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:fluxestore/presentation/Icons/secondary_icons_icons.dart';
 import 'package:fluxestore/presentation/home_utils/listViewBuilder.dart';
 import 'package:fluxestore/presentation/reuseables/ExpansionPanel.dart';
 import 'package:fluxestore/presentation/reuseables/ProductRatingProgressBars.dart';
 
+import '../../models/productModel.dart';
+
 class ProductDetailsPage extends StatefulWidget {
-  // final ProducDatatModel data;
-  const ProductDetailsPage({
-    super.key,
-    //  required this.data
-    });
+  final ProducDatatModel data;
+  const ProductDetailsPage({super.key, required this.data});
 
   @override
   State<ProductDetailsPage> createState() => _ProductDetailsPageState();
@@ -52,27 +52,58 @@ List<ProductReviewModel> reviews = [
       stars: 5,
       productImages: []),
 ];
+
 int currentColorIndex = 0;
 int currentSizeIndex = 0;
 bool selectedColor = true;
 bool selectedSize = false;
 bool _isDescriptionExpanded = true;
 bool _isReviewsExpanded = true;
-bool _isSimilarProductsExpanded = false;
+bool _isSimilarProductsExpanded = true;
 bool favorite = false;
 
 class _ProductDetailsPageState extends State<ProductDetailsPage> {
+  // int? sizeLength = widget.data.sizes?.length;
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Stack(
+    return Scaffold(
+      bottomSheet: BottomAppBar(
+        padding: EdgeInsets.zero,
+        color: Colors.white,
+        // shape: BoxShape.rectangle,
+        child: Container(
+          width: double.infinity,
+          height: 50,
+          decoration: const BoxDecoration(
+              color: Color(0xff343434),
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(20), topRight: Radius.circular(20))),
+          child: const Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(SecondaryIcons.bag,color: Colors.white,),
+              SizedBox(width: 10,),
+              Text(
+                "Add To Cart",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18, fontWeight: FontWeight.w700),
+              )
+            ],
+          ),
+        ),
+      ),
+      body: SafeArea(
+        child: Stack(
           children: [
             ClipRRect(
               child: Image.network(
                   //  width:375,
                   //  height:400,
-                  "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=60&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y2xvdGhpbmclMjBtb2RlbCUyMHBvc2V8ZW58MHx8MHx8fDA%3D"),
+                  widget.data.imageUrl ?? ""
+                  // "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=60&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y2xvdGhpbmclMjBtb2RlbCUyMHBvc2V8ZW58MHx8MHx8fDA%3D"
+
+                  ),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -150,9 +181,9 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  const Text(
-                                    "Street Wear",
-                                    style: TextStyle(
+                                  Text(
+                                    widget.data.productName ?? "",
+                                    style: const TextStyle(
                                         fontSize: 18,
                                         fontWeight: FontWeight.w700,
                                         color: Color(0xff1D1F22)),
@@ -181,9 +212,9 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                   ),
                                 ],
                               ),
-                              const Text(
-                                "\$80.00",
-                                style: TextStyle(
+                              Text(
+                                "\$${widget.data.price}",
+                                style: const TextStyle(
                                     fontSize: 26,
                                     fontWeight: FontWeight.w700,
                                     color: Color(0xff1D1F22)),
@@ -303,7 +334,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                   Row(
                                     children: [
                                       for (int i = 0;
-                                          i < colorsIsSelected.length;
+                                          i < widget.data.sizes!.length;
                                           i++)
                                         GestureDetector(
                                           onTap: () {
@@ -320,7 +351,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                                       ? const Color(0xff515151)
                                                       : const Color(0xffFAFAFA),
                                               child: Text(
-                                                "M",
+                                                widget.data.sizes![i],
                                                 style: TextStyle(
                                                     color: selectedSize
                                                         ? const Color(
@@ -355,14 +386,19 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                             },
                             isExpanded: _isDescriptionExpanded,
                             headingText: "Description",
-                            body: const SizedBox(
-                              width: 305,
-                              height: 90,
-                              child: Text(
-                                  'Sportswear is no longer under culture, it is no longer indie or cobbled together as it once was. Sport is fashion today. The top is oversized in fit and style, may need to size down.',
-                                  style: TextStyle(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w400)),
+                            body: const Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                SizedBox(
+                                  width: 305,
+                                  height: 90,
+                                  child: Text(
+                                      'Sportswear is no longer under culture, it is no longer indie or cobbled together as it once was. Sport is fashion today. The top is oversized in fit and style, may need to size down.',
+                                      style: TextStyle(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w400)),
+                                ),
+                              ],
                             ),
                           ),
 

@@ -8,13 +8,15 @@ import 'package:fluxestore/presentation/pages/notification_page.dart';
 import 'package:fluxestore/presentation/pages/product_details_page.dart';
 import 'package:fluxestore/routes/custom_transition_routes.dart';
 
+import '../models/productModel.dart';
+
 class MyGenerateRoute {
   final LandingPageBloc landingPageBloc = LandingPageBloc();
   Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case "/":
         return MaterialPageRoute(
-          builder: (context) => BlocProvider<LandingPageBloc>.value(
+          builder: (_) => BlocProvider<LandingPageBloc>.value(
             value: landingPageBloc,
             child: const LandingPage(),
           ),
@@ -26,15 +28,12 @@ class MyGenerateRoute {
         //   settings: settings
         // );
         return CustomPageTransition(
-          child: const NotificationPage(),
-          dx: 1.0,
-          dy:0.0
-          );
+            child: const NotificationPage(), dx: 1.0, dy: 0.0);
       case 'productDetails':
+        final ProducDatatModel productData =
+            settings.arguments as ProducDatatModel;
         return CustomPageTransition(
-          dx:0.0,
-          dy: 1.0,
-          child: const ProductDetailsPage());
+            dx: 0.0, dy: 1.0, child:  ProductDetailsPage(data: productData,));
       default:
         return _errorRoute();
     }

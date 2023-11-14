@@ -13,8 +13,12 @@ class RecomendedProductsListTile extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         itemCount: recommendedList.length,
         itemBuilder: (context, index) {
-          ProducDatatModel list = recommendedList[index];
-          return RecomendedTileWidget(list: list);
+          ProducDatatModel productData = recommendedList[index];
+          return InkWell(
+              onTap: () {
+                Navigator.of(context).pushNamed("productDetails",arguments: productData);
+              },
+              child: RecomendedTileWidget(list: productData));
         },
       ),
     );
@@ -40,12 +44,6 @@ class RecomendedTileWidget extends StatelessWidget {
             color: const Color.fromARGB(26, 251, 251, 251),
             border: Border.all(width: 2.0, color: const Color(0xffF9F9F9)),
             borderRadius: BorderRadius.circular(10),
-            // boxShadow: const [
-            //   BoxShadow(
-            //       color: Color(0xffe8e8e8),
-            //       blurRadius: 5.0,
-            //       offset: Offset(0, 5))
-            // ],
           ),
           child: Row(
             children: [

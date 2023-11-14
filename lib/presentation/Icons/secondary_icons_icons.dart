@@ -29,4 +29,5 @@ class SecondaryIcons {
   static const IconData bell_duotone = IconData(0xe806, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData pad = IconData(0xe808, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData send_arrow = IconData(0xe809, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData bag = IconData(0xe80c, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }

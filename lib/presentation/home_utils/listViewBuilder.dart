@@ -16,14 +16,15 @@ class ProductListViewBuilder extends StatelessWidget {
         // physics: ,
         itemCount: items.length,
         itemBuilder: (context, index) {
-          ProducDatatModel data = items[index];
+          ProducDatatModel producData = items[index];
           return Padding(
             padding: const EdgeInsets.only(left: 20.0, right: 0),
             child: InkWell(
                 onTap: () {
-                  Navigator.of(context).pushNamed("productDetails",);
+                  Navigator.of(context).pushNamed("productDetails",arguments: producData);
                 },
-                child: ProductCardTile(product: data)),
+                child: ProductCardTile(product: producData),
+              ),
           );
         },
       ),

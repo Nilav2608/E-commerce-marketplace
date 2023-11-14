@@ -72,8 +72,10 @@ class _LandingPageState extends State<LandingPage> {
                       tabIndex: index, appBarName: appBartext));
                 },
               ),
-              body: pages[state.tabIndex]);
-        });
+              body: pages[state.tabIndex]
+        );
+      }
+    );
   }
 
   
