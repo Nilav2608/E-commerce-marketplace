@@ -6,11 +6,12 @@ import 'package:fluxestore/presentation/Icons/primary_icons_icons.dart';
 // ignore: depend_on_referenced_packages
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:fluxestore/presentation/Icons/secondary_icons_icons.dart';
-import 'package:fluxestore/presentation/home_utils/listViewBuilder.dart';
+import 'package:fluxestore/presentation/reuseables/ProductListViewBuilder.dart';
 import 'package:fluxestore/presentation/reuseables/ExpansionPanel.dart';
 import 'package:fluxestore/presentation/reuseables/ProductRatingProgressBars.dart';
 
 import '../../models/productModel.dart';
+import '../reuseables/ProductReviewsTile.dart';
 
 class ProductDetailsPage extends StatefulWidget {
   final ProducDatatModel data;
@@ -81,13 +82,19 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
           child: const Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(SecondaryIcons.bag,color: Colors.white,),
-              SizedBox(width: 10,),
+              Icon(
+                SecondaryIcons.bag,
+                color: Colors.white,
+              ),
+              SizedBox(
+                width: 10,
+              ),
               Text(
                 "Add To Cart",
                 style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18, fontWeight: FontWeight.w700),
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w700),
               )
             ],
           ),
@@ -515,6 +522,21 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                     ],
                                   ),
                                 ),
+                                ListView.builder(
+                                    itemCount: reviews.length,
+                                    shrinkWrap: true,
+                                    physics:
+                                        const NeverScrollableScrollPhysics(),
+                                    scrollDirection: Axis.vertical,
+                                    itemBuilder: (context, index) {
+                                      var data = reviews[index];
+                                     return  ProductReviewsTile(
+                                        data: data,
+                                      );
+                                    }
+
+                                    // ProductReviewsTile(data: reviews,)
+                                    ),
                               ],
                             ),
                           ),
