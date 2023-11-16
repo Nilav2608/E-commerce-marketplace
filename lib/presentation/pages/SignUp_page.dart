@@ -1,33 +1,42 @@
+
 import 'package:flutter/material.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class SignUpPage extends StatefulWidget {
+  const SignUpPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<SignUpPage> createState() => _SignUpPageState();
 }
 
-TextEditingController nameController = TextEditingController();
-TextEditingController emailController = TextEditingController();
-TextEditingController passwordController = TextEditingController();
-TextEditingController confirmPasswordController = TextEditingController();
+TextEditingController _nameController = TextEditingController();
+TextEditingController _emailController = TextEditingController();
+TextEditingController _passwordController = TextEditingController();
+TextEditingController _confirmPasswordController = TextEditingController();
 
-class _LoginPageState extends State<LoginPage> {
+class _SignUpPageState extends State<SignUpPage> {
   @override
   void dispose() {
-    nameController.dispose();
-    emailController.dispose();
-    passwordController.dispose();
+    _nameController.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
     super.dispose();
   }
 
   final formKey = GlobalKey<FormState>();
 
+  bool matchingPassword() {
+    if (_passwordController.text != _confirmPasswordController.text) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+    final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
     return Scaffold(
-      key: _scaffoldKey,
+      key: scaffoldKey,
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(20),
@@ -61,10 +70,10 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     //* Name
                     TextFormField(
-                      controller: nameController,
+                      controller: _nameController,
                       validator: (value) {
                         if (value!.isEmpty ||
-                            RegExp(r'^[a-z A-Z]+$').hasMatch(value)) {
+                            !RegExp(r'^[a-z A-Z]+$').hasMatch(value)) {
                           return "Enter Correct Name";
                         } else {
                           return null;
@@ -83,10 +92,10 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     //* Email
                     TextFormField(
-                      controller: emailController,
+                      controller: _emailController,
                       validator: (value) {
                         if (value!.isEmpty ||
-                            RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
+                            !RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
                                 .hasMatch(value)) {
                           return "Enter Your Email";
                         } else {
@@ -106,12 +115,12 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     //* Password
                     TextFormField(
-                      controller: passwordController,
+                      controller: _passwordController,
                       validator: (value) {
                         if (value!.isEmpty ||
-                            RegExp(r'^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$')
+                            !RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$')
                                 .hasMatch(value)) {
-                          return "Enter Your Email";
+                          return "Enter valid password";
                         } else {
                           return null;
                         }
@@ -129,11 +138,13 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     //*Confirm Password
                     TextFormField(
-                      controller: confirmPasswordController,
+                      controller: _confirmPasswordController,
+                      obscureText: true,
                       validator: (value) {
-                        if (value!.isEmpty ||
-                            RegExp(r'^[a-z A-Z]+$').hasMatch(value)) {
-                          return "Enter Your Email";
+                        if (value!.isEmpty) {
+                          return "please re-enter your password";
+                        } else if (matchingPassword()) {
+                          return "Your password didn't match";
                         } else {
                           return null;
                         }
@@ -154,7 +165,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     Align(
                         alignment: Alignment.center,
-                        child: ElevatedButton(
+                        child:  ElevatedButton(
                           style: const ButtonStyle(
                             elevation: MaterialStatePropertyAll(0),
                             fixedSize: MaterialStatePropertyAll(Size(147, 51)),
@@ -163,10 +174,9 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                           onPressed: () {
                             if (formKey.currentState!.validate()) {
-                              final snackBar =
-                                  SnackBar(content: Text("Submitting form"));
-                              ScaffoldMessenger.of(context)
-                                  .showSnackBar(snackBar);
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                      content: Text("Submitting form")));
                             }
                           },
                           child: const Center(
