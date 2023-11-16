@@ -1,15 +1,14 @@
 import "package:flutter/material.dart";
 import 'package:fluxestore/Business_Logic/bloc/landing_page_bloc.dart';
-import 'package:fluxestore/presentation/landing_page.dart';
 
 // ignore: depend_on_referenced_packages
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fluxestore/presentation/pages/SignUp_page.dart';
 import 'package:fluxestore/presentation/pages/notification_page.dart';
 import 'package:fluxestore/presentation/pages/product_details_page.dart';
 import 'package:fluxestore/routes/custom_transition_routes.dart';
 
 import '../models/productModel.dart';
+import '../presentation/pages/loginPage.dart';
 
 class MyGenerateRoute {
   final LandingPageBloc landingPageBloc = LandingPageBloc();
@@ -19,7 +18,7 @@ class MyGenerateRoute {
         return MaterialPageRoute(
           builder: (_) => BlocProvider<LandingPageBloc>.value(
             value: landingPageBloc,
-            child:  const SignUpPage(),
+            child:  const LoginPage(),
           ),
         );
 
