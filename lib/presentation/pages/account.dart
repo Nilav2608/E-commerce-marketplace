@@ -75,65 +75,66 @@ class AccountPage extends StatelessWidget {
                   //     blurRadius: 0.5,
                   //     offset: Offset(5, 0)),
                 ]),
-            child: const Column(
+            child:  Column(
               children: [
                 AccountPageUtilsRow(
-                  icon: SecondaryIcons.location,
-                  text: "Address",
+                  onTap: () => Navigator.of(context).pushNamed("MyOrders"),
+                  icon: SecondaryIcons.bag,
+                  text: "My Orders",
                   size: 21,
                 ),
-                Padding(
+                const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 8.0),
                   child: Divider(
                     color: Color(0xffF3F3F6),
                 )),
-                AccountPageUtilsRow(
+                const AccountPageUtilsRow(
                   icon: SecondaryIcons.wallet,
                   text: "Payment method",
                   size: 20,
                 ),
-                Padding(
+                const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 8.0),
                   child: Divider(
                     color: Color(0xffF3F3F6),
                 )
                 ),
-                AccountPageUtilsRow(
+                const AccountPageUtilsRow(
                   icon: SecondaryIcons.ticket,
                   text: "Voucher",
                   size: 19,
                 ),
-                Padding(
+                const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 8.0),
                   child: Divider(
                     color: Color(0xffF3F3F6),
                 )),
-                AccountPageUtilsRow(
+                const AccountPageUtilsRow(
                   icon: PrimaryIcons.heart,
                   text: "My Wishlist",
                   size: 23,
                 ),
-                Padding(
+                const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 8.0),
                   child: Divider(
                     color: Color(0xffF3F3F6),
                 )),
-                AccountPageUtilsRow(
+                const AccountPageUtilsRow(
                   icon: Icons.star,
                   text: "Rate this app",
                   size: 23,
                 ),
-                Padding(
+                const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 8.0),
                   child: Divider(
                     color: Color(0xffF3F3F6),
                 )),
-                AccountPageUtilsRow(
+                const AccountPageUtilsRow(
                   icon: SecondaryIcons.logout,
                   text: "Log out",
                   size: 21,
                 ),
-                Padding(
+                const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 8.0),
                   child: Divider(
                     color: Color(0xffF3F3F6),

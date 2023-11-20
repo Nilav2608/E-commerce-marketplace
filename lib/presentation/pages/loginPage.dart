@@ -9,7 +9,7 @@ class LoginPage extends StatelessWidget {
     TextEditingController passwordController = TextEditingController();
     final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
     var height = MediaQuery.of(context).size.height;
-    var width = MediaQuery.of(context).size.width;
+    // var width = MediaQuery.of(context).size.width;
     final formKey = GlobalKey<FormState>();
     return Scaffold(
       key: scaffoldKey,

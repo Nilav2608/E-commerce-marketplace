@@ -17,7 +17,7 @@ class CustomPageTransition extends PageRouteBuilder {
       Animation<double> secondaryAnimation, Widget child) {
     var  begin = Offset(dx, dy);
     const end = Offset.zero;
-    const curve = Curves.easeInOut;
+    const curve = Curves.easeInOutCirc;
     var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
     var offsetAnimation = animation.drive(tween);
     return SlideTransition(

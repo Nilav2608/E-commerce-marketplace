@@ -74,7 +74,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
         // shape: BoxShape.rectangle,
         child: Container(
           width: double.infinity,
-          height: 50,
+          height: 40,
           decoration: const BoxDecoration(
               color: Color(0xff343434),
               borderRadius: BorderRadius.only(
@@ -511,7 +511,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                                         FontWeight.w400)),
                                           ),
                                           Icon(
-                                            Icons.edit,
+                                            SecondaryIcons.pen_rounded,
                                             weight: 100,
                                             size: 16,
                                             fill: 1.0,
