@@ -8,12 +8,7 @@ import 'package:fluxestore/presentation/pages/home.dart';
 import 'package:fluxestore/presentation/pages/search.dart';
 import 'package:fluxestore/presentation/reuseables/myOrdersList.dart';
 
-const List<String> appBarText = [
-  "Fluxestore",
-  "Search",
-  "Cart",
-  "Account"
-];
+const List<String> appBarText = ["Fluxestore", "Search", "Cart", "Account"];
 
 const List<BottomNavigationBarItem> bottomNavItems = <BottomNavigationBarItem>[
   BottomNavigationBarItem(
@@ -31,9 +26,9 @@ const List<BottomNavigationBarItem> bottomNavItems = <BottomNavigationBarItem>[
 ];
 
 const List<Widget> pages = [
+  CartPage(),
   HomePage(),
   SearchPage(),
-  CartPage(),
   AccountPage(),
 ];
 
