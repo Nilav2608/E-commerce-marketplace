@@ -22,7 +22,8 @@ class CartProductTile extends StatelessWidget {
                   blurRadius: 10.0,
                   offset: Offset(0, 1))
             ],
-            borderRadius: BorderRadius.circular(20)),
+            borderRadius: BorderRadius.circular(20)
+          ),
         //main row
         child: Row(
           // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
