@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluxestore/Business_Logic/bloc/landing_page_bloc.dart';
 import 'package:fluxestore/constants/constants.dart';
 import 'package:fluxestore/presentation/Icons/primary_icons_icons.dart';
@@ -35,20 +36,25 @@ class _LandingPageState extends State<LandingPage> {
                 elevation: 0,
                 leading: Builder(
                   builder: (context) => Padding(
-                    padding: const EdgeInsets.only(left: 20.0),
+                    padding: const EdgeInsets.only(left: 16.0),
                     child: IconButton(
                         onPressed: () {
                           Scaffold.of(context).openDrawer();
                         },
-                        icon: const Icon(
-                          Icons.menu_rounded,
-                          grade: 10,
-                        )),
+                        icon: SvgPicture.asset("assets/images/menu_new1.svg")
+                        // icon: const ImageIcon(
+                        //   AssetImage('assets/images/more.png')
+                        // ),
+                        // icon: const Icon(
+                        //   Icons.menu_rounded,
+                        //   grade: 10,
+                        // )
+                    ),
                   ),
                 ),
                 actions: [
                   Padding(
-                    padding: const EdgeInsets.only(right: 20.0),
+                    padding: const EdgeInsets.only(right: 16.0),
                     child: IconButton(
                         onPressed: () {
                           Navigator.pushNamed(context, "notifications");

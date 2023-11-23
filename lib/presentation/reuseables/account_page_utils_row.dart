@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AccountPageUtilsRow extends StatelessWidget {
-  final IconData icon;
+  final dynamic icon;
   final String text;
   final double size;
   final Function()? onTap;

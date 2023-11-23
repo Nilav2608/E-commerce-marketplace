@@ -33,7 +33,7 @@ class SettingsPage extends StatelessWidget {
                  children: [
                    AccountPageUtilsRow(
                         icon: Icons.language_rounded,
-                        text: "Payment method",
+                        text: "Language",
                         size: 20,
                       ),
                       Padding(
