@@ -59,17 +59,22 @@ class _HomeDrawerState extends State<HomeDrawer> {
               ),
             ),
           ),
-          const Padding(
-            padding: EdgeInsets.all(10),
-            child: ListTile(
-              leading: Icon(PrimaryIcons.setting_line),
-              title: Text(
-                "Settings",
-                style: TextStyle(
-                    color: Color.fromARGB(255, 92, 98, 111),
-                    fontWeight: FontWeight.w700),
+          InkWell(
+            onTap: () {
+              Navigator.of(context).popAndPushNamed("settings");
+            },
+            child: const Padding(
+              padding: EdgeInsets.all(10),
+              child: ListTile(
+                leading: Icon(PrimaryIcons.setting_line),
+                title: Text(
+                  "Settings",
+                  style: TextStyle(
+                      color: Color.fromARGB(255, 92, 98, 111),
+                      fontWeight: FontWeight.w700),
+                ),
+                // tileColor: Colors.black,
               ),
-              // tileColor: Colors.black,
             ),
           ),
           const Padding(
@@ -109,30 +114,32 @@ class _HomeDrawerState extends State<HomeDrawer> {
             height: 275,
           ),
           SlidingSwitch(
-            value: switchOn,
-            width: 227,
-            onChanged: (bool value) {
-              setState(() {
-                value == switchOn;
-              });
-            },
-            height: 40,
-            animationDuration: const Duration(milliseconds: 300),
-            onTap: () {},
-            onDoubleTap: () {},
-            onSwipe: () {},
-            textOff: "Light mode",
-            textOn: "Dark mode",
-            iconOff: Icons.light_mode,
-            iconOn: Icons.dark_mode_outlined,
-            contentSize: 17,
-            colorOn: switchOn ? const Color.fromARGB(255, 255, 255, 255) : const Color(0xff2C2F32),
-            colorOff: const Color.fromARGB(255, 70, 70, 70),
-            background: const Color(0xffe4e5eb),
-            buttonColor: switchOn ? const Color(0xff23262F) : const Color(0xffFCFCFC),
-            // const Color(0xfff7f5f7),
-            inactiveColor:  const Color(0xffFCFCFC)
-          ),
+              value: switchOn,
+              width: 227,
+              onChanged: (bool value) {
+                setState(() {
+                  value == switchOn;
+                });
+              },
+              height: 40,
+              animationDuration: const Duration(milliseconds: 300),
+              onTap: () {},
+              onDoubleTap: () {},
+              onSwipe: () {},
+              textOff: "Light mode",
+              textOn: "Dark mode",
+              iconOff: Icons.light_mode,
+              iconOn: Icons.dark_mode_outlined,
+              contentSize: 17,
+              colorOn: switchOn
+                  ? const Color.fromARGB(255, 255, 255, 255)
+                  : const Color(0xff2C2F32),
+              colorOff: const Color.fromARGB(255, 70, 70, 70),
+              background: const Color(0xffe4e5eb),
+              buttonColor:
+                  switchOn ? const Color(0xff23262F) : const Color(0xffFCFCFC),
+              // const Color(0xfff7f5f7),
+              inactiveColor: const Color(0xffFCFCFC)),
         ],
       ),
     );

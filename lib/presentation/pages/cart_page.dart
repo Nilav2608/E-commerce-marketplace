@@ -167,6 +167,7 @@ class _CartPageState extends State<CartPage> {
                         decreaseQuantity();
                       });
                     },
+                    delete: (context){},
                     quantity: quantity,
                   );
                 },

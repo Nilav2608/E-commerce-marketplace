@@ -285,10 +285,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                                               BoxShape.circle,
                                                           border: Border.all(
                                                               width:
-                                                                  currentColorIndex ==
-                                                                          i
-                                                                      ? 3
-                                                                      : 0,
+                                                                  currentColorIndex == i ? 3 : 0,
                                                               color:
                                                                   Colors.white),
                                                           boxShadow: [

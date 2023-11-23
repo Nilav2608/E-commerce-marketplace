@@ -7,6 +7,7 @@ import 'package:fluxestore/presentation/landing_page.dart';
 import 'package:fluxestore/presentation/pages/my_orders.dart';
 import 'package:fluxestore/presentation/pages/notification_page.dart';
 import 'package:fluxestore/presentation/pages/product_details_page.dart';
+import 'package:fluxestore/presentation/pages/settings_page.dart';
 import 'package:fluxestore/routes/custom_transition_routes.dart';
 
 import '../models/productModel.dart';
@@ -41,6 +42,10 @@ class MyGenerateRoute {
             ));
       case 'MyOrders':
         return CustomPageTransition(dx: 1.0, dy: 0.0, child: const MyOrdersPage());
+
+      case 'settings':
+        return CustomPageTransition(dx: 1.0, dy: 0.0, child: const SettingsPage());  
+        
       default:
         return _errorRoute();
     }

@@ -64,7 +64,6 @@ class _LandingPageState extends State<LandingPage> {
                 selectedItemColor: const Color.fromARGB(255, 0, 0, 0),
                 unselectedItemColor: Colors.grey,
                 showSelectedLabels: false,
-                
                 elevation: 10,
                 onTap: (index) {
                   var appBartext = appBarText[index];
@@ -72,13 +71,9 @@ class _LandingPageState extends State<LandingPage> {
                       tabIndex: index, appBarName: appBartext));
                 },
               ),
-              body: pages[state.tabIndex]
-        );
-      }
-    );
+              body: pages[state.tabIndex]);
+        });
   }
-
-  
 }
 
 // If image looks not as expected please convert to compound path manually.
