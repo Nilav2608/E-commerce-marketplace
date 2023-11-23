@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:customizable_counter/customizable_counter.dart';
 import 'package:fluxestore/presentation/reuseables/Cart_Product_Tile.dart';
 
 class CartPage extends StatefulWidget {

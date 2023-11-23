@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fluxestore/presentation/Icons/primary_icons_icons.dart';
 
+import '../Icons/secondary_icons_icons.dart';
+
 class SearchPage extends StatefulWidget {
   const SearchPage({super.key});
 
@@ -63,7 +65,7 @@ class _SearchPageState extends State<SearchPage> {
                       width: 51,
                       height: 46,
                       child: Icon(
-                        Icons.filter_alt_outlined,
+                        SecondaryIcons.filter_outlined,
                         color: Color(0xff777E90),
                       )),
                 )

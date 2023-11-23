@@ -13,7 +13,7 @@ class AccountPageUtilsRow extends StatelessWidget {
     return Expanded(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 0),
-        child: GestureDetector(
+        child: InkWell(
           onTap: onTap,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

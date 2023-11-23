@@ -34,5 +34,6 @@ class SecondaryIcons {
   static const IconData bag = IconData(0xe80c, fontFamily: _kFontFam, fontPackage: _kFontPkg);
    static const IconData pen = IconData(0xe80f, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData pen_rounded = IconData(0xe810, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData filter_outlined = IconData(0xe811, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData cart_outlined = IconData(0xe80e, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }
