@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluxestore/presentation/Icons/primary_icons_icons.dart';
-
-import '../Icons/secondary_icons_icons.dart';
 
 class SearchPage extends StatefulWidget {
   const SearchPage({super.key});
@@ -14,6 +13,7 @@ class _SearchPageState extends State<SearchPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+     
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
@@ -21,15 +21,26 @@ class _SearchPageState extends State<SearchPage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(20.0),
-                  child: Card(
-                    // shape: Bo,
-                    child: Container(
+                Row(
+                  children: [
+                    Container(
                       width: 246,
                       height: 46,
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20)),
+                          color: const Color(0xFFFAFAFA),
+                          borderRadius: BorderRadius.circular(20),
+                          boxShadow: const [
+                            BoxShadow(
+                                blurRadius: 12,
+                                color: Colors.grey,
+                                offset: Offset(0, 1),
+                                spreadRadius: -10),
+                            // BoxShadow(
+                            //   blurRadius: 10,
+                            //   color: Color.fromARGB(255, 44, 40, 40),
+                            //   offset: Offset(0, 2)
+                            // )
+                          ]),
                       child: const Padding(
                         padding: EdgeInsets.symmetric(horizontal: 12.0),
                         child: Row(
@@ -58,20 +69,42 @@ class _SearchPageState extends State<SearchPage> {
                         ),
                       ),
                     ),
-                  ),
+                  ],
                 ),
-                const Card(
-                  child: SizedBox(
-                      width: 51,
-                      height: 46,
-                      child: Icon(
-                        SecondaryIcons.filter_outlined,
-                        color: Color(0xff777E90),
-                      )),
-                )
+                Container(
+                    width: 51,
+                    height: 46,
+                    decoration: BoxDecoration(
+                        color: const Color(0xFFFAFAFA),
+                        borderRadius: BorderRadius.circular(15),
+                        boxShadow: const [
+                          BoxShadow(
+                              blurRadius: 15,
+                              color: Colors.grey,
+                              offset: Offset(0, 5),
+                              spreadRadius: -12),
+                          // BoxShadow(
+                          //   blurRadius: 10,
+                          //   color: Color.fromARGB(255, 44, 40, 40),
+                          //   offset: Offset(0, 2)
+                          // )
+                        ]),
+                    child: Builder(
+                      builder: (context) {
+                        return IconButton(
+                          onPressed: () {
+                            Scaffold.of(context).openEndDrawer();
+                          },
+                          icon:
+                              // SecondaryIcons.filter_outlined,
+                              SvgPicture.asset("assets/images/search_filter.svg"),
+                          // color: const Color(0xff777E90),
+                        );
+                      }
+                    ))
               ],
             ),
-
+            
             //* To USE A LIST VIEW OR LIST VIEW BUILDER INSIDE A COLUMN(NORMAL USECASE) -
             //* -USE EXPANDED WIDGET TO WRAP THE CHILD LIST VIEW
 
@@ -81,7 +114,7 @@ class _SearchPageState extends State<SearchPage> {
                 child: ListView(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(bottom:18.0),
+                      padding: const EdgeInsets.only(bottom: 18.0),
                       child: Container(
                         width: 311,
                         height: 126,
@@ -138,7 +171,7 @@ class _SearchPageState extends State<SearchPage> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(bottom:18.0),
+                      padding: const EdgeInsets.only(bottom: 18.0),
                       child: Container(
                         width: 311,
                         height: 126,
@@ -185,7 +218,7 @@ class _SearchPageState extends State<SearchPage> {
                       ),
                     ),
                     Padding(
-                     padding: const EdgeInsets.only(bottom:18.0),
+                      padding: const EdgeInsets.only(bottom: 18.0),
                       child: Container(
                         width: 311,
                         height: 126,
@@ -229,7 +262,7 @@ class _SearchPageState extends State<SearchPage> {
                       ),
                     ),
                     Padding(
-                     padding: const EdgeInsets.only(bottom:18.0),
+                      padding: const EdgeInsets.only(bottom: 18.0),
                       child: Container(
                         width: 311,
                         height: 126,
@@ -273,6 +306,70 @@ class _SearchPageState extends State<SearchPage> {
                       ),
                     ),
                   ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+      endDrawer: Drawer(
+        backgroundColor: Colors.white,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            //Logo
+            Column(
+              children: [
+                DrawerHeader(
+                  duration: const Duration(milliseconds: 200),
+                  // padding: EdgeInsets.zero,
+                  margin: EdgeInsets.zero,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text("Filter"),
+                      SvgPicture.asset("assets/images/search_filter.svg")
+                    ],
+                  ),
+                ),
+                const Padding(
+                  padding: EdgeInsets.only(left: 25),
+                  child: ListTile(
+                    leading: Icon(
+                      Icons.home_rounded,
+                      color: Colors.white,
+                    ),
+                    title: Text(
+                      "Home",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ),
+                const Padding(
+                  padding: EdgeInsets.only(left: 25),
+                  child: ListTile(
+                    leading: Icon(
+                      Icons.info_rounded,
+                      color: Colors.white,
+                    ),
+                    title: Text(
+                      "About",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const Padding(
+              padding: EdgeInsets.only(left: 25, bottom: 25),
+              child: ListTile(
+                leading: Icon(
+                  Icons.logout_rounded,
+                  color: Colors.white,
+                ),
+                title: Text(
+                  "Log out",
+                  style: TextStyle(color: Colors.white),
                 ),
               ),
             ),

@@ -63,6 +63,9 @@ bool _isReviewsExpanded = true;
 bool _isSimilarProductsExpanded = true;
 bool favorite = false;
 
+double horizontal = 20;
+double vertical = 5;
+
 class _ProductDetailsPageState extends State<ProductDetailsPage> {
   // int? sizeLength = widget.data.sizes?.length;
   @override
@@ -173,215 +176,249 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                           topRight: Radius.circular(20))),
                   child: SingleChildScrollView(
                     controller: scrollController,
-                    child: Padding(
-                      padding: const EdgeInsets.all(20.0),
-                      child: Column(
-                        children: [
-                          const SizedBox(
-                            height: 20,
-                          ),
+                    child: Column(
+                      children: [
+                        const SizedBox(
+                          height: 20,
+                        ),
 
-                          //* -->      Product Name-starrating and price
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        //* -->      Product Name-starrating and price
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: horizontal, vertical: vertical),
+                          child: Column(
                             children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        widget.data.productName ?? "",
+                                        style: const TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.w700,
+                                            color: Color(0xff1D1F22)),
+                                      ),
+                                      Row(
+                                        children: [
+                                          RatingBarIndicator(
+                                            rating: 4,
+                                            itemBuilder: (context, index) =>
+                                                const Icon(
+                                              Icons.star,
+                                              color: Color(0xff508A7B),
+                                            ),
+                                            itemCount: 5,
+                                            itemSize: 20.0,
+                                            direction: Axis.horizontal,
+                                          ),
+                                          const Text(
+                                            "(83)",
+                                            style: TextStyle(
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.w400,
+                                                color: Color(0xff1D1F22)),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
                                   Text(
-                                    widget.data.productName ?? "",
+                                    "\$${widget.data.price}",
                                     style: const TextStyle(
-                                        fontSize: 18,
+                                        fontSize: 26,
                                         fontWeight: FontWeight.w700,
                                         color: Color(0xff1D1F22)),
                                   ),
-                                  Row(
-                                    children: [
-                                      RatingBarIndicator(
-                                        rating: 4,
-                                        itemBuilder: (context, index) =>
-                                            const Icon(
-                                          Icons.star,
-                                          color: Color(0xff508A7B),
-                                        ),
-                                        itemCount: 5,
-                                        itemSize: 20.0,
-                                        direction: Axis.horizontal,
-                                      ),
-                                      const Text(
-                                        "(83)",
-                                        style: TextStyle(
-                                            fontSize: 12,
-                                            fontWeight: FontWeight.w400,
-                                            color: Color(0xff1D1F22)),
-                                      ),
-                                    ],
-                                  ),
                                 ],
                               ),
-                              Text(
-                                "\$${widget.data.price}",
-                                style: const TextStyle(
-                                    fontSize: 26,
-                                    fontWeight: FontWeight.w700,
-                                    color: Color(0xff1D1F22)),
+                              const SizedBox(
+                                height: 16,
+                              ),
+                              const Divider(
+                                color: Color(0xffF3F3F6),
                               ),
                             ],
                           ),
-                          const SizedBox(
-                            height: 16,
-                          ),
-                          const Divider(
-                            color: Color(0xffF3F3F6),
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        ),
+
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: horizontal, vertical: vertical),
+                          child: Column(
                             children: [
-                              //* select color
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
-                                  // ignore: prefer_const_constructors
-                                  Padding(
-                                    padding: const EdgeInsets.all(4.0),
-                                    child: const Text(
-                                      "Color",
-                                      style: TextStyle(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w400,
-                                          color: Color(0xff777E90)),
-                                    ),
-                                  ),
-                                  Row(
+                                  //* select color
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
-                                      for (int i = 0;
-                                          i < colorsIsSelected.length;
-                                          i++)
-                                        GestureDetector(
-                                          onTap: () {
-                                            setState(() {
-                                              // colorsIsSelected[i]
-                                              //         .selectedColor =
-                                              //     !colorsIsSelected[i]
-                                              //         .selectedColor;
-                                              currentColorIndex = i;
-                                              // !colorsIsSelected[i][1];
-                                            });
-                                          },
-                                          child: Padding(
-                                            padding: const EdgeInsets.all(4.0),
-                                            child: Stack(
-                                              children: [
-                                                Material(
-                                                  // shape: const CircleBorder(side:  BorderSide(width: 1) ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(20),
-                                                  // elevation: 2,
-                                                  child: Container(
-                                                      // color: Colors.white,
-                                                      decoration: BoxDecoration(
-                                                          color: Colors.white,
-                                                          shape:
-                                                              BoxShape.circle,
-                                                          border: Border.all(
-                                                              width:
-                                                                  currentColorIndex == i ? 3 : 0,
+                                      // ignore: prefer_const_constructors
+                                      Padding(
+                                        padding: const EdgeInsets.all(4.0),
+                                        child: const Text(
+                                          "Color",
+                                          style: TextStyle(
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w400,
+                                              color: Color(0xff777E90)),
+                                        ),
+                                      ),
+                                      Row(
+                                        children: [
+                                          for (int i = 0;
+                                              i < colorsIsSelected.length;
+                                              i++)
+                                            GestureDetector(
+                                              onTap: () {
+                                                setState(() {
+                                                  // colorsIsSelected[i]
+                                                  //         .selectedColor =
+                                                  //     !colorsIsSelected[i]
+                                                  //         .selectedColor;
+                                                  currentColorIndex = i;
+                                                  // !colorsIsSelected[i][1];
+                                                });
+                                              },
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.all(4.0),
+                                                child: Stack(
+                                                  children: [
+                                                    Material(
+                                                      // shape: const CircleBorder(side:  BorderSide(width: 1) ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              20),
+                                                      // elevation: 2,
+                                                      child: Container(
+                                                          // color: Colors.white,
+                                                          decoration: BoxDecoration(
                                                               color:
-                                                                  Colors.white),
-                                                          boxShadow: [
-                                                            currentColorIndex == i
-                                                                ? BoxShadow(
-                                                                    blurRadius:
-                                                                        6,
-                                                                    color: Colors
-                                                                        .grey
-                                                                        .shade400,
-                                                                    offset:
-                                                                        const Offset(
+                                                                  Colors.white,
+                                                              shape: BoxShape
+                                                                  .circle,
+                                                              border: Border.all(
+                                                                  width:
+                                                                      currentColorIndex ==
+                                                                              i
+                                                                          ? 3
+                                                                          : 0,
+                                                                  color: Colors
+                                                                      .white),
+                                                              boxShadow: [
+                                                                currentColorIndex ==
+                                                                        i
+                                                                    ? BoxShadow(
+                                                                        blurRadius:
+                                                                            6,
+                                                                        color: Colors
+                                                                            .grey
+                                                                            .shade400,
+                                                                        offset: const Offset(
                                                                             0.001,
                                                                             6),
-                                                                    spreadRadius:
-                                                                        0.5)
-                                                                : const BoxShadow()
-                                                          ]),
-                                                      child: CircleAvatar(
-                                                        radius: 12,
-                                                        backgroundColor: Color(
-                                                            colorsIsSelected[i]
-                                                                .color),
-                                                      )),
+                                                                        spreadRadius:
+                                                                            0.5)
+                                                                    : const BoxShadow()
+                                                              ]),
+                                                          child: CircleAvatar(
+                                                            radius: 12,
+                                                            backgroundColor: Color(
+                                                                colorsIsSelected[
+                                                                        i]
+                                                                    .color),
+                                                          )),
+                                                    ),
+                                                  ],
                                                 ),
-                                              ],
-                                            ),
-                                          ),
-                                        )
+                                              ),
+                                            )
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+
+                                  //* select size
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      // ignore: prefer_const_constructors
+                                      Padding(
+                                        padding: const EdgeInsets.all(4.0),
+                                        child: const Text(
+                                          "Size",
+                                          style: TextStyle(
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w400,
+                                              color: Color(0xff777E90)),
+                                        ),
+                                      ),
+                                      Row(
+                                        children: [
+                                          for (int i = 0;
+                                              i < widget.data.sizes!.length;
+                                              i++)
+                                            GestureDetector(
+                                              onTap: () {
+                                                setState(() {
+                                                  currentSizeIndex = i;
+                                                });
+                                              },
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.all(4.0),
+                                                child: CircleAvatar(
+                                                  radius: 15,
+                                                  backgroundColor:
+                                                      currentSizeIndex == i
+                                                          ? const Color(
+                                                              0xff515151)
+                                                          : const Color(
+                                                              0xffFAFAFA),
+                                                  child: Text(
+                                                    widget.data.sizes![i],
+                                                    style: TextStyle(
+                                                        color: selectedSize
+                                                            ? const Color(
+                                                                0xffFAFAFA)
+                                                            : const Color(
+                                                                0xffC5C5C5)),
+                                                  ),
+                                                ),
+                                              ),
+                                            )
+                                        ],
+                                      ),
                                     ],
                                   ),
                                 ],
                               ),
-
-                              //* select size
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  // ignore: prefer_const_constructors
-                                  Padding(
-                                    padding: const EdgeInsets.all(4.0),
-                                    child: const Text(
-                                      "Size",
-                                      style: TextStyle(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w400,
-                                          color: Color(0xff777E90)),
-                                    ),
-                                  ),
-                                  Row(
-                                    children: [
-                                      for (int i = 0;
-                                          i < widget.data.sizes!.length;
-                                          i++)
-                                        GestureDetector(
-                                          onTap: () {
-                                            setState(() {
-                                              currentSizeIndex = i;
-                                            });
-                                          },
-                                          child: Padding(
-                                            padding: const EdgeInsets.all(4.0),
-                                            child: CircleAvatar(
-                                              radius: 15,
-                                              backgroundColor:
-                                                  currentSizeIndex == i
-                                                      ? const Color(0xff515151)
-                                                      : const Color(0xffFAFAFA),
-                                              child: Text(
-                                                widget.data.sizes![i],
-                                                style: TextStyle(
-                                                    color: selectedSize
-                                                        ? const Color(
-                                                            0xffFAFAFA)
-                                                        : const Color(
-                                                            0xffC5C5C5)),
-                                              ),
-                                            ),
-                                          ),
-                                        )
-                                    ],
-                                  ),
-                                ],
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              const Divider(
+                                color: Color(0xffF3F3F6),
                               ),
                             ],
                           ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          const Divider(
-                            color: Color(0xffF3F3F6),
-                          ),
+                        ),
 
-                          //*<-----------------------Description Section------------------------->
+                        //*<-----------------------Description Section------------------------->
 
-                          ProductDetailsExpansionPanel(
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: horizontal, vertical: vertical),
+                          child: ProductDetailsExpansionPanel(
+                            headingHorizontalPadding: 0,
                             expansionCallback: (p0, p1) {
                               setState(() {
                                 _isDescriptionExpanded =
@@ -402,16 +439,20 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                           fontSize: 12,
                                           fontWeight: FontWeight.w400)),
                                 ),
+                                Divider(
+                                  color: Color(0xffF3F3F6),
+                                ),
                               ],
                             ),
                           ),
+                        ),
 
-                          const Divider(
-                            color: Color(0xffF3F3F6),
-                          ),
-
-                          //*<---------------------------Reviews Section------------------------->
-                          ProductDetailsExpansionPanel(
+                        //*<---------------------------Reviews Section------------------------->
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: horizontal, vertical: vertical),
+                          child: ProductDetailsExpansionPanel(
+                            headingHorizontalPadding: 0,
                             expansionCallback: (p0, p1) {
                               setState(() {
                                 _isReviewsExpanded = !_isReviewsExpanded;
@@ -527,36 +568,42 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                     scrollDirection: Axis.vertical,
                                     itemBuilder: (context, index) {
                                       var data = reviews[index];
-                                     return  ProductReviewsTile(
+                                      return ProductReviewsTile(
                                         data: data,
                                       );
                                     }
 
                                     // ProductReviewsTile(data: reviews,)
                                     ),
+                                    const SizedBox(height: 10,),
+                                const Divider(
+                                  color: Color(0xffF3F3F6),
+                                ),
                               ],
                             ),
                           ),
-                          const Divider(
-                            color: Color(0xffF3F3F6),
-                          ),
+                        ),
 
-                          ProductDetailsExpansionPanel(
-                              expansionCallback: (p0, p1) {
-                                setState(() {
-                                  _isSimilarProductsExpanded =
-                                      !_isSimilarProductsExpanded;
-                                });
-                              },
-                              isExpanded: _isSimilarProductsExpanded,
-                              headingText: "Similar Product",
-                              body: ProductListViewBuilder(
-                                items: recomendationsList,
-                              )),
+                        ProductDetailsExpansionPanel(
+                          headingHorizontalPadding: 18,
+                            expansionCallback: (p0, p1) {
+                              setState(() {
+                                _isSimilarProductsExpanded =
+                                    !_isSimilarProductsExpanded;
+                              });
+                            },
+                            isExpanded: _isSimilarProductsExpanded,
+                            headingText: "Similar Product",
+                            body: ProductListViewBuilder(
+                              items: recomendationsList,
+                            )),
 
-                          //Divider
-                        ],
-                      ),
+                        const SizedBox(
+                          height: 50,
+                        )
+
+                        //Divider
+                      ],
                     ),
                   ),
                 );

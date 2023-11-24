@@ -41,7 +41,7 @@ class _LandingPageState extends State<LandingPage> {
                         onPressed: () {
                           Scaffold.of(context).openDrawer();
                         },
-                        icon: SvgPicture.asset("assets/images/menu_new1.svg")
+                        icon: SvgPicture.asset("assets/images/menu.svg")
                         // icon: const ImageIcon(
                         //   AssetImage('assets/images/more.png')
                         // ),

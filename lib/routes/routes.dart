@@ -30,22 +30,33 @@ class MyGenerateRoute {
         //   settings: settings
         // );
         return CustomPageTransition(
-            child: const NotificationPage(), dx: 1.0, dy: 0.0);
+            child: const NotificationPage(),
+            dx: 1.0,
+            dy: 0.0,
+            curves: Curves.easeInOutCirc);
       case 'productDetails':
         final ProducDatatModel productData =
             settings.arguments as ProducDatatModel;
         return CustomPageTransition(
             dx: 0.0,
             dy: 1.0,
+            curves: Curves.easeInOutCirc,
             child: ProductDetailsPage(
               data: productData,
             ));
       case 'MyOrders':
-        return CustomPageTransition(dx: 1.0, dy: 0.0, child: const MyOrdersPage());
+        return CustomPageTransition(
+          curves:Curves.easeInOutCirc,
+          dx: 1.0, dy: 0.0, child: const MyOrdersPage());
+       
 
       case 'settings':
-        return CustomPageTransition(dx: 1.0, dy: 0.0, child: const SettingsPage());  
-        
+        return CustomPageTransition(
+            curves: Curves.easeInOutCirc,
+            dx: 1.0,
+            dy: 0.0,
+            child: const SettingsPage());
+
       default:
         return _errorRoute();
     }
@@ -64,3 +75,14 @@ class MyGenerateRoute {
     });
   }
 }
+
+// return PageRouteBuilder(
+//           pageBuilder: (context, animation, secondaryAnimation) =>
+//               const MyOrdersPage(),
+//           transitionsBuilder: (context, animation, secondaryAnimation, child) {
+//             return FadeTransition(
+//               opacity: animation,
+//               child: child,
+//             );
+//           },
+//         );

@@ -26,9 +26,9 @@ const List<BottomNavigationBarItem> bottomNavItems = <BottomNavigationBarItem>[
 ];
 
 const List<Widget> pages = [
-  CartPage(),
   HomePage(),
   SearchPage(),
+  CartPage(),
   AccountPage(),
 ];
 

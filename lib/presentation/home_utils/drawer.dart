@@ -19,10 +19,13 @@ class _HomeDrawerState extends State<HomeDrawer> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
+      
       backgroundColor: Colors.white,
       child: Column(
         children: [
           DrawerHeader(
+            curve: Curves.fastOutSlowIn,
+            duration: const Duration(milliseconds: 200),
             child: SizedBox(
               width: 189,
               height: 52,

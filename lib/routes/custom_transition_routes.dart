@@ -4,9 +4,12 @@ class CustomPageTransition extends PageRouteBuilder {
   final Widget child;
   final double dx;
   final double dy;
-  CustomPageTransition({
+  final Cubic curves;
+  CustomPageTransition(
+     {
     required this.dx,
     required this.dy,
+    required this.curves,
     required this.child,
   }) : super(
             transitionDuration: const Duration(milliseconds: 400),
@@ -15,9 +18,9 @@ class CustomPageTransition extends PageRouteBuilder {
   @override
   Widget buildTransitions(BuildContext context, Animation<double> animation,
       Animation<double> secondaryAnimation, Widget child) {
-    var  begin = Offset(dx, dy);
+    var begin = Offset(dx, dy);
     const end = Offset.zero;
-    const curve = Curves.easeInOutCirc;
+    var curve = curves;
     var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
     var offsetAnimation = animation.drive(tween);
     return SlideTransition(

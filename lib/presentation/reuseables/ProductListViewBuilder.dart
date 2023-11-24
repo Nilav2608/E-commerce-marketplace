@@ -13,7 +13,7 @@ class ProductListViewBuilder extends StatelessWidget {
       width: double.infinity,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        // physics: ,
+        physics: const BouncingScrollPhysics(),
         itemCount: items.length,
         itemBuilder: (context, index) {
           ProducDatatModel producData = items[index];
