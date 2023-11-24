@@ -4,6 +4,7 @@ import 'package:fluxestore/Business_Logic/bloc/landing_page_bloc.dart';
 // ignore: depend_on_referenced_packages
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluxestore/presentation/landing_page.dart';
+import 'package:fluxestore/presentation/pages/checkout/checkout_main.view.dart';
 import 'package:fluxestore/presentation/pages/my_orders.dart';
 import 'package:fluxestore/presentation/pages/notification_page.dart';
 import 'package:fluxestore/presentation/pages/product_details_page.dart';
@@ -56,6 +57,13 @@ class MyGenerateRoute {
             dx: 1.0,
             dy: 0.0,
             child: const SettingsPage());
+      case "checkOut":
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider<LandingPageBloc>.value(
+            value: landingPageBloc,
+            child: const CheckOutPage(),
+          ),
+        );
 
       default:
         return _errorRoute();
