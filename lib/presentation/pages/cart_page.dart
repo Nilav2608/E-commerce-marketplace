@@ -28,7 +28,7 @@ class _CartPageState extends State<CartPage> {
     return Scaffold(
       bottomNavigationBar: Container(
         width: screenWidth,
-        height: screenHeight*0.30,
+        height: screenHeight * 0.30,
         decoration: const BoxDecoration(
             color: Colors.white,
             boxShadow: [
@@ -125,21 +125,23 @@ class _CartPageState extends State<CartPage> {
                   ],
                 ),
               ),
-              
+
               SizedBox(
                 height: screenWidth * 0.14,
                 width: screenHeight * 3,
                 child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, "checkOut");
+                    },
                     style: const ButtonStyle(
                         backgroundColor:
                             MaterialStatePropertyAll(Color(0xFF343434))),
                     child: const Text(
                       "Proceed to checkout",
                       style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700,
-                        color: Colors.white),
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700,
+                          color: Colors.white),
                     )),
               )
             ],
@@ -167,7 +169,7 @@ class _CartPageState extends State<CartPage> {
                         decreaseQuantity();
                       });
                     },
-                    delete: (context){},
+                    delete: (context) {},
                     quantity: quantity,
                   );
                 },
