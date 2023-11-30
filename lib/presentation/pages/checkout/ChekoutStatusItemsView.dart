@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+// ignore: depend_on_referenced_packages
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 
 class ChekoutStatusItemsView extends StatelessWidget {

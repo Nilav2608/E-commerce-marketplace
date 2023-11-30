@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import 'package:fluxestore/Business_Logic/bloc/landing_page_bloc.dart';
+
 
 // ignore: depend_on_referenced_packages
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,6 +11,7 @@ import 'package:fluxestore/presentation/pages/product_details_page.dart';
 import 'package:fluxestore/presentation/pages/settings_page.dart';
 import 'package:fluxestore/routes/custom_transition_routes.dart';
 
+import '../Business_Logic/landing_page_bloc/landing_page_bloc.dart';
 import '../models/productModel.dart';
 
 class MyGenerateRoute {
