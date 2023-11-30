@@ -58,6 +58,7 @@ dev_dependencies:
   customizable_counter: ^1.0.4
   step_progress_indicator: ^1.0.2
   dropdown_textfield: ^1.0.8
+  csc_picker: ^0.2.7
   
 
   flutter_launcher_icons: ^0.13.1

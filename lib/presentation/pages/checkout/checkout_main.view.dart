@@ -1,6 +1,8 @@
+
 import 'package:flutter/material.dart';
 
 import 'ChekoutStatusItemsView.dart';
+// ignore: depend_on_referenced_packages
 import 'package:dropdown_textfield/dropdown_textfield.dart';
 
 class CheckOutPage extends StatefulWidget {
@@ -10,20 +12,46 @@ class CheckOutPage extends StatefulWidget {
   State<CheckOutPage> createState() => _CheckOutPageState();
 }
 
+ScrollController scrollController = ScrollController();
+SingleValueDropDownController countryController = SingleValueDropDownController();
+
 TextEditingController firstNameController = TextEditingController();
 TextEditingController lastNameController = TextEditingController();
-SingleValueDropDownController countryController =
-    SingleValueDropDownController();
 TextEditingController streetNameController = TextEditingController();
 TextEditingController cityController = TextEditingController();
+TextEditingController stateProvinceController = TextEditingController();
 TextEditingController stateNameController = TextEditingController();
 TextEditingController zipCode = TextEditingController();
 TextEditingController phoneNumber = TextEditingController();
 TextEditingController cuponCodeController = TextEditingController();
-ScrollController scrollController = ScrollController();
+
+
+
 final formKey = GlobalKey<FormState>();
 
+
 int selectedRadio = 1;
+bool saveAddress = false;
+
+
+List data = const [
+  DropDownValueModel(name: 'name1', value: "value1"),
+  DropDownValueModel(
+      name: 'name2',
+      value: "value2",
+      toolTipMsg:
+          "DropDownButton is a widget that we can use to select one unique value from a set of values"),
+  DropDownValueModel(name: 'name3', value: "value3"),
+  DropDownValueModel(
+      name: 'name4',
+      value: "value4",
+      toolTipMsg:
+          "DropDownButton is a widget that we can use to select one unique value from a set of values"),
+  DropDownValueModel(name: 'name5', value: "value5"),
+  DropDownValueModel(name: 'name6', value: "value6"),
+  DropDownValueModel(name: 'name7', value: "value7"),
+  DropDownValueModel(name: 'name8', value: "value8"),
+];
 
 class _CheckOutPageState extends State<CheckOutPage> {
   selectedRadioFunc(val) {
@@ -104,30 +132,44 @@ class _CheckOutPageState extends State<CheckOutPage> {
                                   color: Colors.black), // Adjust border color
                             ),
                           ),
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return "This filed is required";
+                            } else {
+                              return null;
+                            }
+                          },
                         ),
                         const SizedBox(
                           height: 25,
                         ),
                         //* Last name
                         TextFormField(
-                          controller: lastNameController,
-                          decoration: const InputDecoration(
-                            hintText: "Last name *",
-                            focusColor: Colors.black,
-                            hintStyle: TextStyle(
-                              color: Color(0xff777E90),
-                              fontSize: 14,
-                              fontWeight: FontWeight.w400,
+                            controller: lastNameController,
+                            decoration: const InputDecoration(
+                              hintText: "Last name *",
+                              focusColor: Colors.black,
+                              hintStyle: TextStyle(
+                                color: Color(0xff777E90),
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400,
+                              ),
+                              suffixText: "*", // Asterisk as suffix text
+                              suffixStyle: TextStyle(
+                                  color: Colors.red), // Color of the asterisk
+                              focusedBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: Colors.black), // Adjust border color
+                              ),
                             ),
-                            suffixText: "*", // Asterisk as suffix text
-                            suffixStyle: TextStyle(
-                                color: Colors.red), // Color of the asterisk
-                            focusedBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Colors.black), // Adjust border color
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return "This filed is required";
+                              } else {
+                                return null;
+                              }
+                            }
                             ),
-                          ),
-                        ),
 
                         const SizedBox(
                           height: 25,
@@ -151,6 +193,13 @@ class _CheckOutPageState extends State<CheckOutPage> {
                                   color: Colors.black), // Adjust border color
                             ),
                           ),
+                          validator: (value) {
+                              if (value!.isEmpty) {
+                                return "This filed is required";
+                              } else {
+                                return null;
+                              }
+                            }
                         ),
                         const SizedBox(
                           height: 25,
@@ -175,10 +224,24 @@ class _CheckOutPageState extends State<CheckOutPage> {
                                   color: Colors.black), // Adjust border color
                             ),
                           ),
+                          validator: (value) {
+                              if (value!.isEmpty) {
+                                return "This filed is required";
+                              } else {
+                                return null;
+                              }
+                            }
                         ),
                         const SizedBox(
                           height: 25,
                         ),
+                        // DropdownButton(
+
+                        //   onChanged: (){}),
+                        //  CSCPicker(
+                        //   showCities: false,
+                        //   showStates: false,
+                        // ),
                         DropDownTextField(
                           // initialValue: "name4",
                           controller: countryController,
@@ -189,7 +252,7 @@ class _CheckOutPageState extends State<CheckOutPage> {
                           searchDecoration:
                               const InputDecoration(hintText: "search country"),
                           validator: (value) {
-                            if (value == null) {
+                            if (value!.isEmpty) {
                               return "Required field";
                             } else {
                               return null;
@@ -227,13 +290,14 @@ class _CheckOutPageState extends State<CheckOutPage> {
                             ),
                             // onChanged: (val) {},
                           ),
+                          
                         ),
                         const SizedBox(
                           height: 25,
                         ),
                         //*state province
                         TextFormField(
-                          controller: cityController,
+                          controller: stateProvinceController,
                           decoration: const InputDecoration(
                             hintText: "State / Province",
                             focusColor: Colors.black,
@@ -250,6 +314,13 @@ class _CheckOutPageState extends State<CheckOutPage> {
                                   color: Colors.black), // Adjust border color
                             ),
                           ),
+                          validator: (value) {
+                              if (value!.isEmpty) {
+                                return "This filed is required";
+                              } else {
+                                return null;
+                              }
+                            }
                         ),
                         const SizedBox(
                           height: 25,
@@ -273,6 +344,13 @@ class _CheckOutPageState extends State<CheckOutPage> {
                                   color: Colors.black), // Adjust border color
                             ),
                           ),
+                          validator: (value) {
+                              if (value!.isEmpty || !RegExp(r'^[0-9]+$').hasMatch(value)) {
+                                return "This filed is required";
+                              } else {
+                                return null;
+                              }
+                            }
                         ),
                         const SizedBox(
                           height: 25,
@@ -296,6 +374,13 @@ class _CheckOutPageState extends State<CheckOutPage> {
                                   color: Colors.black), // Adjust border color
                             ),
                           ),
+                          validator: (value) {
+                              if (value!.isEmpty || !RegExp(r'^[0-9]{10}$').hasMatch(value)) {
+                                return "This filed is required";
+                              } else {
+                                return null;
+                              }
+                            }
                         ),
                       ],
                     ),
@@ -486,8 +571,12 @@ class _CheckOutPageState extends State<CheckOutPage> {
                     children: [
                       Checkbox(
                           activeColor: const Color(0xff508A7B),
-                          value: false,
-                          onChanged: (value) {}),
+                          value: saveAddress,
+                          onChanged: (value) {
+                            setState(() {
+                              saveAddress = !saveAddress;
+                            });
+                          }),
                       const Text("Copy address data from shipping",
                           style: TextStyle(
                               color: Color(0xff575757),
@@ -502,7 +591,13 @@ class _CheckOutPageState extends State<CheckOutPage> {
                     height: 48,
                     width: 315,
                     child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                           if(formKey.currentState!.validate()){
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                      content: Text("Submitting form")));
+                           }
+                        },
                         style: const ButtonStyle(
                             backgroundColor:
                                 MaterialStatePropertyAll(Color(0xFF343434))),
