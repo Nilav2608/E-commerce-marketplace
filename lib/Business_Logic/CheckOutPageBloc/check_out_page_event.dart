@@ -11,3 +11,5 @@ class CheckOutInitialEvent extends CheckOutPageEvent{
 class CheckOutPagePaymentEvent extends CheckOutInitialEvent{}
 
 class CheckOutPagePlaceOrderEvent extends CheckOutInitialEvent{}
+
+class NavigateBackToHomePageEvent extends CheckOutInitialEvent{}

@@ -21,5 +21,7 @@ class PlaceOrderActionSate extends CheckOutPageActionState{}
 
 class PaymentCompletedActionState extends CheckOutPageActionState{}
 
+class NavigateTohomePageActionState extends CheckOutPageActionState{}
+
 
 

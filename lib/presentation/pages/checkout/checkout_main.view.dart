@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluxestore/presentation/pages/checkout/PaymentSection.view.dart';
 import 'package:fluxestore/presentation/pages/checkout/ShippingSection.view.dart';
+// ignore: depend_on_referenced_packages
 import 'package:lottie/lottie.dart';
 import '../../../Business_Logic/CheckOutPageBloc/check_out_page_bloc.dart';
 import 'ChekoutStatusItemsView.dart';
@@ -52,7 +53,13 @@ class _CheckOutPageState extends State<CheckOutPage> {
                 buildWhen: (previous, current) =>
                     current is CheckOutPageActionState,
                 bloc: checkOutPageBloc,
-                listener: (context, state) {},
+                listener: (context, state) {
+                  switch (state.runtimeType){
+                    case NavigateTohomePageActionState:
+                        Navigator.popAndPushNamed(context, '/');
+                  }
+                  
+                },
                 builder: (context, state) {
                   switch (state.runtimeType) {
                     case PageLoadingState:
@@ -60,7 +67,7 @@ class _CheckOutPageState extends State<CheckOutPage> {
                         child: CircularProgressIndicator(),
                       );
 
-                    case PaymentPageActionState:
+                    case CheckOutPageBlocInitialState:
                       return Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -83,7 +90,7 @@ class _CheckOutPageState extends State<CheckOutPage> {
                           )
                         ],
                       );
-                    case CheckOutPageBlocInitialState:
+                    case PaymentPageActionState:
                       return Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -205,7 +212,11 @@ class _CheckOutPageState extends State<CheckOutPage> {
                                   height: 48,
                                   width: 315,
                                   child: ElevatedButton(
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        
+                                        checkOutPageBloc
+                                            .add(NavigateBackToHomePageEvent());
+                                      },
                                       style: const ButtonStyle(
                                           backgroundColor:
                                               MaterialStatePropertyAll(

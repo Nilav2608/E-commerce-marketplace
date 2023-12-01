@@ -11,6 +11,7 @@ class CheckOutPageBloc extends Bloc<CheckOutPageEvent, CheckOutPageState> {
     on<CheckOutInitialEvent>(checkOutInitialEvent);
     on<CheckOutPagePaymentEvent>(checkOutPaymentEvent);
     on<CheckOutPagePlaceOrderEvent>(checkOutPagePlaceOrderEvent);
+    on<NavigateBackToHomePageEvent>(navigateBackToHomePageEvent);
   }
 
   Future<FutureOr<void>> checkOutInitialEvent(
@@ -32,5 +33,12 @@ class CheckOutPageBloc extends Bloc<CheckOutPageEvent, CheckOutPageState> {
     emit(PageLoadingState());
     await Future.delayed(const Duration(seconds: 2));
     emit(PaymentCompletedActionState());
+  }
+
+  FutureOr<void> navigateBackToHomePageEvent(NavigateBackToHomePageEvent event,
+      Emitter<CheckOutPageState> emit) async {
+    emit(PageLoadingState());
+    await Future.delayed(const Duration(seconds: 2));
+    emit(NavigateTohomePageActionState());
   }
 }
