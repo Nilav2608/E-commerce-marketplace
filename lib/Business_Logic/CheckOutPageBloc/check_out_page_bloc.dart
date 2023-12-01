@@ -9,12 +9,28 @@ part 'check_out_page_state.dart';
 class CheckOutPageBloc extends Bloc<CheckOutPageEvent, CheckOutPageState> {
   CheckOutPageBloc() : super(CheckOutPageBlocInitialState()) {
     on<CheckOutInitialEvent>(checkOutInitialEvent);
+    on<CheckOutPagePaymentEvent>(checkOutPaymentEvent);
+    on<CheckOutPagePlaceOrderEvent>(checkOutPagePlaceOrderEvent);
   }
 
   Future<FutureOr<void>> checkOutInitialEvent(
       CheckOutInitialEvent event, Emitter<CheckOutPageState> emit) async {
     emit(PageLoadingState());
-    await Future.delayed(const Duration(seconds: 3000));
+    await Future.delayed(const Duration(seconds: 3));
     emit(CheckOutPageBlocInitialState());
+  }
+
+  Future<FutureOr<void>> checkOutPaymentEvent(
+      CheckOutPagePaymentEvent event, Emitter<CheckOutPageState> emit) async {
+    emit(PageLoadingState());
+    await Future.delayed(const Duration(seconds: 1));
+    emit(PaymentPageActionState());
+  }
+
+  FutureOr<void> checkOutPagePlaceOrderEvent(CheckOutPagePlaceOrderEvent event,
+      Emitter<CheckOutPageState> emit) async {
+    emit(PageLoadingState());
+    await Future.delayed(const Duration(seconds: 2));
+    emit(PaymentCompletedActionState());
   }
 }
