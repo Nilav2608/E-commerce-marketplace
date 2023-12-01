@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluxestore/presentation/pages/checkout/PaymentSection.view.dart';
 import 'package:fluxestore/presentation/pages/checkout/ShippingSection.view.dart';
-
+import 'package:lottie/lottie.dart';
 import '../../../Business_Logic/CheckOutPageBloc/check_out_page_bloc.dart';
 import 'ChekoutStatusItemsView.dart';
 // ignore: depend_on_referenced_packages
@@ -155,25 +155,69 @@ class _CheckOutPageState extends State<CheckOutPage> {
                         ],
                       );
                     case PaymentCompletedActionState:
-                      return const Column(
+                      return Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          ChekoutStatusItemsView(
+                          const ChekoutStatusItemsView(
                             initState: true,
                             shippingAddressState: true,
                             paymentState: true,
                             completedState: true,
                           ),
                           Padding(
-                            padding: EdgeInsets.all(20.0),
+                            padding: const EdgeInsets.all(20.0),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text("Order Completed",
+                                const Text("Order Completed",
                                     style: TextStyle(
                                         color: Color(0xff1D1F22),
-                                        fontSize: 25,
+                                        fontSize: 20,
                                         fontWeight: FontWeight.w700)),
+                                const SizedBox(
+                                  height: 50,
+                                ),
+                                Center(
+                                  child: Lottie.asset(
+                                      "assets/images/completed_lottie.json",
+                                      width: 200,
+                                      height: 200,
+                                      repeat: false),
+                                ),
+                                const Center(
+                                  child: SizedBox(
+                                    height: 75,
+                                    width: 272,
+                                    child: Text(
+                                        "Thank you for your purchase!, You can view your order in ‘My Orders’ section.",
+                                        style: TextStyle(
+                                            color: Color(0xff1D1F22),
+                                            fontSize: 14,
+                                            letterSpacing: 1,
+                                            fontWeight: FontWeight.w400)),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 50,
+                                ),
+                                SizedBox(
+                                  height: 48,
+                                  width: 315,
+                                  child: ElevatedButton(
+                                      onPressed: () {},
+                                      style: const ButtonStyle(
+                                          backgroundColor:
+                                              MaterialStatePropertyAll(
+                                                  Color(0xFF343434))),
+                                      child: const Text(
+                                        "Continue shopping",
+                                        style: TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w700,
+                                            color: Colors.white),
+                                      )),
+                                )
                               ],
                             ),
                           )
