@@ -1,26 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:fluxestore/models/productModel.dart';
+
 class CartProductTile extends StatelessWidget {
+  final ProducDatatModel data;
   final Function()? increment;
   final Function()? decrement;
   final Function(BuildContext)? delete;
   final int quantity;
   const CartProductTile(
-      {super.key, required this.increment, required this.decrement, required this.quantity,required this.delete});
+      {super.key,
+      required this.increment,
+      required this.decrement,
+      required this.quantity,
+      required this.delete, required this.data});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(12.0),
       child: Slidable(
-        endActionPane: ActionPane(motion: const BehindMotion(),
-         children: [
+        endActionPane: ActionPane(motion: const BehindMotion(), children: [
           SlidableAction(
             onPressed: delete,
             icon: (Icons.delete),
             backgroundColor: const Color(0xFFFF8080),
             foregroundColor: const Color(0xffC8C7CC),
-            borderRadius: const BorderRadius.only(topRight: Radius.circular(20),bottomRight: Radius.circular(20)),
+            borderRadius: const BorderRadius.only(
+                topRight: Radius.circular(20),
+                bottomRight: Radius.circular(20)),
           )
         ]),
         child: ClipRRect(
@@ -29,15 +37,14 @@ class CartProductTile extends StatelessWidget {
             width: 310,
             height: 120,
             decoration: const BoxDecoration(
-                color: Colors.white,
-                boxShadow: [
-                  BoxShadow(
-                      color: Color(0xffe8e8e8),
-                      blurRadius: 10.0,
-                      offset: Offset(0, 1))
-                ],
-               
-              ),
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                    color: Color(0xffe8e8e8),
+                    blurRadius: 10.0,
+                    offset: Offset(0, 1))
+              ],
+            ),
             //main row
             child: Row(
               // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -48,21 +55,20 @@ class CartProductTile extends StatelessWidget {
                     ClipRRect(
                       borderRadius: const BorderRadius.only(
                           topLeft: Radius.circular(20),
-                          bottomLeft: Radius.circular(20)
-                          ),
+                          bottomLeft: Radius.circular(20)),
                       child: Image.network(
-                          "https://t3.gstatic.com/images?q=tbn:ANd9GcS_zRNrc2kC5Rg-OiFLvyRKUy-A3jWuzSjvQEluYLkZ7JK_m-wd",
+                          data.imageUrl??'',
                           width: 98,
                           height: 120,
                           fit: BoxFit.cover),
                     ),
                   ],
                 ),
-              
+
                 Expanded(
                   child: Padding(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 8.0, vertical: 5),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 8.0, vertical: 5),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -70,9 +76,9 @@ class CartProductTile extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            const Text(
-                              "Rise Crop Hoodie",
-                              style: TextStyle(
+                             Text(
+                              data.productName??'',
+                              style: const TextStyle(
                                 fontSize: 13,
                                 fontWeight: FontWeight.w700,
                                 color: Colors.black,
@@ -86,11 +92,11 @@ class CartProductTile extends StatelessWidget {
                             )
                           ],
                         ),
-                        const Row(
+                         Row(
                           children: [
                             Text(
-                              "\$80.00",
-                              style: TextStyle(
+                              "\$${data.price??''}",
+                              style: const TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w700,
                                 color: Colors.black,
@@ -117,17 +123,19 @@ class CartProductTile extends StatelessWidget {
                                       width: 1, color: const Color(0xff808080)),
                                   borderRadius: BorderRadius.circular(20)),
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
                                 children: [
                                   GestureDetector(
                                     onTap: decrement,
                                     child: const Text(
                                       "-",
                                       style: TextStyle(
-                                          fontSize: 20, color: Color(0xff808080)),
+                                          fontSize: 20,
+                                          color: Color(0xff808080)),
                                     ),
                                   ),
-                                   Text(
+                                  Text(
                                     quantity.toString(),
                                     style: const TextStyle(
                                         fontSize: 20, color: Color(0xff808080)),
@@ -137,7 +145,8 @@ class CartProductTile extends StatelessWidget {
                                     child: const Text(
                                       "+",
                                       style: TextStyle(
-                                          fontSize: 20, color: Color(0xff808080)),
+                                          fontSize: 20,
+                                          color: Color(0xff808080)),
                                     ),
                                   )
                                 ],

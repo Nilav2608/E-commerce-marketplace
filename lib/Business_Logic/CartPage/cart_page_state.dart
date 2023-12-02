@@ -1,0 +1,15 @@
+part of 'cart_page_bloc.dart';
+
+@immutable
+sealed class CartPageState {}
+
+final class CartPageInitialState extends CartPageState {}
+
+abstract class CartPageActionState extends CartPageState {}
+
+class CartSuccessState extends CartPageState {
+  final List<ProducDatatModel> cartSuccessData;
+  // final int totalPrice;
+
+  CartSuccessState({required this.cartSuccessData});
+}

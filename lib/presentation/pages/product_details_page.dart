@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluxestore/data/cart_items.dart';
 import 'package:fluxestore/data/product_recomendation_data.dart';
 import 'package:fluxestore/models/ColorsCatagoryModel.dart';
 import 'package:fluxestore/models/ProductReviewModel.dart';
@@ -75,31 +76,37 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
         padding: EdgeInsets.zero,
         color: Colors.white,
         // shape: BoxShape.rectangle,
-        child: Container(
-          width: double.infinity,
-          height: 40,
-          decoration: const BoxDecoration(
-              color: Color(0xff343434),
-              borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(20), topRight: Radius.circular(20))),
-          child: const Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(
-                SecondaryIcons.bag,
-                color: Colors.white,
-              ),
-              SizedBox(
-                width: 10,
-              ),
-              Text(
-                "Add To Cart",
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
-                    fontWeight: FontWeight.w700),
-              )
-            ],
+        child: InkWell(
+          onTap: () {
+            // cartItems.add(data as ProducDatatModel);?
+          },
+          child: Container(
+            width: double.infinity,
+            height: 40,
+            decoration: const BoxDecoration(
+                color: Color(0xff343434),
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(20),
+                    topRight: Radius.circular(20))),
+            child: const Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  SecondaryIcons.bag,
+                  color: Colors.white,
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Text(
+                  "Add To Cart",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w700),
+                )
+              ],
+            ),
           ),
         ),
       ),
@@ -575,7 +582,9 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
 
                                     // ProductReviewsTile(data: reviews,)
                                     ),
-                                    const SizedBox(height: 10,),
+                                const SizedBox(
+                                  height: 10,
+                                ),
                                 const Divider(
                                   color: Color(0xffF3F3F6),
                                 ),
@@ -585,7 +594,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                         ),
 
                         ProductDetailsExpansionPanel(
-                          headingHorizontalPadding: 18,
+                            headingHorizontalPadding: 18,
                             expansionCallback: (p0, p1) {
                               setState(() {
                                 _isSimilarProductsExpanded =
