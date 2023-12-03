@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:fluxestore/Business_Logic/ProductDetailsPageBloc/product_details_page_bloc.dart';
-import 'package:fluxestore/data/cart_items.dart';
 import 'package:fluxestore/data/product_recomendation_data.dart';
+import 'package:fluxestore/models/CartItemsModel.dart';
 import 'package:fluxestore/models/ColorsCatagoryModel.dart';
 import 'package:fluxestore/models/ProductReviewModel.dart';
 import 'package:fluxestore/presentation/Icons/primary_icons_icons.dart';
 // ignore: depend_on_referenced_packages
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:fluxestore/presentation/Icons/secondary_icons_icons.dart';
-import 'package:fluxestore/presentation/pages/checkout/ShippingSection.view.dart';
 import 'package:fluxestore/presentation/reuseables/ProductListViewBuilder.dart';
 import 'package:fluxestore/presentation/reuseables/ExpansionPanel.dart';
 import 'package:fluxestore/presentation/reuseables/ProductRatingProgressBars.dart';
@@ -69,6 +68,18 @@ bool favorite = false;
 double horizontal = 20;
 double vertical = 5;
 
+CartItemsModel mapProductsFromProductDataModel(ProducDatatModel data) {
+  return CartItemsModel(
+      id: data.id.toString(),
+      productName: data.productName,
+      price: data.price,
+      imageUrl: data.imageUrl,
+      color: "",
+      size: data.sizes![currentSizeIndex],
+      quantity: 1,
+      selected: true);
+}
+
 class _ProductDetailsPageState extends State<ProductDetailsPage> {
   final ProductDetailsPageBloc productDetailsPageBloc =
       ProductDetailsPageBloc();
@@ -95,12 +106,23 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                 bottomSheet: BottomAppBar(
                   padding: EdgeInsets.zero,
                   color: Colors.white,
-                  // shape: BoxShape.rectangle,
+                  shape: const CircularNotchedRectangle(),
                   child: InkWell(
                     onTap: () {
-                      print("tapped");
-                      productDetailsPageBloc.add(AddToCartEvent(
-                          productData: widget.data));
+                      CartItemsModel cartItems =
+                          mapProductsFromProductDataModel(widget.data);
+                      productDetailsPageBloc
+                          .add(AddToCartEvent(productData: cartItems));
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                          margin: EdgeInsets.only(bottom: 100),
+                          padding: EdgeInsets.all(10),
+                          duration: Duration(milliseconds: 800),
+                          behavior: SnackBarBehavior.floating,
+                          backgroundColor: Color(0xFF508A7B),
+                          content: Text(
+                            "This is item is added in your cart!",
+                            style: TextStyle(color: Colors.white),
+                          )));
                     },
                     child: Container(
                       width: double.infinity,

@@ -11,7 +11,7 @@ abstract class ProductDetailsPageActionState extends ProductDetailsPageState {}
 class ProductDetailsPageSuccessState extends ProductDetailsPageState{}
 
 class AddToCartActionState extends ProductDetailsPageActionState {
-  final List<ProducDatatModel> cartItems;
+  final List<CartItemsModel> cartItems;
 
   AddToCartActionState({required this.cartItems});
 }

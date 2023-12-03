@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:fluxestore/data/cart_items.dart';
+import 'package:fluxestore/models/CartItemsModel.dart';
+// ignore: unused_import
 import 'package:fluxestore/models/productModel.dart';
 import 'package:meta/meta.dart';
 
@@ -16,9 +18,8 @@ class CartPageBloc extends Bloc<CartPageEvent, CartPageState> {
 
   FutureOr<void> cartPageInitialEvent(
       CartPageInitialEvent event, Emitter<CartPageState> emit) {
-    // for (int i = 0; i < cartItems.length;i++){
-      
-    // }
+       
+ 
       emit(CartSuccessState(cartSuccessData: cartItems));
   }
 

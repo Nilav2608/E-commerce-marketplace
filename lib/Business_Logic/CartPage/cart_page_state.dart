@@ -8,7 +8,7 @@ final class CartPageInitialState extends CartPageState {}
 abstract class CartPageActionState extends CartPageState {}
 
 class CartSuccessState extends CartPageState {
-  final List<ProducDatatModel> cartSuccessData;
+  final List<CartItemsModel> cartSuccessData;
   // final int totalPrice;
 
   CartSuccessState({required this.cartSuccessData});

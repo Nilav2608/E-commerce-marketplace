@@ -13,18 +13,6 @@ class CartPage extends StatefulWidget {
 
 final CartPageBloc cartPageBloc = CartPageBloc();
 
-int quantity = 1;
-
-increaseQuantity() {
-  quantity++;
-}
-
-decreaseQuantity() {
-  if (quantity > 1) {
-    quantity--;
-  }
-}
-
 class _CartPageState extends State<CartPage> {
   @override
   void initState() {
@@ -180,22 +168,27 @@ class _CartPageState extends State<CartPage> {
                         itemBuilder: (context, index) {
                           var itemsData = cartItems[index];
                           return CartProductTile(
+                            // quantity: itemsData.quantity!,
                             data: itemsData,
-                            increment: () {
+                            onIncrease: () {
                               setState(() {
-                                increaseQuantity();
+                                // Increment the quantity of the specific product
+                                itemsData.quantity =
+                                    (itemsData.quantity ?? 0) + 1;
                               });
                             },
-                            decrement: () {
+                            onDecrease: () {
                               setState(() {
-                                decreaseQuantity();
+                                // Decrease the quantity of the specific product (if greater than 1)
+                                if (itemsData.quantity! > 1) {
+                                  itemsData.quantity = itemsData.quantity! - 1;
+                                }
                               });
                             },
                             delete: (context) {
                               cartPageBloc.add(RemoveAnItemFromCartEvent(
                                   product: itemsData));
                             },
-                            quantity: quantity,
                           );
                         },
                       ),

@@ -37,4 +37,5 @@ class ProducDatatModel {
     data['sizes'] = sizes;
     return data;
   }
+
 }

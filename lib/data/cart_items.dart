@@ -1,3 +1,3 @@
-import '../models/productModel.dart';
+import '../models/CartItemsModel.dart';
 
-final List<ProducDatatModel> cartItems = [];
+ List<CartItemsModel> cartItems = [];

@@ -1,20 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:fluxestore/models/productModel.dart';
+import 'package:fluxestore/models/CartItemsModel.dart';
 
 class CartProductTile extends StatelessWidget {
-  final ProducDatatModel data;
-  final Function()? increment;
-  final Function()? decrement;
+  final CartItemsModel data;
+  //  int quantity;
   final Function(BuildContext)? delete;
-  final int quantity;
+  final Function()? onIncrease;
+  final Function()? onDecrease;
+  // final int quantity;
   const CartProductTile(
       {super.key,
-      required this.increment,
-      required this.decrement,
-      required this.quantity,
-      required this.delete, required this.data});
 
+      // required this.quantity,
+      required this.delete,
+      required this.data, this.onIncrease, this.onDecrease,
+      //  required quantity
+       });
+
+  // var currentQuantity = widget.data.quantity;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -56,11 +60,8 @@ class CartProductTile extends StatelessWidget {
                       borderRadius: const BorderRadius.only(
                           topLeft: Radius.circular(20),
                           bottomLeft: Radius.circular(20)),
-                      child: Image.network(
-                          data.imageUrl??'',
-                          width: 98,
-                          height: 120,
-                          fit: BoxFit.cover),
+                      child: Image.network(data.imageUrl ?? '',
+                          width: 98, height: 120, fit: BoxFit.cover),
                     ),
                   ],
                 ),
@@ -76,8 +77,8 @@ class CartProductTile extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                             Text(
-                              data.productName??'',
+                            Text(
+                              data.productName ?? '',
                               style: const TextStyle(
                                 fontSize: 13,
                                 fontWeight: FontWeight.w700,
@@ -92,10 +93,10 @@ class CartProductTile extends StatelessWidget {
                             )
                           ],
                         ),
-                         Row(
+                        Row(
                           children: [
                             Text(
-                              "\$${data.price??''}",
+                              "\$${data.price ?? ''}",
                               style: const TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w700,
@@ -107,9 +108,9 @@ class CartProductTile extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            const Text(
-                              "Size: M  |  Color: White",
-                              style: TextStyle(
+                            Text(
+                              "Size: ${data.size}  |  Color: White",
+                              style: const TextStyle(
                                 fontSize: 10,
                                 fontWeight: FontWeight.w400,
                                 color: Color(0xff8A8A8F),
@@ -127,7 +128,7 @@ class CartProductTile extends StatelessWidget {
                                     MainAxisAlignment.spaceEvenly,
                                 children: [
                                   GestureDetector(
-                                    onTap: decrement,
+                                    onTap: onDecrease,
                                     child: const Text(
                                       "-",
                                       style: TextStyle(
@@ -136,12 +137,12 @@ class CartProductTile extends StatelessWidget {
                                     ),
                                   ),
                                   Text(
-                                    quantity.toString(),
+                                    data.quantity.toString(),
                                     style: const TextStyle(
                                         fontSize: 20, color: Color(0xff808080)),
                                   ),
                                   GestureDetector(
-                                    onTap: increment,
+                                    onTap: onIncrease,
                                     child: const Text(
                                       "+",
                                       style: TextStyle(

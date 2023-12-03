@@ -6,7 +6,7 @@ sealed class ProductDetailsPageEvent {}
 class ProductDetailsPageInitialEvent extends ProductDetailsPageEvent {}
 
 class AddToCartEvent extends ProductDetailsPageEvent {
-  final ProducDatatModel productData;
+  final CartItemsModel productData;
 
   AddToCartEvent({required this.productData});
 }
