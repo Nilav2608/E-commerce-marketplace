@@ -1,11 +1,13 @@
 // ignore: file_names
+import 'CartItemsModel.dart';
+
 class MyOrdersDataModel {
   String? orderID;
   String? trackingNumber;
   String? date;
   String? deliveryAddress;
   int? quantity;
-  List<OrderedItems>? orderedItems;
+  List<CartItemsModel>? orderedItems;
   double? subTotal;
   int? shippingCharges;
   double? total;
@@ -30,9 +32,9 @@ class MyOrdersDataModel {
     deliveryAddress = json['deliveryAddress'];
     quantity = json['quantity'];
     if (json['orderedItems'] != null) {
-      orderedItems = <OrderedItems>[];
+      orderedItems = <CartItemsModel>[];
       json['orderedItems'].forEach((v) {
-        orderedItems!.add(OrderedItems.fromJson(v));
+        orderedItems!.add(CartItemsModel.fromJson(v));
       });
     }
     subTotal = json['subTotal'];

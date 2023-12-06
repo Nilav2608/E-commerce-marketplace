@@ -4,6 +4,7 @@ import 'package:fluxestore/models/MyOrdersDataModel.dart';
 // ignore: depend_on_referenced_packages
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
+
 class MyOrderDetailsCard extends StatelessWidget {
   final MyOrdersDataModel data;
   const MyOrderDetailsCard({super.key, required this.data});
@@ -18,17 +19,24 @@ class MyOrderDetailsCard extends StatelessWidget {
 
     String delivaryStatus = data.deliveryStatus.toString();
     Color statusTextColor;
+    Color statusBgColor;
 
     if (delivaryStatus == "PENDING") {
-      statusTextColor = const Color(0xffCF6212);
+      statusTextColor = const Color(0xffFF8730);
+      statusBgColor = const Color(0xffFFF7E1);
     } else if (delivaryStatus == "DELIVERED") {
-      statusTextColor = const Color(0xff009254);
+      statusTextColor = const Color(0xff00AB56);
+      statusBgColor = const Color(0xffEFFFF4);
     } else if (delivaryStatus == "CANCELLED") {
-      statusTextColor = const Color(0xffC50000);
+      statusTextColor = const Color(0xffFF424E);
+      statusBgColor = const Color(0xffFFF0F1);
     } else {
       statusTextColor = Colors.black;
+      statusBgColor = Colors.white;
     }
-
+//statusTextColor = const Color(0xffCF6212);
+//statusTextColor = const Color(0xff009254);
+//statusTextColor = const Color(0xffC50000);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 19.0),
       child: Container(
@@ -135,17 +143,28 @@ class MyOrderDetailsCard extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
+              
               Expanded(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      data.deliveryStatus ?? '',
-                      style: TextStyle(
-                          fontSize: 14,
-                          //data.deliveryStatus == 'PENDING' ? Color(0xffCF6212)
-                          color: statusTextColor,
-                          fontWeight: FontWeight.w400),
+                    Container(
+                      decoration: BoxDecoration(
+                          color: statusBgColor,
+                          
+                          borderRadius: BorderRadius.circular(50)),
+                          
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal:12.0,vertical:4),
+                        child: Text(
+                          data.deliveryStatus ?? '',
+                          style: TextStyle(
+                              fontSize: 14,
+                              //data.deliveryStatus == 'PENDING' ? Color(0xffCF6212)
+                              color: statusTextColor,
+                              fontWeight: FontWeight.w400),
+                        ),
+                      ),
                     ),
                     OutlinedButton(
                         onPressed: () {},
