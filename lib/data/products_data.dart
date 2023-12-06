@@ -25,6 +25,7 @@ final List<ProducDatatModel> productsList = [
       // imageUrl: "https://firebasestorage.googleapis.com/v0/b/fluxestore-b6cb3.appspot.com/o/TurtleNeck.png?alt=media&token=25a11671-3246-4164-bb1c-c8f5ebb925de",
       // imageUrl: "assets/images/ElagantDress.svg",
       sizes: ["S", "M", "L", "XL"],
+      colors: [Colors.orangeAccent,Colors.black,Colors.pink],
       ratings: 4),
   ProducDatatModel(
       id: 1,

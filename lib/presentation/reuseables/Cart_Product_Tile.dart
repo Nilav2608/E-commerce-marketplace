@@ -16,9 +16,28 @@ class CartProductTile extends StatelessWidget {
     required this.onDecrease,
     required this.onCheckBoxChanged,
   });
-
+ String getColorName(Color color) {
+  if (color == Colors.orangeAccent) {
+    return 'Orange';
+  } else if (color == Colors.black) {
+    return 'Black';
+  } else if (color == Colors.pink) {
+    return 'Pink';
+  }
+  // Add more color checks as needed
+  return 'Unknown'; // Default value for unknown colors
+}
   @override
   Widget build(BuildContext context) {
+    // String color = data.color.toString();
+    // var colorsSlplit = color.split('.');
+    // var validColor = colorsSlplit[1].toString();
+
+    // var color = data.color
+   
+    String colorName = getColorName(data.color??Colors.transparent);
+
+   
     return Padding(
       padding: const EdgeInsets.all(12.0),
       child: Slidable(
@@ -94,7 +113,7 @@ class CartProductTile extends StatelessWidget {
                               //     : null,
 
                               onChanged: (bool? value) {
-                                onCheckBoxChanged!(value??false);
+                                onCheckBoxChanged!(value ?? false);
                               },
 
                               activeColor: const Color(0xff508A7B),
@@ -118,7 +137,7 @@ class CartProductTile extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              "Size: ${data.size}  |  Color: White",
+                              "Size: ${data.size}  |  Color: $colorName ",
                               style: const TextStyle(
                                 fontSize: 10,
                                 fontWeight: FontWeight.w400,

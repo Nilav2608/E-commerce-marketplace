@@ -74,7 +74,7 @@ CartItemsModel mapProductsFromProductDataModel(ProducDatatModel data) {
       productName: data.productName,
       price: data.price,
       imageUrl: data.imageUrl,
-      color: "",
+      color: data.colors![currentColorIndex],
       size: data.sizes![currentSizeIndex],
       quantity: 1,
       selected: false);
@@ -341,9 +341,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                                   children: [
                                                     for (int i = 0;
                                                         i <
-                                                            widget.data.colors!
-                                                                .length;
-                                                        i++)
+                                                            widget.data.colors!.length;i++)
                                                       GestureDetector(
                                                         onTap: () {
                                                           setState(() {
@@ -383,8 +381,9 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                                                         child: CircleAvatar(
                                                                           radius:
                                                                               12,
-                                                                          backgroundColor:widget.data.colors![i]
-                                                                              // Color(widget.data.colors![i]),
+                                                                          backgroundColor:
+                                                                           widget.data.colors![i]
+                                                                              // Color(colorsIsSelected[i].color),
                                                                         )),
                                                               ),
                                                             ],

@@ -1,9 +1,11 @@
+import 'package:flutter/material.dart';
+
 class CartItemsModel {
   String? id;
   String? productName;
   double? price;
   String? size;
-  String? color;
+  Color? color;
   int? quantity;
   String? imageUrl;
   bool? selected;
