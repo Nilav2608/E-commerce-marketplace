@@ -77,7 +77,7 @@ CartItemsModel mapProductsFromProductDataModel(ProducDatatModel data) {
       color: "",
       size: data.sizes![currentSizeIndex],
       quantity: 1,
-      selected: true);
+      selected: false);
 }
 
 class _ProductDetailsPageState extends State<ProductDetailsPage> {

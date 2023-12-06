@@ -187,7 +187,7 @@ class _CheckOutPageState extends State<CheckOutPage> {
                                 ),
                                 Center(
                                   child: Lottie.asset(
-                                      "assets/images/completed_lottie.json",
+                                      "assets/lottie/completed_lottie.json",
                                       width: 200,
                                       height: 200,
                                       repeat: false),

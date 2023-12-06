@@ -1,7 +1,7 @@
 class CartItemsModel {
   String? id;
   String? productName;
-  String? price;
+  double? price;
   String? size;
   String? color;
   int? quantity;

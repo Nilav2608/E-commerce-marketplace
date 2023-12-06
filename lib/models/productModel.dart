@@ -2,7 +2,7 @@ class ProducDatatModel {
   int? id;
   String? productName;
   String? imageUrl;
-  String? price;
+  double? price;
   String? descriptionn;
   int? ratings;
   List<String>? sizes;

@@ -7,11 +7,11 @@ final class ProductDetailsPageInitialState extends ProductDetailsPageState {}
 
 abstract class ProductDetailsPageActionState extends ProductDetailsPageState {}
 
-
-class ProductDetailsPageSuccessState extends ProductDetailsPageState{}
+class ProductDetailsPageSuccessState extends ProductDetailsPageState {}
 
 class AddToCartActionState extends ProductDetailsPageActionState {
   final List<CartItemsModel> cartItems;
+  final double subTotal;
 
-  AddToCartActionState({required this.cartItems});
+  AddToCartActionState({required this.subTotal, required this.cartItems});
 }

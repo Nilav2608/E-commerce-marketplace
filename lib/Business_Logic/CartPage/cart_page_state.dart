@@ -9,7 +9,7 @@ abstract class CartPageActionState extends CartPageState {}
 
 class CartSuccessState extends CartPageState {
   final List<CartItemsModel> cartSuccessData;
-  // final int totalPrice;
+  final double subTotal;
 
-  CartSuccessState({required this.cartSuccessData});
+  CartSuccessState( {required this.subTotal,required this.cartSuccessData});
 }

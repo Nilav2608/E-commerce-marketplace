@@ -3,7 +3,7 @@ import 'package:fluxestore/Business_Logic/CartPage/cart_page_bloc.dart';
 import 'package:fluxestore/data/cart_items.dart';
 import 'package:fluxestore/presentation/reuseables/Cart_Product_Tile.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
+import 'package:lottie/lottie.dart';
 class CartPage extends StatefulWidget {
   const CartPage({super.key});
 
@@ -17,7 +17,14 @@ class _CartPageState extends State<CartPage> {
   @override
   void initState() {
     cartPageBloc.add(CartPageInitialEvent());
+    subTotal(cartItems);
     super.initState();
+  }
+
+  checkBox(bool value) {
+    setState(() {
+      value = !value;
+    });
   }
 
   @override
@@ -32,7 +39,16 @@ class _CartPageState extends State<CartPage> {
       builder: (context, state) {
         switch (state.runtimeType) {
           case CartSuccessState:
-            return Scaffold(
+            final successState = state as CartSuccessState;
+            String total = successState.subTotal.toString();
+            return successState.cartSuccessData.isEmpty
+             ?  Center(child: Column(
+               children: [
+                Lottie.asset("assets/lottie/empty_box_lottie.json"),
+                 const Text("YOUR CART IS EMPTY"),
+               ],
+             ),)
+              : Scaffold(
               bottomNavigationBar: Container(
                 width: screenWidth,
                 height: screenHeight * 0.30,
@@ -53,12 +69,12 @@ class _CartPageState extends State<CartPage> {
                   child: Column(
                     children: [
                       //* Product Price
-                      const Padding(
-                        padding: EdgeInsets.all(8.0),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(
+                            const Text(
                               "Product price",
                               style: TextStyle(
                                 fontSize: 14,
@@ -67,8 +83,8 @@ class _CartPageState extends State<CartPage> {
                               ),
                             ),
                             Text(
-                              "\$110",
-                              style: TextStyle(
+                              "\$$total",
+                              style: const TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w400,
                                 color: Colors.black,
@@ -109,12 +125,12 @@ class _CartPageState extends State<CartPage> {
                         color: Color(0xffE8E8E8),
                       ),
                       //* Sub Total
-                      const Padding(
-                        padding: EdgeInsets.all(8.0),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(
+                            const Text(
                               "Sub Total",
                               style: TextStyle(
                                 fontSize: 14,
@@ -123,8 +139,8 @@ class _CartPageState extends State<CartPage> {
                               ),
                             ),
                             Text(
-                              "\$110",
-                              style: TextStyle(
+                              "\$$total",
+                              style: const TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.w700,
                                 color: Colors.black,
@@ -139,7 +155,20 @@ class _CartPageState extends State<CartPage> {
                         width: screenHeight * 3,
                         child: ElevatedButton(
                             onPressed: () {
-                              Navigator.pushNamed(context, "checkOut");
+                              if(successState.subTotal != 0){
+                                Navigator.pushNamed(context, "checkOut");
+                              }else{
+                                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                          // margin: EdgeInsets.only(bottom: 100),
+                          // padding: EdgeInsets.all(10),
+                          duration: Duration(milliseconds: 1000),
+                          behavior: SnackBarBehavior.floating,
+                          backgroundColor: Color(0xFFFF8080),
+                          content: Text(
+                            "Select Atleast one item to CheckOut!",
+                            style: TextStyle(color: Colors.white),
+                          )));
+                              }
                             },
                             style: const ButtonStyle(
                                 backgroundColor: MaterialStatePropertyAll(
@@ -164,11 +193,10 @@ class _CartPageState extends State<CartPage> {
                     Expanded(
                       child: ListView.builder(
                         physics: const BouncingScrollPhysics(),
-                        itemCount: cartItems.length,
+                        itemCount: successState.cartSuccessData.length,
                         itemBuilder: (context, index) {
-                          var itemsData = cartItems[index];
+                          var itemsData = successState.cartSuccessData[index];
                           return CartProductTile(
-                            // quantity: itemsData.quantity!,
                             data: itemsData,
                             onIncrease: () {
                               setState(() {
@@ -176,6 +204,7 @@ class _CartPageState extends State<CartPage> {
                                 itemsData.quantity =
                                     (itemsData.quantity ?? 0) + 1;
                               });
+                              cartPageBloc.add(CartPageInitialEvent());
                             },
                             onDecrease: () {
                               setState(() {
@@ -184,10 +213,15 @@ class _CartPageState extends State<CartPage> {
                                   itemsData.quantity = itemsData.quantity! - 1;
                                 }
                               });
+                              cartPageBloc.add(CartPageInitialEvent());
                             },
                             delete: (context) {
                               cartPageBloc.add(RemoveAnItemFromCartEvent(
                                   product: itemsData));
+                            },
+                            onCheckBoxChanged: (bool? value) {
+                              itemsData.selected = value;
+                              cartPageBloc.add(CartPageInitialEvent());
                             },
                           );
                         },
@@ -204,3 +238,6 @@ class _CartPageState extends State<CartPage> {
     );
   }
 }
+
+//checkBox(itemsData.selected!);
+                              // cartPageBloc.add(CartPageInitialEvent());

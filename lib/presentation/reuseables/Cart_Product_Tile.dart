@@ -4,21 +4,19 @@ import 'package:fluxestore/models/CartItemsModel.dart';
 
 class CartProductTile extends StatelessWidget {
   final CartItemsModel data;
-  //  int quantity;
   final Function(BuildContext)? delete;
   final Function()? onIncrease;
+  final Function(bool)? onCheckBoxChanged;
   final Function()? onDecrease;
-  // final int quantity;
-  const CartProductTile(
-      {super.key,
+  const CartProductTile({
+    super.key,
+    required this.delete,
+    required this.data,
+    required this.onIncrease,
+    required this.onDecrease,
+    required this.onCheckBoxChanged,
+  });
 
-      // required this.quantity,
-      required this.delete,
-      required this.data, this.onIncrease, this.onDecrease,
-      //  required quantity
-       });
-
-  // var currentQuantity = widget.data.quantity;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -86,8 +84,19 @@ class CartProductTile extends StatelessWidget {
                               ),
                             ),
                             Checkbox(
-                              value: true,
-                              onChanged: (value) {},
+                              value: data.selected ?? false,
+                              // ignore: unnecessary_null_comparison
+
+                              // onChanged: onCheckBoxChanged != null
+                              //     ? (bool? value) {
+                              //         onCheckBoxChanged!(value ?? false);
+                              //       }
+                              //     : null,
+
+                              onChanged: (bool? value) {
+                                onCheckBoxChanged!(value??false);
+                              },
+
                               activeColor: const Color(0xff508A7B),
                               checkColor: Colors.white,
                             )
@@ -96,7 +105,7 @@ class CartProductTile extends StatelessWidget {
                         Row(
                           children: [
                             Text(
-                              "\$${data.price ?? ''}",
+                              "\$${data.price}",
                               style: const TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w700,
@@ -129,6 +138,11 @@ class CartProductTile extends StatelessWidget {
                                 children: [
                                   GestureDetector(
                                     onTap: onDecrease,
+                                    // onTap: onDecrease != null
+                                    //     ? (int value) {
+                                    //         onDecrease!(value);
+                                    //       }
+                                    //     : null,
                                     child: const Text(
                                       "-",
                                       style: TextStyle(
