@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fluxestore/models/productModel.dart';
+import 'package:fluxestore/models/ProducDatatModel.dart';
 
 class ProductCardTile extends StatelessWidget {
   final ProducDatatModel product;

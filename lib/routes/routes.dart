@@ -12,7 +12,7 @@ import 'package:fluxestore/presentation/pages/settings_page.dart';
 import 'package:fluxestore/routes/custom_transition_routes.dart';
 
 import '../Business_Logic/landing_page_bloc/landing_page_bloc.dart';
-import '../models/productModel.dart';
+import '../models/ProducDatatModel.dart';
 
 class MyGenerateRoute {
   final LandingPageBloc landingPageBloc = LandingPageBloc();

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fluxestore/models/productModel.dart';
+import 'package:fluxestore/models/ProducDatatModel.dart';
 import 'package:fluxestore/presentation/reuseables/product_list_tile.dart';
 
 class ProductListViewBuilder extends StatelessWidget {

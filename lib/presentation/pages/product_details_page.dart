@@ -12,7 +12,7 @@ import 'package:fluxestore/presentation/reuseables/ProductListViewBuilder.dart';
 import 'package:fluxestore/presentation/reuseables/ExpansionPanel.dart';
 import 'package:fluxestore/presentation/reuseables/ProductRatingProgressBars.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../models/productModel.dart';
+import '../../models/ProducDatatModel.dart';
 import '../reuseables/ProductReviewsTile.dart';
 
 class ProductDetailsPage extends StatefulWidget {
@@ -341,7 +341,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                                   children: [
                                                     for (int i = 0;
                                                         i <
-                                                            colorsIsSelected
+                                                            widget.data.colors!
                                                                 .length;
                                                         i++)
                                                       GestureDetector(
@@ -383,8 +383,8 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                                                         child: CircleAvatar(
                                                                           radius:
                                                                               12,
-                                                                          backgroundColor:
-                                                                              Color(colorsIsSelected[i].color),
+                                                                          backgroundColor:widget.data.colors![i]
+                                                                              // Color(widget.data.colors![i]),
                                                                         )),
                                                               ),
                                                             ],

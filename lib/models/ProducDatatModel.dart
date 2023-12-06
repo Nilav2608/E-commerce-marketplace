@@ -6,6 +6,7 @@ class ProducDatatModel {
   String? descriptionn;
   int? ratings;
   List<String>? sizes;
+  List? colors;
 
   ProducDatatModel(
       {this.id,
@@ -14,7 +15,9 @@ class ProducDatatModel {
       this.price,
       this.descriptionn,
       this.ratings,
-      this.sizes});
+      this.colors,
+      this.sizes
+      });
 
   ProducDatatModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -24,6 +27,7 @@ class ProducDatatModel {
     descriptionn = json['descriptionn'];
     ratings = json['ratings'];
     sizes = json['sizes'].cast<String>();
+    colors = json['colors'].cast();
   }
 
   Map<String, dynamic> toJson() {
@@ -35,6 +39,7 @@ class ProducDatatModel {
     data['descriptionn'] = descriptionn;
     data['ratings'] = ratings;
     data['sizes'] = sizes;
+    data['colors'] = colors;
     return data;
   }
 

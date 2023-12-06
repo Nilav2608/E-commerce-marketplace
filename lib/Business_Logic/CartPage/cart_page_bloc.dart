@@ -4,7 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:fluxestore/data/cart_items.dart';
 import 'package:fluxestore/models/CartItemsModel.dart';
 // ignore: unused_import
-import 'package:fluxestore/models/productModel.dart';
+import 'package:fluxestore/models/ProducDatatModel.dart';
 import 'package:meta/meta.dart';
 
 part 'cart_page_event.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluxestore/data/products_data.dart';
-import 'package:fluxestore/models/productModel.dart';
+import 'package:fluxestore/models/ProducDatatModel.dart';
 
 class RecomendedProductsListTile extends StatelessWidget {
   const RecomendedProductsListTile({super.key});
