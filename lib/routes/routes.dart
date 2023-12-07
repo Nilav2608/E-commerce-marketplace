@@ -61,10 +61,12 @@ class MyGenerateRoute {
             dy: 0.0,
             child: const SettingsPage());
       case "checkOut":
+        final MyOrdersDataModel myordersData =
+            settings.arguments as MyOrdersDataModel;
         return MaterialPageRoute(
           builder: (_) => BlocProvider<LandingPageBloc>.value(
             value: landingPageBloc,
-            child: const CheckOutPage(),
+            child:  CheckOutPage( myOrdersData: myordersData,),
           ),
         );
       case 'orderDetailsPage':
@@ -74,7 +76,9 @@ class MyGenerateRoute {
             curves: Curves.easeInOutCirc,
             dx: 1.0,
             dy: 0.0,
-            child:  OrderDetailsPage(data: myordersData,));
+            child: OrderDetailsPage(
+              data: myordersData,
+            ));
 
       default:
         return _errorRoute();

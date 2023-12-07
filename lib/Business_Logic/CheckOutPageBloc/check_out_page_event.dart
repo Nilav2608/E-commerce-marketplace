@@ -3,13 +3,27 @@ part of 'check_out_page_bloc.dart';
 @immutable
 sealed class CheckOutPageEvent {}
 
-class CheckOutInitialEvent extends CheckOutPageEvent{
-  
+class CheckOutInitialEvent extends CheckOutPageEvent {
+  // final MyOrdersDataModel dataModel;
+
+  // CheckOutInitialEvent(
+  //   {required MyOrdersDataModel dataModel}
+  //   // {
+  //   // required this.dataModel
+  //   // }
+  //   );
 }
 
+class CheckOutPagePaymentEvent extends CheckOutInitialEvent {
+  final double subTotal;
 
-class CheckOutPagePaymentEvent extends CheckOutInitialEvent{}
+  CheckOutPagePaymentEvent( {required this.subTotal});
+}
 
-class CheckOutPagePlaceOrderEvent extends CheckOutInitialEvent{}
+class CheckOutPagePlaceOrderEvent extends CheckOutInitialEvent {
+  final MyOrdersDataModel dataModel;
 
-class NavigateBackToHomePageEvent extends CheckOutInitialEvent{}
+  CheckOutPagePlaceOrderEvent({required this.dataModel});
+}
+
+class NavigateBackToHomePageEvent extends CheckOutInitialEvent {}

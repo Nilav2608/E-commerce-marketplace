@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluxestore/models/MyOrdersDataModel.dart';
 import 'package:fluxestore/presentation/pages/checkout/PaymentSection.view.dart';
 import 'package:fluxestore/presentation/pages/checkout/ShippingSection.view.dart';
 // ignore: depend_on_referenced_packages
@@ -9,7 +10,8 @@ import 'ChekoutStatusItemsView.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CheckOutPage extends StatefulWidget {
-  const CheckOutPage({super.key});
+  final MyOrdersDataModel myOrdersData;
+  const CheckOutPage({super.key, required this.myOrdersData});
 
   @override
   State<CheckOutPage> createState() => _CheckOutPageState();
@@ -54,11 +56,10 @@ class _CheckOutPageState extends State<CheckOutPage> {
                     current is CheckOutPageActionState,
                 bloc: checkOutPageBloc,
                 listener: (context, state) {
-                  switch (state.runtimeType){
+                  switch (state.runtimeType) {
                     case NavigateTohomePageActionState:
-                        Navigator.popAndPushNamed(context, '/');
+                      Navigator.popAndPushNamed(context, '/');
                   }
-                  
                 },
                 builder: (context, state) {
                   switch (state.runtimeType) {
@@ -80,8 +81,8 @@ class _CheckOutPageState extends State<CheckOutPage> {
                           ShippingSection(
                             onPressed: () {
                               if (formKey.currentState!.validate()) {
-                                checkOutPageBloc
-                                    .add(CheckOutPagePaymentEvent());
+                                checkOutPageBloc.add(CheckOutPagePaymentEvent(
+                                    subTotal: widget.myOrdersData.subTotal!));
                                 ScaffoldMessenger.of(context).showSnackBar(
                                     const SnackBar(
                                         content: Text("Submitting form")));
@@ -91,6 +92,8 @@ class _CheckOutPageState extends State<CheckOutPage> {
                         ],
                       );
                     case PaymentPageActionState:
+                      final  successData =
+                          state as PaymentPageActionState;
                       return Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -101,6 +104,7 @@ class _CheckOutPageState extends State<CheckOutPage> {
                             completedState: false,
                           ),
                           PaymentSectionView(
+                            subTotal: successData.subTotal,
                             onChanged: (agreedToTermsAndConditions) {
                               onChanged(agreedToTermsAndConditions);
                             },
@@ -108,8 +112,9 @@ class _CheckOutPageState extends State<CheckOutPage> {
                                 agreedToTermsAndConditions,
                             onProceedToCheckOut: () {
                               if (agreedToTermsAndConditions) {
-                                checkOutPageBloc
-                                    .add(CheckOutPagePlaceOrderEvent());
+                                checkOutPageBloc.add(
+                                    CheckOutPagePlaceOrderEvent(
+                                        dataModel: widget.myOrdersData));
                               } else {
                                 ScaffoldMessenger.of(context)
                                     .showSnackBar(const SnackBar(
@@ -213,7 +218,6 @@ class _CheckOutPageState extends State<CheckOutPage> {
                                   width: 315,
                                   child: ElevatedButton(
                                       onPressed: () {
-                                        
                                         checkOutPageBloc
                                             .add(NavigateBackToHomePageEvent());
                                       },

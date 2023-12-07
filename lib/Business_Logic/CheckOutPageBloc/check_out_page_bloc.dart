@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:fluxestore/data/myOrderStatus_data.dart';
+import 'package:fluxestore/models/MyOrdersDataModel.dart';
 import 'package:meta/meta.dart';
 
 part 'check_out_page_event.dart';
@@ -25,12 +27,13 @@ class CheckOutPageBloc extends Bloc<CheckOutPageEvent, CheckOutPageState> {
       CheckOutPagePaymentEvent event, Emitter<CheckOutPageState> emit) async {
     emit(PageLoadingState());
     await Future.delayed(const Duration(seconds: 1));
-    emit(PaymentPageActionState());
+    emit(PaymentPageActionState(subTotal: event.subTotal));
   }
 
   FutureOr<void> checkOutPagePlaceOrderEvent(CheckOutPagePlaceOrderEvent event,
       Emitter<CheckOutPageState> emit) async {
     emit(PageLoadingState());
+    pendingItems.add(event.dataModel);
     await Future.delayed(const Duration(seconds: 2));
     emit(PaymentCompletedActionState());
   }

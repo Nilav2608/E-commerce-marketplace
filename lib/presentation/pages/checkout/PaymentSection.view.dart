@@ -6,9 +6,13 @@ import '../../reuseables/CreditCard.dart';
 class PaymentSectionView extends StatefulWidget {
   final Function(bool?)? onChanged;
   final Function()? onProceedToCheckOut;
+  final double subTotal;
   final bool agreedToTermsAndConditions;
   const PaymentSectionView(
-      {super.key,required this.onChanged, required this.agreedToTermsAndConditions,required this.onProceedToCheckOut});
+      {super.key,
+      required this.onChanged,
+      required this.agreedToTermsAndConditions,
+      required this.onProceedToCheckOut, required this.subTotal});
 
   @override
   State<PaymentSectionView> createState() => _PaymentSectionViewState();
@@ -312,12 +316,12 @@ class _PaymentSectionViewState extends State<PaymentSectionView> {
                 child: Column(
                   children: [
                     //* Product Price
-                    const Padding(
-                      padding: EdgeInsets.all(8.0),
+                     Padding(
+                      padding: const EdgeInsets.all(8.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
+                          const Text(
                             "Product price",
                             style: TextStyle(
                               fontSize: 14,
@@ -326,8 +330,8 @@ class _PaymentSectionViewState extends State<PaymentSectionView> {
                             ),
                           ),
                           Text(
-                            "\$110",
-                            style: TextStyle(
+                            "\$${widget.subTotal.toString()}",
+                            style: const TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w400,
                               color: Colors.black,
@@ -368,12 +372,12 @@ class _PaymentSectionViewState extends State<PaymentSectionView> {
                       color: Color(0xffE8E8E8),
                     ),
                     //* Sub Total
-                    const Padding(
-                      padding: EdgeInsets.all(8.0),
+                     Padding(
+                      padding: const EdgeInsets.all(8.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
+                          const Text(
                             "Sub Total",
                             style: TextStyle(
                               fontSize: 14,
@@ -382,8 +386,8 @@ class _PaymentSectionViewState extends State<PaymentSectionView> {
                             ),
                           ),
                           Text(
-                            "\$110",
-                            style: TextStyle(
+                            "\$${widget.subTotal.toString()}",
+                            style: const TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.w700,
                               color: Colors.black,
@@ -399,9 +403,8 @@ class _PaymentSectionViewState extends State<PaymentSectionView> {
                       children: [
                         Checkbox(
                             activeColor: const Color(0xff508A7B),
-                            value:widget.agreedToTermsAndConditions,
-                            onChanged: widget.onChanged
-                            ),
+                            value: widget.agreedToTermsAndConditions,
+                            onChanged: widget.onChanged),
                         const Text("I agree to",
                             style: TextStyle(
                                 color: Color(0xff575757),
@@ -423,7 +426,6 @@ class _PaymentSectionViewState extends State<PaymentSectionView> {
                       width: 315,
                       child: ElevatedButton(
                           onPressed: widget.onProceedToCheckOut,
-
                           style: const ButtonStyle(
                               backgroundColor:
                                   MaterialStatePropertyAll(Color(0xFF343434))),
