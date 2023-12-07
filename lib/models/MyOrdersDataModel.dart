@@ -9,7 +9,7 @@ class MyOrdersDataModel {
   int? quantity;
   List<CartItemsModel>? orderedItems;
   double? subTotal;
-  int? shippingCharges;
+  double? shippingCharges;
   double? total;
   String? deliveryStatus;
 

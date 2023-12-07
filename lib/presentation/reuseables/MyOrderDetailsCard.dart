@@ -143,7 +143,6 @@ class MyOrderDetailsCard extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              
               Expanded(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -151,11 +150,10 @@ class MyOrderDetailsCard extends StatelessWidget {
                     Container(
                       decoration: BoxDecoration(
                           color: statusBgColor,
-                          
                           borderRadius: BorderRadius.circular(50)),
-                          
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal:12.0,vertical:4),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 12.0, vertical: 4),
                         child: Text(
                           data.deliveryStatus ?? '',
                           style: TextStyle(
@@ -167,7 +165,9 @@ class MyOrderDetailsCard extends StatelessWidget {
                       ),
                     ),
                     OutlinedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context).pushNamed("orderDetailsPage",arguments: data);
+                        },
                         child: const Text("Details",
                             style: TextStyle(
                                 fontSize: 14,

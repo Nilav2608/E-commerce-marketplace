@@ -1,9 +1,10 @@
 import "package:flutter/material.dart";
 
-
 // ignore: depend_on_referenced_packages
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluxestore/models/MyOrdersDataModel.dart';
 import 'package:fluxestore/presentation/landing_page.dart';
+import 'package:fluxestore/presentation/pages/OrderDetailsPage.dart';
 import 'package:fluxestore/presentation/pages/checkout/checkout_main.view.dart';
 import 'package:fluxestore/presentation/pages/my_orders.dart';
 import 'package:fluxestore/presentation/pages/notification_page.dart';
@@ -48,9 +49,10 @@ class MyGenerateRoute {
             ));
       case 'MyOrders':
         return CustomPageTransition(
-          curves:Curves.easeInOutCirc,
-          dx: 1.0, dy: 0.0, child: const MyOrdersPage());
-       
+            curves: Curves.easeInOutCirc,
+            dx: 1.0,
+            dy: 0.0,
+            child: const MyOrdersPage());
 
       case 'settings':
         return CustomPageTransition(
@@ -65,6 +67,14 @@ class MyGenerateRoute {
             child: const CheckOutPage(),
           ),
         );
+      case 'orderDetailsPage':
+        final MyOrdersDataModel myordersData =
+            settings.arguments as MyOrdersDataModel;
+        return CustomPageTransition(
+            curves: Curves.easeInOutCirc,
+            dx: 1.0,
+            dy: 0.0,
+            child:  OrderDetailsPage(data: myordersData,));
 
       default:
         return _errorRoute();

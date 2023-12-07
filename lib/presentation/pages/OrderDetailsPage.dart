@@ -1,0 +1,310 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:fluxestore/models/MyOrdersDataModel.dart';
+
+class OrderDetailsPage extends StatelessWidget {
+  final MyOrdersDataModel data;
+  const OrderDetailsPage({super.key, required this.data});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text("Order ${data.orderID}",
+            style: const TextStyle(
+                color: Colors.black,
+                fontSize: 18,
+                fontWeight: FontWeight.w700)),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          children: [
+            Container(
+              width: double.infinity,
+              height: 92,
+              decoration: BoxDecoration(
+                  color: const Color(0xff575757),
+                  borderRadius: BorderRadius.circular(10)),
+              // ignore: prefer_const_constructors
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    const Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      // mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.symmetric(vertical: 10.0),
+                          child: Text(
+                            "Your order is on the way",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w700),
+                          ),
+                        ),
+                        Text(
+                          "Click here to track your order",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 10,
+                              fontWeight: FontWeight.w600),
+                        ),
+                      ],
+                    ),
+                    SvgPicture.asset("assets/images/Frame.svg")
+                  ],
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            //*Order Details--------------------------------------------------->
+            Container(
+              width: double.infinity,
+              height: 114,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10),
+                boxShadow: const [
+                  BoxShadow(
+                      color: Color(0xffe8e8e8),
+                      blurRadius: 5.0,
+                      offset: Offset(3, 1))
+                ],
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text(
+                          "Order number ",
+                          style: TextStyle(
+                              fontSize: 14,
+                              color: Color.fromARGB(98, 20, 33, 128),
+                              fontWeight: FontWeight.w400),
+                        ),
+                        Text(
+                          data.orderID ?? "",
+                          style: const TextStyle(
+                              fontSize: 14,
+                              color: Color(0xff141416),
+                              fontWeight: FontWeight.w400),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text(
+                          "Tracking number ",
+                          style: TextStyle(
+                              fontSize: 14,
+                              color: Color.fromARGB(98, 20, 33, 128),
+                              fontWeight: FontWeight.w400),
+                        ),
+                        Text(
+                          data.trackingNumber ?? "",
+                          style: const TextStyle(
+                              fontSize: 14,
+                              color: Color(0xff141416),
+                              fontWeight: FontWeight.w400),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text(
+                          "Delivary address ",
+                          style: TextStyle(
+                              fontSize: 14,
+                              color: Color.fromARGB(98, 20, 33, 128),
+                              fontWeight: FontWeight.w400),
+                        ),
+                        Text(
+                          data.deliveryAddress ?? "",
+                          style: const TextStyle(
+                              fontSize: 14,
+                              color: Color(0xff141416),
+                              fontWeight: FontWeight.w400),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+
+            //*Bill------------------------------------------------------------>
+            Container(
+              width: double.infinity,
+              // height: 200,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10),
+                boxShadow: const [
+                  BoxShadow(
+                      color: Color(0xffe8e8e8),
+                      blurRadius: 10.0,
+                      offset: Offset(0, 1))
+                ],
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    LimitedBox(
+                      child: ListView.builder(
+                          itemCount: data.orderedItems!.length,
+                          physics: const NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          itemBuilder: (context, index) {
+                            var itemsData = data.orderedItems![index];
+                            return Expanded(
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    itemsData.productName ?? "",
+                                    style: const TextStyle(
+                                        fontSize: 14,
+                                        color: Color(0xff141416),
+                                        fontWeight: FontWeight.w100),
+                                  ),
+                                  Row(
+                                    children: [
+                                      Text(
+                                        "x${itemsData.quantity.toString()}",
+                                        style: const TextStyle(
+                                            fontSize: 15,
+                                            color: Color(0xff141416),
+                                            fontWeight: FontWeight.w100),
+                                      ),
+                                      const SizedBox(
+                                        width: 50,
+                                      ),
+                                      Text(
+                                        "\$${itemsData.price}",
+                                        style: const TextStyle(
+                                            fontSize: 16,
+                                            color: Color(0xff141416),
+                                            fontWeight: FontWeight.w400),
+                                      ),
+                                    ],
+                                  )
+                                ],
+                              ),
+                            );
+                          }),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text(
+                          "Sub Total",
+                          style: TextStyle(
+                              fontSize: 15,
+                              color: Color(0xff141416),
+                              fontWeight: FontWeight.w100),
+                        ),
+                        Text(
+                          data.subTotal.toString(),
+                          style: const TextStyle(
+                              fontSize: 16,
+                              color: Color(0xff141416),
+                              fontWeight: FontWeight.w700),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text(
+                          "Shipping",
+                          style: TextStyle(
+                              fontSize: 15,
+                              color: Color(0xff141416),
+                              fontWeight: FontWeight.w100),
+                        ),
+                        Text(
+                          data.shippingCharges.toString(),
+                          style: const TextStyle(
+                              fontSize: 16,
+                              color: Color(0xff141416),
+                              fontWeight: FontWeight.w700),
+                        ),
+                      ],
+                    ),
+                    const Divider(color: Color(0xffF3F3F6)),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 12.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text(
+                            "Total",
+                            style: TextStyle(
+                                fontSize: 15,
+                                color: Color(0xff141416),
+                                fontWeight: FontWeight.w100),
+                          ),
+                          Text(
+                            "\$${data.total}",
+                            style: const TextStyle(
+                                fontSize: 16,
+                                color: Color(0xff141416),
+                                fontWeight: FontWeight.w700),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            //*Continue to shopping page--------------------------------------->
+            SizedBox(
+              height: 48,
+              width: double.infinity,
+              child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(context).popAndPushNamed('/');
+                  },
+                  style: const ButtonStyle(
+                      backgroundColor:
+                          MaterialStatePropertyAll(Color(0xFF343434))),
+                  child: const Text(
+                    "Continue shopping",
+                    style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700,
+                        color: Colors.white),
+                  )),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}

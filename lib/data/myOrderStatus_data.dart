@@ -1,3 +1,4 @@
+import 'package:fluxestore/models/CartItemsModel.dart';
 import 'package:fluxestore/models/MyOrdersDataModel.dart';
 
 
@@ -9,11 +10,43 @@ List<MyOrdersDataModel> pendingItems = [
     deliveryAddress: "23 Main Street, City, Country",
     quantity: 2,
     trackingNumber: "IK987362341",
-    orderedItems: [],
+    orderedItems: [
+      CartItemsModel(
+        productName: "White fashion hoodie",
+        quantity: 1,
+        price: 29.00,
+
+      ),
+      CartItemsModel(
+        productName: "White fashion hoodie",
+        quantity: 1,
+        price: 29.00,
+
+      ),
+      // CartItemsModel(
+      //   productName: "White fashion hoodie",
+      //   quantity: 1,
+      //   price: 29.00,
+
+      // ),
+      // CartItemsModel(
+      //   productName: "White fashion hoodie",
+      //   quantity: 1,
+      //   price: 29.00,
+
+      // ),
+      // CartItemsModel(
+      //   productName: "White fashion hoodie",
+      //   quantity: 1,
+      //   price: 29.00,
+
+      // ),
+    ],
     subTotal: 110,
     deliveryStatus: "PENDING",
-    shippingCharges: 0,
+    shippingCharges: 0.0,
     total: 110,
+    
   ),
   MyOrdersDataModel(
     orderID: "#1514",
