@@ -6,7 +6,8 @@ import 'package:fluxestore/presentation/pages/account.dart';
 import 'package:fluxestore/presentation/pages/cart_page.dart';
 import 'package:fluxestore/presentation/pages/home.dart';
 import 'package:fluxestore/presentation/pages/search.dart';
-import 'package:fluxestore/presentation/reuseables/myOrdersList.dart';
+
+import '../presentation/pages/MyOrders/myOrdersList.dart';
 
 const List<String> appBarText = ["Fluxestore", "Search", "Cart", "Account"];
 

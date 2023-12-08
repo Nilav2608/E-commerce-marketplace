@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fluxestore/Business_Logic/CartPage/cart_page_bloc.dart';
 import 'package:fluxestore/data/cart_items.dart';
 import 'package:fluxestore/models/CartItemsModel.dart';
 import 'package:fluxestore/models/MyOrdersDataModel.dart';
@@ -8,6 +7,8 @@ import 'package:fluxestore/presentation/reuseables/Cart_Product_Tile.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 // ignore: depend_on_referenced_packages
 import 'package:lottie/lottie.dart';
+
+import '../../Business_Logic/CartPageBloc/cart_page_bloc.dart';
 
 class CartPage extends StatefulWidget {
   const CartPage({super.key});

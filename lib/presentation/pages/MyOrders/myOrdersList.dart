@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluxestore/models/MyOrdersDataModel.dart';
-import 'package:fluxestore/presentation/reuseables/MyOrderDetailsCard.dart';
+import 'package:fluxestore/presentation/pages/MyOrders/MyOrderDetailsCard.dart';
 
 
 class OrdersList extends StatelessWidget {
@@ -15,7 +15,7 @@ class OrdersList extends StatelessWidget {
         children: [
           Expanded(
             child: ListView.builder(
-              itemCount: 2,
+              itemCount: items.length,
               itemBuilder: (context, index) {
                 var data = items[index];
                 return Padding(

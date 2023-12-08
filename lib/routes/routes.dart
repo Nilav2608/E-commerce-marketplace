@@ -6,14 +6,13 @@ import 'package:fluxestore/models/MyOrdersDataModel.dart';
 import 'package:fluxestore/presentation/landing_page.dart';
 import 'package:fluxestore/presentation/pages/OrderDetailsPage.dart';
 import 'package:fluxestore/presentation/pages/checkout/checkout_main.view.dart';
-import 'package:fluxestore/presentation/pages/my_orders.dart';
 import 'package:fluxestore/presentation/pages/notification_page.dart';
 import 'package:fluxestore/presentation/pages/product_details_page.dart';
 import 'package:fluxestore/presentation/pages/settings_page.dart';
 import 'package:fluxestore/routes/custom_transition_routes.dart';
-
 import '../Business_Logic/landing_page_bloc/landing_page_bloc.dart';
 import '../models/ProducDatatModel.dart';
+import '../presentation/pages/MyOrders/my_orders.dart';
 
 class MyGenerateRoute {
   final LandingPageBloc landingPageBloc = LandingPageBloc();
