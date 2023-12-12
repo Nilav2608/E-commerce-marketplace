@@ -55,7 +55,7 @@ class RecomendedTileWidget extends StatelessWidget {
                     image: NetworkImage(
                       list.imageUrl ?? "",
                     ),
-                    fit: BoxFit.fill,
+                    fit: BoxFit.cover,
                   )),
               const SizedBox(
                 width: 10,

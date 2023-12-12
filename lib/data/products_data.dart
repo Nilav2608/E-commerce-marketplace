@@ -73,7 +73,7 @@ final List<ProducDatatModel> recommendedList = [
       price: 30.00,
       //  imageUrl: "https://firebasestorage.googleapis.com/v0/b/fluxestore-b6cb3.appspot.com/o/LongSleeve.svg?alt=media&token=78afa31e-730e-4a83-9f32-2b3ed8ce335f",
       imageUrl:
-          "https://rmnint.com/wp-content/uploads/2022/07/product-01-a.jpg",
+          "https://images.unsplash.com/photo-1583744946564-b52ac1c389c8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHQlMjBzaGlydHxlbnwwfHwwfHx8MA%3D%3D",
       // imageUrl: "assets/images/LongSleeve.svg",
       sizes: ["S", "M", "L", "XL"],
       colors: [Colors.orangeAccent,Colors.black,Colors.pink],

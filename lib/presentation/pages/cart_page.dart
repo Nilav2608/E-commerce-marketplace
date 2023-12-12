@@ -75,7 +75,9 @@ class _CartPageState extends State<CartPage> {
             return successState.cartSuccessData.isEmpty
                 ? Center(
                     child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
+                        
                         Lottie.asset("assets/lottie/empty_box_lottie.json"),
                         const Text("YOUR CART IS EMPTY"),
                       ],
