@@ -22,46 +22,87 @@ class OrderDetailsPage extends StatelessWidget {
           padding: const EdgeInsets.all(20.0),
           child: Column(
             children: [
-              Container(
-                width: double.infinity,
-                height: 92,
-                decoration: BoxDecoration(
-                    color: const Color(0xff575757),
-                    borderRadius: BorderRadius.circular(10)),
-                // ignore: prefer_const_constructors
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      const Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        // mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.symmetric(vertical: 10.0),
-                            child: Text(
-                              "Your order is on the way",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w700),
+              data.deliveryStatus == "PENDING"
+                  ? Container(
+                      width: double.infinity,
+                      height: 92,
+                      decoration: BoxDecoration(
+                          color: const Color(0xff575757),
+                          borderRadius: BorderRadius.circular(10)),
+                      // ignore: prefer_const_constructors
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            const Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              // mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.symmetric(vertical: 10.0),
+                                  child: Text(
+                                    "Your order is on the way",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w700),
+                                  ),
+                                ),
+                                Text(
+                                  "Click here to track your order",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 10,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                              ],
                             ),
-                          ),
-                          Text(
-                            "Click here to track your order",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 10,
-                                fontWeight: FontWeight.w600),
-                          ),
-                        ],
+                            SvgPicture.asset("assets/images/Frame.svg")
+                          ],
+                        ),
                       ),
-                      SvgPicture.asset("assets/images/Frame.svg")
-                    ],
-                  ),
-                ),
-              ),
+                    )
+                  : Container(
+                      width: double.infinity,
+                      height: 92,
+                      decoration: BoxDecoration(
+                          color: const Color(0xff575757),
+                          borderRadius: BorderRadius.circular(10)),
+                      // ignore: prefer_const_constructors
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            const Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              // mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.symmetric(vertical: 10.0),
+                                  child: Text(
+                                    "Your order is delivered",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w700),
+                                  ),
+                                ),
+                                Text(
+                                  "Rate product to get 5 points for collect.",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 10,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                              ],
+                            ),
+                            SvgPicture.asset("assets/images/delivered.svg")
+                          ],
+                        ),
+                      ),
+                    ),
               const SizedBox(
                 height: 20,
               ),
@@ -148,7 +189,7 @@ class OrderDetailsPage extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-        
+
               //*Bill------------------------------------------------------------>
               Container(
                 width: double.infinity,
@@ -284,25 +325,64 @@ class OrderDetailsPage extends StatelessWidget {
               const SizedBox(
                 height: 30,
               ),
-              //*Continue to shopping page--------------------------------------->
-              SizedBox(
-                height: 48,
-                width: double.infinity,
-                child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.of(context).popAndPushNamed('/');
-                    },
-                    style: const ButtonStyle(
-                        backgroundColor:
-                            MaterialStatePropertyAll(Color(0xFF343434))),
-                    child: const Text(
-                      "Continue shopping",
-                      style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700,
-                          color: Colors.white),
-                    )),
-              )
+              data.deliveryStatus == "PENDING"
+                  ?
+                  //*Continue to shopping page--------------------------------------->
+                  SizedBox(
+                      height: 48,
+                      width: double.infinity,
+                      child: ElevatedButton(
+                          onPressed: () {
+                            Navigator.of(context).popAndPushNamed('/');
+                          },
+                          style: const ButtonStyle(
+                              backgroundColor:
+                                  MaterialStatePropertyAll(Color(0xFF343434))),
+                          child: const Text(
+                            "Continue shopping",
+                            style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w700,
+                                color: Colors.white),
+                          )),
+                    )
+                  : Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        SizedBox(
+                          height: 44,
+                          width: 168,
+                          child: OutlinedButton(
+                              
+                              onPressed: () {
+                                Navigator.of(context).pushNamed('/');
+                              },
+                              child: const Text("Return home",
+                                  style: TextStyle(
+                                      fontSize: 14,
+                                      color: Color(0xff777E90),
+                                      fontWeight: FontWeight.w700))),
+                        ),
+                        SizedBox(
+                          height: 44,
+                          width: 119,
+                          child: ElevatedButton(
+                              onPressed: () {
+                                Navigator.of(context).popAndPushNamed('/');
+                              },
+                              style: const ButtonStyle(
+                                  backgroundColor: MaterialStatePropertyAll(
+                                      Color(0xFF343434))),
+                              child: const Text(
+                                "Rate",
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w700,
+                                    color: Colors.white),
+                              )),
+                        )
+                      ],
+                    )
             ],
           ),
         ),

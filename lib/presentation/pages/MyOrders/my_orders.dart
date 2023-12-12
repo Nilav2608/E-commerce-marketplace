@@ -59,7 +59,7 @@ class _MyOrdersPageState extends State<MyOrdersPage> {
                           });
                           _pageController.animateToPage(
                             tabIndex,
-                            duration: const Duration(milliseconds: 500),
+                            duration: const Duration(milliseconds: 300),
                             curve: Curves.ease,
                           );
                           // print(tabIndex);
