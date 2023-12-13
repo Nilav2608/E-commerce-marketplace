@@ -180,7 +180,7 @@ class _ShippingAddressSectionState extends State<ShippingAddressSection> {
                           }
                         }),
                     const SizedBox(
-                      height: 25,
+                      height: 0,
                     ),
 
                     //*city
@@ -297,15 +297,26 @@ class _ShippingAddressSectionState extends State<ShippingAddressSection> {
                     // const SizedBox(
                     //   height: 25,
                     // ),
-                    CSCPicker(
-                      layout: Layout.vertical,
-                      dropdownDecoration: const BoxDecoration(
-                          border: Border(
-                              bottom:
-                                  BorderSide(width: 1, color: Color(0xffF1F2F3)))),
-                      onCountryChanged: (country) {},
-                      onCityChanged: (city) {},
-                      onStateChanged: (state) {},
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 20.0),
+                      child: CSCPicker(
+                        layout: Layout.vertical,
+                        // dropdownHeadingStyle: const TextStyle(color: Color(0xff777E90)),
+
+                        dropdownDecoration: const BoxDecoration(
+                            border: Border(
+                                bottom: BorderSide(
+                                    width: 0.8, color: Color(0xff000000)))),
+                        disabledDropdownDecoration: const BoxDecoration(
+                            border: Border(
+                                bottom: BorderSide(
+                                    width: 0.8, color: Color(0xff000000)))),
+                        onCountryChanged: (country) {
+                          
+                        },
+                        onCityChanged: (city) {},
+                        onStateChanged: (state) {},
+                      ),
                     ),
                     //*Zip code
                     TextFormField(
@@ -342,7 +353,7 @@ class _ShippingAddressSectionState extends State<ShippingAddressSection> {
                     TextFormField(
                         controller: phoneNumber,
                         decoration: const InputDecoration(
-                          hintText: "phone number",
+                          hintText: "Phone number",
                           focusColor: Colors.black,
                           hintStyle: TextStyle(
                             color: Color(0xff777E90),
