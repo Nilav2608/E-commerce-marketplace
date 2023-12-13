@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:dropdown_textfield/dropdown_textfield.dart';
-
+import 'package:csc_picker/csc_picker.dart';
 import '../../../Business_Logic/CheckOutPageBloc/check_out_page_bloc.dart';
 
-class ShippingSection extends StatefulWidget {
+class ShippingAddressSection extends StatefulWidget {
   final Function()? onPressed;
-  const ShippingSection({
-    super.key,required this.onPressed,
+  const ShippingAddressSection({
+    super.key,
+    required this.onPressed,
   });
 
   @override
-  State<ShippingSection> createState() => _ShippingSectionState();
+  State<ShippingAddressSection> createState() => _ShippingAddressSectionState();
 }
 
 SingleValueDropDownController countryController =
@@ -50,7 +51,7 @@ List data = const [
   DropDownValueModel(name: 'name8', value: "value8"),
 ];
 
-class _ShippingSectionState extends State<ShippingSection> {
+class _ShippingAddressSectionState extends State<ShippingAddressSection> {
   selectedRadioFunc(val) {
     setState(() {
       selectedRadio = val;
@@ -183,121 +184,128 @@ class _ShippingSectionState extends State<ShippingSection> {
                     ),
 
                     //*city
-                    TextFormField(
-                        controller: cityController,
-                        decoration: const InputDecoration(
-                          hintText: "City *",
-                          focusColor: Colors.black,
-                          hintStyle: TextStyle(
-                            color: Color(0xff777E90),
-                            fontSize: 14,
-                            fontWeight: FontWeight.w400,
-                          ),
-                          suffixText: "*", // Asterisk as suffix text
-                          suffixStyle: TextStyle(
-                              color: Colors.red), // Color of the asterisk
-                          focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Colors.black), // Adjust border color
-                          ),
-                        ),
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return "This filed is required";
-                          } else {
-                            return null;
-                          }
-                        }),
-                    const SizedBox(
-                      height: 25,
-                    ),
+                    // TextFormField(
+                    //     controller: cityController,
+                    //     decoration: const InputDecoration(
+                    //       hintText: "City *",
+                    //       focusColor: Colors.black,
+                    //       hintStyle: TextStyle(
+                    //         color: Color(0xff777E90),
+                    //         fontSize: 14,
+                    //         fontWeight: FontWeight.w400,
+                    //       ),
+                    //       suffixText: "*", // Asterisk as suffix text
+                    //       suffixStyle: TextStyle(
+                    //           color: Colors.red), // Color of the asterisk
+                    //       focusedBorder: UnderlineInputBorder(
+                    //         borderSide: BorderSide(
+                    //             color: Colors.black), // Adjust border color
+                    //       ),
+                    //     ),
+                    //     validator: (value) {
+                    //       if (value!.isEmpty) {
+                    //         return "This filed is required";
+                    //       } else {
+                    //         return null;
+                    //       }
+                    //     }),
+                    // const SizedBox(
+                    //   height: 25,
+                    // ),
                     // DropdownButton(
 
                     //   onChanged: (){}),
-                    //  CSCPicker(
-                    //   showCities: false,
-                    //   showStates: false,
+
+                    // DropDownTextField(
+                    //   // initialValue: "name4",
+                    //   controller: countryController,
+                    //   // clearOption: true,
+
+                    //   enableSearch: true,
+                    //   // dropdownColor: Colors.green,
+                    //   searchDecoration:
+                    //       const InputDecoration(hintText: "search country"),
+                    //   validator: (value) {
+                    //     if (value!.isEmpty) {
+                    //       return "Required field";
+                    //     } else {
+                    //       return null;
+                    //     }
+                    //   },
+
+                    //   dropDownItemCount: 6,
+
+                    //   dropDownList: const [
+                    //     DropDownValueModel(name: 'name1', value: "value1"),
+                    //     DropDownValueModel(
+                    //         name: 'name2',
+                    //         value: "value2",
+                    //         toolTipMsg:
+                    //             "DropDownButton is a widget that we can use to select one unique value from a set of values"),
+                    //     DropDownValueModel(name: 'name3', value: "value3"),
+                    //     DropDownValueModel(
+                    //         name: 'name4',
+                    //         value: "value4",
+                    //         toolTipMsg:
+                    //             "DropDownButton is a widget that we can use to select one unique value from a set of values"),
+                    //     DropDownValueModel(name: 'name5', value: "value5"),
+                    //     DropDownValueModel(name: 'name6', value: "value6"),
+                    //     DropDownValueModel(name: 'name7', value: "value7"),
+                    //     DropDownValueModel(name: 'name8', value: "value8"),
+                    //   ],
+                    //   // ignore: prefer_const_constructors
+                    //   textFieldDecoration: InputDecoration(
+                    //     hintText: "Select Country *",
+                    //     focusColor: Colors.black,
+                    //     hintStyle: const TextStyle(
+                    //       color: Color(0xff777E90),
+                    //       fontSize: 14,
+                    //       fontWeight: FontWeight.w400,
+                    //     ),
+                    //     // onChanged: (val) {},
+                    //   ),
                     // ),
-                    DropDownTextField(
-                      // initialValue: "name4",
-                      controller: countryController,
-                      // clearOption: true,
-
-                      enableSearch: true,
-                      // dropdownColor: Colors.green,
-                      searchDecoration:
-                          const InputDecoration(hintText: "search country"),
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return "Required field";
-                        } else {
-                          return null;
-                        }
-                      },
-
-                      dropDownItemCount: 6,
-
-                      dropDownList: const [
-                        DropDownValueModel(name: 'name1', value: "value1"),
-                        DropDownValueModel(
-                            name: 'name2',
-                            value: "value2",
-                            toolTipMsg:
-                                "DropDownButton is a widget that we can use to select one unique value from a set of values"),
-                        DropDownValueModel(name: 'name3', value: "value3"),
-                        DropDownValueModel(
-                            name: 'name4',
-                            value: "value4",
-                            toolTipMsg:
-                                "DropDownButton is a widget that we can use to select one unique value from a set of values"),
-                        DropDownValueModel(name: 'name5', value: "value5"),
-                        DropDownValueModel(name: 'name6', value: "value6"),
-                        DropDownValueModel(name: 'name7', value: "value7"),
-                        DropDownValueModel(name: 'name8', value: "value8"),
-                      ],
-                      // ignore: prefer_const_constructors
-                      textFieldDecoration: InputDecoration(
-                        hintText: "Select Country *",
-                        focusColor: Colors.black,
-                        hintStyle: const TextStyle(
-                          color: Color(0xff777E90),
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400,
-                        ),
-                        // onChanged: (val) {},
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 25,
-                    ),
+                    // const SizedBox(
+                    //   height: 25,
+                    // ),
                     //*state province
-                    TextFormField(
-                        controller: stateProvinceController,
-                        decoration: const InputDecoration(
-                          hintText: "State / Province",
-                          focusColor: Colors.black,
-                          hintStyle: TextStyle(
-                            color: Color(0xff777E90),
-                            fontSize: 14,
-                            fontWeight: FontWeight.w400,
-                          ),
-                          suffixText: "*", // Asterisk as suffix text
-                          suffixStyle: TextStyle(
-                              color: Colors.red), // Color of the asterisk
-                          focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Colors.black), // Adjust border color
-                          ),
-                        ),
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return "This filed is required";
-                          } else {
-                            return null;
-                          }
-                        }),
-                    const SizedBox(
-                      height: 25,
+                    // TextFormField(
+                    //     controller: stateProvinceController,
+                    //     decoration: const InputDecoration(
+                    //       hintText: "State / Province",
+                    //       focusColor: Colors.black,
+                    //       hintStyle: TextStyle(
+                    //         color: Color(0xff777E90),
+                    //         fontSize: 14,
+                    //         fontWeight: FontWeight.w400,
+                    //       ),
+                    //       suffixText: "*", // Asterisk as suffix text
+                    //       suffixStyle: TextStyle(
+                    //           color: Colors.red), // Color of the asterisk
+                    //       focusedBorder: UnderlineInputBorder(
+                    //         borderSide: BorderSide(
+                    //             color: Colors.black), // Adjust border color
+                    //       ),
+                    //     ),
+                    //     validator: (value) {
+                    //       if (value!.isEmpty) {
+                    //         return "This filed is required";
+                    //       } else {
+                    //         return null;
+                    //       }
+                    //     }),
+                    // const SizedBox(
+                    //   height: 25,
+                    // ),
+                    CSCPicker(
+                      layout: Layout.vertical,
+                      dropdownDecoration: const BoxDecoration(
+                          border: Border(
+                              bottom:
+                                  BorderSide(width: 1, color: Color(0xffF1F2F3)))),
+                      onCountryChanged: (country) {},
+                      onCityChanged: (city) {},
+                      onStateChanged: (state) {},
                     ),
                     //*Zip code
                     TextFormField(
@@ -305,6 +313,7 @@ class _ShippingSectionState extends State<ShippingSection> {
                         decoration: const InputDecoration(
                           hintText: "Zip code *",
                           focusColor: Colors.black,
+                          // border: OutlineInputBorder(borderSide: BorderSide(color: Color(0xffF1F2F3))),
                           hintStyle: TextStyle(
                             color: Color(0xff777E90),
                             fontSize: 14,

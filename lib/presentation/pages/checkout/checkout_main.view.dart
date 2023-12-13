@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluxestore/models/MyOrdersDataModel.dart';
 import 'package:fluxestore/presentation/pages/checkout/PaymentSection.view.dart';
-import 'package:fluxestore/presentation/pages/checkout/ShippingSection.view.dart';
+import 'package:fluxestore/presentation/pages/checkout/ShippingAddressSection.view.dart';
 // ignore: depend_on_referenced_packages
 import 'package:lottie/lottie.dart';
 import '../../../Business_Logic/CheckOutPageBloc/check_out_page_bloc.dart';
@@ -78,7 +78,7 @@ class _CheckOutPageState extends State<CheckOutPage> {
                             paymentState: false,
                             completedState: false,
                           ),
-                          ShippingSection(
+                          ShippingAddressSection(
                             onPressed: () {
                               if (formKey.currentState!.validate()) {
                                 checkOutPageBloc.add(CheckOutPagePaymentEvent(
