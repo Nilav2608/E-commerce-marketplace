@@ -1,4 +1,5 @@
 import 'package:fluxestore/models/CartItemsModel.dart';
+import 'package:fluxestore/models/DelivaryAddressModel.dart';
 import 'package:fluxestore/models/MyOrdersDataModel.dart';
 
 
@@ -7,7 +8,10 @@ List<MyOrdersDataModel> pendingItems = [
   MyOrdersDataModel(
     orderID: "#1514",
     date: DateTime.now().toString(),
-    deliveryAddress: "23 Main Street, City, Country",
+    deliveryAddress: DeliveryAddress(
+      street: "23 Main Street",
+      city: "Santa Fe"
+    ),
     quantity: 2,
     trackingNumber: "IK987362341",
     orderedItems: [
@@ -51,7 +55,10 @@ List<MyOrdersDataModel> pendingItems = [
   MyOrdersDataModel(
     orderID: "#1514",
     date: DateTime.now().toString(),
-    deliveryAddress: "23 Main Street, City, Country",
+    deliveryAddress: DeliveryAddress(
+      street: "23 Main Street",
+      city: "Santa Fe"
+    ),
     quantity: 2,
     trackingNumber: "IK987362341",
     orderedItems: [],
@@ -68,7 +75,10 @@ List<MyOrdersDataModel> deliveredItems = [
   MyOrdersDataModel(
     orderID: "#1501",
     date: DateTime.now().toString(),
-    deliveryAddress: "23 Main Street, City, Country",
+    deliveryAddress: DeliveryAddress(
+      street: "23 Main Street",
+      city: "Santa Fe"
+    ),
     quantity: 1,
     trackingNumber: "IK987362341",
     orderedItems: [],
@@ -80,7 +90,10 @@ List<MyOrdersDataModel> deliveredItems = [
   MyOrdersDataModel(
     orderID: "#1502",
     date: DateTime.now().toString(),
-    deliveryAddress: "23 Main Street, City, Country",
+    deliveryAddress: DeliveryAddress(
+      street: "23 Main Street",
+      city: "Santa Fe"
+    ),
     quantity: 6,
     trackingNumber: "IK987362341",
     orderedItems: [],
@@ -97,7 +110,10 @@ List<MyOrdersDataModel> cancelledItems = [
   MyOrdersDataModel(
     orderID: "#1501",
     date: DateTime.now().toString(),
-    deliveryAddress: "23 Main Street, City, Country",
+    deliveryAddress: DeliveryAddress(
+      street: "23 Main Street",
+      city: "Santa Fe"
+    ),
     quantity: 1,
     trackingNumber: "IK987362341",
     orderedItems: [],
@@ -109,7 +125,10 @@ List<MyOrdersDataModel> cancelledItems = [
   MyOrdersDataModel(
     orderID: "#15099",
     date: DateTime.now().toString(),
-    deliveryAddress: "23 Main Street, City, Country",
+    deliveryAddress: DeliveryAddress(
+      street: "23 Main Street",
+      city: "Santa Fe"
+    ),
     quantity: 6,
     trackingNumber: "IK987362341",
     orderedItems: [

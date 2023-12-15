@@ -174,7 +174,7 @@ class OrderDetailsPage extends StatelessWidget {
                                 fontWeight: FontWeight.w400),
                           ),
                           Text(
-                            data.deliveryAddress ?? "",
+                            "${data.deliveryAddress!.street??''}, ${data.deliveryAddress!.city??''}",
                             style: const TextStyle(
                                 fontSize: 14,
                                 color: Color(0xff141416),
@@ -216,41 +216,39 @@ class OrderDetailsPage extends StatelessWidget {
                             shrinkWrap: true,
                             itemBuilder: (context, index) {
                               var itemsData = data.orderedItems![index];
-                              return Expanded(
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      itemsData.productName ?? "",
-                                      style: const TextStyle(
-                                          fontSize: 14,
-                                          color: Color(0xff141416),
-                                          fontWeight: FontWeight.w100),
-                                    ),
-                                    Row(
-                                      children: [
-                                        Text(
-                                          "x${itemsData.quantity.toString()}",
-                                          style: const TextStyle(
-                                              fontSize: 15,
-                                              color: Color(0xff141416),
-                                              fontWeight: FontWeight.w100),
-                                        ),
-                                        const SizedBox(
-                                          width: 50,
-                                        ),
-                                        Text(
-                                          "\$${itemsData.price}",
-                                          style: const TextStyle(
-                                              fontSize: 16,
-                                              color: Color(0xff141416),
-                                              fontWeight: FontWeight.w400),
-                                        ),
-                                      ],
-                                    )
-                                  ],
-                                ),
+                              return Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    itemsData.productName ?? "",
+                                    style: const TextStyle(
+                                        fontSize: 14,
+                                        color: Color(0xff141416),
+                                        fontWeight: FontWeight.w100),
+                                  ),
+                                  Row(
+                                    children: [
+                                      Text(
+                                        "x${itemsData.quantity.toString()}",
+                                        style: const TextStyle(
+                                            fontSize: 15,
+                                            color: Color(0xff141416),
+                                            fontWeight: FontWeight.w100),
+                                      ),
+                                      const SizedBox(
+                                        width: 50,
+                                      ),
+                                      Text(
+                                        "\$${itemsData.price}",
+                                        style: const TextStyle(
+                                            fontSize: 16,
+                                            color: Color(0xff141416),
+                                            fontWeight: FontWeight.w400),
+                                      ),
+                                    ],
+                                  )
+                                ],
                               );
                             }),
                       ),

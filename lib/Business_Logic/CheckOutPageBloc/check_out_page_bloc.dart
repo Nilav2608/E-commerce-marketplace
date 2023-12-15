@@ -4,6 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:fluxestore/data/cart_items.dart';
 import 'package:fluxestore/data/myOrderStatus_data.dart';
+import 'package:fluxestore/models/DelivaryAddressModel.dart';
 import 'package:fluxestore/models/MyOrdersDataModel.dart';
 import 'package:meta/meta.dart';
 
@@ -29,12 +30,16 @@ class CheckOutPageBloc extends Bloc<CheckOutPageEvent, CheckOutPageState> {
       CheckOutPagePaymentEvent event, Emitter<CheckOutPageState> emit) async {
     emit(PageLoadingState());
     await Future.delayed(const Duration(seconds: 1));
-    emit(PaymentPageActionState(subTotal: event.subTotal));
+    emit(PaymentPageActionState(
+        subTotal: event.subTotal, address: event.addressData));
   }
 
   FutureOr<void> checkOutPagePlaceOrderEvent(CheckOutPagePlaceOrderEvent event,
       Emitter<CheckOutPageState> emit) async {
     emit(PageLoadingState());
+
+    event.dataModel.deliveryAddress = event.addressData;
+
     pendingItems.add(event.dataModel);
     debugPrint("data added");
     debugPrint(pendingItems.length.toString());
@@ -46,7 +51,7 @@ class CheckOutPageBloc extends Bloc<CheckOutPageEvent, CheckOutPageState> {
         cartItems.remove(currentOrderedItems[i]);
       }
     }
-     debugPrint("cart after deletion");
+    debugPrint("cart after deletion");
     debugPrint(cartItems.length.toString());
     await Future.delayed(const Duration(seconds: 2));
     emit(PaymentCompletedActionState());

@@ -1,11 +1,13 @@
 // ignore: file_names
+import 'package:fluxestore/models/DelivaryAddressModel.dart';
+
 import 'CartItemsModel.dart';
 
 class MyOrdersDataModel {
   String? orderID;
   String? trackingNumber;
   String? date;
-  String? deliveryAddress;
+  DeliveryAddress? deliveryAddress;
   int? quantity;
   List<CartItemsModel>? orderedItems;
   double? subTotal;
@@ -40,7 +42,8 @@ class MyOrdersDataModel {
     subTotal = json['subTotal'];
     shippingCharges = json['shippingCharges'];
     total = json['total'];
-    deliveryStatus = json['deliveryStatus'];
+    deliveryAddress = DeliveryAddress.fromJson(json['deliveryAddress']);
+  
   }
 
   Map<String, dynamic> toJson() {
@@ -56,7 +59,7 @@ class MyOrdersDataModel {
     data['subTotal'] = subTotal;
     data['shippingCharges'] = shippingCharges;
     data['total'] = total;
-    data['deliveryStatus'] = deliveryStatus;
+    data['deliveryAddress'] = deliveryAddress?.toJson();
     return data;
   }
 }

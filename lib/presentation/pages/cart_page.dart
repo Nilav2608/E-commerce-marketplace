@@ -9,6 +9,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 
 import '../../Business_Logic/CartPageBloc/cart_page_bloc.dart';
+import '../../models/DelivaryAddressModel.dart';
 
 class CartPage extends StatefulWidget {
   const CartPage({super.key});
@@ -47,7 +48,7 @@ class _CartPageState extends State<CartPage> {
     }
     return MyOrdersDataModel(
         date: DateTime.now().toString(),
-        deliveryAddress: "23 Main Street, City, Country",
+        deliveryAddress: DeliveryAddress(),
         deliveryStatus: "PENDING",
         orderID: "5555",
         orderedItems: selectedItems,

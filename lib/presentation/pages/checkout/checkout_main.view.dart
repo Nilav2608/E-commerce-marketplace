@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluxestore/models/DelivaryAddressModel.dart';
 import 'package:fluxestore/models/MyOrdersDataModel.dart';
 import 'package:fluxestore/presentation/pages/checkout/PaymentSection.view.dart';
 import 'package:fluxestore/presentation/pages/checkout/ShippingAddressSection.view.dart';
@@ -79,10 +80,11 @@ class _CheckOutPageState extends State<CheckOutPage> {
                             completedState: false,
                           ),
                           ShippingAddressSection(
-                            onPressed: () {
+                            onPressed: (DeliveryAddress deliveryAddress) {
                               if (formKey.currentState!.validate()) {
                                 checkOutPageBloc.add(CheckOutPagePaymentEvent(
-                                    subTotal: widget.myOrdersData.subTotal!));
+                                     
+                                    subTotal: widget.myOrdersData.subTotal!, addressData: deliveryAddress));
                                 ScaffoldMessenger.of(context).showSnackBar(
                                     const SnackBar(
                                         content: Text("Submitting form")));
@@ -114,7 +116,8 @@ class _CheckOutPageState extends State<CheckOutPage> {
                               if (agreedToTermsAndConditions) {
                                 checkOutPageBloc.add(
                                     CheckOutPagePlaceOrderEvent(
-                                        dataModel: widget.myOrdersData));
+                                       
+                                        dataModel: widget.myOrdersData, addressData: successData.address));
                               } else {
                                 ScaffoldMessenger.of(context)
                                     .showSnackBar(const SnackBar(

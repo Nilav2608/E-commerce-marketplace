@@ -15,8 +15,9 @@ class PageLoadedSuccessState extends CheckOutPageState {}
 
 class PaymentPageActionState extends CheckOutPageActionState {
   final double subTotal;
+  final DeliveryAddress address;
 
-  PaymentPageActionState({required this.subTotal});
+  PaymentPageActionState({required this.address,required this.subTotal});
 }
 
 class PlaceOrderActionSate extends CheckOutPageActionState {}

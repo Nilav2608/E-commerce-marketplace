@@ -16,14 +16,15 @@ class CheckOutInitialEvent extends CheckOutPageEvent {
 
 class CheckOutPagePaymentEvent extends CheckOutInitialEvent {
   final double subTotal;
-
-  CheckOutPagePaymentEvent( {required this.subTotal});
+    final DeliveryAddress addressData;
+  CheckOutPagePaymentEvent({required this.addressData,required this.subTotal});
 }
 
 class CheckOutPagePlaceOrderEvent extends CheckOutInitialEvent {
   final MyOrdersDataModel dataModel;
+   final DeliveryAddress addressData;
 
-  CheckOutPagePlaceOrderEvent({required this.dataModel});
+  CheckOutPagePlaceOrderEvent(  {required this.addressData,required this.dataModel, });
 }
 
 class NavigateBackToHomePageEvent extends CheckOutInitialEvent {}

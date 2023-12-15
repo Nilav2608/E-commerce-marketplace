@@ -7,6 +7,7 @@ import 'package:fluxestore/presentation/pages/cart_page.dart';
 import 'package:fluxestore/presentation/pages/home.dart';
 import 'package:fluxestore/presentation/pages/search.dart';
 
+
 import '../presentation/pages/MyOrders/myOrdersList.dart';
 
 const List<String> appBarText = ["Fluxestore", "Search", "Cart", "Account"];
@@ -38,3 +39,28 @@ List<Widget> myOrderStatusContainer = [
   OrdersList(items: deliveredItems),
   OrdersList(items: cancelledItems),
 ];
+
+//  MyOrdersDataModel myOrdersDataMapper(
+//       List<CartItemsModel> cartItems, double subTotal) {
+//     List<CartItemsModel> selectedItems = [];
+//     int totalQuantity = 0;
+//     for (int i = 0; i < cartItems.length; i++) {
+//       if (cartItems[i].selected!) {
+//         selectedItems.add(cartItems[i]);
+//       }
+//     }
+//     for (var i = 0; i < selectedItems.length; i++) {
+//       totalQuantity += selectedItems[i].quantity!;
+//     }
+//     return MyOrdersDataModel(
+//         date: DateTime.now().toString(),
+//         deliveryAddress: DeliveryAddress(),
+//         deliveryStatus: "PENDING",
+//         orderID: "5555",
+//         orderedItems: selectedItems,
+//         quantity: totalQuantity,
+//         shippingCharges: 0.00,
+//         subTotal: subTotal,
+//         total: subTotal,
+//         trackingNumber: "IK987362341");
+//   }
