@@ -194,6 +194,7 @@ class _ShippingAddressSectionState extends State<ShippingAddressSection> {
                       padding: const EdgeInsets.symmetric(vertical: 20.0),
                       child: CSCPicker(
                         layout: Layout.vertical,
+                        flagState: CountryFlag.DISABLE,
                         // dropdownHeadingStyle: const TextStyle(color: Color(0xff777E90)),
 
                         dropdownDecoration: const BoxDecoration(
