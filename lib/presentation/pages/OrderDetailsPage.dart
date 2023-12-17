@@ -170,7 +170,7 @@ class OrderDetailsPage extends StatelessWidget {
                             "Delivary address ",
                             style: TextStyle(
                                 fontSize: 14,
-                                color: Color.fromARGB(98, 20, 33, 128),
+                                color: Color.fromARGB(97, 96, 97, 109),
                                 fontWeight: FontWeight.w400),
                           ),
                           Text(

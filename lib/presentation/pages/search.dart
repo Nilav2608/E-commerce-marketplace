@@ -9,11 +9,21 @@ class SearchPage extends StatefulWidget {
   State<SearchPage> createState() => _SearchPageState();
 }
 
+List availableColors = const [
+  Color(0xffCE8722),
+  Color(0xffDC4447),
+  Color(0xff181E27),
+  Color(0xff44565C),
+  Color(0xffE4E4E4),
+  Color(0xff6D4F44),
+  Color(0xffDFA8A9),
+];
+
 class _SearchPageState extends State<SearchPage> {
+  RangeValues _currentRangeValues = const RangeValues(10, 100);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
@@ -89,22 +99,20 @@ class _SearchPageState extends State<SearchPage> {
                           //   offset: Offset(0, 2)
                           // )
                         ]),
-                    child: Builder(
-                      builder: (context) {
-                        return IconButton(
-                          onPressed: () {
-                            Scaffold.of(context).openEndDrawer();
-                          },
-                          icon:
-                              // SecondaryIcons.filter_outlined,
-                              SvgPicture.asset("assets/images/search_filter.svg"),
-                          // color: const Color(0xff777E90),
-                        );
-                      }
-                    ))
+                    child: Builder(builder: (context) {
+                      return IconButton(
+                        onPressed: () {
+                          Scaffold.of(context).openEndDrawer();
+                        },
+                        icon:
+                            // SecondaryIcons.filter_outlined,
+                            SvgPicture.asset("assets/images/search_filter.svg"),
+                        // color: const Color(0xff777E90),
+                      );
+                    }))
               ],
             ),
-            
+
             //* To USE A LIST VIEW OR LIST VIEW BUILDER INSIDE A COLUMN(NORMAL USECASE) -
             //* -USE EXPANDED WIDGET TO WRAP THE CHILD LIST VIEW
 
@@ -317,48 +325,120 @@ class _SearchPageState extends State<SearchPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            //Logo
-            Column(
-              children: [
-                DrawerHeader(
-                  duration: const Duration(milliseconds: 200),
-                  // padding: EdgeInsets.zero,
-                  margin: EdgeInsets.zero,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text("Filter"),
-                      SvgPicture.asset("assets/images/search_filter.svg")
-                    ],
-                  ),
-                ),
-                const Padding(
-                  padding: EdgeInsets.only(left: 25),
-                  child: ListTile(
-                    leading: Icon(
-                      Icons.home_rounded,
-                      color: Colors.white,
-                    ),
-                    title: Text(
-                      "Home",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ),
-                ),
-                const Padding(
-                  padding: EdgeInsets.only(left: 25),
-                  child: ListTile(
-                    leading: Icon(
-                      Icons.info_rounded,
-                      color: Colors.white,
-                    ),
-                    title: Text(
-                      "About",
-                      style: TextStyle(color: Colors.white),
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 12.0, vertical: 12),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    width: double.infinity,
+                    height: 70,
+                    child: DrawerHeader(
+                      duration: const Duration(milliseconds: 200),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 0, vertical: 8),
+                      margin: EdgeInsets.zero,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text(
+                            "Filter",
+                            style: TextStyle(fontWeight: FontWeight.w700),
+                          ),
+                          SvgPicture.asset(
+                            "assets/images/search_filter.svg",
+                            colorFilter: const ColorFilter.mode(
+                                Color(0xff33302E), BlendMode.srcIn),
+                          )
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  const Text(
+                    "Price",
+                    style: TextStyle(fontWeight: FontWeight.w400),
+                  ),
+                  const SizedBox(
+                    height: 5,
+                  ),
+                  SliderTheme(
+                    data: SliderTheme.of(context).copyWith(
+                        trackHeight: 2,
+                        thumbColor: Colors.white54,
+                        // thumbShape: CustomSliderThumbShape(),
+                        // overlayShape:
+                        //     const RoundSliderOverlayShape(overlayRadius: 18.0),
+                        valueIndicatorColor: Colors.black),
+                    child: Stack(children: [
+                      RangeSlider(
+                          values: _currentRangeValues,
+                          activeColor: const Color(0xff33302E),
+                          inactiveColor:
+                              const Color.fromARGB(255, 167, 167, 187),
+                          min: 10,
+                          max: 100,
+                          // labels: RangeLabels(
+                          //     "\$${_currentRangeValues.start.toStringAsFixed(2)}",
+                          //     "\$${_currentRangeValues.end.toStringAsFixed(2)}"),
+                          // divisions: 10,
+                          onChanged: (RangeValues values) {
+                            setState(() {
+                              _currentRangeValues = values;
+                            });
+                          }),
+                      Positioned(
+                        top: 35,
+                        left: 12,
+                        right: 12,
+                        bottom: 0,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              '\$${_currentRangeValues.start.toStringAsFixed(0)}',
+                              style: const TextStyle(fontSize: 12),
+                            ),
+                            Text(
+                              '\$${_currentRangeValues.end.toStringAsFixed(0)}',
+                              style: const TextStyle(fontSize: 12),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ]),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  const Text(
+                    "Color",
+                    style: TextStyle(fontWeight: FontWeight.w400),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: List.generate(
+                      availableColors.length,
+                      (index) => Container(
+                        height: 22,
+                        width: 22,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: availableColors[index],
+                        ),
+                      ),
+                    ),
+                  )
+                  
+                ],
+              ),
             ),
             const Padding(
               padding: EdgeInsets.only(left: 25, bottom: 25),
@@ -379,3 +459,39 @@ class _SearchPageState extends State<SearchPage> {
     );
   }
 }
+
+// class CustomSliderThumbShape extends SliderComponentShape {
+//   @override
+//   Size getPreferredSize(bool isEnabled, bool isDiscrete) {
+//     return const Size(14.0, 28.0); // Adjust the size of the thumb as needed
+//   }
+
+//   @override
+//   void paint(PaintingContext context, Offset center,
+//       {required Animation<double> activationAnimation,
+//       required Animation<double> enableAnimation,
+//       required bool isDiscrete,
+//       required TextPainter labelPainter,
+//       required RenderBox parentBox,
+//       required SliderThemeData sliderTheme,
+//       required TextDirection textDirection,
+//       required double value,
+//       required double textScaleFactor,
+//       required Size sizeWithOverflow}) {
+//     final Canvas canvas = context.canvas;
+
+//     final paint = Paint()
+//       ..color = Colors.transparent // Transparent fill color for the thumb
+//       ..strokeWidth = 2.0 // Border width
+//       ..style = PaintingStyle.stroke;
+
+//     canvas.drawCircle(center, 14.0, paint); // Adjust the radius for the thumb
+
+//     final borderPaint = Paint()
+//       ..color = Colors.black // Border color
+//       ..strokeWidth = 2.0 // Border width
+//       ..style = PaintingStyle.stroke;
+
+//     canvas.drawCircle(center, 14.0, borderPaint); // Ad
+//   }
+// }
