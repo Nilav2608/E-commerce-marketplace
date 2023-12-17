@@ -19,6 +19,8 @@ List availableColors = const [
   Color(0xffDFA8A9),
 ];
 
+int selectedIndex = 0;
+
 class _SearchPageState extends State<SearchPage> {
   RangeValues _currentRangeValues = const RangeValues(10, 100);
   @override
@@ -426,17 +428,24 @@ class _SearchPageState extends State<SearchPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: List.generate(
                       availableColors.length,
-                      (index) => Container(
-                        height: 22,
-                        width: 22,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: availableColors[index],
+                      (index) => GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            selectedIndex = index;
+                          });
+                        },
+                        child: Container(
+                          height: 22,
+                          width: 22,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            border: Border.all(color: selectedIndex == index?  Colors.black : Colors.transparent),
+                            color: availableColors[index],
+                          ),
                         ),
                       ),
                     ),
                   )
-                  
                 ],
               ),
             ),
