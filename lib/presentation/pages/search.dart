@@ -20,6 +20,7 @@ List availableColors = const [
 ];
 
 int selectedIndex = 0;
+int selectedRating = 0;
 
 class _SearchPageState extends State<SearchPage> {
   RangeValues _currentRangeValues = const RangeValues(10, 100);
@@ -439,8 +440,66 @@ class _SearchPageState extends State<SearchPage> {
                           width: 22,
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
-                            border: Border.all(color: selectedIndex == index?  Colors.black : Colors.transparent),
+                            border: Border.all(
+                                color: selectedIndex == index
+                                    ? Colors.black
+                                    : Colors.transparent),
                             color: availableColors[index],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  const Text(
+                    "Star Rating",
+                    style: TextStyle(fontWeight: FontWeight.w400),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: List.generate(
+                      5,
+                      (index) => GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            selectedRating = index;
+                          });
+                        },
+                        child: Container(
+                          height: 38,
+                          width: 38,
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              border: Border.all(color: Colors.black, width: 2),
+                              color: selectedRating == index
+                                  ? Colors.black
+                                  : Colors.white),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              SvgPicture.asset(
+                                "assets/images/star.svg",
+                                colorFilter: ColorFilter.mode(
+                                    selectedRating == index
+                                        ? Colors.white
+                                        : Colors.black,
+                                    BlendMode.srcIn),
+                              ),
+                              Text(
+                                "${index + 1}",
+                                style: TextStyle(
+                                    color: selectedRating == index
+                                        ? Colors.white
+                                        : Colors.black,
+                                    fontWeight: FontWeight.w700),
+                              )
+                            ],
                           ),
                         ),
                       ),
