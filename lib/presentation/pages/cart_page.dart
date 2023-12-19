@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fluxestore/data/cart_items.dart';
 import 'package:fluxestore/models/CartItemsModel.dart';
 import 'package:fluxestore/models/MyOrdersDataModel.dart';
+import 'package:fluxestore/presentation/pages/checkout/checkout_main.view.dart';
 import 'package:fluxestore/presentation/reuseables/Cart_Product_Tile.dart';
 // ignore: depend_on_referenced_packages
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -78,7 +79,6 @@ class _CartPageState extends State<CartPage> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        
                         Lottie.asset("assets/lottie/empty_box_lottie.json"),
                         const Text("YOUR CART IS EMPTY"),
                       ],
@@ -195,11 +195,32 @@ class _CartPageState extends State<CartPage> {
                               child: ElevatedButton(
                                   onPressed: () {
                                     if (successState.subTotal != 0) {
-                                      var resluts = myOrdersDataMapper(
+                                      var results = myOrdersDataMapper(
                                           successState.cartSuccessData,
                                           successState.subTotal);
-                                      Navigator.pushNamed(context, "checkOut",
-                                          arguments: resluts);
+                                      // Navigator.pushNamed(context, "checkOut",
+                                      //     arguments: resluts);
+
+                                      Navigator.push(
+                                        context,
+                                        PageRouteBuilder(
+                                          pageBuilder: (context, animation,
+                                              secondaryAnimation) {
+                                            return CheckOutPage(
+                                              myOrdersData: results,
+                                            );
+                                          },
+                                          transitionsBuilder: (context,
+                                              animation,
+                                              secondaryAnimation,
+                                              child) {
+                                            return FadeTransition(
+                                              opacity: animation,
+                                              child: child,
+                                            );
+                                          },
+                                        ),
+                                      );
                                     } else {
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(const SnackBar(

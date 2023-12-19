@@ -10,12 +10,14 @@ import 'package:fluxestore/presentation/pages/notification_page.dart';
 import 'package:fluxestore/presentation/pages/product_details_page.dart';
 import 'package:fluxestore/presentation/pages/settings_page.dart';
 import 'package:fluxestore/routes/custom_transition_routes.dart';
+import '../Business_Logic/CheckOutPageBloc/check_out_page_bloc.dart';
 import '../Business_Logic/landing_page_bloc/landing_page_bloc.dart';
 import '../models/ProducDatatModel.dart';
 import '../presentation/pages/MyOrders/my_orders.dart';
 
 class MyGenerateRoute {
   final LandingPageBloc landingPageBloc = LandingPageBloc();
+  final CheckOutPageBloc checkOutPageBloc = CheckOutPageBloc();
   Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case "/":
@@ -63,8 +65,8 @@ class MyGenerateRoute {
         final MyOrdersDataModel myordersData =
             settings.arguments as MyOrdersDataModel;
         return MaterialPageRoute(
-          builder: (_) => BlocProvider<LandingPageBloc>.value(
-            value: landingPageBloc,
+          builder: (_) => BlocProvider<CheckOutPageBloc>.value(
+            value: checkOutPageBloc,
             child:  CheckOutPage( myOrdersData: myordersData,),
           ),
         );

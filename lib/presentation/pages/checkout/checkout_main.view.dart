@@ -65,9 +65,9 @@ class _CheckOutPageState extends State<CheckOutPage> {
                 builder: (context, state) {
                   switch (state.runtimeType) {
                     case PageLoadingState:
-                      return const Center(
-                        child: CircularProgressIndicator(),
-                      );
+                      return const AlertDialog(
+                            content: CircularProgressIndicator(),
+                          );
 
                     case CheckOutPageBlocInitialState:
                       return Column(
