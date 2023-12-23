@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:fluxestore/data/collections_data.dart';
+import 'package:fluxestore/models/BannersDataModel.dart';
 import 'package:fluxestore/presentation/reuseables/collections_list_tile.dart';
 
 class CollectionsPage extends StatelessWidget {
-  const CollectionsPage({super.key});
+  final BannersDataModel bannerData;
+  const CollectionsPage({super.key, required this.bannerData});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +16,7 @@ class CollectionsPage extends StatelessWidget {
             child: Image.network(
               width: double.infinity,
               height: 270,
-              "https://fashinza.com/textile/wp-content/uploads/2023/03/Mononchromes-1024x683.jpg",
+              bannerData.imagePath,
               // "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=60&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y2xvdGhpbmclMjBtb2RlbCUyMHBvc2V8ZW58MHx8MHx8fDA%3D"
               fit: BoxFit.cover,
             ),
@@ -42,17 +44,17 @@ class CollectionsPage extends StatelessWidget {
               ),
             ],
           ),
-          const Row(
+           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Padding(
-                padding: EdgeInsets.only(right: 45, top: 60),
+                padding: const EdgeInsets.only(right: 44, top: 51),
                 child: SizedBox(
-                  width: 100,
-                  height: 100,
+                  width: 120,
+                  height: 120,
                   child: Text(
-                    "Autumn Collection 2023",
-                    style: TextStyle(
+                    bannerData.text,
+                    style: const TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.w700,
                         color: Colors.white),
@@ -76,7 +78,7 @@ class CollectionsPage extends StatelessWidget {
                   height: double.infinity,
                   width: 141,
                   child: GridView.builder(
-                    itemCount: 20,
+                    itemCount: seasonCollectionsData.length,
                     scrollDirection: Axis.vertical,
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
@@ -89,12 +91,16 @@ class CollectionsPage extends StatelessWidget {
                         scrollController, // Assign scrollController here
 
                     itemBuilder: (context, index) {
-                      var data = seasonCollectionsData[0];
+                      var data = seasonCollectionsData[index];
                       return Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 18.0, vertical: 10),
-                        child: CollectionsListTile(
-                          product: data,
+                        child: InkWell(
+                          onTap: () => Navigator.of(context)
+                              .pushNamed("productDetails", arguments: data),
+                          child: CollectionsListTile(
+                            product: data,
+                          ),
                         ),
                       );
                     },

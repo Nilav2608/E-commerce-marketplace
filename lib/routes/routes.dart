@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 
 // ignore: depend_on_referenced_packages
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluxestore/models/BannersDataModel.dart';
 import 'package:fluxestore/models/MyOrdersDataModel.dart';
 import 'package:fluxestore/presentation/landing_page.dart';
 import 'package:fluxestore/presentation/pages/OrderDetailsPage.dart';
@@ -36,11 +37,13 @@ class MyGenerateRoute {
             dy: 0.0,
             curves: Curves.easeInOutCirc);
       case 'viewCollections':
+        final BannersDataModel data =
+            settings.arguments as BannersDataModel;
         return CustomPageTransition(
             dx: 0.0,
             dy: 1.0,
             curves: Curves.easeInOutCirc,
-            child: const CollectionsPage());
+            child: CollectionsPage(bannerData: data,));
       case 'productDetails':
         final ProductDatatModel productData =
             settings.arguments as ProductDatatModel;

@@ -28,38 +28,43 @@ class _CurosalSliderWidgetState extends State<CurosalSliderWidget> {
               carouselController: caroselController,
               items: items
                   .map(
-                    (e) => Stack(children: [
-                      Image.network(e["image_path"],
-                          fit: BoxFit.cover,
-                          // width: 412
-                          width: 500),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Column(
-                            children: [
-                              const SizedBox(
-                                height: 20,
-                              ),
-                              SizedBox(
-                                width: 116,
-                                height: 93,
-                                child: Text(
-                                  e["text"],
-                                  style: const TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.w700,
-                                      color: Colors.white),
+                    (e) => InkWell(
+                      onTap: () {
+                        Navigator.of(context).pushNamed("viewCollections",arguments: e);
+                      },
+                      child: Stack(children: [
+                        Image.network(e.imagePath,
+                            fit: BoxFit.cover,
+                            // width: 412
+                            width: 500),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            Column(
+                              children: [
+                                const SizedBox(
+                                  height: 20,
                                 ),
-                              ),
-                            ],
-                          )
-                        ],
-                      )
-                    ]),
+                                SizedBox(
+                                  width: 116,
+                                  height: 93,
+                                  child: Text(
+                                    e.text,
+                                    style: const TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.w700,
+                                        color: Colors.white),
+                                  ),
+                                ),
+                              ],
+                            )
+                          ],
+                        )
+                      ]),
+                    ),
                   )
                   .toList(),
               options: CarouselOptions(
