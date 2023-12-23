@@ -1,4 +1,4 @@
-class ProducDatatModel {
+class ProductDatatModel {
   int? id;
   String? productName;
   String? imageUrl;
@@ -8,7 +8,7 @@ class ProducDatatModel {
   List<String>? sizes;
   List? colors;
 
-  ProducDatatModel(
+  ProductDatatModel(
       {this.id,
       this.productName,
       this.imageUrl,
@@ -19,7 +19,7 @@ class ProducDatatModel {
       this.sizes
       });
 
-  ProducDatatModel.fromJson(Map<String, dynamic> json) {
+  ProductDatatModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     productName = json['productName'];
     imageUrl = json['imageUrl'];

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluxestore/data/products_data.dart';
-import 'package:fluxestore/models/ProducDatatModel.dart';
+import '../../models/ProducDatatModel.dart';
 
 class RecomendedProductsListTile extends StatelessWidget {
   const RecomendedProductsListTile({super.key});
@@ -13,10 +13,11 @@ class RecomendedProductsListTile extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         itemCount: recommendedList.length,
         itemBuilder: (context, index) {
-          ProducDatatModel productData = recommendedList[index];
+          ProductDatatModel productData = recommendedList[index];
           return InkWell(
               onTap: () {
-                Navigator.of(context).pushNamed("productDetails",arguments: productData);
+                Navigator.of(context)
+                    .pushNamed("productDetails", arguments: productData);
               },
               child: RecomendedTileWidget(list: productData));
         },
@@ -31,7 +32,7 @@ class RecomendedTileWidget extends StatelessWidget {
     required this.list,
   });
 
-  final ProducDatatModel list;
+  final ProductDatatModel list;
 
   @override
   Widget build(BuildContext context) {

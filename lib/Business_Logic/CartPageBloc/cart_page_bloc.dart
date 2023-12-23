@@ -4,7 +4,6 @@ import 'package:bloc/bloc.dart';
 import 'package:fluxestore/data/cart_items.dart';
 import 'package:fluxestore/models/CartItemsModel.dart';
 // ignore: unused_import
-import 'package:fluxestore/models/ProducDatatModel.dart';
 import 'package:meta/meta.dart';
 
 part 'cart_page_event.dart';
@@ -18,16 +17,15 @@ class CartPageBloc extends Bloc<CartPageEvent, CartPageState> {
 
   FutureOr<void> cartPageInitialEvent(
       CartPageInitialEvent event, Emitter<CartPageState> emit) {
-   
-
-    emit(CartSuccessState(cartSuccessData: cartItems, subTotal: subTotal(cartItems)));
+    emit(CartSuccessState(
+        cartSuccessData: cartItems, subTotal: subTotal(cartItems)));
   }
 
   FutureOr<void> removeAnItemFromCartEvent(
       RemoveAnItemFromCartEvent event, Emitter<CartPageState> emit) {
-    
     cartItems.remove(event.product);
 
-    emit(CartSuccessState(cartSuccessData: cartItems, subTotal: subTotal(cartItems)));
+    emit(CartSuccessState(
+        cartSuccessData: cartItems, subTotal: subTotal(cartItems)));
   }
 }

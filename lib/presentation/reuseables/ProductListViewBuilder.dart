@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:fluxestore/models/ProducDatatModel.dart';
 import 'package:fluxestore/presentation/reuseables/product_list_tile.dart';
+
+import '../../models/ProducDatatModel.dart';
 
 class ProductListViewBuilder extends StatelessWidget {
   final dynamic items;
@@ -16,15 +17,16 @@ class ProductListViewBuilder extends StatelessWidget {
         physics: const BouncingScrollPhysics(),
         itemCount: items.length,
         itemBuilder: (context, index) {
-          ProducDatatModel producData = items[index];
+          ProductDatatModel producData = items[index];
           return Padding(
             padding: const EdgeInsets.only(left: 20.0, right: 0),
             child: InkWell(
-                onTap: () {
-                  Navigator.of(context).pushNamed("productDetails",arguments: producData);
-                },
-                child: ProductCardTile(product: producData),
-              ),
+              onTap: () {
+                Navigator.of(context)
+                    .pushNamed("productDetails", arguments: producData);
+              },
+              child: ProductCardTile(product: producData),
+            ),
           );
         },
       ),

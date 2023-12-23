@@ -6,6 +6,7 @@ import 'package:fluxestore/models/MyOrdersDataModel.dart';
 import 'package:fluxestore/presentation/landing_page.dart';
 import 'package:fluxestore/presentation/pages/OrderDetailsPage.dart';
 import 'package:fluxestore/presentation/pages/checkout/checkout_main.view.dart';
+import 'package:fluxestore/presentation/pages/collections_page.dart';
 import 'package:fluxestore/presentation/pages/notification_page.dart';
 import 'package:fluxestore/presentation/pages/product_details_page.dart';
 import 'package:fluxestore/presentation/pages/settings_page.dart';
@@ -29,18 +30,20 @@ class MyGenerateRoute {
         );
 
       case 'notifications':
-        // return MaterialPageRoute(
-        //   builder: (context) => const NotificationPage(),
-        //   settings: settings
-        // );
         return CustomPageTransition(
             child: const NotificationPage(),
             dx: 1.0,
             dy: 0.0,
             curves: Curves.easeInOutCirc);
+      case 'viewCollections':
+        return CustomPageTransition(
+            dx: 0.0,
+            dy: 1.0,
+            curves: Curves.easeInOutCirc,
+            child: const CollectionsPage());
       case 'productDetails':
-        final ProducDatatModel productData =
-            settings.arguments as ProducDatatModel;
+        final ProductDatatModel productData =
+            settings.arguments as ProductDatatModel;
         return CustomPageTransition(
             dx: 0.0,
             dy: 1.0,
@@ -67,7 +70,9 @@ class MyGenerateRoute {
         return MaterialPageRoute(
           builder: (_) => BlocProvider<CheckOutPageBloc>.value(
             value: checkOutPageBloc,
-            child:  CheckOutPage( myOrdersData: myordersData,),
+            child: CheckOutPage(
+              myOrdersData: myordersData,
+            ),
           ),
         );
       case 'orderDetailsPage':

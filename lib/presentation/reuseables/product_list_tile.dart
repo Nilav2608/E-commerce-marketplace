@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:fluxestore/models/ProducDatatModel.dart';
+
+import '../../models/ProducDatatModel.dart';
 
 class ProductCardTile extends StatelessWidget {
-  final ProducDatatModel product;
+  final ProductDatatModel product;
   const ProductCardTile({super.key, required this.product});
 
   @override

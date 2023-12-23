@@ -16,7 +16,7 @@ import '../../models/ProducDatatModel.dart';
 import '../reuseables/ProductReviewsTile.dart';
 
 class ProductDetailsPage extends StatefulWidget {
-  final ProducDatatModel data;
+  final ProductDatatModel data;
   const ProductDetailsPage({super.key, required this.data});
 
   @override
@@ -68,7 +68,7 @@ bool favorite = false;
 double horizontal = 20;
 double vertical = 5;
 
-CartItemsModel mapProductsFromProductDataModel(ProducDatatModel data) {
+CartItemsModel mapProductsFromProductDataModel(ProductDatatModel data) {
   return CartItemsModel(
       id: data.id.toString(),
       productName: data.productName,
@@ -341,7 +341,9 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                                   children: [
                                                     for (int i = 0;
                                                         i <
-                                                            widget.data.colors!.length;i++)
+                                                            widget.data.colors!
+                                                                .length;
+                                                        i++)
                                                       GestureDetector(
                                                         onTap: () {
                                                           setState(() {
@@ -371,20 +373,26 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                                                     Container(
                                                                         // color: Colors.white,
                                                                         decoration: BoxDecoration(
-                                                                            color:
-                                                                                Colors.white,
-                                                                            shape: BoxShape.circle,
-                                                                            border: Border.all(width: currentColorIndex == i ? 3 : 0, color: Colors.white),
+                                                                            color: Colors
+                                                                                .white,
+                                                                            shape: BoxShape
+                                                                                .circle,
+                                                                            border: Border.all(
+                                                                                width: currentColorIndex == i
+                                                                                    ? 3
+                                                                                    : 0,
+                                                                                color: Colors
+                                                                                    .white),
                                                                             boxShadow: [
                                                                               currentColorIndex == i ? BoxShadow(blurRadius: 6, color: Colors.grey.shade400, offset: const Offset(0.001, 6), spreadRadius: 0.5) : const BoxShadow()
                                                                             ]),
                                                                         child: CircleAvatar(
-                                                                          radius:
-                                                                              12,
-                                                                          backgroundColor:
-                                                                           widget.data.colors![i]
-                                                                              // Color(colorsIsSelected[i].color),
-                                                                        )),
+                                                                            radius:
+                                                                                12,
+                                                                            backgroundColor:
+                                                                                widget.data.colors![i]
+                                                                            // Color(colorsIsSelected[i].color),
+                                                                            )),
                                                               ),
                                                             ],
                                                           ),
