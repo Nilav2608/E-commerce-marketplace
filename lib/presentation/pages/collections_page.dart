@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluxestore/data/collections_data.dart';
-import 'package:fluxestore/models/BannersDataModel.dart';
+import 'package:fluxestore/models/banners_data_model.dart';
 import 'package:fluxestore/presentation/reuseables/collections_list_tile.dart';
 
 class CollectionsPage extends StatelessWidget {

@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:fluxestore/data/cart_items.dart';
-import 'package:fluxestore/models/CartItemsModel.dart';
+import 'package:fluxestore/models/cart_items_model.dart';
 // ignore: unused_import
 import 'package:meta/meta.dart';
 

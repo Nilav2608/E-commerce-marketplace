@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:fluxestore/Business_Logic/ProductDetailsPageBloc/product_details_page_bloc.dart';
 import 'package:fluxestore/data/product_recomendation_data.dart';
-import 'package:fluxestore/models/CartItemsModel.dart';
-import 'package:fluxestore/models/ColorsCatagoryModel.dart';
-import 'package:fluxestore/models/ProductReviewModel.dart';
+import 'package:fluxestore/models/cart_items_model.dart';
+import 'package:fluxestore/models/colors_category_model.dart';
+import 'package:fluxestore/models/product_review_model.dart';
 import 'package:fluxestore/presentation/Icons/primary_icons_icons.dart';
 // ignore: depend_on_referenced_packages
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:fluxestore/presentation/Icons/secondary_icons_icons.dart';
-import 'package:fluxestore/presentation/reuseables/ProductListViewBuilder.dart';
-import 'package:fluxestore/presentation/reuseables/ExpansionPanel.dart';
-import 'package:fluxestore/presentation/reuseables/ProductRatingProgressBars.dart';
+import 'package:fluxestore/presentation/reuseables/product_list_view_builder.dart';
+import 'package:fluxestore/presentation/reuseables/expansion_panel.dart';
+import 'package:fluxestore/presentation/reuseables/product_rating_progress_bars.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../models/ProducDatatModel.dart';
-import '../reuseables/ProductReviewsTile.dart';
+import '../../models/product_data_model.dart';
+import '../reuseables/product_reviews_tile.dart';
 
 class ProductDetailsPage extends StatefulWidget {
   final ProductDatatModel data;

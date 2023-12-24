@@ -21,5 +21,5 @@ class NewIcon {
   static const _kFontFam = 'NewIcon';
   static const String? _kFontPkg = null;
 
-  static const IconData filter_big = IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData filterBig = IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }

@@ -1,4 +1,4 @@
-import 'package:fluxestore/models/BannersDataModel.dart';
+import 'package:fluxestore/models/banners_data_model.dart';
 
 final List<BannersDataModel> items = [
   BannersDataModel(

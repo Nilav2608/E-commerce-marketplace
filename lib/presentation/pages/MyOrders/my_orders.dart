@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluxestore/constants/constants.dart';
-import 'package:fluxestore/models/TabCatagoryModel.dart';
+import 'package:fluxestore/models/tab_catagory_model.dart';
 
 class MyOrdersPage extends StatefulWidget {
   const MyOrdersPage({super.key});

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fluxestore/data/myOrderStatus_data.dart';
+import 'package:fluxestore/data/my_order_status_data.dart';
 import 'package:fluxestore/presentation/Icons/primary_icons_icons.dart';
 import 'package:fluxestore/presentation/Icons/secondary_icons_icons.dart';
 import 'package:fluxestore/presentation/pages/account.dart';
@@ -8,7 +8,7 @@ import 'package:fluxestore/presentation/pages/home.dart';
 import 'package:fluxestore/presentation/pages/search.dart';
 
 
-import '../presentation/pages/MyOrders/myOrdersList.dart';
+import '../presentation/pages/MyOrders/my_orders_list.dart';
 
 const List<String> appBarText = ["Fluxestore", "Search", "Cart", "Account"];
 

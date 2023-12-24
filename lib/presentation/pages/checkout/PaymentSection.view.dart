@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../reuseables/CreditCard.dart';
+import '../../reuseables/credit_card.dart';
 
 class PaymentSectionView extends StatefulWidget {
   final Function(bool?)? onChanged;

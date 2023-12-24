@@ -5,7 +5,7 @@ import 'package:bloc/bloc.dart';
 import 'package:fluxestore/data/cart_items.dart';
 import 'package:meta/meta.dart';
 
-import '../../models/CartItemsModel.dart';
+import '../../models/cart_items_model.dart';
 
 part 'product_details_page_event.dart';
 part 'product_details_page_state.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:fluxestore/models/MyOrdersDataModel.dart';
+import 'package:fluxestore/models/my_orders_data_model.dart';
 
 class OrderDetailsPage extends StatelessWidget {
   final MyOrdersDataModel data;

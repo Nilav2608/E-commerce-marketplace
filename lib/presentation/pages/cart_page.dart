@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:fluxestore/data/cart_items.dart';
-import 'package:fluxestore/models/CartItemsModel.dart';
-import 'package:fluxestore/models/MyOrdersDataModel.dart';
+import 'package:fluxestore/models/cart_items_model.dart';
+import 'package:fluxestore/models/my_orders_data_model.dart';
 import 'package:fluxestore/presentation/pages/checkout/checkout_main.view.dart';
-import 'package:fluxestore/presentation/reuseables/Cart_Product_Tile.dart';
+import 'package:fluxestore/presentation/reuseables/cart_product_tile.dart';
 // ignore: depend_on_referenced_packages
 import 'package:flutter_bloc/flutter_bloc.dart';
 // ignore: depend_on_referenced_packages
 import 'package:lottie/lottie.dart';
 
 import '../../Business_Logic/CartPageBloc/cart_page_bloc.dart';
-import '../../models/DelivaryAddressModel.dart';
+import '../../models/delivery_address_model.dart';
 
 class CartPage extends StatefulWidget {
   const CartPage({super.key});

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:dropdown_textfield/dropdown_textfield.dart';
 import 'package:csc_picker/csc_picker.dart';
-import 'package:fluxestore/models/DelivaryAddressModel.dart';
+import 'package:fluxestore/models/delivery_address_model.dart';
 import '../../../Business_Logic/CheckOutPageBloc/check_out_page_bloc.dart';
 
 class ShippingAddressSection extends StatefulWidget {
@@ -15,8 +14,7 @@ class ShippingAddressSection extends StatefulWidget {
   State<ShippingAddressSection> createState() => _ShippingAddressSectionState();
 }
 
-SingleValueDropDownController countryController =
-    SingleValueDropDownController();
+
 
 TextEditingController firstNameController = TextEditingController();
 TextEditingController lastNameController = TextEditingController();

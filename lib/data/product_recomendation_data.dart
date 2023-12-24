@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../models/ProducDatatModel.dart';
+import '../models/product_data_model.dart';
 
 List<ProductDatatModel> recomendationsList = [
   ProductDatatModel(

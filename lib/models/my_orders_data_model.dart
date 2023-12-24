@@ -1,7 +1,8 @@
-// ignore: file_names
-import 'package:fluxestore/models/DelivaryAddressModel.dart';
 
-import 'CartItemsModel.dart';
+
+
+import 'cart_items_model.dart';
+import 'delivery_address_model.dart';
 
 class MyOrdersDataModel {
   String? orderID;

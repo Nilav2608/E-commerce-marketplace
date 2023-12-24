@@ -3,10 +3,9 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:fluxestore/data/cart_items.dart';
-import 'package:fluxestore/data/myOrderStatus_data.dart';
-import 'package:fluxestore/models/DelivaryAddressModel.dart';
-import 'package:fluxestore/models/MyOrdersDataModel.dart';
-import 'package:meta/meta.dart';
+import 'package:fluxestore/data/my_order_status_data.dart';
+import 'package:fluxestore/models/delivery_address_model.dart';
+import 'package:fluxestore/models/my_orders_data_model.dart';
 
 part 'check_out_page_event.dart';
 part 'check_out_page_state.dart';

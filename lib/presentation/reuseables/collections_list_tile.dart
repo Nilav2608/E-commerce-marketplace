@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fluxestore/models/ProducDatatModel.dart';
+import 'package:fluxestore/models/product_data_model.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 import '../Icons/primary_icons_icons.dart';

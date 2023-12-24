@@ -1,6 +1,6 @@
-import 'package:fluxestore/models/CartItemsModel.dart';
-import 'package:fluxestore/models/DelivaryAddressModel.dart';
-import 'package:fluxestore/models/MyOrdersDataModel.dart';
+import 'package:fluxestore/models/cart_items_model.dart';
+import 'package:fluxestore/models/delivery_address_model.dart';
+import 'package:fluxestore/models/my_orders_data_model.dart';
 
 
 // ^ PENDING STATUS ITEMS

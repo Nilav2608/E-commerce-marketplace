@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fluxestore/models/ProductReviewModel.dart';
+import 'package:fluxestore/models/product_review_model.dart';
 // ignore: depend_on_referenced_packages
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 // ignore: depend_on_referenced_packages

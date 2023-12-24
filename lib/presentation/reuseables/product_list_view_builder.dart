@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluxestore/presentation/reuseables/product_list_tile.dart';
 
-import '../../models/ProducDatatModel.dart';
+import '../../models/product_data_model.dart';
 
 class ProductListViewBuilder extends StatelessWidget {
   final dynamic items;

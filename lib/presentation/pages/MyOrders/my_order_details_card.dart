@@ -1,6 +1,6 @@
 // ignore: file_names
 
-import 'package:fluxestore/models/MyOrdersDataModel.dart';
+import 'package:fluxestore/models/my_orders_data_model.dart';
 // ignore: depend_on_referenced_packages
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
