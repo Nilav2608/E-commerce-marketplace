@@ -687,6 +687,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                       headingText: "Similar Product",
                                       body: ProductListViewBuilder(
                                         items: recomendationsList,
+                                        requiredItemCount: 3,
                                       )),
 
                                   const SizedBox(

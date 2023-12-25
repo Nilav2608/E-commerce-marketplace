@@ -2,11 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:fluxestore/data/cart_items.dart';
 import 'package:fluxestore/models/cart_items_model.dart';
 import 'package:fluxestore/models/my_orders_data_model.dart';
-import 'package:fluxestore/presentation/pages/checkout/checkout_main.view.dart';
 import 'package:fluxestore/presentation/reuseables/cart_product_tile.dart';
-// ignore: depend_on_referenced_packages
 import 'package:flutter_bloc/flutter_bloc.dart';
-// ignore: depend_on_referenced_packages
 import 'package:lottie/lottie.dart';
 
 import '../../Business_Logic/CartPageBloc/cart_page_bloc.dart';
@@ -198,29 +195,29 @@ class _CartPageState extends State<CartPage> {
                                       var results = myOrdersDataMapper(
                                           successState.cartSuccessData,
                                           successState.subTotal);
-                                      // Navigator.pushNamed(context, "checkOut",
-                                      //     arguments: resluts);
+                                      Navigator.of(context)
+                                          .pushNamed('checkOut',arguments: results);
 
-                                      Navigator.push(
-                                        context,
-                                        PageRouteBuilder(
-                                          pageBuilder: (context, animation,
-                                              secondaryAnimation) {
-                                            return CheckOutPage(
-                                              myOrdersData: results,
-                                            );
-                                          },
-                                          transitionsBuilder: (context,
-                                              animation,
-                                              secondaryAnimation,
-                                              child) {
-                                            return FadeTransition(
-                                              opacity: animation,
-                                              child: child,
-                                            );
-                                          },
-                                        ),
-                                      );
+                                      // Navigator.push(
+                                      //   context,
+                                      //   PageRouteBuilder(
+                                      //     pageBuilder: (context, animation,
+                                      //         secondaryAnimation) {
+                                      //       return CheckOutPage(
+                                      //         myOrdersData: results,
+                                      //       );
+                                      //     },
+                                      //     transitionsBuilder: (context,
+                                      //         animation,
+                                      //         secondaryAnimation,
+                                      //         child) {
+                                      //       return FadeTransition(
+                                      //         opacity: animation,
+                                      //         child: child,
+                                      //       );
+                                      //     },
+                                      //   ),
+                                      // );
                                     } else {
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(const SnackBar(

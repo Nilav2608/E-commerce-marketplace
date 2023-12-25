@@ -5,7 +5,8 @@ import '../../models/product_data_model.dart';
 
 class ProductListViewBuilder extends StatelessWidget {
   final dynamic items;
-  const ProductListViewBuilder({super.key, required this.items});
+  final int? requiredItemCount;
+  const ProductListViewBuilder({super.key, required this.items,required this.requiredItemCount});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +16,7 @@ class ProductListViewBuilder extends StatelessWidget {
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         physics: const BouncingScrollPhysics(),
-        itemCount: items.length,
+        itemCount: requiredItemCount,
         itemBuilder: (context, index) {
           ProductDatatModel producData = items[index];
           return Padding(

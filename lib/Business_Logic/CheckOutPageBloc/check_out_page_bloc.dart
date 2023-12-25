@@ -21,7 +21,7 @@ class CheckOutPageBloc extends Bloc<CheckOutPageEvent, CheckOutPageState> {
   Future<FutureOr<void>> checkOutInitialEvent(
       CheckOutInitialEvent event, Emitter<CheckOutPageState> emit) async {
     emit(PageLoadingState());
-    await Future.delayed(const Duration(seconds: 3));
+    // await Future.delayed(const Duration(seconds: 3));
     emit(CheckOutPageBlocInitialState());
   }
 

@@ -44,7 +44,7 @@ dependencies:
   flutter_bloc: ^8.1.3
   csc_picker: ^0.2.7
   carousel_slider: ^4.2.1
-
+  lottie: ^2.7.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -59,7 +59,7 @@ dev_dependencies:
   customizable_counter: ^1.0.4
   step_progress_indicator: ^1.0.2
   dropdown_textfield: ^1.0.8
-  lottie: ^2.7.0
+  
   
 
   flutter_launcher_icons: ^0.13.1

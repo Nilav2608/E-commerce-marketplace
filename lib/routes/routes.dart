@@ -68,15 +68,15 @@ class MyGenerateRoute {
             dx: 1.0,
             dy: 0.0,
             child: const SettingsPage());
-      case 'checkOut':
-        final MyOrdersDataModel myordersData =
-            settings.arguments as MyOrdersDataModel;
-        return MaterialPageRoute(
-          builder: (_) => CheckOutPage(
-            myOrdersData: myordersData,
-          ),
-        );
-      case "/checkOut":
+      // case 'checkOut':
+      //   final MyOrdersDataModel myordersData =
+      //       settings.arguments as MyOrdersDataModel;
+      //   return MaterialPageRoute(
+      //     builder: (_) => CheckOutPage(
+      //       myOrdersData: myordersData,
+      //     ),
+      //   );
+      case "checkOut":
         final MyOrdersDataModel myordersData =
             settings.arguments as MyOrdersDataModel;
         return MaterialPageRoute(

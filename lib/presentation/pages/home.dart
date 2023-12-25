@@ -88,7 +88,7 @@ class _HomePageState extends State<HomePage> {
             // SizedBox(
             //   height: 15,
             // ),
-             ProductListViewBuilder(items: productsList),
+             ProductListViewBuilder(items: productsList,requiredItemCount: 4,),
             const BannerCards(
                 width: 400,
                 height: 162,
