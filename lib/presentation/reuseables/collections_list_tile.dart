@@ -1,15 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:fluxestore/Business_Logic/WishListPageBloc/wish_list_page_bloc.dart';
+import 'package:fluxestore/data/wish_listed_data.dart';
 import 'package:fluxestore/models/product_data_model.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 import '../Icons/primary_icons_icons.dart';
 
+
+
 class CollectionsListTile extends StatefulWidget {
   final ProductDataModel product;
+  final WishListPageBloc wishListPageBloc;
 
   const CollectionsListTile({
     super.key,
     required this.product,
+    required this.wishListPageBloc,
   });
 
   @override
@@ -19,6 +25,13 @@ class CollectionsListTile extends StatefulWidget {
 bool isFavorite = false;
 
 class _CollectionsListTileState extends State<CollectionsListTile> {
+  favoriteCheck() {
+    if (widget.product.favorite!) {
+      wishListedItems.add(widget.product);
+    } else {
+      wishListedItems.remove(widget.product);
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -35,7 +48,7 @@ class _CollectionsListTileState extends State<CollectionsListTile> {
                   // clipBehavior: Clip.hardEdge, // Add border radius
                   child: Image.network(
                     width: 141,
-                    // height: 186,
+                    height: 186,
                     widget.product.imageUrl.toString(),
                     fit: BoxFit.cover, // Adjust the fit as needed
                   ),
@@ -60,14 +73,18 @@ class _CollectionsListTileState extends State<CollectionsListTile> {
                             ),
                             onPressed: () {
                               setState(() {
-                                isFavorite = !isFavorite;
+                                widget.product.favorite =
+                                    !widget.product.favorite!;
                               });
+                              widget.wishListPageBloc.add(
+                                  RemoveItemFromWishListEvent(
+                                      productDataModel: widget.product));
                             },
                             icon: Icon(
                               PrimaryIcons.heart,
                               size: 16,
                               // color: Color(0xffD8D8D8),
-                              color: isFavorite
+                              color: widget.product.favorite!
                                   ? const Color(0xffFF6E6E)
                                   : const Color(0xffD8D8D8),
                             )),

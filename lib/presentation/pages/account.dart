@@ -109,7 +109,8 @@ class AccountPage extends StatelessWidget {
                   child: Divider(
                     color: Color(0xffF3F3F6),
                 )),
-                const AccountPageUtilsRow(
+                 AccountPageUtilsRow(
+                  onTap: () => Navigator.of(context).pushNamed("WishListPage"),
                   icon: PrimaryIcons.heart,
                   text: "My Wishlist",
                   size: 23,

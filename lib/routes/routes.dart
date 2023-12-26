@@ -11,6 +11,7 @@ import 'package:fluxestore/presentation/pages/collections_page.dart';
 import 'package:fluxestore/presentation/pages/notification_page.dart';
 import 'package:fluxestore/presentation/pages/product_details_page.dart';
 import 'package:fluxestore/presentation/pages/settings_page.dart';
+import 'package:fluxestore/presentation/pages/wish_list_page.dart';
 import 'package:fluxestore/routes/custom_transition_routes.dart';
 import '../Business_Logic/CheckOutPageBloc/check_out_page_bloc.dart';
 import '../Business_Logic/landing_page_bloc/landing_page_bloc.dart';
@@ -61,7 +62,6 @@ class MyGenerateRoute {
             dx: 1.0,
             dy: 0.0,
             child: const MyOrdersPage());
-
       case 'settings':
         return CustomPageTransition(
             curves: Curves.easeInOutCirc,
@@ -97,7 +97,12 @@ class MyGenerateRoute {
             child: OrderDetailsPage(
               data: myordersData,
             ));
-
+      case 'WishListPage':
+        return CustomPageTransition(
+            curves: Curves.easeInOutCirc,
+            dx: 1.0,
+            dy: 0.0,
+            child: const WishListPage());
       default:
         return _errorRoute();
     }

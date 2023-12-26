@@ -33,13 +33,9 @@ class ProductDetailsPageBloc
       WishListButtonClickedEvent event, Emitter<ProductDetailsPageState> emit) {
     if (event.isWishListed) {
       wishListedItems.add(event.product);
-       
-      print(wishListedItems);
     } else {
       wishListedItems.remove(event.product);
-      
-      print(wishListedItems);
     }
-     emit(ProductDetailsPageSuccessState(isWishListed: event.isWishListed));
+    emit(ProductDetailsPageSuccessState(isWishListed: event.isWishListed));
   }
 }

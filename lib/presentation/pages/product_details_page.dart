@@ -86,6 +86,14 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
     productDetailsPageBloc.add(ProductDetailsPageInitialEvent());
     super.initState();
   }
+
+  void onFavoriteStatusChanged(bool newFavoriteStatus) {
+    // Update the product's favorite status here
+
+    // Navigate back to the wishlist page
+    Navigator.of(context).pop(newFavoriteStatus);
+  }
+
   // int? sizeLength = widget.data.sizes?.length;
   @override
   Widget build(BuildContext context) {
@@ -180,7 +188,8 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                   ),
                                 ),
                                 onPressed: () {
-                                  Navigator.of(context).pop();
+                                  onFavoriteStatusChanged(
+                                      widget.data.favorite!);
                                 },
                                 icon: const Icon(
                                     Icons.arrow_back_ios_new_rounded)),
@@ -208,6 +217,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                       WishListButtonClickedEvent(
                                           isWishListed: widget.data.favorite!,
                                           product: widget.data));
+                                  
                                 },
                                 icon: Icon(
                                   PrimaryIcons.heart,

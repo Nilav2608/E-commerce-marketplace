@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:fluxestore/Business_Logic/WishListPageBloc/wish_list_page_bloc.dart';
 import 'package:fluxestore/data/collections_data.dart';
 import 'package:fluxestore/models/banners_data_model.dart';
 import 'package:fluxestore/presentation/reuseables/collections_list_tile.dart';
 
 class CollectionsPage extends StatelessWidget {
   final BannersDataModel bannerData;
-  const CollectionsPage({super.key, required this.bannerData});
-
+  CollectionsPage({super.key, required this.bannerData});
+  final WishListPageBloc wishListPageBloc = WishListPageBloc();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,7 +45,7 @@ class CollectionsPage extends StatelessWidget {
               ),
             ],
           ),
-           Row(
+          Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Padding(
@@ -100,6 +101,7 @@ class CollectionsPage extends StatelessWidget {
                               .pushNamed("productDetails", arguments: data),
                           child: CollectionsListTile(
                             product: data,
+                            wishListPageBloc: wishListPageBloc,
                           ),
                         ),
                       );
