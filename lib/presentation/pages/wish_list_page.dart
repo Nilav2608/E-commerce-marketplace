@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluxestore/Business_Logic/WishListPageBloc/wish_list_page_bloc.dart';
 import 'package:fluxestore/data/wish_listed_data.dart';
+import 'package:lottie/lottie.dart';
 import '../reuseables/collections_list_tile.dart';
 
 class WishListPage extends StatefulWidget {
@@ -31,7 +32,7 @@ class _WishListPageState extends State<WishListPage> {
         switch (state.runtimeType) {
           case WishListProductClickedActionState:
             final productState = state as WishListProductClickedActionState;
-            final updatedData = Navigator.of(context).pushNamed(
+             Navigator.of(context).pushNamed(
                 "productDetails",
                 arguments: productState.productDataModel);
             // wishListPageBloc.add(RemoveItemFromWishListEvent(
@@ -131,7 +132,15 @@ class _WishListPageState extends State<WishListPage> {
                         ],
                       ),
                     ),
-                    Expanded(
+                 wishListSuccessState.wishlistedItemsList.isEmpty ?   Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Lottie.asset("assets/lottie/empty_wishList_lottie.json"),
+                      ],
+                    ),
+                  ) :
+                     Expanded(
                       child: SizedBox(
                         height: double.infinity,
                         width: double.infinity,
