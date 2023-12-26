@@ -1,4 +1,4 @@
-class ProductDatatModel {
+class ProductDataModel {
   int? id;
   String? productName;
   String? imageUrl;
@@ -7,8 +7,9 @@ class ProductDatatModel {
   int? ratings;
   List<String>? sizes;
   List? colors;
+  bool? favorite;
 
-  ProductDatatModel(
+  ProductDataModel(
       {this.id,
       this.productName,
       this.imageUrl,
@@ -16,10 +17,10 @@ class ProductDatatModel {
       this.descriptionn,
       this.ratings,
       this.colors,
-      this.sizes
-      });
+      this.favorite,
+      this.sizes});
 
-  ProductDatatModel.fromJson(Map<String, dynamic> json) {
+  ProductDataModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     productName = json['productName'];
     imageUrl = json['imageUrl'];
@@ -28,6 +29,7 @@ class ProductDatatModel {
     ratings = json['ratings'];
     sizes = json['sizes'].cast<String>();
     colors = json['colors'].cast();
+    favorite =json['favorite'];
   }
 
   Map<String, dynamic> toJson() {
@@ -40,7 +42,7 @@ class ProductDatatModel {
     data['ratings'] = ratings;
     data['sizes'] = sizes;
     data['colors'] = colors;
+    data['favorite'] = favorite;
     return data;
   }
-
 }

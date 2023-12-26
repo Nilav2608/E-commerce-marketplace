@@ -5,7 +5,6 @@ import 'package:fluxestore/models/cart_items_model.dart';
 import 'package:fluxestore/models/colors_category_model.dart';
 import 'package:fluxestore/models/product_review_model.dart';
 import 'package:fluxestore/presentation/Icons/primary_icons_icons.dart';
-// ignore: depend_on_referenced_packages
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:fluxestore/presentation/Icons/secondary_icons_icons.dart';
 import 'package:fluxestore/presentation/reuseables/product_list_view_builder.dart';
@@ -16,7 +15,7 @@ import '../../models/product_data_model.dart';
 import '../reuseables/product_reviews_tile.dart';
 
 class ProductDetailsPage extends StatefulWidget {
-  final ProductDatatModel data;
+  final ProductDataModel data;
   const ProductDetailsPage({super.key, required this.data});
 
   @override
@@ -63,12 +62,11 @@ bool selectedSize = false;
 bool _isDescriptionExpanded = true;
 bool _isReviewsExpanded = true;
 bool _isSimilarProductsExpanded = true;
-bool favorite = false;
 
 double horizontal = 20;
 double vertical = 5;
 
-CartItemsModel mapProductsFromProductDataModel(ProductDatatModel data) {
+CartItemsModel mapProductsFromProductDataModel(ProductDataModel data) {
   return CartItemsModel(
       id: data.id.toString(),
       productName: data.productName,
@@ -88,7 +86,6 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
     productDetailsPageBloc.add(ProductDetailsPageInitialEvent());
     super.initState();
   }
-
   // int? sizeLength = widget.data.sizes?.length;
   @override
   Widget build(BuildContext context) {
@@ -204,13 +201,18 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                 ),
                                 onPressed: () {
                                   setState(() {
-                                    favorite = !favorite;
+                                    widget.data.favorite =
+                                        !widget.data.favorite!;
                                   });
+                                  productDetailsPageBloc.add(
+                                      WishListButtonClickedEvent(
+                                          isWishListed: widget.data.favorite!,
+                                          product: widget.data));
                                 },
                                 icon: Icon(
                                   PrimaryIcons.heart,
                                   size: 19,
-                                  color: favorite
+                                  color: widget.data.favorite!
                                       ? const Color(0xffFF6E6E)
                                       : const Color(0xffD8D8D8),
                                 )),

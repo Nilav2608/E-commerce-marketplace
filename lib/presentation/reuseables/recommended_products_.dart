@@ -13,7 +13,7 @@ class RecomendedProductsListTile extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         itemCount: recommendedList.length,
         itemBuilder: (context, index) {
-          ProductDatatModel productData = recommendedList[index];
+          ProductDataModel productData = recommendedList[index];
           return InkWell(
               onTap: () {
                 Navigator.of(context)
@@ -32,7 +32,7 @@ class RecomendedTileWidget extends StatelessWidget {
     required this.list,
   });
 
-  final ProductDatatModel list;
+  final ProductDataModel list;
 
   @override
   Widget build(BuildContext context) {

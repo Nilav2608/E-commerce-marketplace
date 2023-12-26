@@ -46,8 +46,8 @@ class MyGenerateRoute {
               bannerData: data,
             ));
       case 'productDetails':
-        final ProductDatatModel productData =
-            settings.arguments as ProductDatatModel;
+        final ProductDataModel productData =
+            settings.arguments as ProductDataModel;
         return CustomPageTransition(
             dx: 0.0,
             dy: 1.0,

@@ -1,32 +1,30 @@
 import 'package:flutter/material.dart';
-
 import '../models/product_data_model.dart';
 
-final List<ProductDatatModel> productsList = [
-  ProductDatatModel(
+final List<ProductDataModel> productsList = [
+  ProductDataModel(
       id: 1,
       productName: "Turtleneck Sweater",
       descriptionn: "xxxxxxx",
       price: 39.99,
       imageUrl:
           "https://admin.pixelstrap.com/enzo/assets/images/ecommerce/07.jpg",
-
-
       sizes: ["S", "M", "L", "XL"],
       colors: [Colors.orangeAccent, Colors.black, Colors.pink],
+      favorite: false,
       ratings: 4),
-  ProductDatatModel(
+  ProductDataModel(
       id: 3,
       productName: "Long Sleeve Dress",
       descriptionn: "xxxxxxx",
       price: 80.00,
       imageUrl:
           "https://marketplace.demojunction.com/image/product/86/LARGE/0/2702?t=1655276714",
-
       sizes: ["S", "M", "L", "XL"],
       colors: [Colors.orangeAccent, Colors.black, Colors.pink],
+      favorite: false,
       ratings: 4),
-  ProductDatatModel(
+  ProductDataModel(
       id: 4,
       productName: "Sportwear Set",
       descriptionn: "xxxxxxx",
@@ -35,8 +33,9 @@ final List<ProductDatatModel> productsList = [
           "https://assets.ajio.com/medias/sys_master/root/20210921/uS8b/6149fc1bf997ddce89d478cd/-473Wx593H-469008747-black-MODEL4.jpg",
       sizes: ["S", "M", "L", "XL"],
       colors: [Colors.orangeAccent, Colors.black, Colors.pink],
+      favorite: false,
       ratings: 4),
-  ProductDatatModel(
+  ProductDataModel(
       id: 1,
       productName: "Elegant Dress",
       descriptionn: "xxxxxxx",
@@ -46,8 +45,9 @@ final List<ProductDatatModel> productsList = [
       // imageUrl: "assets/images/TurtleNeck.svg",
       sizes: ["S", "M", "L", "XL"],
       colors: [Colors.orangeAccent, Colors.black, Colors.pink],
+      favorite: false,
       ratings: 4),
-  ProductDatatModel(
+  ProductDataModel(
       id: 2,
       productName: "Long Sleeve Dress",
       descriptionn: "xxxxxxx",
@@ -56,11 +56,12 @@ final List<ProductDatatModel> productsList = [
           "https://images.unsplash.com/photo-1579101098056-6bf296535b8e?auto=format&fit=crop&q=60&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzB8fGZmYXNoaW9uJTIwbW9kZWwlMjBwb3NlfGVufDB8fDB8fHww",
       sizes: ["S", "M", "L", "XL"],
       colors: [Colors.orangeAccent, Colors.black, Colors.pink],
+      favorite: false,
       ratings: 4),
 ];
 
-final List<ProductDatatModel> recommendedList = [
-  ProductDatatModel(
+final List<ProductDataModel> recommendedList = [
+  ProductDataModel(
       id: 2,
       productName: "White fashion hoodie",
       descriptionn: "xxxxxxx",
@@ -69,8 +70,9 @@ final List<ProductDatatModel> recommendedList = [
           "https://images.unsplash.com/photo-1599839614778-a0ee8a16f2a9?auto=format&fit=crop&w=1080&h=915",
       sizes: ["S", "M", "L", "XL"],
       colors: [Colors.orangeAccent, Colors.black, Colors.pink],
+      favorite: false,
       ratings: 4),
-  ProductDatatModel(
+  ProductDataModel(
       id: 2,
       productName: "Cotton T-shirts",
       descriptionn: "xxxxxxx",
@@ -79,5 +81,6 @@ final List<ProductDatatModel> recommendedList = [
           "https://images.unsplash.com/photo-1583744946564-b52ac1c389c8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHQlMjBzaGlydHxlbnwwfHwwfHx8MA%3D%3D",
       sizes: ["S", "M", "L", "XL"],
       colors: [Colors.orangeAccent, Colors.black, Colors.pink],
+      favorite: false,
       ratings: 4),
 ];

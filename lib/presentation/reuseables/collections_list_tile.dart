@@ -5,7 +5,7 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import '../Icons/primary_icons_icons.dart';
 
 class CollectionsListTile extends StatefulWidget {
-  final ProductDatatModel product;
+  final ProductDataModel product;
 
   const CollectionsListTile({
     super.key,
@@ -63,11 +63,13 @@ class _CollectionsListTileState extends State<CollectionsListTile> {
                                 isFavorite = !isFavorite;
                               });
                             },
-                            icon:  Icon(
+                            icon: Icon(
                               PrimaryIcons.heart,
                               size: 16,
                               // color: Color(0xffD8D8D8),
-                              color: isFavorite ? const Color(0xffFF6E6E)  : const Color(0xffD8D8D8),
+                              color: isFavorite
+                                  ? const Color(0xffFF6E6E)
+                                  : const Color(0xffD8D8D8),
                             )),
                       ),
                     ),

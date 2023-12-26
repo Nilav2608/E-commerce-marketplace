@@ -19,32 +19,16 @@ List<MyOrdersDataModel> pendingItems = [
         productName: "White fashion hoodie",
         quantity: 1,
         price: 29.00,
-
       ),
       CartItemsModel(
         productName: "White fashion hoodie",
         quantity: 1,
         price: 29.00,
-
       ),
       // CartItemsModel(
       //   productName: "White fashion hoodie",
       //   quantity: 1,
       //   price: 29.00,
-
-      // ),
-      // CartItemsModel(
-      //   productName: "White fashion hoodie",
-      //   quantity: 1,
-      //   price: 29.00,
-
-      // ),
-      // CartItemsModel(
-      //   productName: "White fashion hoodie",
-      //   quantity: 1,
-      //   price: 29.00,
-
-      // ),
     ],
     subTotal: 110,
     deliveryStatus: "PENDING",

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-
 import '../models/product_data_model.dart';
 
-List<ProductDatatModel> recomendationsList = [
-  ProductDatatModel(
+List<ProductDataModel> recomendationsList = [
+  ProductDataModel(
       id: 3,
       productName: "Rise Crop Hoodie",
       descriptionn: "xxxxxxx",
@@ -14,8 +13,9 @@ List<ProductDatatModel> recomendationsList = [
       // imageUrl: "assets/images/StreetWear.svg",
       sizes: ["S", "M", "L", "XL"],
       colors: [Colors.orangeAccent, Colors.black, Colors.pink],
+      favorite: false,
       ratings: 4),
-  ProductDatatModel(
+  ProductDataModel(
       id: 3,
       productName: "Gym Crop Top",
       descriptionn: "xxxxxxx",
@@ -26,8 +26,9 @@ List<ProductDatatModel> recomendationsList = [
       // imageUrl: "assets/images/StreetWear.svg",
       sizes: ["S", "M", "L", "XL"],
       colors: [Colors.orangeAccent, Colors.black, Colors.pink],
+      favorite: false,
       ratings: 4),
-  ProductDatatModel(
+  ProductDataModel(
       id: 3,
       productName: "Sport Sweatshirt",
       descriptionn: "xxxxxxx",
@@ -38,5 +39,6 @@ List<ProductDatatModel> recomendationsList = [
       // imageUrl: "assets/images/StreetWear.svg",
       sizes: ["S", "M", "L", "XL"],
       colors: [Colors.orangeAccent, Colors.black, Colors.pink],
+      favorite: false,
       ratings: 4),
 ];

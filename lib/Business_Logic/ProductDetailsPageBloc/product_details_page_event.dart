@@ -10,3 +10,9 @@ class AddToCartEvent extends ProductDetailsPageEvent {
 
   AddToCartEvent({required this.productData});
 }
+
+class WishListButtonClickedEvent extends ProductDetailsPageEvent {
+  final ProductDataModel product;
+  final bool isWishListed;
+  WishListButtonClickedEvent({required this.product,required this.isWishListed});
+}

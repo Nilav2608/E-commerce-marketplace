@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../models/product_data_model.dart';
 
 class ProductCardTile extends StatelessWidget {
-  final ProductDatatModel product;
+  final ProductDataModel product;
   const ProductCardTile({super.key, required this.product});
 
   @override
