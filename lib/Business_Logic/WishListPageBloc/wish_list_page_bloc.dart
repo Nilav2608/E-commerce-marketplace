@@ -23,7 +23,6 @@ class WishListPageBloc extends Bloc<WishListPageEvent, WishListPageState> {
 
   FutureOr<void> removeItemFromWishListEvent(
       RemoveItemFromWishListEvent event, Emitter<WishListPageState> emit) {
-    print("bloc call on remove item from wishlist");
     if (!event.productDataModel.favorite!) {
       wishListedItems.remove(event.productDataModel);
     } else {
@@ -38,6 +37,5 @@ class WishListPageBloc extends Bloc<WishListPageEvent, WishListPageState> {
       WishListProductCleckedEvent event, Emitter<WishListPageState> emit) {
     emit(WishListProductClickedActionState(
         productDataModel: event.productDataModel));
-    // emit(WishlistSuccessState(wishlistedItemsList: wishListedItems));
   }
 }
