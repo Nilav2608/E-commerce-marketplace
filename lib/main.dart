@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:fluxestore/routes/routes.dart';
-// ignore: depend_on_referenced_packages
 
 void main() {
   runApp(const MyApp());
