@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
 import '../../reuseables/credit_card.dart';
 
 class PaymentSectionView extends StatefulWidget {
@@ -12,7 +11,8 @@ class PaymentSectionView extends StatefulWidget {
       {super.key,
       required this.onChanged,
       required this.agreedToTermsAndConditions,
-      required this.onProceedToCheckOut, required this.subTotal});
+      required this.onProceedToCheckOut,
+      required this.subTotal});
 
   @override
   State<PaymentSectionView> createState() => _PaymentSectionViewState();
@@ -27,10 +27,28 @@ class _PaymentSectionViewState extends State<PaymentSectionView> {
     "assets/images/card_red.png",
     "assets/images/card_gradient.png",
   ];
+
+  List paymentNames = [
+    "Cash",
+    "Credit Card",
+    "",
+  ];
+
+  List<String> paymentMethodImages = [
+    "assets/images/money_icon.svg",
+    "assets/images/credit_card_rounded.svg",
+    "assets/images/dots.svg"
+  ];
+  int currentPaymentMethodIndex = 1;
+  PageController pageController = PageController();
+  ScrollController scrollController = ScrollController();
+  
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: ListView(children: [
+      child: ListView(
+        controller: scrollController,
+        children: [
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -57,91 +75,70 @@ class _PaymentSectionViewState extends State<PaymentSectionView> {
               height: 25,
             ),
             Padding(
-              padding:
-                  EdgeInsets.symmetric(horizontal: horizontal, vertical: 5),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    width: 94,
+                padding:
+                    EdgeInsets.symmetric(horizontal: horizontal, vertical: 5),
+                child: SizedBox(
                     height: 64,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(6),
-                        boxShadow: const [
-                          BoxShadow(
-                              color: Color(0xffe8e8e8),
-                              blurRadius: 10.0,
-                              offset: Offset(0, 1))
-                        ]),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SvgPicture.asset("assets/images/money_icon.svg"),
-                        const Text(
-                          "Cash",
-                          style:
-                              TextStyle(color: Color(0xff6E768A), fontSize: 12),
-                        )
-                      ],
-                    ),
-                  ),
-                  Container(
-                    width: 94,
-                    height: 64,
-                    decoration: BoxDecoration(
-                        color: const Color(0xff43484B),
-                        borderRadius: BorderRadius.circular(6),
-                        boxShadow: const [
-                          BoxShadow(
-                              color: Color(0xffe8e8e8),
-                              blurRadius: 10.0,
-                              offset: Offset(0, 1))
-                        ]),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SvgPicture.asset(
-                          "assets/images/credit_card_rounded.svg",
-                        ),
-                        const Text(
-                          "Credit Card",
-                          style: TextStyle(color: Colors.white, fontSize: 12),
-                        )
-                      ],
-                    ),
-                  ),
-                  Container(
-                    width: 94,
-                    height: 64,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(6),
-                        boxShadow: const [
-                          BoxShadow(
-                              color: Color(0xffe8e8e8),
-                              blurRadius: 10.0,
-                              offset: Offset(0, 1))
-                        ]),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SvgPicture.asset("assets/images/dots.svg"),
-                        // const Text(
-                        //   "",
-                        //   style: TextStyle(
-                        //       color: Color(0xff6E768A),
-                        //       fontSize: 12),
-                        // )
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
+                    width: double.infinity,
+                    child: ListView.builder(
+                        physics: const BouncingScrollPhysics(),
+                        itemCount: paymentNames.length,
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) {
+                          return GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                currentPaymentMethodIndex = index;
+                              });
+                              pageController.animateToPage(
+                                  currentPaymentMethodIndex,
+                                  duration: const Duration(milliseconds: 200),
+                                  curve: Curves.ease);
+                            },
+                            child: AnimatedContainer(
+                              duration: const Duration(milliseconds: 300),
+                              margin: const EdgeInsets.only(right:16),
+                              width: 94,
+                              height: 64,
+                              decoration: BoxDecoration(
+                                  color: currentPaymentMethodIndex == index
+                                      ? const Color(0xff43484B)
+                                      : Colors.white,
+                                  borderRadius: BorderRadius.circular(6),
+                                  boxShadow: const [
+                                    BoxShadow(
+                                        color: Color(0xffe8e8e8),
+                                        blurRadius: 10.0,
+                                        offset: Offset(0, 1))
+                                  ]),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  SvgPicture.asset(
+                                    paymentMethodImages[index],
+                                    width: 35,
+                                    height: 22,
+                                    colorFilter: ColorFilter.mode(
+                                        currentPaymentMethodIndex == index
+                                            ? Colors.white
+                                            : const Color(0xff6E768A),
+                                        BlendMode.srcIn),
+                                  ),
+                                  Text(
+                                    paymentNames[index],
+                                    style: TextStyle(
+                                        color:
+                                            currentPaymentMethodIndex == index
+                                                ? Colors.white
+                                                : const Color(0xff6E768A),
+                                        fontSize: 12),
+                                  )
+                                ],
+                              ),
+                            ),
+                          );
+                        }))),
             // const SizedBox(
             //   height: 20,
             // ),
@@ -316,7 +313,7 @@ class _PaymentSectionViewState extends State<PaymentSectionView> {
                 child: Column(
                   children: [
                     //* Product Price
-                     Padding(
+                    Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -372,7 +369,7 @@ class _PaymentSectionViewState extends State<PaymentSectionView> {
                       color: Color(0xffE8E8E8),
                     ),
                     //* Sub Total
-                     Padding(
+                    Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
