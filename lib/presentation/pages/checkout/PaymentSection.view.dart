@@ -28,27 +28,25 @@ class _PaymentSectionViewState extends State<PaymentSectionView> {
     "assets/images/card_gradient.png",
   ];
 
-  List paymentNames = [
-    "Cash",
-    "Credit Card",
-    "",
+  List paymentModes = [
+    ["Cash","assets/images/dollar_note.svg","22"],
+    ["Credit Card","assets/images/credit_card_rounded.svg","22"],
+    ["","assets/images/dots.svg","10"],
   ];
 
   List<String> paymentMethodImages = [
-    "assets/images/money_icon.svg",
+    "assets/images/dollar_note.svg",
     "assets/images/credit_card_rounded.svg",
     "assets/images/dots.svg"
   ];
   int currentPaymentMethodIndex = 1;
-  PageController pageController = PageController();
-  ScrollController scrollController = ScrollController();
-  
+  final PageController pageController = PageController();
+  final ScrollController scrollController = ScrollController();
+
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: ListView(
-        controller: scrollController,
-        children: [
+      child: ListView(controller: scrollController, children: [
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -81,8 +79,9 @@ class _PaymentSectionViewState extends State<PaymentSectionView> {
                     height: 64,
                     width: double.infinity,
                     child: ListView.builder(
-                        physics: const BouncingScrollPhysics(),
-                        itemCount: paymentNames.length,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: paymentModes.length,
+                        shrinkWrap: true,
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (context, index) {
                           return GestureDetector(
@@ -90,14 +89,16 @@ class _PaymentSectionViewState extends State<PaymentSectionView> {
                               setState(() {
                                 currentPaymentMethodIndex = index;
                               });
-                              pageController.animateToPage(
+                              if (!pageController.hasClients) {
+                                pageController.animateToPage(
                                   currentPaymentMethodIndex,
                                   duration: const Duration(milliseconds: 200),
-                                  curve: Curves.ease);
+                                  curve: Curves.linear);
+                              }
                             },
                             child: AnimatedContainer(
                               duration: const Duration(milliseconds: 300),
-                              margin: const EdgeInsets.only(right:16),
+                              margin: const EdgeInsets.only(right: 16),
                               width: 94,
                               height: 64,
                               decoration: BoxDecoration(
@@ -116,9 +117,9 @@ class _PaymentSectionViewState extends State<PaymentSectionView> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   SvgPicture.asset(
-                                    paymentMethodImages[index],
-                                    width: 35,
-                                    height: 22,
+                                    height:double.parse(paymentModes[index][2]),
+                                    width:35,
+                                    paymentModes[index][1].toString(),
                                     colorFilter: ColorFilter.mode(
                                         currentPaymentMethodIndex == index
                                             ? Colors.white
@@ -126,7 +127,7 @@ class _PaymentSectionViewState extends State<PaymentSectionView> {
                                         BlendMode.srcIn),
                                   ),
                                   Text(
-                                    paymentNames[index],
+                                    paymentModes[index][0],
                                     style: TextStyle(
                                         color:
                                             currentPaymentMethodIndex == index
@@ -139,9 +140,6 @@ class _PaymentSectionViewState extends State<PaymentSectionView> {
                             ),
                           );
                         }))),
-            // const SizedBox(
-            //   height: 20,
-            // ),
             Padding(
               padding:
                   EdgeInsets.symmetric(horizontal: horizontal, vertical: 15),
