@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluxestore/presentation/landing_page.dart';
 import 'package:fluxestore/routes/routes.dart';
 
 void main() {
@@ -22,6 +23,9 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       initialRoute: '/',
+      routes: {
+        '/': (context)=> const LandingPage()
+      },
       onGenerateRoute: MyGenerateRoute().generateRoute,
     );
   }

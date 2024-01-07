@@ -366,7 +366,7 @@ class OrderDetailsPage extends StatelessWidget {
                           width: 119,
                           child: ElevatedButton(
                               onPressed: () {
-                                Navigator.of(context).popAndPushNamed('/');
+                                // Navigator.of(context).popAndPushNamed('/');
                               },
                               style: const ButtonStyle(
                                   backgroundColor: MaterialStatePropertyAll(
