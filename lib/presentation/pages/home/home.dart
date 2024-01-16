@@ -3,12 +3,12 @@ import 'package:fluxestore/data/products_data.dart';
 import 'package:fluxestore/presentation/Icons/primary_icons_icons.dart';
 import 'package:fluxestore/presentation/reuseables/banner_cards.dart';
 import 'package:fluxestore/presentation/reuseables/circle_tabs.dart';
-import 'package:fluxestore/presentation/home_utils/curosal_slide_widget_banner.dart';
+import 'package:fluxestore/presentation/pages/home/home_utils/curosal_slide_widget_banner.dart';
 import 'package:fluxestore/presentation/reuseables/product_list_view_builder.dart';
 import 'package:fluxestore/presentation/reuseables/row_heading_seemore.dart';
-import 'package:fluxestore/presentation/home_utils/vertical_banner_last.dart';
+import 'package:fluxestore/presentation/pages/home/home_utils/vertical_banner_last.dart';
 
-import '../reuseables/recommended_products_.dart';
+import '../../reuseables/recommended_products_.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

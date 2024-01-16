@@ -17,7 +17,6 @@ class WishListPageBloc extends Bloc<WishListPageEvent, WishListPageState> {
 
   FutureOr<void> wishListPageInitial(
       WishListInitialEvent event, Emitter<WishListPageState> emit) {
-    print("bloc call");
     emit(WishlistSuccessState(wishlistedItemsList: wishListedItems));
   }
 

@@ -4,7 +4,7 @@ import 'package:fluxestore/presentation/Icons/primary_icons_icons.dart';
 import 'package:fluxestore/presentation/Icons/secondary_icons_icons.dart';
 import 'package:fluxestore/presentation/pages/account.dart';
 import 'package:fluxestore/presentation/pages/cart_page.dart';
-import 'package:fluxestore/presentation/pages/home.dart';
+import 'package:fluxestore/presentation/pages/home/home.dart';
 import 'package:fluxestore/presentation/pages/search.dart';
 import '../presentation/pages/MyOrders/my_orders_list.dart';
 

@@ -4,7 +4,7 @@ import 'package:fluxestore/constants/constants.dart';
 import 'package:fluxestore/presentation/Icons/primary_icons_icons.dart';
 // ignore: depend_on_referenced_packages
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fluxestore/presentation/home_utils/drawer.dart';
+import 'package:fluxestore/presentation/pages/home/home_utils/drawer.dart';
 
 import '../Business_Logic/landing_page_bloc/landing_page_bloc.dart';
 
