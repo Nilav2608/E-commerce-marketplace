@@ -23,6 +23,10 @@ class _HomePageState extends State<HomePage> {
   double vert = 15;
   @override
   Widget build(BuildContext context) {
+    // final double screenWidth = MediaQuery.of(context).size.width;
+    // final double screenHeight = MediaQuery.of(context).size.height;
+    // final double paddingHorizontal = MediaQuery.of(context).padding.horizontal;
+    // final double paddingVertival = MediaQuery.of(context).padding.vertical;
     return Scaffold(
       body: ListView(scrollDirection: Axis.vertical, children: [
         Column(

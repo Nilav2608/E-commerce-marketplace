@@ -70,7 +70,7 @@ class _CartPageState extends State<CartPage> {
         switch (state.runtimeType) {
           case CartSuccessState:
             final successState = state as CartSuccessState;
-            String total = successState.subTotal.toString();
+            String total = successState.subTotal.toStringAsFixed(2);
             return successState.cartSuccessData.isEmpty
                 ? Center(
                     child: Column(
