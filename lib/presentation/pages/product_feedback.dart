@@ -7,6 +7,8 @@ class ProductFeedBackPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double userRating;
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
