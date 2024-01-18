@@ -10,6 +10,7 @@ import 'package:fluxestore/presentation/pages/checkout/checkout_main.view.dart';
 import 'package:fluxestore/presentation/pages/collections_page.dart';
 import 'package:fluxestore/presentation/pages/notification_page.dart';
 import 'package:fluxestore/presentation/pages/product_details_page.dart';
+import 'package:fluxestore/presentation/pages/product_feedback.dart';
 import 'package:fluxestore/presentation/pages/settings_page.dart';
 import 'package:fluxestore/presentation/pages/wish_list_page.dart';
 import 'package:fluxestore/routes/custom_transition_routes.dart';
@@ -50,6 +51,7 @@ class MyGenerateRoute {
         final ProductDataModel productData =
             settings.arguments as ProductDataModel;
         return CustomPageTransition(
+          //for bottom up transition
             dx: 0.0,
             dy: 1.0,
             curves: Curves.easeInOutCirc,
@@ -103,6 +105,13 @@ class MyGenerateRoute {
             dx: 1.0,
             dy: 0.0,
             child: const WishListPage());
+       case 'productFeedbackPage':
+        return CustomPageTransition(
+          //for bottom up transition
+            dx: 0.0,
+            dy: 1.0,
+            curves: Curves.easeInOutCirc,
+            child: const ProductFeedBackPage());
       default:
         return _errorRoute();
     }
