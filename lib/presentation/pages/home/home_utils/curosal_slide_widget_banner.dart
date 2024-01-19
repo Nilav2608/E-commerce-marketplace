@@ -6,7 +6,13 @@ import 'package:fluxestore/data/banner_carosal_list.dart';
 
 // ignore: must_be_immutable
 class CurosalSliderWidget extends StatefulWidget {
-  const CurosalSliderWidget({super.key});
+  // final double contentWidth;
+  // final double contentHeight;
+  const CurosalSliderWidget({
+    super.key,
+    //  required this.contentWidth,
+    // required this.contentHeight
+  });
 
   @override
   State<CurosalSliderWidget> createState() => _CurosalSliderWidgetState();
@@ -17,10 +23,13 @@ class _CurosalSliderWidgetState extends State<CurosalSliderWidget> {
   int pageIndex = 0;
   @override
   Widget build(BuildContext context) {
+    final double screenWidth = MediaQuery.of(context).size.width;
     return Container(
-      width: 312,
-      height: 172,
-      decoration: BoxDecoration(borderRadius: BorderRadius.circular(15)),
+      width: screenWidth,
+      // height: 174,
+      decoration: BoxDecoration(
+          // color: Colors.grey.shade600,
+          borderRadius: BorderRadius.circular(15)),
       child: Stack(children: [
         ClipRRect(
           borderRadius: BorderRadius.circular(15),
@@ -30,13 +39,14 @@ class _CurosalSliderWidgetState extends State<CurosalSliderWidget> {
                   .map(
                     (e) => InkWell(
                       onTap: () {
-                        Navigator.of(context).pushNamed("viewCollections",arguments: e);
+                        Navigator.of(context)
+                            .pushNamed("viewCollections", arguments: e);
                       },
                       child: Stack(children: [
                         Image.network(e.imagePath,
                             fit: BoxFit.cover,
                             // width: 412
-                            width: 500),
+                            width: double.infinity),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
@@ -79,8 +89,8 @@ class _CurosalSliderWidgetState extends State<CurosalSliderWidget> {
         ),
         Positioned(
             bottom: 20, // Adjust the position as needed
-            left: 0,
-            right: 30,
+            left: 10,
+            right: 10,
             child: Center(
               child: CarouselIndicator(
                 index: pageIndex,

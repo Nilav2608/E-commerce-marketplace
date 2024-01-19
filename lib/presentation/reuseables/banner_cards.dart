@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class BannerCards extends StatelessWidget {
-  final double width;
   final double height;
   final double top;
   final double left;
@@ -14,7 +13,6 @@ class BannerCards extends StatelessWidget {
   final String imagePath;
   const BannerCards({
     super.key,
-    required this.width,
     required this.height,
     required this.liteText,
     required this.mainText,
@@ -30,7 +28,7 @@ class BannerCards extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: width,
+      width: double.infinity,
       height: height,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),

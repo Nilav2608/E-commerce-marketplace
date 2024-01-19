@@ -17,16 +17,12 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-//horizontal: 25, vertical: 15
 class _HomePageState extends State<HomePage> {
   double hori = 25;
   double vert = 15;
   @override
   Widget build(BuildContext context) {
-    // final double screenWidth = MediaQuery.of(context).size.width;
-    // final double screenHeight = MediaQuery.of(context).size.height;
-    // final double paddingHorizontal = MediaQuery.of(context).padding.horizontal;
-    // final double paddingVertival = MediaQuery.of(context).padding.vertical;
+    final double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       body: ListView(scrollDirection: Axis.vertical, children: [
         Column(
@@ -92,19 +88,22 @@ class _HomePageState extends State<HomePage> {
             // SizedBox(
             //   height: 15,
             // ),
-             ProductListViewBuilder(items: productsList,requiredItemCount: 4,),
+            ProductListViewBuilder(
+              items: productsList,
+              requiredItemCount: 4,
+            ),
+
             const BannerCards(
-                width: 400,
                 height: 162,
-                //  right: 20,
                 top: 30,
                 left: 35,
-                right: 20,
+                right: 35,
                 bottom: 0,
                 liteText: "| NEW COLLECTION",
                 mainText: "HANG OUT & PARTY",
                 // imagePath: "assets/images/glassGirl.svg"
                 imagePath: "assets/images/glass.png"),
+
             const SizedBox(
               height: 20,
             ),
@@ -131,7 +130,6 @@ class _HomePageState extends State<HomePage> {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: hori, vertical: vert),
               child: const BannerCards(
-                  width: 312,
                   height: 158,
                   //  right: 20,
                   top: 20,
@@ -149,7 +147,6 @@ class _HomePageState extends State<HomePage> {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: hori, vertical: vert),
               child: const BannerCards(
-                width: 312,
                 height: 210,
                 // right: 20,
                 top: 35,
@@ -167,7 +164,9 @@ class _HomePageState extends State<HomePage> {
             // ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: hori, vertical: vert),
-              child: const VerticalCards(),
+              child:  VerticalCards(
+                screenWidth: screenWidth,
+              ),
             )
           ],
         ),

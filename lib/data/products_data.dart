@@ -19,7 +19,7 @@ final List<ProductDataModel> productsList = [
       descriptionn: "xxxxxxx",
       price: 80.00,
       imageUrl:
-          "https://marketplace.demojunction.com/image/product/86/LARGE/0/2702?t=1655276714",
+          "https://myphotographer.wedding/wp-content/uploads/2022/09/clothingstore2-woman-pic5.webp",
       sizes: ["S", "M", "L", "XL"],
       colors: [Colors.orangeAccent, Colors.black, Colors.pink],
       favorite: false,
