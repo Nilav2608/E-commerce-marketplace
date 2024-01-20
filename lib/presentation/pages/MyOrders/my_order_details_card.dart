@@ -34,150 +34,144 @@ class MyOrderDetailsCard extends StatelessWidget {
       statusTextColor = Colors.black;
       statusBgColor = Colors.white;
     }
-//statusTextColor = const Color(0xffCF6212);
-//statusTextColor = const Color(0xff009254);
-//statusTextColor = const Color(0xffC50000);
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 19.0),
-      child: Container(
-        width: 336,
-        height: 182,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(10),
-          boxShadow: const [
-            BoxShadow(
-                color: Color(0xffe8e8e8),
-                blurRadius: 10.0,
-                offset: Offset(0, 1))
-          ],
-        ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 14.0, vertical: 10),
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    data.orderID ?? '',
-                    style: const TextStyle(
-                        fontSize: 18,
-                        color: Colors.black,
-                        fontWeight: FontWeight.w700),
-                  ),
-                  Text(
-                    formattedDate,
-                    style: const TextStyle(
-                        fontSize: 14,
-                        color: Color(0xff777E90),
-                        fontWeight: FontWeight.w400),
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Row(
-                children: [
-                  const Text(
-                    "Tracking number:",
-                    style: TextStyle(
-                        fontSize: 14,
-                        color: Color(0xff777E90),
-                        fontWeight: FontWeight.w700),
-                  ),
-                  Text(
-                    data.trackingNumber ?? "",
-                    style: const TextStyle(
-                        fontSize: 14,
-                        color: Color(0xff141416),
-                        fontWeight: FontWeight.w400),
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      const Text(
-                        "Quantity: ",
-                        style: TextStyle(
-                            fontSize: 14,
-                            color: Color(0xff777E90),
-                            fontWeight: FontWeight.w700),
-                      ),
-                      Text(
-                        data.quantity.toString(),
-                        style: const TextStyle(
-                            fontSize: 14,
-                            color: Color(0xff141416),
-                            fontWeight: FontWeight.w400),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      const Text(
-                        "Subtotal: ",
-                        style: TextStyle(
-                            fontSize: 14,
-                            color: Color(0xff777E90),
-                            fontWeight: FontWeight.w700),
-                      ),
-                      Text(
-                        "\$${data.subTotal}",
-                        style: const TextStyle(
-                            fontSize: 16,
-                            color: Color(0xff141416),
-                            fontWeight: FontWeight.w700),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Expanded(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Container(
+      width: 336,
+      height: 182,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: const [
+          BoxShadow(
+              color: Color(0xffe8e8e8),
+              blurRadius: 10.0,
+              offset: Offset(0, 1))
+        ],
+      ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 14.0, vertical: 10),
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  data.orderID ?? '',
+                  style: const TextStyle(
+                      fontSize: 18,
+                      color: Colors.black,
+                      fontWeight: FontWeight.w700),
+                ),
+                Text(
+                  formattedDate,
+                  style: const TextStyle(
+                      fontSize: 14,
+                      color: Color(0xff777E90),
+                      fontWeight: FontWeight.w400),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Row(
+              children: [
+                const Text(
+                  "Tracking number:",
+                  style: TextStyle(
+                      fontSize: 14,
+                      color: Color(0xff777E90),
+                      fontWeight: FontWeight.w700),
+                ),
+                Text(
+                  data.trackingNumber ?? "",
+                  style: const TextStyle(
+                      fontSize: 14,
+                      color: Color(0xff141416),
+                      fontWeight: FontWeight.w400),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
                   children: [
-                    Container(
-                      decoration: BoxDecoration(
-                          color: statusBgColor,
-                          borderRadius: BorderRadius.circular(50)),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 12.0, vertical: 4),
-                        child: Text(
-                          data.deliveryStatus ?? '',
-                          style: TextStyle(
-                              fontSize: 14,
-                              //data.deliveryStatus == 'PENDING' ? Color(0xffCF6212)
-                              color: statusTextColor,
-                              fontWeight: FontWeight.w400),
-                        ),
-                      ),
+                    const Text(
+                      "Quantity: ",
+                      style: TextStyle(
+                          fontSize: 14,
+                          color: Color(0xff777E90),
+                          fontWeight: FontWeight.w700),
                     ),
-                    OutlinedButton(
-                        onPressed: () {
-                          Navigator.of(context).pushNamed("orderDetailsPage",arguments: data);
-                        },
-                        child: const Text("Details",
-                            style: TextStyle(
-                                fontSize: 14,
-                                color: Color(0xff141416),
-                                fontWeight: FontWeight.w400)))
+                    Text(
+                      data.quantity.toString(),
+                      style: const TextStyle(
+                          fontSize: 14,
+                          color: Color(0xff141416),
+                          fontWeight: FontWeight.w400),
+                    ),
                   ],
                 ),
+                Row(
+                  children: [
+                    const Text(
+                      "Subtotal: ",
+                      style: TextStyle(
+                          fontSize: 14,
+                          color: Color(0xff777E90),
+                          fontWeight: FontWeight.w700),
+                    ),
+                    Text(
+                      "\$${data.subTotal}",
+                      style: const TextStyle(
+                          fontSize: 16,
+                          color: Color(0xff141416),
+                          fontWeight: FontWeight.w700),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Expanded(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                        color: statusBgColor,
+                        borderRadius: BorderRadius.circular(50)),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 12.0, vertical: 4),
+                      child: Text(
+                        data.deliveryStatus ?? '',
+                        style: TextStyle(
+                            fontSize: 14,
+                            //data.deliveryStatus == 'PENDING' ? Color(0xffCF6212)
+                            color: statusTextColor,
+                            fontWeight: FontWeight.w400),
+                      ),
+                    ),
+                  ),
+                  OutlinedButton(
+                      onPressed: () {
+                        Navigator.of(context).pushNamed("orderDetailsPage",arguments: data);
+                      },
+                      child: const Text("Details",
+                          style: TextStyle(
+                              fontSize: 14,
+                              color: Color(0xff141416),
+                              fontWeight: FontWeight.w400)))
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

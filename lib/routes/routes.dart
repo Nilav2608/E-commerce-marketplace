@@ -17,7 +17,7 @@ import 'package:fluxestore/routes/custom_transition_routes.dart';
 import '../Business_Logic/CheckOutPageBloc/check_out_page_bloc.dart';
 import '../Business_Logic/landing_page_bloc/landing_page_bloc.dart';
 import '../models/product_data_model.dart';
-import '../presentation/pages/MyOrders/my_orders.dart';
+import '../presentation/pages/MyOrders/my_orders_page.dart';
 
 class MyGenerateRoute {
   final LandingPageBloc landingPageBloc = LandingPageBloc();
@@ -110,7 +110,7 @@ class MyGenerateRoute {
           //for bottom up transition
             dx: 0.0,
             dy: 1.0,
-            curves: Curves.easeInOutCirc,
+            curves: Curves.fastOutSlowIn,
             child: const ProductFeedBackPage());
       default:
         return _errorRoute();
