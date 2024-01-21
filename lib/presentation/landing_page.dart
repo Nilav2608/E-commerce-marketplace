@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluxestore/constants/constants.dart';
 import 'package:fluxestore/presentation/Icons/primary_icons_icons.dart';
-// ignore: depend_on_referenced_packages
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluxestore/presentation/pages/home/home_utils/drawer.dart';
-
 import '../Business_Logic/landing_page_bloc/landing_page_bloc.dart';
 
 class LandingPage extends StatefulWidget {
