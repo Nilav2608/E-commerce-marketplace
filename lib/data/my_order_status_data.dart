@@ -92,17 +92,4 @@ List<MyOrdersDataModel> cancelledItems = [
     shippingCharges: 0,
     total: 11,
   ),
-  MyOrdersDataModel(
-    orderID: "15099",
-    date: DateTime.now().toString(),
-    deliveryAddress:
-        DeliveryAddress(street: "23 Main Street", city: "Santa Fe"),
-    quantity: 6,
-    trackingNumber: "IK987362341",
-    orderedItems: [],
-    subTotal: 175,
-    deliveryStatus: "CANCELLED",
-    shippingCharges: 0,
-    total: 110,
-  ),
 ];
