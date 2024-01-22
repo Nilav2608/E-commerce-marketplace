@@ -6,6 +6,7 @@ import 'package:fluxestore/presentation/pages/account.dart';
 import 'package:fluxestore/presentation/pages/cart_page.dart';
 import 'package:fluxestore/presentation/pages/home/home.dart';
 import 'package:fluxestore/presentation/pages/search.dart';
+import '../models/tab_catagory_model.dart';
 import '../presentation/pages/MyOrders/my_orders_list.dart';
 
 const List<String> appBarText = ["Fluxestore", "Search", "Cart", "Account"];
@@ -38,6 +39,11 @@ List<Widget> myOrderStatusContainer = [
   OrdersList(items: cancelledItems),
 ];
 
+List<TabCategoryModel> categoryList = [
+  TabCategoryModel("Pending", true),
+  TabCategoryModel("Delivered", false),
+  TabCategoryModel("Cancelled", false),
+];
 //  MyOrdersDataModel myOrdersDataMapper(
 //       List<CartItemsModel> cartItems, double subTotal) {
 //     List<CartItemsModel> selectedItems = [];
