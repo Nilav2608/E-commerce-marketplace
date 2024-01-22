@@ -10,7 +10,7 @@ class CrediCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(right: 10.0, left: 18),
       child: SizedBox(
-        width: 327,
+        width: double.infinity,
         height: 191,
         child: Stack(children: [
           Image.asset(

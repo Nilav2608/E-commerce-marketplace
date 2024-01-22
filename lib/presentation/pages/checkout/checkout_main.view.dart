@@ -218,7 +218,7 @@ class _CheckOutPageState extends State<CheckOutPage> {
                                 ),
                                 SizedBox(
                                   height: 48,
-                                  width: 315,
+                                  width: double.infinity,
                                   child: ElevatedButton(
                                       onPressed: () {
                                         checkOutPageBloc

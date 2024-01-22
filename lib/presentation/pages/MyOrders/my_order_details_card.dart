@@ -55,7 +55,7 @@ class MyOrderDetailsCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  data.orderID ?? '',
+                  "#${data.orderID ?? ''}",
                   style: const TextStyle(
                       fontSize: 18,
                       color: Colors.black,

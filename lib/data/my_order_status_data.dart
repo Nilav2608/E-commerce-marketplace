@@ -2,16 +2,13 @@ import 'package:fluxestore/models/cart_items_model.dart';
 import 'package:fluxestore/models/delivery_address_model.dart';
 import 'package:fluxestore/models/my_orders_data_model.dart';
 
-
 // ^ PENDING STATUS ITEMS
 List<MyOrdersDataModel> pendingItems = [
   MyOrdersDataModel(
-    orderID: "#1514",
+    orderID: "1514",
     date: DateTime.now().toString(),
-    deliveryAddress: DeliveryAddress(
-      street: "23 Main Street",
-      city: "Santa Fe"
-    ),
+    deliveryAddress:
+        DeliveryAddress(street: "23 Main Street", city: "Santa Fe"),
     quantity: 2,
     trackingNumber: "IK987362341",
     orderedItems: [
@@ -34,15 +31,12 @@ List<MyOrdersDataModel> pendingItems = [
     deliveryStatus: "PENDING",
     shippingCharges: 0.0,
     total: 110,
-    
   ),
   MyOrdersDataModel(
-    orderID: "#1514",
+    orderID: "1514",
     date: DateTime.now().toString(),
-    deliveryAddress: DeliveryAddress(
-      street: "23 Main Street",
-      city: "Santa Fe"
-    ),
+    deliveryAddress:
+        DeliveryAddress(street: "23 Main Street", city: "Santa Fe"),
     quantity: 2,
     trackingNumber: "IK987362341",
     orderedItems: [],
@@ -53,16 +47,13 @@ List<MyOrdersDataModel> pendingItems = [
   ),
 ];
 
-
 //* DELIVERED ITEMS
 List<MyOrdersDataModel> deliveredItems = [
   MyOrdersDataModel(
-    orderID: "#1501",
+    orderID: "1501",
     date: DateTime.now().toString(),
-    deliveryAddress: DeliveryAddress(
-      street: "23 Main Street",
-      city: "Santa Fe"
-    ),
+    deliveryAddress:
+        DeliveryAddress(street: "23 Main Street", city: "Santa Fe"),
     quantity: 1,
     trackingNumber: "IK987362341",
     orderedItems: [],
@@ -72,12 +63,10 @@ List<MyOrdersDataModel> deliveredItems = [
     total: 11,
   ),
   MyOrdersDataModel(
-    orderID: "#1502",
+    orderID: "1502",
     date: DateTime.now().toString(),
-    deliveryAddress: DeliveryAddress(
-      street: "23 Main Street",
-      city: "Santa Fe"
-    ),
+    deliveryAddress:
+        DeliveryAddress(street: "23 Main Street", city: "Santa Fe"),
     quantity: 6,
     trackingNumber: "IK987362341",
     orderedItems: [],
@@ -88,16 +77,13 @@ List<MyOrdersDataModel> deliveredItems = [
   ),
 ];
 
-
 //! CANCELLED ITEMS
 List<MyOrdersDataModel> cancelledItems = [
   MyOrdersDataModel(
-    orderID: "#1501",
+    orderID: "1501",
     date: DateTime.now().toString(),
-    deliveryAddress: DeliveryAddress(
-      street: "23 Main Street",
-      city: "Santa Fe"
-    ),
+    deliveryAddress:
+        DeliveryAddress(street: "23 Main Street", city: "Santa Fe"),
     quantity: 1,
     trackingNumber: "IK987362341",
     orderedItems: [],
@@ -107,17 +93,13 @@ List<MyOrdersDataModel> cancelledItems = [
     total: 11,
   ),
   MyOrdersDataModel(
-    orderID: "#15099",
+    orderID: "15099",
     date: DateTime.now().toString(),
-    deliveryAddress: DeliveryAddress(
-      street: "23 Main Street",
-      city: "Santa Fe"
-    ),
+    deliveryAddress:
+        DeliveryAddress(street: "23 Main Street", city: "Santa Fe"),
     quantity: 6,
     trackingNumber: "IK987362341",
-    orderedItems: [
-      
-    ],
+    orderedItems: [],
     subTotal: 175,
     deliveryStatus: "CANCELLED",
     shippingCharges: 0,

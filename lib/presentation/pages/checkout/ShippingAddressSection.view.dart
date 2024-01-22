@@ -419,39 +419,43 @@ class _ShippingAddressSectionState extends State<ShippingAddressSection> {
               const SizedBox(
                 height: 20,
               ),
-              Container(
-                width: 311,
-                height: 55,
-                decoration: BoxDecoration(
-                  color: const Color(0xffF7F7F8),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                        child: TextField(
-                          controller: cuponCodeController,
-                          decoration: const InputDecoration(
-                            hintText: "Have a code? type it here...",
-                            hintStyle: TextStyle(
-                                fontSize: 12, color: Color(0xFFCBCDD8)),
-                            border: InputBorder.none,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Container(
+                  width: double.maxFinite,
+                  height: 55,
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  decoration: BoxDecoration(
+                    color: const Color(0xffF7F7F8),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                          child: TextField(
+                            controller: cuponCodeController,
+                            decoration: const InputDecoration(
+                              hintText: "Have a code? type it here...",
+                              hintStyle: TextStyle(
+                                  fontSize: 12, color: Color(0xFFCBCDD8)),
+                              border: InputBorder.none,
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                    TextButton(
-                      onPressed: () {},
-                      child: const Text("Validate",
-                          style: TextStyle(
-                              color: Color(0xff508A7B),
-                              fontSize: 12,
-                              fontWeight: FontWeight.w400)),
-                    )
-                  ],
+                      TextButton(
+                        onPressed: () {},
+                        child: const Text("Validate",
+                            style: TextStyle(
+                                color: Color(0xff508A7B),
+                                fontSize: 12,
+                                fontWeight: FontWeight.w400)),
+                      )
+                    ],
+                  ),
                 ),
               ),
               const SizedBox(
@@ -487,7 +491,7 @@ class _ShippingAddressSectionState extends State<ShippingAddressSection> {
               ),
               SizedBox(
                 height: 48,
-                width: 315,
+                width: double.maxFinite,
                 child: ElevatedButton(
                     onPressed: () {
                       widget.onPressed!(addressMapper());
