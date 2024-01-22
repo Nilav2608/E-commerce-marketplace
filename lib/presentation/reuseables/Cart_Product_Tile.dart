@@ -55,7 +55,7 @@ class CartProductTile extends StatelessWidget {
         child: ClipRRect(
           borderRadius: BorderRadius.circular(20),
           child: Container(
-            width: 310,
+            width: double.infinity,
             height: 120,
             decoration: const BoxDecoration(
               color: Colors.white,
