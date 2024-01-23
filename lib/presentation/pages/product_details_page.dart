@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluxestore/Business_Logic/ProductDetailsPageBloc/product_details_page_bloc.dart';
+import 'package:fluxestore/Mappers/mappers.dart';
 import 'package:fluxestore/data/product_recomendation_data.dart';
 import 'package:fluxestore/models/cart_items_model.dart';
 import 'package:fluxestore/models/colors_category_model.dart';
@@ -66,17 +67,6 @@ bool _isSimilarProductsExpanded = true;
 double horizontal = 20;
 double vertical = 5;
 
-CartItemsModel mapProductsFromProductDataModel(ProductDataModel data) {
-  return CartItemsModel(
-      id: data.id.toString(),
-      productName: data.productName,
-      price: data.price,
-      imageUrl: data.imageUrl,
-      color: data.colors![currentColorIndex],
-      size: data.sizes![currentSizeIndex],
-      quantity: 1,
-      selected: false);
-}
 
 class _ProductDetailsPageState extends State<ProductDetailsPage> {
   final ProductDetailsPageBloc productDetailsPageBloc =
@@ -115,7 +105,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                   child: InkWell(
                     onTap: () {
                       CartItemsModel cartItems =
-                          mapProductsFromProductDataModel(widget.data);
+                         Mappers().mapProductsFromProductDataModel(widget.data,currentColorIndex,currentSizeIndex);
                       productDetailsPageBloc
                           .add(AddToCartEvent(productData: cartItems));
                       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(

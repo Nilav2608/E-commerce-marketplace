@@ -1,0 +1,45 @@
+
+
+import '../models/cart_items_model.dart';
+import '../models/delivery_address_model.dart';
+import '../models/my_orders_data_model.dart';
+import '../models/product_data_model.dart';
+
+class Mappers{
+  CartItemsModel mapProductsFromProductDataModel(ProductDataModel data,int colorIndex, int sizeIndex) {
+  return CartItemsModel(
+      id: data.id.toString(),
+      productName: data.productName,
+      price: data.price,
+      imageUrl: data.imageUrl,
+      color: data.colors![colorIndex],
+      size: data.sizes![sizeIndex],
+      quantity: 1,
+      selected: false);
+}
+
+   MyOrdersDataModel myOrdersDataMapper(
+      List<CartItemsModel> cartItems, double subTotal) {
+    List<CartItemsModel> selectedItems = [];
+    int totalQuantity = 0;
+    for (int i = 0; i < cartItems.length; i++) {
+      if (cartItems[i].selected!) {
+        selectedItems.add(cartItems[i]);
+      }
+    }
+    for (var i = 0; i < selectedItems.length; i++) {
+      totalQuantity += selectedItems[i].quantity!;
+    }
+    return MyOrdersDataModel(
+        date: DateTime.now().toString(),
+        deliveryAddress: DeliveryAddress(),
+        deliveryStatus: "PENDING",
+        orderID: "5555",
+        orderedItems: selectedItems,
+        quantity: totalQuantity,
+        shippingCharges: 0.00,
+        subTotal: subTotal,
+        total: subTotal,
+        trackingNumber: "IK987362341");
+  }
+}
