@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:fluxestore/models/cart_items_model.dart';
-import 'package:fluxestore/utils/formatters/formatters.dart';
+import 'package:fluxestore/utils/formatters/formatter.dart';
 
 class CartProductTile extends StatelessWidget {
   final CartItemsModel data;
