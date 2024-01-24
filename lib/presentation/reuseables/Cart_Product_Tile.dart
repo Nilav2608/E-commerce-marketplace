@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:fluxestore/models/cart_items_model.dart';
+import 'package:fluxestore/utils/formatters/formatters.dart';
 
 class CartProductTile extends StatelessWidget {
   final CartItemsModel data;
@@ -16,17 +17,7 @@ class CartProductTile extends StatelessWidget {
     required this.onDecrease,
     required this.onCheckBoxChanged,
   });
- String getColorName(Color color) {
-  if (color == Colors.orangeAccent) {
-    return 'Orange';
-  } else if (color == Colors.black) {
-    return 'Black';
-  } else if (color == Colors.pink) {
-    return 'Pink';
-  }
-  // Add more color checks as needed
-  return 'Unknown'; // Default value for unknown colors
-}
+ 
   @override
   Widget build(BuildContext context) {
     // String color = data.color.toString();
@@ -35,7 +26,7 @@ class CartProductTile extends StatelessWidget {
 
     // var color = data.color
    
-    String colorName = getColorName(data.color??Colors.transparent);
+    String colorName = Formatters().getColorName(data.color??Colors.transparent);
 
    
     return Padding(
