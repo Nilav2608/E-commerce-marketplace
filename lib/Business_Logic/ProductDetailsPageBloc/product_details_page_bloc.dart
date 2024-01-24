@@ -20,7 +20,7 @@ class ProductDetailsPageBloc
       AddToCartEvent event, Emitter<ProductDetailsPageState> emit) {
     cartItems.add(event.productData);
     emit(AddToCartActionState(
-        subTotal: subTotal(cartItems), cartItems: cartItems));
+        subTotal: CartItemsModel().subTotal(cartItems), cartItems: cartItems));
   }
 
   FutureOr<void> productDetailsPageInitialEvent(

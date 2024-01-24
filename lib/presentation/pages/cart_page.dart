@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluxestore/data/cart_items.dart';
+import 'package:fluxestore/models/cart_items_model.dart';
 import 'package:fluxestore/presentation/reuseables/cart_product_tile.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
@@ -19,7 +20,7 @@ class _CartPageState extends State<CartPage> {
   @override
   void initState() {
     cartPageBloc.add(CartPageInitialEvent());
-    subTotal(cartItems);
+   CartItemsModel().subTotal(cartItems);
     super.initState();
   }
 

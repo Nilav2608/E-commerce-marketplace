@@ -18,7 +18,7 @@ class CartPageBloc extends Bloc<CartPageEvent, CartPageState> {
   FutureOr<void> cartPageInitialEvent(
       CartPageInitialEvent event, Emitter<CartPageState> emit) {
     emit(CartSuccessState(
-        cartSuccessData: cartItems, subTotal: subTotal(cartItems)));
+        cartSuccessData: cartItems, subTotal: CartItemsModel().subTotal(cartItems)));
   }
 
   FutureOr<void> removeAnItemFromCartEvent(
@@ -26,6 +26,6 @@ class CartPageBloc extends Bloc<CartPageEvent, CartPageState> {
     cartItems.remove(event.product);
 
     emit(CartSuccessState(
-        cartSuccessData: cartItems, subTotal: subTotal(cartItems)));
+        cartSuccessData: cartItems, subTotal: CartItemsModel().subTotal(cartItems)));
   }
 }
