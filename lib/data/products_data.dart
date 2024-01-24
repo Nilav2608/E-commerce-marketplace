@@ -3,7 +3,7 @@ import '../models/product_data_model.dart';
 
 final List<ProductDataModel> productsList = [
   ProductDataModel(
-      id: 1,
+      id:"3",
       productName: "Turtleneck Sweater",
       descriptionn: "xxxxxxx",
       price: 39.99,
@@ -14,7 +14,7 @@ final List<ProductDataModel> productsList = [
       favorite: false,
       ratings: 4),
   ProductDataModel(
-      id: 3,
+      id: "3",
       productName: "Long Sleeve Dress",
       descriptionn: "xxxxxxx",
       price: 80.00,
@@ -25,7 +25,7 @@ final List<ProductDataModel> productsList = [
       favorite: false,
       ratings: 4),
   ProductDataModel(
-      id: 4,
+      id: "3",
       productName: "Sportwear Set",
       descriptionn: "xxxxxxx",
       price: 75.00,
@@ -36,7 +36,7 @@ final List<ProductDataModel> productsList = [
       favorite: false,
       ratings: 4),
   ProductDataModel(
-      id: 1,
+      id: "3",
       productName: "Elegant Dress",
       descriptionn: "xxxxxxx",
       price: 39.99,
@@ -51,7 +51,7 @@ final List<ProductDataModel> productsList = [
 
 final List<ProductDataModel> recommendedList = [
   ProductDataModel(
-      id: 2,
+      id: "3",
       productName: "White fashion hoodie",
       descriptionn: "xxxxxxx",
       price: 29.00,
@@ -62,7 +62,7 @@ final List<ProductDataModel> recommendedList = [
       favorite: false,
       ratings: 4),
   ProductDataModel(
-      id: 2,
+      id: "3",
       productName: "Cotton T-shirts",
       descriptionn: "xxxxxxx",
       price: 30.00,

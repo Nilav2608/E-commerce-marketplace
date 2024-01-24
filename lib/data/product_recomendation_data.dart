@@ -3,7 +3,7 @@ import '../models/product_data_model.dart';
 
 List<ProductDataModel> recomendationsList = [
   ProductDataModel(
-      id: 3,
+      id: "3",
       productName: "Rise Crop Hoodie",
       descriptionn: "xxxxxxx",
       price: 43.00,
@@ -16,7 +16,7 @@ List<ProductDataModel> recomendationsList = [
       favorite: false,
       ratings: 4),
   ProductDataModel(
-      id: 3,
+      id: "3",
       productName: "Gym Crop Top",
       descriptionn: "xxxxxxx",
       price: 43.00,
@@ -29,7 +29,7 @@ List<ProductDataModel> recomendationsList = [
       favorite: false,
       ratings: 4),
   ProductDataModel(
-      id: 3,
+      id: "3",
       productName: "Sport Sweatshirt",
       descriptionn: "xxxxxxx",
       price: 43.00,

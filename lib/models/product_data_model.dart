@@ -1,5 +1,5 @@
 class ProductDataModel {
-  int? id;
+  String? id;
   String? productName;
   String? imageUrl;
   double? price;

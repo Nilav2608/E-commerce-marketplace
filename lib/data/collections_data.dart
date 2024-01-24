@@ -4,7 +4,7 @@ import '../models/product_data_model.dart';
 
 final List<ProductDataModel> seasonCollectionsData = [
   ProductDataModel(
-      id: 3,
+      id: "3",
       productName: "Knitted Vest Dress",
       descriptionn: "xxxxxxx",
       price: 85.00,
@@ -17,7 +17,7 @@ final List<ProductDataModel> seasonCollectionsData = [
       favorite: false,
       ratings: 4),
   ProductDataModel(
-      id: 3,
+      id: "3",
       productName: "Knitted Dress",
       descriptionn: "xxxxxxx",
       price: 64.00,
@@ -28,7 +28,7 @@ final List<ProductDataModel> seasonCollectionsData = [
       favorite: false,
       ratings: 4),
   ProductDataModel(
-      id: 3,
+      id: "3",
       productName: "Ribbed Top",
       descriptionn: "xxxxxxx",
       price: 25.00,
@@ -40,7 +40,7 @@ final List<ProductDataModel> seasonCollectionsData = [
       favorite: false,
       ratings: 4),
   ProductDataModel(
-      id: 3,
+      id: "3",
       productName: "Crop top beige",
       descriptionn: "xxxxxxx",
       price: 24.00,

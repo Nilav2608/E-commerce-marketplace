@@ -8,7 +8,7 @@ import '../../models/product_data_model.dart';
 class Mappers{
   CartItemsModel mapProductsFromProductDataModel(ProductDataModel data,int colorIndex, int sizeIndex) {
   return CartItemsModel(
-      id: data.id.toString(),
+      productId: data.id.toString(),
       productName: data.productName,
       price: data.price,
       imageUrl: data.imageUrl,
