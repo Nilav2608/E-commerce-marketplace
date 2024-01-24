@@ -4,7 +4,7 @@ import 'package:fluxestore/presentation/reuseables/cart_product_tile.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 import '../../Business_Logic/CartPageBloc/cart_page_bloc.dart';
-import '../../Mappers/mappers.dart';
+import '../../utils/Mappers/mappers.dart';
 
 class CartPage extends StatefulWidget {
   const CartPage({super.key});

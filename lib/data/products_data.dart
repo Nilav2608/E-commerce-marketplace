@@ -47,17 +47,6 @@ final List<ProductDataModel> productsList = [
       colors: [Colors.orangeAccent, Colors.black, Colors.pink],
       favorite: false,
       ratings: 4),
-  ProductDataModel(
-      id: 2,
-      productName: "Long Sleeve Dress",
-      descriptionn: "xxxxxxx",
-      price: 45.00,
-      imageUrl:
-          "https://images.unsplash.com/photo-1579101098056-6bf296535b8e?auto=format&fit=crop&q=60&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzB8fGZmYXNoaW9uJTIwbW9kZWwlMjBwb3NlfGVufDB8fDB8fHww",
-      sizes: ["S", "M", "L", "XL"],
-      colors: [Colors.orangeAccent, Colors.black, Colors.pink],
-      favorite: false,
-      ratings: 4),
 ];
 
 final List<ProductDataModel> recommendedList = [

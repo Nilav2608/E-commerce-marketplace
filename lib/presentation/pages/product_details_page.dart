@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluxestore/Business_Logic/ProductDetailsPageBloc/product_details_page_bloc.dart';
-import 'package:fluxestore/Mappers/mappers.dart';
+import 'package:fluxestore/utils/Mappers/mappers.dart';
 import 'package:fluxestore/data/product_recomendation_data.dart';
 import 'package:fluxestore/models/cart_items_model.dart';
 import 'package:fluxestore/models/colors_category_model.dart';

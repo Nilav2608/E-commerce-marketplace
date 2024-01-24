@@ -1,9 +1,9 @@
 
 
-import '../models/cart_items_model.dart';
-import '../models/delivery_address_model.dart';
-import '../models/my_orders_data_model.dart';
-import '../models/product_data_model.dart';
+import '../../models/cart_items_model.dart';
+import '../../models/delivery_address_model.dart';
+import '../../models/my_orders_data_model.dart';
+import '../../models/product_data_model.dart';
 
 class Mappers{
   CartItemsModel mapProductsFromProductDataModel(ProductDataModel data,int colorIndex, int sizeIndex) {
