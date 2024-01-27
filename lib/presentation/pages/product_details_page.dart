@@ -453,7 +453,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                                                         0xffFAFAFA),
                                                             child: Text(
                                                               widget.data
-                                                                  .sizes![i],
+                                                                  .sizes![i].toString(),
                                                               style: TextStyle(
                                                                   color: selectedSize
                                                                       ? const Color(
