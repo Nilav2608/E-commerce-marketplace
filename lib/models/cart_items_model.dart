@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CartItemsModel {
+  String? id;
   String? productId;
   String? productName;
   double? price;
@@ -11,7 +12,8 @@ class CartItemsModel {
   bool? selected;
 
   CartItemsModel(
-      {this.productId,
+      {this.id,
+      this.productId,
       this.productName,
       this.price,
       this.size,
@@ -21,6 +23,7 @@ class CartItemsModel {
       this.selected});
 
   CartItemsModel.fromJson(Map<String, dynamic> json) {
+    id = json['_id'];
     productId = json['productId'];
     productName = json['productName'];
     price = json['price'];
@@ -33,6 +36,7 @@ class CartItemsModel {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
+    data['_id'] = id;
     data['productId'] = productId;
     data['productName'] = productName;
     data['price'] = price;
@@ -43,16 +47,16 @@ class CartItemsModel {
     data['selected'] = selected;
     return data;
   }
-  
+
   double subTotal(List<CartItemsModel> totalCartItems) {
-  double total = 0;
-  for (var items in totalCartItems) {
-    if (items.selected!) {
-      double currentPrice = double.parse(items.price.toString());
-      var quantity = items.quantity;
-      total += currentPrice * quantity!;
+    double total = 0;
+    for (var items in totalCartItems) {
+      if (items.selected!) {
+        double currentPrice = double.parse(items.price.toString());
+        var quantity = items.quantity;
+        total += currentPrice * quantity!;
+      }
     }
+    return total;
   }
-  return total;
-}
 }
