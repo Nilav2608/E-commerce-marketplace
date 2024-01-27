@@ -38,6 +38,7 @@ class CheckOutPageBloc extends Bloc<CheckOutPageEvent, CheckOutPageState> {
     emit(PageLoadingState());
 
     event.dataModel.deliveryAddress = event.addressData;
+    event.dataModel.paymentMethod = event.paymentMode;
 
     pendingItems.add(event.dataModel);
     debugPrint("data added");

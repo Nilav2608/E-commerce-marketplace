@@ -4,7 +4,7 @@ import '../../reuseables/credit_card.dart';
 
 class PaymentSectionView extends StatefulWidget {
   final Function(bool?)? onChanged;
-  final Function()? onProceedToCheckOut;
+  final Function(String paymentMethod)? onProceedToCheckOut;
   final double subTotal;
   final bool agreedToTermsAndConditions;
   const PaymentSectionView(
@@ -420,7 +420,7 @@ class _PaymentSectionViewState extends State<PaymentSectionView> {
                       height: 48,
                       width: 315,
                       child: ElevatedButton(
-                          onPressed: widget.onProceedToCheckOut,
+                          onPressed: widget.onProceedToCheckOut!(paymentModes[currentPaymentMethodIndex][0]),
                           style: const ButtonStyle(
                               backgroundColor:
                                   MaterialStatePropertyAll(Color(0xFF343434))),

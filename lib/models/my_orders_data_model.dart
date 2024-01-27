@@ -14,6 +14,7 @@ class MyOrdersDataModel {
   double? subTotal;
   double? shippingCharges;
   double? total;
+  String? paymentMethod;
   String? deliveryStatus;
 
   MyOrdersDataModel(
@@ -26,6 +27,7 @@ class MyOrdersDataModel {
       this.subTotal,
       this.shippingCharges,
       this.total,
+      this.paymentMethod,
       this.deliveryStatus});
 
   MyOrdersDataModel.fromJson(Map<String, dynamic> json) {
@@ -43,6 +45,7 @@ class MyOrdersDataModel {
     subTotal = json['subTotal'];
     shippingCharges = json['shippingCharges'];
     total = json['total'];
+    paymentMethod = json['paymentMethod'];
     deliveryAddress = DeliveryAddress.fromJson(json['deliveryAddress']);
   
   }
@@ -60,6 +63,7 @@ class MyOrdersDataModel {
     data['subTotal'] = subTotal;
     data['shippingCharges'] = shippingCharges;
     data['total'] = total;
+    data['paymentMethod'] = paymentMethod;
     data['deliveryAddress'] = deliveryAddress?.toJson();
     return data;
   }

@@ -112,12 +112,12 @@ class _CheckOutPageState extends State<CheckOutPage> {
                             },
                             agreedToTermsAndConditions:
                                 agreedToTermsAndConditions,
-                            onProceedToCheckOut: () {
+                            onProceedToCheckOut: (String paymentMethod) {
                               if (agreedToTermsAndConditions) {
                                 checkOutPageBloc.add(
                                     CheckOutPagePlaceOrderEvent(
                                        
-                                        dataModel: widget.myOrdersData, addressData: successData.address));
+                                        dataModel: widget.myOrdersData, addressData: successData.address, paymentMode: paymentMethod));
                               } else {
                                 ScaffoldMessenger.of(context)
                                     .showSnackBar(const SnackBar(
