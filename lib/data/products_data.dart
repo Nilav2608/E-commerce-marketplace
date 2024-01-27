@@ -9,7 +9,7 @@ final List<ProductDataModel> productsList = [
       price: 39.99,
       imageUrl:
           "https://admin.pixelstrap.com/enzo/assets/images/ecommerce/07.jpg",
-      sizes: ["S", "M", "L", "XL"],
+      sizes: ["S", "M", "L", "XL"], //{"S" :1, "M":1, "L":1, "XL":1,},
       colors: [Colors.orangeAccent, Colors.black, Colors.pink],
       favorite: false,
       ratings: 4),
