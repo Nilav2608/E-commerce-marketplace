@@ -130,7 +130,6 @@ class _CheckOutPageState extends State<CheckOutPage> {
                               }
                             },
                           )
-
                           // Positioned(
                           //   left: 0,
                           //   right: 0,
@@ -165,8 +164,6 @@ class _CheckOutPageState extends State<CheckOutPage> {
                           //     ),
                           //   ),
                           // ),
-
-                          // ignore: prefer_const_constructors
                         ],
                       );
                     case PaymentCompletedActionState:
