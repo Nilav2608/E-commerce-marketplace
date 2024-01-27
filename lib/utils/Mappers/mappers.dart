@@ -13,7 +13,7 @@ class Mappers{
       price: data.price,
       imageUrl: data.imageUrl,
       color: data.colors![colorIndex],
-      size: data.sizes![sizeIndex],
+      size: data.sizes![sizeIndex].toString(),
       quantity: 1,
       selected: false);
 }
