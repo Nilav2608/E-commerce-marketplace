@@ -15,7 +15,7 @@ class Mappers{
       color: data.colors![colorIndex],
       size: data.sizes![sizeIndex].toString(),
       quantity: 1,
-      selected: false);
+      selected: true);
 }
 
    MyOrdersDataModel myOrdersDataMapper(
