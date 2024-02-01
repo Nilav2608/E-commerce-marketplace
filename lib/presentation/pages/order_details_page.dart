@@ -174,7 +174,7 @@ class OrderDetailsPage extends StatelessWidget {
                                 fontWeight: FontWeight.w400),
                           ),
                           Text(
-                            "${data.deliveryAddress!.street??''}, ${data.deliveryAddress!.city??''}",
+                            "${data.deliveryAddress!.street ?? ''}, ${data.deliveryAddress!.city ?? ''}",
                             style: const TextStyle(
                                 fontSize: 14,
                                 color: Color(0xff141416),
@@ -326,23 +326,48 @@ class OrderDetailsPage extends StatelessWidget {
               data.deliveryStatus == "PENDING"
                   ?
                   //*Continue to shopping page--------------------------------------->
-                  SizedBox(
-                      height: 48,
-                      width: double.infinity,
-                      child: ElevatedButton(
-                          onPressed: () {
-                            Navigator.of(context).popAndPushNamed('/');
-                          },
-                          style: const ButtonStyle(
-                              backgroundColor:
-                                  MaterialStatePropertyAll(Color(0xFF343434))),
-                          child: const Text(
-                            "Continue shopping",
-                            style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w700,
-                                color: Colors.white),
-                          )),
+                  Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        SizedBox(
+                          height: 48,
+                          // width: 170,
+                          child: ElevatedButton(
+                              onPressed: () {
+                                Navigator.of(context).popAndPushNamed('/');
+                              },
+                              style: const ButtonStyle(
+                                  backgroundColor: MaterialStatePropertyAll(
+                                      Color(0xFF343434))),
+                              child: const Text(
+                                "Continue shopping",
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w700,
+                                    color: Colors.white),
+                              )),
+                        ),
+                        // const SizedBox(
+                        //   width: 5,
+                        // ),
+                        SizedBox(
+                          height: 48,
+                          width: 142,
+                          child: OutlinedButton(
+                              onPressed: () {},
+                              style: OutlinedButton.styleFrom(
+                                side: const BorderSide(
+                                    width: 1.0, color: Color(0xFFC50000)),
+                              ),
+                              child: const Text(
+                                "Cancel Order",
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w700,
+                                    color: Color(0xFFC50000)),
+                              )),
+                        ),
+                      ],
                     )
                   : Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -351,7 +376,6 @@ class OrderDetailsPage extends StatelessWidget {
                           height: 44,
                           width: 168,
                           child: OutlinedButton(
-                              
                               onPressed: () {
                                 Navigator.of(context).pushNamed('/');
                               },
@@ -366,7 +390,8 @@ class OrderDetailsPage extends StatelessWidget {
                           width: 119,
                           child: ElevatedButton(
                               onPressed: () {
-                                Navigator.of(context).pushNamed('productFeedbackPage');
+                                Navigator.of(context)
+                                    .pushNamed('productFeedbackPage');
                               },
                               style: const ButtonStyle(
                                   backgroundColor: MaterialStatePropertyAll(

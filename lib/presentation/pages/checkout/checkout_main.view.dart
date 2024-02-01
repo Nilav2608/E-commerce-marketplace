@@ -85,9 +85,9 @@ class _CheckOutPageState extends State<CheckOutPage> {
                                 checkOutPageBloc.add(CheckOutPagePaymentEvent(
                                      
                                     subTotal: widget.myOrdersData.subTotal!, addressData: deliveryAddress));
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                    const SnackBar(
-                                        content: Text("Submitting form")));
+                                // ScaffoldMessenger.of(context).showSnackBar(
+                                //     const SnackBar(
+                                //         content: Text("Submitting form")));
                               }
                             },
                           )
@@ -112,7 +112,7 @@ class _CheckOutPageState extends State<CheckOutPage> {
                             },
                             agreedToTermsAndConditions:
                                 agreedToTermsAndConditions,
-                            onProceedToCheckOut: (String paymentMethod) {
+                            onProceedToCheckOut: (paymentMethod) {
                               if (agreedToTermsAndConditions) {
                                 checkOutPageBloc.add(
                                     CheckOutPagePlaceOrderEvent(

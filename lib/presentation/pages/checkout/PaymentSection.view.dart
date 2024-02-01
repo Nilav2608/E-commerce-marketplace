@@ -28,7 +28,7 @@ class _PaymentSectionViewState extends State<PaymentSectionView> {
     "assets/images/card_gradient.png",
   ];
 
-  List paymentModes = [
+  List<List<String>> paymentModes = [
     ["Cash","assets/images/dollar_note.svg","22"],
     ["Credit Card","assets/images/credit_card_rounded.svg","22"],
     ["","assets/images/dots.svg","10"],
