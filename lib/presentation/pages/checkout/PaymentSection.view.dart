@@ -420,7 +420,7 @@ class _PaymentSectionViewState extends State<PaymentSectionView> {
                       height: 48,
                       width: 315,
                       child: ElevatedButton(
-                          onPressed: widget.onProceedToCheckOut!(paymentModes[currentPaymentMethodIndex][0]),
+                          onPressed: () => widget.onProceedToCheckOut!(paymentModes[currentPaymentMethodIndex][0]),
                           style: const ButtonStyle(
                               backgroundColor:
                                   MaterialStatePropertyAll(Color(0xFF343434))),

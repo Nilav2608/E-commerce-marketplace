@@ -2,16 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluxestore/models/my_orders_data_model.dart';
 
-class OrderDetailsPage extends StatelessWidget {
+class OrderDetailsPage extends StatefulWidget {
   final MyOrdersDataModel data;
   const OrderDetailsPage({super.key, required this.data});
 
+  @override
+  State<OrderDetailsPage> createState() => _OrderDetailsPageState();
+}
+
+bool isCancelling = true;
+
+class _OrderDetailsPageState extends State<OrderDetailsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text("Order ${data.orderID}",
+        title: Text("Order ${widget.data.orderID}",
             style: const TextStyle(
                 color: Colors.black,
                 fontSize: 18,
@@ -22,7 +29,7 @@ class OrderDetailsPage extends StatelessWidget {
           padding: const EdgeInsets.all(20.0),
           child: Column(
             children: [
-              data.deliveryStatus == "PENDING"
+              widget.data.deliveryStatus == "PENDING"
                   ? Container(
                       width: double.infinity,
                       height: 92,
@@ -136,7 +143,7 @@ class OrderDetailsPage extends StatelessWidget {
                                 fontWeight: FontWeight.w400),
                           ),
                           Text(
-                            data.orderID ?? "",
+                            widget.data.orderID ?? "",
                             style: const TextStyle(
                                 fontSize: 14,
                                 color: Color(0xff141416),
@@ -155,7 +162,7 @@ class OrderDetailsPage extends StatelessWidget {
                                 fontWeight: FontWeight.w400),
                           ),
                           Text(
-                            data.trackingNumber ?? "",
+                            widget.data.trackingNumber ?? "",
                             style: const TextStyle(
                                 fontSize: 14,
                                 color: Color(0xff141416),
@@ -174,7 +181,7 @@ class OrderDetailsPage extends StatelessWidget {
                                 fontWeight: FontWeight.w400),
                           ),
                           Text(
-                            "${data.deliveryAddress!.street ?? ''}, ${data.deliveryAddress!.city ?? ''}",
+                            "${widget.data.deliveryAddress!.street ?? ''}, ${widget.data.deliveryAddress!.city ?? ''}",
                             style: const TextStyle(
                                 fontSize: 14,
                                 color: Color(0xff141416),
@@ -211,11 +218,11 @@ class OrderDetailsPage extends StatelessWidget {
                     children: [
                       LimitedBox(
                         child: ListView.builder(
-                            itemCount: data.orderedItems!.length,
+                            itemCount: widget.data.orderedItems!.length,
                             physics: const NeverScrollableScrollPhysics(),
                             shrinkWrap: true,
                             itemBuilder: (context, index) {
-                              var itemsData = data.orderedItems![index];
+                              var itemsData = widget.data.orderedItems![index];
                               return Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
@@ -266,7 +273,7 @@ class OrderDetailsPage extends StatelessWidget {
                                 fontWeight: FontWeight.w100),
                           ),
                           Text(
-                            data.subTotal.toString(),
+                            widget.data.subTotal.toString(),
                             style: const TextStyle(
                                 fontSize: 16,
                                 color: Color(0xff141416),
@@ -285,7 +292,7 @@ class OrderDetailsPage extends StatelessWidget {
                                 fontWeight: FontWeight.w100),
                           ),
                           Text(
-                            data.shippingCharges.toString(),
+                            widget.data.shippingCharges.toString(),
                             style: const TextStyle(
                                 fontSize: 16,
                                 color: Color(0xff141416),
@@ -307,7 +314,7 @@ class OrderDetailsPage extends StatelessWidget {
                                   fontWeight: FontWeight.w100),
                             ),
                             Text(
-                              "\$${data.total}",
+                              "\$${widget.data.total}",
                               style: const TextStyle(
                                   fontSize: 16,
                                   color: Color(0xff141416),
@@ -323,7 +330,7 @@ class OrderDetailsPage extends StatelessWidget {
               const SizedBox(
                 height: 30,
               ),
-              data.deliveryStatus == "PENDING"
+              widget.data.deliveryStatus == "PENDING"
                   ?
                   //*Continue to shopping page--------------------------------------->
                   Row(
@@ -347,14 +354,49 @@ class OrderDetailsPage extends StatelessWidget {
                                     color: Colors.white),
                               )),
                         ),
-                        // const SizedBox(
-                        //   width: 5,
-                        // ),
                         SizedBox(
                           height: 48,
                           width: 142,
                           child: OutlinedButton(
-                              onPressed: () {},
+                              onPressed: () async {                                
+                                 showDialog(
+                                    context: context,
+                                    builder: (context) => AlertDialog(
+                                          title: const Text('Cancel Order'),
+                                          content: Text(
+                                                  'Are you sure you want to cancel this order? #${widget.data.orderID}'),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () {
+                                                // User clicked on "Cancel" button
+                                                Navigator.of(context).pop();
+                                              },
+                                              child: const Text('Cancel'),
+                                            ),
+                                            TextButton(
+                                              onPressed: () async {
+                                                // setState(() {
+                                                //   isCancelling =
+                                                //       true; // Start the cancellation process
+                                                // });
+
+                                                // Simulate an asynchronous order cancellation process
+                                                // await Future.delayed(
+                                                //     const Duration(seconds: 2));
+                                                // User clicked on "Confirm" button
+                                                // Perform cancel order logic here
+                                                // Navigator.of(context).popAndPushNamed('MyOrders');// Close the dialog
+                                                Navigator.of(context).popUntil(
+                                                    (route) => route.isFirst);
+
+                                                // Alternatively, you can use popUntil with a specific route
+                                                // Navigator.of(context).popUntil(ModalRoute.withName('MyOrders'));
+                                              },
+                                              child: const Text('Confirm'),
+                                            ),
+                                          ],
+                                        ));
+                              },
                               style: OutlinedButton.styleFrom(
                                 side: const BorderSide(
                                     width: 1.0, color: Color(0xFFC50000)),
