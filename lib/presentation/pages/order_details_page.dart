@@ -12,6 +12,48 @@ class OrderDetailsPage extends StatefulWidget {
 
 bool isCancelling = true;
 
+cancelDialog(context,String orderId) {
+  return showDialog(
+      context: context,
+      builder: (context) =>
+      // isCancelling
+      //     ? const Center(
+      //         child: CircularProgressIndicator(),
+      //       )
+      //     :
+      AlertDialog(
+              title: const Text('Cancel Order'),
+              content: Text(
+                  'Are you sure you want to cancel this order? #$orderId'),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    // User clicked on "Cancel" button
+                    Navigator.of(context).popUntil((route) => route.isFirst);
+                  },
+                  child: const Text('Cancel'),
+                ),
+                TextButton(
+                  onPressed: () async {
+                    showDialog(
+                      context: context,
+                      builder: (context) => const Center(
+                        child: CircularProgressIndicator(),
+                      ),
+                    );
+                    await Future.delayed(const Duration(seconds: 2));
+
+                    Navigator.of(context).popUntil((route) => route.isFirst);
+
+                    // Alternatively, you can use popUntil with a specific route
+                    // Navigator.of(context).popUntil(ModalRoute.withName('MyOrders'));
+                  },
+                  child: const Text('Confirm'),
+                ),
+              ],
+            ));
+}
+
 class _OrderDetailsPageState extends State<OrderDetailsPage> {
   @override
   Widget build(BuildContext context) {
@@ -358,44 +400,17 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
                           height: 48,
                           width: 142,
                           child: OutlinedButton(
-                              onPressed: () async {                                
-                                 showDialog(
-                                    context: context,
-                                    builder: (context) => AlertDialog(
-                                          title: const Text('Cancel Order'),
-                                          content: Text(
-                                                  'Are you sure you want to cancel this order? #${widget.data.orderID}'),
-                                          actions: [
-                                            TextButton(
-                                              onPressed: () {
-                                                // User clicked on "Cancel" button
-                                                Navigator.of(context).pop();
-                                              },
-                                              child: const Text('Cancel'),
-                                            ),
-                                            TextButton(
-                                              onPressed: () async {
-                                                // setState(() {
-                                                //   isCancelling =
-                                                //       true; // Start the cancellation process
-                                                // });
+                              onPressed: () async {
+                                showDialog(
+                                  context: context,
+                                  builder: (context) => const Center(
+                                    child: CircularProgressIndicator(),
+                                  ),
+                                );
+                                await Future.delayed(
+                                    const Duration(seconds: 2));
 
-                                                // Simulate an asynchronous order cancellation process
-                                                // await Future.delayed(
-                                                //     const Duration(seconds: 2));
-                                                // User clicked on "Confirm" button
-                                                // Perform cancel order logic here
-                                                // Navigator.of(context).popAndPushNamed('MyOrders');// Close the dialog
-                                                Navigator.of(context).popUntil(
-                                                    (route) => route.isFirst);
-
-                                                // Alternatively, you can use popUntil with a specific route
-                                                // Navigator.of(context).popUntil(ModalRoute.withName('MyOrders'));
-                                              },
-                                              child: const Text('Confirm'),
-                                            ),
-                                          ],
-                                        ));
+                                cancelDialog(context,'#${widget.data.orderID}');
                               },
                               style: OutlinedButton.styleFrom(
                                 side: const BorderSide(

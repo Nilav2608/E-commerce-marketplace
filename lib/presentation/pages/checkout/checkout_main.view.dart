@@ -66,8 +66,8 @@ class _CheckOutPageState extends State<CheckOutPage> {
                   switch (state.runtimeType) {
                     case PageLoadingState:
                       return const AlertDialog(
-                            content: CircularProgressIndicator(),
-                          );
+                        content: CircularProgressIndicator(),
+                      );
 
                     case CheckOutPageBlocInitialState:
                       return Column(
@@ -83,8 +83,8 @@ class _CheckOutPageState extends State<CheckOutPage> {
                             onPressed: (DeliveryAddress deliveryAddress) {
                               if (formKey.currentState!.validate()) {
                                 checkOutPageBloc.add(CheckOutPagePaymentEvent(
-                                     
-                                    subTotal: widget.myOrdersData.subTotal!, addressData: deliveryAddress));
+                                    subTotal: widget.myOrdersData.subTotal!,
+                                    addressData: deliveryAddress));
                                 // ScaffoldMessenger.of(context).showSnackBar(
                                 //     const SnackBar(
                                 //         content: Text("Submitting form")));
@@ -94,8 +94,7 @@ class _CheckOutPageState extends State<CheckOutPage> {
                         ],
                       );
                     case PaymentPageActionState:
-                      final  successData =
-                          state as PaymentPageActionState;
+                      final successData = state as PaymentPageActionState;
                       return Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -113,11 +112,14 @@ class _CheckOutPageState extends State<CheckOutPage> {
                             agreedToTermsAndConditions:
                                 agreedToTermsAndConditions,
                             onProceedToCheckOut: (paymentMethod) {
+                              print(paymentMethod);
+
                               if (agreedToTermsAndConditions) {
                                 checkOutPageBloc.add(
                                     CheckOutPagePlaceOrderEvent(
-                                       
-                                        dataModel: widget.myOrdersData, addressData: successData.address, paymentMode: paymentMethod));
+                                        dataModel: widget.myOrdersData,
+                                        addressData: successData.address,
+                                        paymentMode: paymentMethod));
                               } else {
                                 ScaffoldMessenger.of(context)
                                     .showSnackBar(const SnackBar(
