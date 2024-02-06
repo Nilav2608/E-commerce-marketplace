@@ -10,18 +10,14 @@ import 'package:fluxestore/presentation/pages/home/home_utils/vertical_banner_la
 
 import '../../reuseables/recommended_products_.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  double hori = 25;
-  double vert = 15;
-  @override
   Widget build(BuildContext context) {
+    double hori = 25;
+
+    double vert = 15;
     final double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       body: ListView(scrollDirection: Axis.vertical, children: [
@@ -79,7 +75,6 @@ class _HomePageState extends State<HomePage> {
               padding: EdgeInsets.symmetric(horizontal: hori, vertical: vert),
               child: const CurosalSliderWidget(),
             ),
-
             Padding(
               padding: EdgeInsets.symmetric(horizontal: hori, vertical: vert),
               child: const RowHeadsSeeMore(
@@ -164,7 +159,7 @@ class _HomePageState extends State<HomePage> {
             // ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: hori, vertical: vert),
-              child:  VerticalCards(
+              child: VerticalCards(
                 screenWidth: screenWidth,
               ),
             )
