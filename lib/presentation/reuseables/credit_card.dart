@@ -7,19 +7,20 @@ class CrediCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double screenWidth = MediaQuery.of(context).size.width;
+    print(screenWidth);
     return Padding(
-      padding: const EdgeInsets.only(right: 10.0, left: 18),
-      child: SizedBox(
-        width: double.infinity,
-        height: 191,
-        child: Stack(children: [
-          Image.asset(
-            cardUrl.toString(),
-            width: double.infinity,
-            height: 191,
-            fit: BoxFit.contain,
-          ),
-          Column(
+      padding: const EdgeInsets.symmetric(horizontal: 0),
+      child: Stack(children: [
+        Image.asset(
+          cardUrl.toString(),
+          width: screenWidth * 70,
+          height: 191,
+          fit: BoxFit.contain,
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal:30.0),
+          child: Column(
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -122,8 +123,8 @@ class CrediCard extends StatelessWidget {
               )
             ],
           ),
-        ]),
-      ),
+        ),
+      ]),
     );
   }
 }

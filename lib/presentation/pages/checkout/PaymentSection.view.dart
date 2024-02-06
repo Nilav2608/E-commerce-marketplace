@@ -29,9 +29,9 @@ class _PaymentSectionViewState extends State<PaymentSectionView> {
   ];
 
   List<List<String>> paymentModes = [
-    ["Cash","assets/images/dollar_note.svg","22"],
-    ["Credit Card","assets/images/credit_card_rounded.svg","22"],
-    ["","assets/images/dots.svg","10"],
+    ["Cash", "assets/images/dollar_note.svg", "22"],
+    ["Credit Card", "assets/images/credit_card_rounded.svg", "22"],
+    ["", "assets/images/dots.svg", "10"],
   ];
 
   List<String> paymentMethodImages = [
@@ -45,6 +45,8 @@ class _PaymentSectionViewState extends State<PaymentSectionView> {
 
   @override
   Widget build(BuildContext context) {
+    final double screenWidth = MediaQuery.of(context).size.width;
+
     return Expanded(
       child: ListView(controller: scrollController, children: [
         Column(
@@ -88,13 +90,13 @@ class _PaymentSectionViewState extends State<PaymentSectionView> {
                           });
                           if (!pageController.hasClients) {
                             pageController.animateToPage(
-                              currentPaymentMethodIndex,
-                              duration: const Duration(milliseconds: 200),
-                              curve: Curves.linear);
+                                currentPaymentMethodIndex,
+                                duration: const Duration(milliseconds: 200),
+                                curve: Curves.linear);
                           }
                         },
                         child: Padding(
-                          padding: const EdgeInsets.only(left:26.0),
+                          padding: const EdgeInsets.only(left: 26.0),
                           child: AnimatedContainer(
                             duration: const Duration(milliseconds: 300),
                             // margin: const EdgeInsets.only(right: 16),
@@ -116,8 +118,8 @@ class _PaymentSectionViewState extends State<PaymentSectionView> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 SvgPicture.asset(
-                                  height:double.parse(paymentModes[index][2]),
-                                  width:35,
+                                  height: double.parse(paymentModes[index][2]),
+                                  width: 35,
                                   paymentModes[index][1].toString(),
                                   colorFilter: ColorFilter.mode(
                                       currentPaymentMethodIndex == index
@@ -128,10 +130,9 @@ class _PaymentSectionViewState extends State<PaymentSectionView> {
                                 Text(
                                   paymentModes[index][0],
                                   style: TextStyle(
-                                      color:
-                                          currentPaymentMethodIndex == index
-                                              ? Colors.white
-                                              : const Color(0xff6E768A),
+                                      color: currentPaymentMethodIndex == index
+                                          ? Colors.white
+                                          : const Color(0xff6E768A),
                                       fontSize: 12),
                                 )
                               ],
@@ -167,7 +168,7 @@ class _PaymentSectionViewState extends State<PaymentSectionView> {
               height: 5,
             ),
             SizedBox(
-              // width: double.maxFinite,
+              width: screenWidth * 90,
               height: 191,
               child: PageView.builder(
                   scrollDirection: Axis.horizontal,
@@ -420,7 +421,8 @@ class _PaymentSectionViewState extends State<PaymentSectionView> {
                       height: 48,
                       width: 315,
                       child: ElevatedButton(
-                          onPressed: () => widget.onProceedToCheckOut!(paymentModes[currentPaymentMethodIndex][0]),
+                          onPressed: () => widget.onProceedToCheckOut!(
+                              paymentModes[currentPaymentMethodIndex][0]),
                           style: const ButtonStyle(
                               backgroundColor:
                                   MaterialStatePropertyAll(Color(0xFF343434))),
