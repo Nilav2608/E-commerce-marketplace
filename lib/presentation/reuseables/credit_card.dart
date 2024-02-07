@@ -8,7 +8,6 @@ class CrediCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final double screenWidth = MediaQuery.of(context).size.width;
-    print(screenWidth);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 0),
       child: Stack(children: [
