@@ -112,8 +112,6 @@ class _CheckOutPageState extends State<CheckOutPage> {
                             agreedToTermsAndConditions:
                                 agreedToTermsAndConditions,
                             onProceedToCheckOut: (paymentMethod) {
-                              print(paymentMethod);
-
                               if (agreedToTermsAndConditions) {
                                 checkOutPageBloc.add(
                                     CheckOutPagePlaceOrderEvent(
