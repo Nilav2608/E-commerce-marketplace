@@ -45,6 +45,7 @@ dependencies:
   csc_picker: ^0.2.7
   carousel_slider: ^4.2.1
   lottie: ^2.7.0
+  http:
 dev_dependencies:
   flutter_test:
     sdk: flutter
