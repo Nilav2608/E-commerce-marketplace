@@ -1,6 +1,14 @@
 part of 'home_bloc.dart';
 
 @immutable
-sealed class HomeState {}
+sealed class HomePageState {}
 
-final class HomeInitial extends HomeState {}
+final class HomeInitial extends HomePageState {}
+
+class HomePageLoadingState extends HomePageState {}
+
+class HomePageLoadedSuccessState extends HomePageState {
+  final List<ProductDataModel> loadedProductsList;
+
+  HomePageLoadedSuccessState({required this.loadedProductsList});
+}
