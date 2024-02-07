@@ -21,11 +21,11 @@ class ProductDataModel {
       this.sizes});
 
   ProductDataModel.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
+    id = json['_id'];
     productName = json['productName'];
     imageUrl = json['imageUrl'];
     price = json['price'];
-    descriptionn = json['descriptionn'];
+    descriptionn = json['description'];
     ratings = json['ratings'];
     sizes = json['sizes'].cast<String>();
     colors = json['colors'].cast();
