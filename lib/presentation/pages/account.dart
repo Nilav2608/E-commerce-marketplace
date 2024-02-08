@@ -10,6 +10,8 @@ class AccountPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double screenWidth = MediaQuery.of(context).size.width;
+    final double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       body: Column(
         children: [
@@ -17,7 +19,7 @@ class AccountPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 20.0),
+                padding: const EdgeInsets.symmetric(vertical: 12.0),
                 child: Row(
                   children: [
                     ClipOval(
@@ -61,8 +63,8 @@ class AccountPage extends StatelessWidget {
           const SizedBox(height: 20,),
           
           Container(
-            width: 327,
-            height: 440,
+            width: screenWidth * 0.85,
+            height: screenHeight * 0.60,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
                 color: Colors.white,
