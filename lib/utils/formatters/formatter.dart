@@ -2,14 +2,14 @@
 import 'package:flutter/material.dart';
 
 class Formatters{
-  String getColorName(Color color) {
-  if (color == Colors.orangeAccent) {
-    return 'Orange';
-  } else if (color == Colors.black) {
-    return 'Black';
-  } else if (color == Colors.pink) {
-    return 'Pink';
+  Color getColorName(String color) {
+  if (color == 'Orange') {
+    return Colors.orangeAccent;
+  } else if (color == 'Black' ) {
+    return Colors.black;
+  } else if (color == "Pink") {
+    return Colors.pink;
   }
-  return 'Unknown'; // Default value for unknown colors
+  return Colors.grey; // Default value for unknown colors
 }
 }
