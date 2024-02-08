@@ -6,14 +6,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluxestore/presentation/pages/home/home_utils/drawer.dart';
 import '../Business_Logic/landing_page_bloc/landing_page_bloc.dart';
 
-class LandingPage extends StatefulWidget {
+class LandingPage extends StatelessWidget {
   const LandingPage({super.key});
 
-  @override
-  State<LandingPage> createState() => _LandingPageState();
-}
-
-class _LandingPageState extends State<LandingPage> {
   @override
   Widget build(BuildContext context) {
     final LandingPageBloc landingPageBloc = LandingPageBloc();
