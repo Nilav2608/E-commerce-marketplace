@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:fluxestore/data/my_order_status_data.dart';
-import 'package:fluxestore/presentation/Icons/primary_icons_icons.dart';
-import 'package:fluxestore/presentation/Icons/secondary_icons_icons.dart';
 import 'package:fluxestore/presentation/pages/account.dart';
 import 'package:fluxestore/presentation/pages/cart_page.dart';
 import 'package:fluxestore/presentation/pages/home/home.dart';
 import 'package:fluxestore/presentation/pages/search.dart';
 import '../models/tab_catagory_model.dart';
 import '../presentation/pages/MyOrders/my_orders_list.dart';
+import '../utils/icons_constants/primary_icons_icons.dart';
+import '../utils/icons_constants/secondary_icons_icons.dart';
 
 const List<String> appBarText = ["Fluxestore", "Search", "Cart", "Account"];
 

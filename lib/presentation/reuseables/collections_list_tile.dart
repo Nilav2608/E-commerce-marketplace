@@ -4,9 +4,7 @@ import 'package:fluxestore/data/wish_listed_data.dart';
 import 'package:fluxestore/models/product_data_model.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
-import '../Icons/primary_icons_icons.dart';
-
-
+import '../../utils/icons_constants/primary_icons_icons.dart';
 
 class CollectionsListTile extends StatefulWidget {
   final ProductDataModel product;

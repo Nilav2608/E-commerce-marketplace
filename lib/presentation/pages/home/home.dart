@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fluxestore/presentation/Icons/primary_icons_icons.dart';
 import 'package:fluxestore/presentation/pages/home/bloc/home_bloc.dart';
 import 'package:fluxestore/presentation/reuseables/banner_cards.dart';
 import 'package:fluxestore/presentation/reuseables/circle_tabs.dart';
@@ -9,6 +8,7 @@ import 'package:fluxestore/presentation/reuseables/product_list_view_builder.dar
 import 'package:fluxestore/presentation/reuseables/row_heading_seemore.dart';
 import 'package:fluxestore/presentation/pages/home/home_utils/vertical_banner_last.dart';
 
+import '../../../utils/icons_constants/primary_icons_icons.dart';
 import '../../reuseables/recommended_products_.dart';
 
 class HomePage extends StatefulWidget {

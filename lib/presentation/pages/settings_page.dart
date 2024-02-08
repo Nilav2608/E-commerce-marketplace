@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../Icons/secondary_icons_icons.dart';
+import '../../utils/icons_constants/secondary_icons_icons.dart';
 import '../reuseables/account_page_utils_row.dart';
 
 class SettingsPage extends StatelessWidget {

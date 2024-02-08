@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:fluxestore/presentation/Icons/primary_icons_icons.dart';
-// ignore: depend_on_referenced_packages
 import 'package:sliding_switch/sliding_switch.dart';
+
+import '../../../../utils/icons_constants/primary_icons_icons.dart';
 
 class HomeDrawer extends StatefulWidget {
   const HomeDrawer({super.key});

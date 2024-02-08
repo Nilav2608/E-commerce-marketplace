@@ -46,6 +46,7 @@ dependencies:
   carousel_slider: ^4.2.1
   lottie: ^2.7.0
   http:
+  sliding_switch: ^1.1.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -54,7 +55,6 @@ dev_dependencies:
   google_fonts: ^6.1.0
   toggle_switch: ^2.1.0
   carousel_indicator: ^1.0.6
-  sliding_switch: ^1.1.0
   intl: ^0.17.0
   expandable: ^5.0.1
   customizable_counter: ^1.0.4

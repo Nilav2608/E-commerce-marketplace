@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:fluxestore/presentation/Icons/primary_icons_icons.dart';
+import '../../utils/icons_constants/primary_icons_icons.dart';
 
 class SearchPage extends StatefulWidget {
   const SearchPage({super.key});
