@@ -118,7 +118,9 @@ class _HomePageState extends State<HomePage> {
                       child: const RowHeadsSeeMore(
                           text1: "Recommended", text2: "Show all"),
                     ),
-                    const RecomendedProductsListTile(),
+                     RecomendedProductsListTile(
+                      recomenedItemsData: successState.loadedProductsList,
+                    ),
                     Padding(
                       padding: EdgeInsets.symmetric(
                           horizontal: hori, vertical: vert),
