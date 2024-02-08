@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:fluxestore/models/cart_items_model.dart';
-import 'package:fluxestore/utils/formatters/formatter.dart';
 
 class CartProductTile extends StatelessWidget {
   final CartItemsModel data;
@@ -17,7 +16,7 @@ class CartProductTile extends StatelessWidget {
     required this.onDecrease,
     required this.onCheckBoxChanged,
   });
- 
+
   @override
   Widget build(BuildContext context) {
     // String color = data.color.toString();
@@ -25,10 +24,8 @@ class CartProductTile extends StatelessWidget {
     // var validColor = colorsSlplit[1].toString();
 
     // var color = data.color
-   
-    String colorName = Formatters().getColorName(data.color??Colors.transparent);
 
-   
+
     return Padding(
       padding: const EdgeInsets.all(12.0),
       child: Slidable(
@@ -128,7 +125,7 @@ class CartProductTile extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              "Size: ${data.size}  |  Color: $colorName ",
+                              "Size: ${data.size}  |  Color: ${data.color} ",
                               style: const TextStyle(
                                 fontSize: 10,
                                 fontWeight: FontWeight.w400,
