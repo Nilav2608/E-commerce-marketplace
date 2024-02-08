@@ -12,6 +12,7 @@ import 'package:fluxestore/presentation/reuseables/product_list_view_builder.dar
 import 'package:fluxestore/presentation/reuseables/expansion_panel.dart';
 import 'package:fluxestore/presentation/reuseables/product_rating_progress_bars.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluxestore/utils/formatters/formatter.dart';
 import '../../models/product_data_model.dart';
 import '../reuseables/product_reviews_tile.dart';
 
@@ -66,7 +67,7 @@ bool _isSimilarProductsExpanded = true;
 
 double horizontal = 20;
 double vertical = 5;
-
+List availableColors = [];
 
 class _ProductDetailsPageState extends State<ProductDetailsPage> {
   final ProductDetailsPageBloc productDetailsPageBloc =
@@ -74,6 +75,10 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
   @override
   void initState() {
     productDetailsPageBloc.add(ProductDetailsPageInitialEvent());
+    for (var i = 0; i < widget.data.colors!.length; i++) {
+      Color colors = Formatters().getColorName(widget.data.colors![i]);
+      availableColors.add(colors);
+    }
     super.initState();
   }
 
@@ -104,8 +109,9 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                   shape: const CircularNotchedRectangle(),
                   child: InkWell(
                     onTap: () {
-                      CartItemsModel cartItems =
-                         Mappers().mapProductsFromProductDataModel(widget.data,currentColorIndex,currentSizeIndex);
+                      CartItemsModel cartItems = Mappers()
+                          .mapProductsFromProductDataModel(
+                              widget.data, currentColorIndex, currentSizeIndex);
                       productDetailsPageBloc
                           .add(AddToCartEvent(productData: cartItems));
                       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
@@ -207,7 +213,6 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                       WishListButtonClickedEvent(
                                           isWishListed: widget.data.favorite!,
                                           product: widget.data));
-                                  
                                 },
                                 icon: Icon(
                                   PrimaryIcons.heart,
@@ -325,11 +330,9 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.start,
                                               children: [
-                                                // ignore: prefer_const_constructors
-                                                Padding(
-                                                  padding:
-                                                      const EdgeInsets.all(4.0),
-                                                  child: const Text(
+                                                const Padding(
+                                                  padding: EdgeInsets.all(4.0),
+                                                  child: Text(
                                                     "Color",
                                                     style: TextStyle(
                                                         fontSize: 14,
@@ -392,7 +395,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                                                             radius:
                                                                                 12,
                                                                             backgroundColor:
-                                                                                widget.data.colors![i]
+                                                                                availableColors[i]
                                                                             // Color(colorsIsSelected[i].color),
                                                                             )),
                                                               ),
@@ -453,7 +456,8 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                                                         0xffFAFAFA),
                                                             child: Text(
                                                               widget.data
-                                                                  .sizes![i].toString(),
+                                                                  .sizes![i]
+                                                                  .toString(),
                                                               style: TextStyle(
                                                                   color: selectedSize
                                                                       ? const Color(
