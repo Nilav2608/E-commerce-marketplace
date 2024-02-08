@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 
 class CartItemsModel {
   String? id;
@@ -6,7 +5,7 @@ class CartItemsModel {
   String? productName;
   double? price;
   String? size;
-  Color? color;
+  String? color;
   int? quantity;
   String? imageUrl;
   bool? selected;
