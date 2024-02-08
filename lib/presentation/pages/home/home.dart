@@ -42,7 +42,6 @@ class _HomePageState extends State<HomePage> {
             );
           case HomePageLoadedSuccessState:
             final successState = state as HomePageLoadedSuccessState;
-            print(successState.loadedProductsList);
             return Scaffold(
               body: ListView(scrollDirection: Axis.vertical, children: [
                 Column(
