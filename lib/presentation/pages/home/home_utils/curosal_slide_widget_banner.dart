@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-// ignore: depend_on_referenced_packages
 import 'package:carousel_indicator/carousel_indicator.dart';
-import 'package:fluxestore/data/banner_carosal_list.dart';
+
+import '../../../../models/banners_data_model.dart';
 
 // ignore: must_be_immutable
 class CurosalSliderWidget extends StatefulWidget {
   // final double contentWidth;
   // final double contentHeight;
+  final List<BannersDataModel> banners;
   const CurosalSliderWidget({
-    super.key,
+    super.key, required this.banners,
     //  required this.contentWidth,
     // required this.contentHeight
   });
@@ -35,7 +36,7 @@ class _CurosalSliderWidgetState extends State<CurosalSliderWidget> {
           borderRadius: BorderRadius.circular(15),
           child: CarouselSlider(
               carouselController: caroselController,
-              items: items
+              items: widget.banners
                   .map(
                     (e) => InkWell(
                       onTap: () {
@@ -62,7 +63,7 @@ class _CurosalSliderWidgetState extends State<CurosalSliderWidget> {
                                   width: 116,
                                   height: 93,
                                   child: Text(
-                                    e.text,
+                                    e.title,
                                     style: const TextStyle(
                                         fontSize: 18,
                                         fontWeight: FontWeight.w700,

@@ -86,7 +86,8 @@ class _HomePageState extends State<HomePage> {
                     Padding(
                       padding: EdgeInsets.symmetric(
                           horizontal: hori, vertical: vert),
-                      child: const CurosalSliderWidget(),
+                      child: CurosalSliderWidget(
+                          banners: successState.loadedBannersList),
                     ),
                     Padding(
                       padding: EdgeInsets.symmetric(
@@ -117,7 +118,7 @@ class _HomePageState extends State<HomePage> {
                       child: const RowHeadsSeeMore(
                           text1: "Recommended", text2: "Show all"),
                     ),
-                     RecomendedProductsListTile(
+                    RecomendedProductsListTile(
                       recomenedItemsData: successState.loadedProductsList,
                     ),
                     Padding(

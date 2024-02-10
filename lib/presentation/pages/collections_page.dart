@@ -54,7 +54,7 @@ class CollectionsPage extends StatelessWidget {
                   width: 120,
                   height: 120,
                   child: Text(
-                    bannerData.text,
+                    bannerData.title,
                     style: const TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.w700,
