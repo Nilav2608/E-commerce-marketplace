@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:fluxestore/models/banners_data_model.dart';
 import 'package:fluxestore/models/product_data_model.dart';
 
 import '../../network/api.dart';
@@ -16,11 +17,9 @@ class ProductsRepository extends Api implements IproductsRepository {
       if (response.statusCode == 200) {
         var data = jsonDecode(response.body);
         var products = data['data'];
-        print(products);
 
         for (var i = 0; i < products.length; i++) {
           ProductDataModel productData = ProductDataModel.fromJson(products[i]);
-          print(productData);
           tempList.add(productData);
         }
         return tempList;
@@ -30,6 +29,29 @@ class ProductsRepository extends Api implements IproductsRepository {
     } catch (e) {
       return [];
       // return {"status": false, "message": e};
+    }
+  }
+
+  @override
+  Future<List<BannersDataModel>> getAllBanners() async {
+    List<BannersDataModel> tempList = [];
+
+    try {
+      var response = await http.get(Uri.parse(bannersUrl));
+
+      if (response.statusCode == 200) {
+        var data = jsonDecode(response.body);
+        var banners = data['data'];
+        for (var i = 0; i < banners.length; i++) {
+          BannersDataModel bannersData = BannersDataModel.fromJson(banners[i]);
+          tempList.add(bannersData);
+        }
+        return tempList;
+      } else {
+        throw "Unable to load banners";
+      }
+    } catch (e) {
+      return [];
     }
   }
 }
