@@ -4,6 +4,8 @@ import "package:flutter/material.dart";
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluxestore/models/banners_data_model.dart';
 import 'package:fluxestore/models/my_orders_data_model.dart';
+import 'package:fluxestore/presentation/authentication/authentication_page.dart';
+import 'package:fluxestore/presentation/authentication/bloc/auth_page_bloc.dart';
 import 'package:fluxestore/presentation/landing_page.dart';
 import 'package:fluxestore/presentation/pages/order_details_page.dart';
 import 'package:fluxestore/presentation/pages/checkout/checkout_main.view.dart';
@@ -20,10 +22,19 @@ import '../models/product_data_model.dart';
 import '../presentation/pages/MyOrders/my_orders_page.dart';
 
 class MyGenerateRoute {
+  final AuthPageBloc authPagebloc = AuthPageBloc();
   final LandingPageBloc landingPageBloc = LandingPageBloc();
   final CheckOutPageBloc checkOutPageBloc = CheckOutPageBloc();
   Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
+      case 'Authentication':
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider<AuthPageBloc>.value(
+            value: authPagebloc,
+            child: const AuthenticationPage(),
+          ),
+        );
+
       case "/":
         return MaterialPageRoute(
           builder: (_) => BlocProvider<LandingPageBloc>.value(
