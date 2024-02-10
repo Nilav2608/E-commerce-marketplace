@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:fluxestore/models/banners_data_model.dart';
 import 'package:fluxestore/models/product_data_model.dart';
 import 'package:fluxestore/repository/products_repository.dart';
 import 'package:meta/meta.dart';
@@ -16,8 +17,9 @@ class HomePageBloc extends Bloc<HomePageEvent, HomePageState> {
       HomePageInitialEvent event, Emitter<HomePageState> emit) async {
     emit(HomePageLoadingState());
 
-    var data = await ProductsRepository().getAllProducts();
+    var products = await ProductsRepository().getAllProducts();
+    var banners = await ProductsRepository().getAllBanners();
 
-    emit(HomePageLoadedSuccessState(loadedProductsList: data));
+    emit(HomePageLoadedSuccessState(loadedProductsList: products, loadedBannersList: banners));
   }
 }

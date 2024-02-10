@@ -9,6 +9,7 @@ class HomePageLoadingState extends HomePageState {}
 
 class HomePageLoadedSuccessState extends HomePageState {
   final List<ProductDataModel> loadedProductsList;
+  final List<BannersDataModel> loadedBannersList;
 
-  HomePageLoadedSuccessState({required this.loadedProductsList});
+  HomePageLoadedSuccessState({required this.loadedProductsList,required this.loadedBannersList,});
 }
