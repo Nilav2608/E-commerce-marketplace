@@ -1,13 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:fluxestore/presentation/landing_page.dart';
 import 'package:fluxestore/routes/routes.dart';
+import 'package:jwt_decoder/jwt_decoder.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  runApp(
+    MyApp(
+      token: prefs.getString("token")
+      )
+    );
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final String? token;
+  const MyApp({super.key, required this.token});
 
   @override
   Widget build(BuildContext context) {
@@ -22,13 +31,10 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      initialRoute: 'Authentication',
-      routes: {
-        '/': (context)=> const LandingPage()
-      },
+      
+      initialRoute: (token != null && JwtDecoder.isExpired(token.toString()) == false) ? '/' : 'Authentication',
+      routes: {'/': (context) => LandingPage(token: token??'')},
       onGenerateRoute: MyGenerateRoute().generateRoute,
     );
   }
 }
-
-
