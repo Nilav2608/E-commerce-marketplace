@@ -1,18 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:fluxestore/presentation/authentication/bloc/auth_page_bloc.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   final AuthPageBloc bloc;
   const LoginPage({super.key, required this.bloc});
 
   @override
-  Widget build(BuildContext context) {
-    TextEditingController emailController = TextEditingController();
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  final formKey = GlobalKey<FormState>();
+   TextEditingController emailController = TextEditingController();
     TextEditingController passwordController = TextEditingController();
+  @override
+  Widget build(BuildContext context) {
+   
     final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
     var height = MediaQuery.of(context).size.height;
     // var width = MediaQuery.of(context).size.width;
-    final formKey = GlobalKey<FormState>();
+    
     return Scaffold(
       key: scaffoldKey,
       body: SingleChildScrollView(
@@ -49,6 +56,7 @@ class LoginPage extends StatelessWidget {
                     //* Email
                     TextFormField(
                       controller: emailController,
+                      autofocus: false,
                       validator: (value) {
                         if (value!.isEmpty ||
                             !RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
@@ -119,9 +127,9 @@ class LoginPage extends StatelessWidget {
                           ),
                           onPressed: () {
                             if (formKey.currentState!.validate()) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                  const SnackBar(
-                                      content: Text("Submitting form")));
+                              widget.bloc.add(AuthPageLogInEvent(
+                                  email: emailController.text,
+                                  password: passwordController.text));
                             }
                           },
                           child: const Center(
@@ -215,7 +223,7 @@ class LoginPage extends StatelessWidget {
                   const SizedBox(
                     height: 30,
                   ),
-                   Row(
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const Text(
@@ -223,7 +231,7 @@ class LoginPage extends StatelessWidget {
                         style: TextStyle(color: Colors.black, fontSize: 14),
                       ),
                       InkWell(
-                        onTap: () => bloc.add(AuthPageShowSignUpPageEvent()),
+                        onTap: () => widget.bloc.add(AuthPageShowSignUpPageEvent()),
                         child: const Padding(
                           padding: EdgeInsets.only(left: 8.0),
                           child: Text(
