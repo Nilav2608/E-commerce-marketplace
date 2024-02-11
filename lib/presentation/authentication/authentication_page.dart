@@ -35,19 +35,19 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
                 padding: const EdgeInsets.all(10),
                 duration: const Duration(milliseconds: 2000),
                 behavior: SnackBarBehavior.floating,
-                backgroundColor: const Color(0xFF508A7B),
+                backgroundColor: snackBarState.status ? const Color(0xFF508A7B) : Colors.red,
                 content: Text(
                   snackBarState.message,
                   style: const TextStyle(color: Colors.white),
                 )));
             break;
           case ShowLoadingActionState:
-            if(!(state is !RegistrationSuccessState)){
-               showDialog(
-                context: context,
-                builder: (BuildContext context) {
-                  return const Center(child: CircularProgressIndicator());
-                });
+            if (!(state is! RegistrationSuccessState || state is !AuthenticationSuccesState)) {
+              showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return const Center(child: CircularProgressIndicator());
+                  });
             }
             break;
         }
@@ -59,7 +59,8 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
           case ShowLoginPagePageState:
             return LoginPage(bloc: authPagebloc);
           case AuthenticationSuccesState:
-            return const LandingPage();
+            final successState = state as AuthenticationSuccesState;
+            return  LandingPage(token: successState.token,);
         }
         return const SizedBox();
       },
