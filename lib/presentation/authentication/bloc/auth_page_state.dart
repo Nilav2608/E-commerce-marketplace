@@ -11,12 +11,13 @@ class ShowSignUpPageState extends AuthPageState {}
 
 class ShowLoginPagePageState extends AuthPageState {}
 
-class ShowLoadingActionState extends AuthPageActionState{}
+class ShowLoadingActionState extends AuthPageActionState {}
 
 class ShowSnackBarActionState extends AuthPageActionState {
   final String message;
+  final bool status;
 
-  ShowSnackBarActionState({required this.message});
+  ShowSnackBarActionState({required this.status, required this.message});
 }
 
 class RegisterationLoadingState extends AuthPageActionState {}
@@ -25,5 +26,10 @@ class AuthenticationLoadingState extends AuthPageActionState {}
 
 class RegistrationSuccessState extends AuthPageState {}
 
+class AuthenticationSuccesState extends AuthPageState {
+  // final String decodedUserId;
+  // final String decodedUserEmail;
+  final String token;
 
-class AuthenticationSuccesState extends AuthPageState {}
+  AuthenticationSuccesState({required this.token});
+}

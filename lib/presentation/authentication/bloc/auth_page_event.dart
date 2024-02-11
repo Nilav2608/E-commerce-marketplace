@@ -17,4 +17,9 @@ class AuthPageSignUpEvent extends AuthPageEvent {
   AuthPageSignUpEvent({required this.username, required this.email, required this.password});
 }
 
-class AuthPageLogInEvent extends AuthPageEvent {}
+class AuthPageLogInEvent extends AuthPageEvent {
+  final String email;
+  final String password;
+
+  AuthPageLogInEvent({required this.email, required this.password});
+}
