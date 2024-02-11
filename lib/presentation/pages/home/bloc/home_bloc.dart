@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:fluxestore/models/banners_data_model.dart';
 import 'package:fluxestore/models/product_data_model.dart';
-import 'package:fluxestore/repository/products_repository.dart';
+import 'package:fluxestore/repository/productsRepo/products_repository.dart';
 import 'package:meta/meta.dart';
 part 'home_event.dart';
 part 'home_state.dart';
