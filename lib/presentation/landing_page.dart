@@ -3,15 +3,37 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluxestore/constants/constants.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluxestore/presentation/pages/home/home_utils/drawer.dart';
+import 'package:jwt_decoder/jwt_decoder.dart';
 import '../Business_Logic/landing_page_bloc/landing_page_bloc.dart';
 import '../utils/icons_constants/primary_icons_icons.dart';
 
-class LandingPage extends StatelessWidget {
-  const LandingPage({super.key});
+class LandingPage extends StatefulWidget {
+  final String token;
+  // final String userEmail;
+  const LandingPage({
+    super.key,
+    required this.token,
+  });
+
+  @override
+  State<LandingPage> createState() => _LandingPageState();
+}
+
+class _LandingPageState extends State<LandingPage> {
+  late final String userId;
+  late final String email;
+  final LandingPageBloc landingPageBloc = LandingPageBloc();
+  @override
+  void initState() {
+    Map<String, dynamic> decodedToken = JwtDecoder.decode(widget.token);
+    userId = decodedToken['_id'];
+    email = decodedToken['email'];
+    landingPageBloc.add(LandingPageIinitialEvent());
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    final LandingPageBloc landingPageBloc = LandingPageBloc();
     return BlocConsumer<LandingPageBloc, LandingPageInitial>(
         bloc: landingPageBloc,
         listener: (context, state) {},
@@ -43,7 +65,7 @@ class LandingPage extends StatelessWidget {
                         //   Icons.menu_rounded,
                         //   grade: 10,
                         // )
-                    ),
+                        ),
                   ),
                 ),
                 actions: [
