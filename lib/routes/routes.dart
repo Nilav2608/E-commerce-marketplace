@@ -37,9 +37,9 @@ class MyGenerateRoute {
 
       case "/":
         return MaterialPageRoute(
-          builder: (_) => BlocProvider<LandingPageBloc>.value(
-            value: landingPageBloc,
-            child: const LandingPage(),
+          builder: (_) => BlocProvider<AuthPageBloc>.value(
+            value: authPagebloc,
+            child: const LandingPage(token: '',),
           ),
         );
 
