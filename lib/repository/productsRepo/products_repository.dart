@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:fluxestore/models/banners_data_model.dart';
 import 'package:fluxestore/models/product_data_model.dart';
 
-import '../../network/api.dart';
+import '../../../network/api.dart';
 import 'products_repository.interface.dart';
 import 'package:http/http.dart' as http;
 
