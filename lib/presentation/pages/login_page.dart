@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:fluxestore/presentation/authentication/bloc/auth_page_bloc.dart';
 
 class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+  final AuthPageBloc bloc;
+  const LoginPage({super.key, required this.bloc});
 
   @override
   Widget build(BuildContext context) {
@@ -25,8 +27,7 @@ class LoginPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(
-                      height: 
-                       height * 0.1,
+                      height: height * 0.1,
                     ),
                     const Text(
                       "Login Into",
@@ -214,21 +215,24 @@ class LoginPage extends StatelessWidget {
                   const SizedBox(
                     height: 30,
                   ),
-                  const Row(
+                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
+                      const Text(
                         "Don’t have an account?",
                         style: TextStyle(color: Colors.black, fontSize: 14),
                       ),
-                      Padding(
-                        padding: EdgeInsets.only(left: 8.0),
-                        child: Text(
-                          "Sign Up",
-                          style: TextStyle(
-                              decoration: TextDecoration.underline,
-                              color: Colors.black,
-                              fontSize: 14),
+                      InkWell(
+                        onTap: () => bloc.add(AuthPageShowSignUpPageEvent()),
+                        child: const Padding(
+                          padding: EdgeInsets.only(left: 8.0),
+                          child: Text(
+                            "Sign Up",
+                            style: TextStyle(
+                                decoration: TextDecoration.underline,
+                                color: Colors.black,
+                                fontSize: 14),
+                          ),
                         ),
                       ),
                     ],

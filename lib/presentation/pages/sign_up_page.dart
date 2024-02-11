@@ -1,8 +1,9 @@
-
 import 'package:flutter/material.dart';
+import 'package:fluxestore/presentation/authentication/bloc/auth_page_bloc.dart';
 
 class SignUpPage extends StatefulWidget {
-  const SignUpPage({super.key});
+  final AuthPageBloc bloc;
+  const SignUpPage({super.key, required this.bloc});
 
   @override
   State<SignUpPage> createState() => _SignUpPageState();
@@ -14,13 +15,13 @@ TextEditingController _passwordController = TextEditingController();
 TextEditingController _confirmPasswordController = TextEditingController();
 
 class _SignUpPageState extends State<SignUpPage> {
-  @override
-  void dispose() {
-    _nameController.dispose();
-    _emailController.dispose();
-    _passwordController.dispose();
-    super.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   _nameController.dispose();
+  //   _emailController.dispose();
+  //   _passwordController.dispose();
+  //   super.dispose();
+  // }
 
   final formKey = GlobalKey<FormState>();
 
@@ -165,7 +166,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     ),
                     Align(
                         alignment: Alignment.center,
-                        child:  ElevatedButton(
+                        child: ElevatedButton(
                           style: const ButtonStyle(
                             elevation: MaterialStatePropertyAll(0),
                             fixedSize: MaterialStatePropertyAll(Size(147, 51)),
@@ -174,9 +175,13 @@ class _SignUpPageState extends State<SignUpPage> {
                           ),
                           onPressed: () {
                             if (formKey.currentState!.validate()) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                  const SnackBar(
-                                      content: Text("Submitting form")));
+                              // ScaffoldMessenger.of(context).showSnackBar(
+                              //     const SnackBar(
+                              //         content: Text("Submitting form")));
+                              widget.bloc.add(AuthPageSignUpEvent(
+                                  username: _nameController.text,
+                                  email: _emailController.text,
+                                  password: _passwordController.text));
                             }
                           },
                           child: const Center(
@@ -270,21 +275,25 @@ class _SignUpPageState extends State<SignUpPage> {
                   const SizedBox(
                     height: 30,
                   ),
-                  const Row(
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
+                      const Text(
                         "Already have account?",
                         style: TextStyle(color: Colors.black, fontSize: 14),
                       ),
-                      Padding(
-                        padding: EdgeInsets.only(left: 8.0),
-                        child: Text(
-                          "Log In",
-                          style: TextStyle(
-                              decoration: TextDecoration.underline,
-                              color: Colors.black,
-                              fontSize: 14),
+                      InkWell(
+                        onTap: () =>
+                            widget.bloc.add(AuthPageShowLoginPageEvent()),
+                        child: const Padding(
+                          padding: EdgeInsets.only(left: 8.0),
+                          child: Text(
+                            "Log In",
+                            style: TextStyle(
+                                decoration: TextDecoration.underline,
+                                color: Colors.black,
+                                fontSize: 14),
+                          ),
                         ),
                       ),
                     ],
