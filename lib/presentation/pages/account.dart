@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluxestore/models/user_data_model.dart';
 
 import 'package:fluxestore/presentation/reuseables/account_page_utils_row.dart';
 
@@ -6,7 +7,8 @@ import '../../utils/icons_constants/primary_icons_icons.dart';
 import '../../utils/icons_constants/secondary_icons_icons.dart';
 
 class AccountPage extends StatelessWidget {
-  const AccountPage({super.key});
+  final UserModel? userData;
+  const AccountPage({super.key, required this.userData});
 
   @override
   Widget build(BuildContext context) {
@@ -28,14 +30,14 @@ class AccountPage extends StatelessWidget {
                     const SizedBox(
                       width: 10,
                     ),
-                    const Column(
+                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         // SizedBox(
                         //   height: 45,
                         // ),
                         Text(
-                          "Susane Pham",
+                          userData!.userName??"Susane Pham",
                           style: TextStyle(
                               fontSize: 16, fontWeight: FontWeight.w700),
                         ),
@@ -43,7 +45,7 @@ class AccountPage extends StatelessWidget {
                           height: 5,
                         ),
                         Text(
-                          "sunieux@gmail.com",
+                          userData!.email??"sunieux@gmail.com",
                           style: TextStyle(
                               fontSize: 12, fontWeight: FontWeight.w400),
                         )
@@ -60,8 +62,9 @@ class AccountPage extends StatelessWidget {
                   ))
             ],
           ),
-          const SizedBox(height: 20,),
-          
+          const SizedBox(
+            height: 20,
+          ),
           Container(
             width: screenWidth * 0.85,
             height: screenHeight * 0.60,
@@ -79,7 +82,7 @@ class AccountPage extends StatelessWidget {
                   //     blurRadius: 0.5,
                   //     offset: Offset(5, 0)),
                 ]),
-            child:  Column(
+            child: Column(
               children: [
                 AccountPageUtilsRow(
                   onTap: () => Navigator.of(context).pushNamed("MyOrders"),
@@ -88,62 +91,61 @@ class AccountPage extends StatelessWidget {
                   size: 21,
                 ),
                 const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 8.0),
-                  child: Divider(
-                    color: Color(0xffF3F3F6),
-                )),
+                    padding: EdgeInsets.symmetric(horizontal: 8.0),
+                    child: Divider(
+                      color: Color(0xffF3F3F6),
+                    )),
                 const AccountPageUtilsRow(
                   icon: SecondaryIcons.wallet,
                   text: "Payment method",
                   size: 20,
                 ),
                 const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 8.0),
-                  child: Divider(
-                    color: Color(0xffF3F3F6),
-                )
-                ),
+                    padding: EdgeInsets.symmetric(horizontal: 8.0),
+                    child: Divider(
+                      color: Color(0xffF3F3F6),
+                    )),
                 const AccountPageUtilsRow(
                   icon: SecondaryIcons.ticket,
                   text: "Voucher",
                   size: 19,
                 ),
                 const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 8.0),
-                  child: Divider(
-                    color: Color(0xffF3F3F6),
-                )),
-                 AccountPageUtilsRow(
+                    padding: EdgeInsets.symmetric(horizontal: 8.0),
+                    child: Divider(
+                      color: Color(0xffF3F3F6),
+                    )),
+                AccountPageUtilsRow(
                   onTap: () => Navigator.of(context).pushNamed("WishListPage"),
                   icon: PrimaryIcons.heart,
                   text: "My Wishlist",
                   size: 23,
                 ),
                 const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 8.0),
-                  child: Divider(
-                    color: Color(0xffF3F3F6),
-                )),
+                    padding: EdgeInsets.symmetric(horizontal: 8.0),
+                    child: Divider(
+                      color: Color(0xffF3F3F6),
+                    )),
                 const AccountPageUtilsRow(
                   icon: Icons.star,
                   text: "Rate this app",
                   size: 23,
                 ),
                 const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 8.0),
-                  child: Divider(
-                    color: Color(0xffF3F3F6),
-                )),
+                    padding: EdgeInsets.symmetric(horizontal: 8.0),
+                    child: Divider(
+                      color: Color(0xffF3F3F6),
+                    )),
                 const AccountPageUtilsRow(
                   icon: SecondaryIcons.logout,
                   text: "Log out",
                   size: 21,
                 ),
                 const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 8.0),
-                  child: Divider(
-                    color: Color(0xffF3F3F6),
-                )),
+                    padding: EdgeInsets.symmetric(horizontal: 8.0),
+                    child: Divider(
+                      color: Color(0xffF3F3F6),
+                    )),
               ],
             ),
           )
