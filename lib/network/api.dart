@@ -8,4 +8,7 @@ class Api {
   String productsUrl = "http://192.168.1.5:5000/products";
 
   String bannersUrl = "http://192.168.1.5:5000/api/v1/getAllBanners";
+
+  String userUrl = "http://192.168.1.5:5000/api/v1/user/getUser";
+
 }
