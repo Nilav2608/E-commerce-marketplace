@@ -8,7 +8,8 @@ import '../../Business_Logic/CartPageBloc/cart_page_bloc.dart';
 import '../../utils/Mappers/mappers.dart';
 
 class CartPage extends StatefulWidget {
-  const CartPage({super.key});
+  final String email;
+  const CartPage({super.key, required this.email});
 
   @override
   State<CartPage> createState() => _CartPageState();
@@ -20,7 +21,7 @@ class _CartPageState extends State<CartPage> {
   @override
   void initState() {
     cartPageBloc.add(CartPageInitialEvent());
-   CartItemsModel().subTotal(cartItems);
+    CartItemsModel().subTotal(cartItems);
     super.initState();
   }
 
@@ -29,7 +30,6 @@ class _CartPageState extends State<CartPage> {
       value = !value;
     });
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -166,11 +166,13 @@ class _CartPageState extends State<CartPage> {
                               child: ElevatedButton(
                                   onPressed: () {
                                     if (successState.subTotal != 0) {
-                                      var results = Mappers().myOrdersDataMapper(
-                                          successState.cartSuccessData,
-                                          successState.subTotal);
-                                      Navigator.of(context)
-                                          .pushNamed('checkOut',arguments: results);
+                                      var results = Mappers()
+                                          .myOrdersDataMapper(
+                                              successState.cartSuccessData,
+                                              successState.subTotal,widget.email);
+                                      Navigator.of(context).pushNamed(
+                                          'checkOut',
+                                          arguments: results);
 
                                       // Navigator.push(
                                       //   context,
