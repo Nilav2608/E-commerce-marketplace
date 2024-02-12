@@ -34,6 +34,7 @@ class Mappers{
         date: DateTime.now().toString(),
         deliveryAddress: DeliveryAddress(),
         deliveryStatus: "PENDING",
+        userId: userId,
         orderID: "5555",
         orderedItems: selectedItems,
         quantity: totalQuantity,
