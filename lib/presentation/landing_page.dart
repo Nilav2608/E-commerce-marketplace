@@ -2,10 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluxestore/constants/constants.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluxestore/models/user_data_model.dart';
 import 'package:fluxestore/presentation/pages/home/home_utils/drawer.dart';
+import 'package:fluxestore/repository/UserRepo/user_repository.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 import '../Business_Logic/landing_page_bloc/landing_page_bloc.dart';
 import '../utils/icons_constants/primary_icons_icons.dart';
+import 'package:fluxestore/presentation/pages/account.dart';
+import 'package:fluxestore/presentation/pages/cart_page.dart';
+import 'package:fluxestore/presentation/pages/home/home.dart';
+import 'package:fluxestore/presentation/pages/search.dart';
 
 class LandingPage extends StatefulWidget {
   final String token;
@@ -22,22 +28,56 @@ class LandingPage extends StatefulWidget {
 class _LandingPageState extends State<LandingPage> {
   late final String userId;
   late final String email;
+  UserModel? user;
   final LandingPageBloc landingPageBloc = LandingPageBloc();
   @override
   void initState() {
     Map<String, dynamic> decodedToken = JwtDecoder.decode(widget.token);
     userId = decodedToken['_id'];
     email = decodedToken['email'];
-    landingPageBloc.add(LandingPageIinitialEvent());
+    // fetchUserDetails(userId);
     super.initState();
+  }
+
+  fetchUserDetails(id) async {
+    var results = await USerRepository().getUserDetails(id);
+    if (results["status"]) {
+      var userData = results['data'];
+      userData.remove('__v');
+      try {
+        // Map each item in the list to a UserModel instance
+        setState(() {
+          user = UserModel.fromJson(userData);
+        });
+      } catch (e) {
+        print("Error parsing user data: $e");
+      }
+    } else {
+      print("Failed to fetch user details: ${results['message']}");
+    }
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (user == null) {
+      fetchUserDetails(userId);
+    }
   }
 
   @override
   Widget build(BuildContext context) {
+    List<Widget> pages = [
+      const HomePage(),
+      const SearchPage(),
+      CartPage(email: email,),
+      AccountPage(userData: user),
+    ];
     return BlocConsumer<LandingPageBloc, LandingPageInitial>(
         bloc: landingPageBloc,
         listener: (context, state) {},
         builder: (context, state) {
+          // final successState = state as LandingPageLoadedState;
           return Scaffold(
               appBar: AppBar(
                 title: Center(
@@ -79,7 +119,7 @@ class _LandingPageState extends State<LandingPage> {
                   )
                 ],
               ),
-              drawer: const HomeDrawer(),
+              drawer: HomeDrawer(data: user),
               bottomNavigationBar: BottomNavigationBar(
                 items: bottomNavItems,
                 currentIndex: state.tabIndex,
@@ -101,5 +141,3 @@ class _LandingPageState extends State<LandingPage> {
 // If image looks not as expected please convert to compound path manually.
 
 // Skipped tags and attributes: stroke-width,stroke-linecap,stroke-linejoin,stroke
-
-
