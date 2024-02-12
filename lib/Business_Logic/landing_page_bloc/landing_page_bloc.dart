@@ -9,12 +9,26 @@ part 'landing_page_event.dart';
 part 'landing_page_state.dart';
 
 class LandingPageBloc extends Bloc<LandingPageEvent, LandingPageInitial> {
-  LandingPageBloc() : super(LandingPageInitial(tabIndex: 0,appBarName:"Fluxestore")) {
+  LandingPageBloc()
+      : super(LandingPageInitial(tabIndex: 0, appBarName: "Fluxestore")) {
     on<LandingPageTabChangeEvent>(landingPageTabChangeEvent);
+    // on<LandingPageFetchUserDataEvent>(_onFetchUserDataEvent);
   }
 
   FutureOr<void> landingPageTabChangeEvent(
       LandingPageTabChangeEvent event, Emitter<LandingPageState> emit) {
-    emit(TabChangeActionState(tabIndex: event.tabIndex,appBarName:event.appBarName));
+    emit(TabChangeActionState(
+        tabIndex: event.tabIndex, appBarName: event.appBarName));
   }
+
+  // FutureOr<void> _onFetchUserDataEvent(
+  //     LandingPageFetchUserDataEvent event, Emitter<LandingPageState> emit) {
+  //   emit(LandingPageLoadedState(
+  //     appBarName: "Fluxestore",
+  //     tabIndex: 0,
+  //     userData: "userData",
+  //   ));
+  // }
 }
+//  final String id;
+//   final String email;

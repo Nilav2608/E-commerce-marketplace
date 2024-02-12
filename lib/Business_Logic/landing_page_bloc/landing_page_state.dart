@@ -10,6 +10,22 @@ class LandingPageInitial extends LandingPageState {
   LandingPageInitial( {required this.appBarName,required this.tabIndex});
 }
 
-final class TabChangeActionState extends LandingPageInitial {
+// class LandingPageLoadedState extends LandingPageState {
+//   final String appBarName;
+//   final int tabIndex;
+//   final dynamic userData; // Adjust the type according to your network response
+
+//   LandingPageLoadedState({
+//     required this.appBarName,
+//     required this.tabIndex,
+//     required this.userData,
+//   });
+
+//   @override
+//   List<Object?> get props => [appBarName, tabIndex, userData];
+// }
+
+
+ class TabChangeActionState extends LandingPageInitial {
   TabChangeActionState( {required super.appBarName,required super.tabIndex});
 }
