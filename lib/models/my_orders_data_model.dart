@@ -1,10 +1,8 @@
-
-
-
 import 'cart_items_model.dart';
 import 'delivery_address_model.dart';
 
 class MyOrdersDataModel {
+  String? userId;
   String? orderID;
   String? trackingNumber;
   String? date;
@@ -18,7 +16,8 @@ class MyOrdersDataModel {
   String? deliveryStatus;
 
   MyOrdersDataModel(
-      {this.orderID,
+      {this.userId,
+      this.orderID,
       this.trackingNumber,
       this.date,
       this.deliveryAddress,
@@ -31,6 +30,7 @@ class MyOrdersDataModel {
       this.deliveryStatus});
 
   MyOrdersDataModel.fromJson(Map<String, dynamic> json) {
+    userId = json['userId'];
     orderID = json['orderID'];
     trackingNumber = json['trackingNumber'];
     date = json['date'];
@@ -47,12 +47,12 @@ class MyOrdersDataModel {
     total = json['total'];
     paymentMethod = json['paymentMethod'];
     deliveryAddress = DeliveryAddress.fromJson(json['deliveryAddress']);
-  
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['orderID'] = orderID;
+    data['userId'] = userId;
     data['trackingNumber'] = trackingNumber;
     data['date'] = date;
     data['deliveryAddress'] = deliveryAddress;
