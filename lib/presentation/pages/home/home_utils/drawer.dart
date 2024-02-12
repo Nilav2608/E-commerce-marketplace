@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:fluxestore/models/user_data_model.dart';
 import 'package:sliding_switch/sliding_switch.dart';
 
 import '../../../../utils/icons_constants/primary_icons_icons.dart';
 
 class HomeDrawer extends StatefulWidget {
-  const HomeDrawer({super.key});
+  final UserModel? data;
+  const HomeDrawer({super.key, required this.data});
 
   @override
   State<HomeDrawer> createState() => _HomeDrawerState();
@@ -19,7 +21,6 @@ class _HomeDrawerState extends State<HomeDrawer> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      
       backgroundColor: Colors.white,
       child: Column(
         children: [
@@ -37,23 +38,23 @@ class _HomeDrawerState extends State<HomeDrawer> {
                   const SizedBox(
                     width: 10,
                   ),
-                  const Column(
+                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 45,
                       ),
                       Text(
-                        "Susane Pham",
-                        style: TextStyle(
+                        widget.data!.userName ??"Susane Pham",
+                        style: const TextStyle(
                             fontSize: 16, fontWeight: FontWeight.w700),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 5,
                       ),
-                      Text(
-                        "sunieux@gmail.com",
-                        style: TextStyle(
+                       Text(
+                        widget.data!.email ?? "sunieux@gmail.com",
+                        style: const TextStyle(
                             fontSize: 12, fontWeight: FontWeight.w400),
                       )
                     ],
