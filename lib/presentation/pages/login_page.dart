@@ -11,15 +11,14 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final formKey = GlobalKey<FormState>();
-   TextEditingController emailController = TextEditingController();
-    TextEditingController passwordController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-   
     final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
     var height = MediaQuery.of(context).size.height;
     // var width = MediaQuery.of(context).size.width;
-    
+
     return Scaffold(
       key: scaffoldKey,
       body: SingleChildScrollView(
@@ -81,9 +80,10 @@ class _LoginPageState extends State<LoginPage> {
                     TextFormField(
                       controller: passwordController,
                       validator: (value) {
-                        if (value!.isEmpty ||
-                            !RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$')
-                                .hasMatch(value)) {
+                        if (value!.isEmpty
+                            // !RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$')
+                            //     .hasMatch(value)
+                            ) {
                           return "Enter valid password";
                         } else {
                           return null;
@@ -231,7 +231,8 @@ class _LoginPageState extends State<LoginPage> {
                         style: TextStyle(color: Colors.black, fontSize: 14),
                       ),
                       InkWell(
-                        onTap: () => widget.bloc.add(AuthPageShowSignUpPageEvent()),
+                        onTap: () =>
+                            widget.bloc.add(AuthPageShowSignUpPageEvent()),
                         child: const Padding(
                           padding: EdgeInsets.only(left: 8.0),
                           child: Text(
