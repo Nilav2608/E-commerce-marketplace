@@ -12,7 +12,7 @@ List<ProductDataModel> recomendationsList = [
       //  imageUrl: "https://firebasestorage.googleapis.com/v0/b/fluxestore-b6cb3.appspot.com/o/StreetWear.png?alt=media&token=f40e7bb5-f8b7-4f06-a8e1-1a32da385eb9",
       // imageUrl: "assets/images/StreetWear.svg",
       sizes: ["S", "M", "L", "XL"],
-      colors: [Colors.orangeAccent, Colors.black, Colors.pink],
+      colors: ["Orange,Black,Pink"],
       favorite: false,
       ratings: 4),
   ProductDataModel(
@@ -25,7 +25,7 @@ List<ProductDataModel> recomendationsList = [
       //  imageUrl: "https://firebasestorage.googleapis.com/v0/b/fluxestore-b6cb3.appspot.com/o/StreetWear.png?alt=media&token=f40e7bb5-f8b7-4f06-a8e1-1a32da385eb9",
       // imageUrl: "assets/images/StreetWear.svg",
       sizes: ["S", "M", "L", "XL"],
-      colors: [Colors.orangeAccent, Colors.black, Colors.pink],
+      colors: ["Orange,Black,Pink"],
       favorite: false,
       ratings: 4),
   ProductDataModel(
@@ -38,7 +38,7 @@ List<ProductDataModel> recomendationsList = [
       //  imageUrl: "https://firebasestorage.googleapis.com/v0/b/fluxestore-b6cb3.appspot.com/o/StreetWear.png?alt=media&token=f40e7bb5-f8b7-4f06-a8e1-1a32da385eb9",
       // imageUrl: "assets/images/StreetWear.svg",
       sizes: ["S", "M", "L", "XL"],
-      colors: [Colors.orangeAccent, Colors.black, Colors.pink],
+      colors: ["Orange,Black,Pink"],
       favorite: false,
       ratings: 4),
 ];
