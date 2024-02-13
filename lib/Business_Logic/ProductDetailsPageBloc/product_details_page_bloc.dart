@@ -3,6 +3,7 @@ import 'package:bloc/bloc.dart';
 import 'package:fluxestore/data/cart_items.dart';
 import 'package:fluxestore/data/wish_listed_data.dart';
 import 'package:fluxestore/models/product_data_model.dart';
+import 'package:fluxestore/repository/CartRepo/cart_repository.dart';
 import 'package:meta/meta.dart';
 import '../../models/cart_items_model.dart';
 part 'product_details_page_event.dart';
@@ -17,10 +18,16 @@ class ProductDetailsPageBloc
   }
 
   FutureOr<void> addToCartEvent(
-      AddToCartEvent event, Emitter<ProductDetailsPageState> emit) {
-    cartItems.add(event.productData);
-    emit(AddToCartActionState(
-        subTotal: CartItemsModel().subTotal(cartItems), cartItems: cartItems));
+      AddToCartEvent event, Emitter<ProductDetailsPageState> emit) async {
+    // cartItems.add(event.productData);
+    var results = await CartRepository().addTocart(event.productData);
+    if (results['status']) {
+      emit(AddToCartActionState(
+        subTotal: CartItemsModel().subTotal(cartItems), cartItems: cartItems, message: 'Added to cart!', status: true));
+    }else{
+      emit(AddToCartActionState(
+        subTotal: CartItemsModel().subTotal(cartItems), cartItems: cartItems, message: results['message'], status: false));
+    }
   }
 
   FutureOr<void> productDetailsPageInitialEvent(
