@@ -11,4 +11,9 @@ class Api {
 
   String userUrl = "http://192.168.1.5:5000/api/v1/user/getUser";
 
+  String addToCartUrl = "http://192.168.1.5:5000/api/v1/users/AddToCart";
+
+  String getUserCartUrl = "http://192.168.1.5:5000/api/v1/users/getuserCart";
+
+  String deleteUserCart = "http://192.168.1.5:5000/api/v1/users/deleteCartItem";
 }
