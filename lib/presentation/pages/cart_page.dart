@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluxestore/data/cart_items.dart';
 import 'package:fluxestore/models/cart_items_model.dart';
+import 'package:fluxestore/models/my_orders_data_model.dart';
 import 'package:fluxestore/presentation/reuseables/cart_product_tile.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
@@ -166,10 +167,11 @@ class _CartPageState extends State<CartPage> {
                               child: ElevatedButton(
                                   onPressed: () {
                                     if (successState.subTotal != 0) {
-                                      var results = Mappers()
+                                      MyOrdersDataModel results = Mappers()
                                           .myOrdersDataMapper(
                                               successState.cartSuccessData,
-                                              successState.subTotal,widget.email);
+                                              successState.subTotal,
+                                              widget.email);
                                       Navigator.of(context).pushNamed(
                                           'checkOut',
                                           arguments: results);

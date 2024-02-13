@@ -38,14 +38,15 @@ class _HomeDrawerState extends State<HomeDrawer> {
                   const SizedBox(
                     width: 10,
                   ),
-                   Column(
+                    Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const SizedBox(
                         height: 45,
                       ),
                       Text(
-                        widget.data!.userName ??"Susane Pham",
+                        widget.data!.userName ??
+                        "Susane Pham",
                         style: const TextStyle(
                             fontSize: 16, fontWeight: FontWeight.w700),
                       ),
@@ -53,7 +54,8 @@ class _HomeDrawerState extends State<HomeDrawer> {
                         height: 5,
                       ),
                        Text(
-                        widget.data!.email ?? "sunieux@gmail.com",
+                        widget.data!.email ??
+                         "sunieux@gmail.com",
                         style: const TextStyle(
                             fontSize: 12, fontWeight: FontWeight.w400),
                       )

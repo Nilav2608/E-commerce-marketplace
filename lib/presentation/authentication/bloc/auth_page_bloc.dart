@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:fluxestore/repository/AuthRepo/auth_repository.dart';
-import 'package:jwt_decoder/jwt_decoder.dart';
+// import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:meta/meta.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -46,9 +46,9 @@ class AuthPageBloc extends Bloc<AuthPageEvent, AuthPageState> {
       String rawToken = results['token'];
       // assign it to the prefs string token
       prefs.setString('token', rawToken);
-      Map<String, dynamic> decodedToken = JwtDecoder.decode(rawToken);
-      String id = decodedToken['_id'];
-      String email = decodedToken['email'];
+      // Map<String, dynamic> decodedToken = JwtDecoder.decode(rawToken);
+      // String id = decodedToken['_id'];
+      // String email = decodedToken['email'];
       //emit snackbar
       emit(ShowSnackBarActionState(
           message: responseMessage, status: responseStatus));
