@@ -39,7 +39,9 @@ class MyGenerateRoute {
         return MaterialPageRoute(
           builder: (_) => BlocProvider<AuthPageBloc>.value(
             value: authPagebloc,
-            child: const LandingPage(token: '',),
+            child: const LandingPage(
+              token: '',
+            ),
           ),
         );
 
@@ -61,12 +63,14 @@ class MyGenerateRoute {
       case 'productDetails':
         final ProductDataModel productData =
             settings.arguments as ProductDataModel;
+        // final String userId = settings.arguments as String;
         return CustomPageTransition(
-          //for bottom up transition
+            //for bottom up transition
             dx: 0.0,
             dy: 1.0,
             curves: Curves.easeInOutCirc,
             child: ProductDetailsPage(
+              // currentUserId: userId,
               data: productData,
             ));
       case 'MyOrders':
@@ -116,9 +120,9 @@ class MyGenerateRoute {
             dx: 1.0,
             dy: 0.0,
             child: const WishListPage());
-       case 'productFeedbackPage':
+      case 'productFeedbackPage':
         return CustomPageTransition(
-          //for bottom up transition
+            //for bottom up transition
             dx: 0.0,
             dy: 1.0,
             curves: Curves.fastOutSlowIn,
