@@ -26,9 +26,6 @@ class LandingPage extends StatefulWidget {
 }
 
 class _LandingPageState extends State<LandingPage> {
-  late final String userId;
-  late final String email;
-  UserModel? user;
   final LandingPageBloc landingPageBloc = LandingPageBloc();
   @override
   void initState() {
@@ -50,10 +47,10 @@ class _LandingPageState extends State<LandingPage> {
           user = UserModel.fromJson(userData);
         });
       } catch (e) {
-        print("Error parsing user data: $e");
+        debugPrint("Error parsing user data: $e");
       }
     } else {
-      print("Failed to fetch user details: ${results['message']}");
+      debugPrint("Failed to fetch user details: ${results['message']}");
     }
   }
 
