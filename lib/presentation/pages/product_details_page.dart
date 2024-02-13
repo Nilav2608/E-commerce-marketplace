@@ -18,7 +18,7 @@ import '../reuseables/product_reviews_tile.dart';
 
 class ProductDetailsPage extends StatefulWidget {
   final ProductDataModel data;
-  const ProductDetailsPage({super.key, required this.data});
+  const ProductDetailsPage({super.key, required this.data,});
 
   @override
   State<ProductDetailsPage> createState() => _ProductDetailsPageState();
@@ -98,7 +98,20 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
             current is ProductDetailsPageActionState,
         buildWhen: (previous, current) =>
             current is! ProductDetailsPageActionState,
-        listener: (context, state) {},
+        listener: (context, state) {
+          if (state is AddToCartActionState) {
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                margin: const EdgeInsets.only(bottom: 100),
+                padding: const EdgeInsets.all(10),
+                duration: const Duration(milliseconds: 800),
+                behavior: SnackBarBehavior.floating,
+                backgroundColor: state.status ? const Color(0xFF508A7B) : Colors.red,
+                content: Text(
+                  state.message,
+                  style: const TextStyle(color: Colors.white),
+                )));
+          }
+        },
         builder: (context, state) {
           switch (state.runtimeType) {
             case ProductDetailsPageSuccessState:
@@ -114,16 +127,6 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                               widget.data, currentColorIndex, currentSizeIndex);
                       productDetailsPageBloc
                           .add(AddToCartEvent(productData: cartItems));
-                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                          margin: EdgeInsets.only(bottom: 100),
-                          padding: EdgeInsets.all(10),
-                          duration: Duration(milliseconds: 800),
-                          behavior: SnackBarBehavior.floating,
-                          backgroundColor: Color(0xFF508A7B),
-                          content: Text(
-                            "This is item is added in your cart!",
-                            style: TextStyle(color: Colors.white),
-                          )));
                     },
                     child: Container(
                       width: double.infinity,
