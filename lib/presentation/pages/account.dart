@@ -30,23 +30,23 @@ class AccountPage extends StatelessWidget {
                     const SizedBox(
                       width: 10,
                     ),
-                     Column(
+                    Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         // SizedBox(
                         //   height: 45,
                         // ),
                         Text(
-                          userData!.userName??"Susane Pham",
-                          style: TextStyle(
+                          userData!.userName ?? "Susane Pham",
+                          style: const TextStyle(
                               fontSize: 16, fontWeight: FontWeight.w700),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 5,
                         ),
                         Text(
-                          userData!.email??"sunieux@gmail.com",
-                          style: TextStyle(
+                          userData!.email ?? "sunieux@gmail.com",
+                          style: const TextStyle(
                               fontSize: 12, fontWeight: FontWeight.w400),
                         )
                       ],
