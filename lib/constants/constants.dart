@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluxestore/data/my_order_status_data.dart';
 import '../models/tab_catagory_model.dart';
+import '../models/user_data_model.dart';
 import '../presentation/pages/MyOrders/my_orders_list.dart';
 import '../utils/icons_constants/primary_icons_icons.dart';
 import '../utils/icons_constants/secondary_icons_icons.dart';
@@ -22,6 +23,9 @@ const List<BottomNavigationBarItem> bottomNavItems = <BottomNavigationBarItem>[
   BottomNavigationBarItem(icon: Icon(PrimaryIcons.profile), label: "Account"),
 ];
 
+late final String userId;
+late final String email;
+UserModel? user;
 
 List<Widget> myOrderStatusContainer = [
   OrdersList(items: pendingItems),
