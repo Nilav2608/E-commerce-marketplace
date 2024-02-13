@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:fluxestore/models/user_data_model.dart';
 import 'package:fluxestore/repository/UserRepo/user_repository.interface.dart';
 
 import '../../network/api.dart';
