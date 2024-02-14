@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fluxestore/data/cart_items.dart';
-import 'package:fluxestore/models/cart_items_model.dart';
+import 'package:fluxestore/constants/constants.dart';
 import 'package:fluxestore/models/my_orders_data_model.dart';
 import 'package:fluxestore/presentation/reuseables/cart_product_tile.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,8 +20,8 @@ final CartPageBloc cartPageBloc = CartPageBloc();
 class _CartPageState extends State<CartPage> {
   @override
   void initState() {
-    cartPageBloc.add(CartPageInitialEvent());
-    CartItemsModel().subTotal(cartItems);
+    cartPageBloc.add(CartPageInitialEvent(currentUserId: email));
+    // CartItemsModel().subTotal(cartItems);
     super.initState();
   }
 
@@ -34,13 +33,20 @@ class _CartPageState extends State<CartPage> {
 
   @override
   Widget build(BuildContext context) {
+    // succesState = context.watch<CartPageBloc>().state as CartSuccessState;
     final double screenWidth = MediaQuery.of(context).size.width;
     final double screenHeight = MediaQuery.of(context).size.height;
     return BlocConsumer<CartPageBloc, CartPageState>(
       bloc: cartPageBloc,
       listenWhen: (previous, current) => current is CartPageActionState,
       buildWhen: (previous, current) => current is! CartPageActionState,
-      listener: (BuildContext context, CartPageState state) {},
+      listener: (BuildContext context, CartPageState state) {
+        if (state is CartPageLoadingState) {
+          const Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+      },
       builder: (context, state) {
         switch (state.runtimeType) {
           case CartSuccessState:
@@ -249,7 +255,10 @@ class _CartPageState extends State<CartPage> {
                                       itemsData.quantity =
                                           (itemsData.quantity ?? 0) + 1;
                                     });
-                                    cartPageBloc.add(CartPageInitialEvent());
+                                    cartPageBloc.add(UpdateCartItemEvent(
+                                        updateditem: itemsData,
+                                        originalcartList:
+                                            successState.cartSuccessData));
                                   },
                                   onDecrease: () {
                                     setState(() {
@@ -259,15 +268,24 @@ class _CartPageState extends State<CartPage> {
                                             itemsData.quantity! - 1;
                                       }
                                     });
-                                    cartPageBloc.add(CartPageInitialEvent());
+                                    cartPageBloc.add(UpdateCartItemEvent(
+                                        updateditem: itemsData,
+                                        originalcartList:
+                                            successState.cartSuccessData));
                                   },
                                   delete: (context) {
+                                    print("on delete called");
+                                    print(itemsData.id);
                                     cartPageBloc.add(RemoveAnItemFromCartEvent(
-                                        product: itemsData));
+                                        productId: itemsData.id ?? '',
+                                        userId: email));
                                   },
                                   onCheckBoxChanged: (bool? value) {
                                     itemsData.selected = value;
-                                    cartPageBloc.add(CartPageInitialEvent());
+                                    cartPageBloc.add(UpdateCartItemEvent(
+                                        updateditem: itemsData,
+                                        originalcartList:
+                                            successState.cartSuccessData));
                                   },
                                 );
                               },

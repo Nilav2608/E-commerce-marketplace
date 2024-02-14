@@ -13,3 +13,11 @@ class CartSuccessState extends CartPageState {
 
   CartSuccessState( {required this.subTotal,required this.cartSuccessData});
 }
+
+class UpdatedCartState extends CartPageState{
+  final List<CartItemsModel> updatedCartData;
+
+  UpdatedCartState({required this.updatedCartData});
+}
+
+class CartPageLoadingState extends CartPageActionState{}
