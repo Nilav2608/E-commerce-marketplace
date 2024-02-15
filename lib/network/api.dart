@@ -1,19 +1,29 @@
 class Api {
-  String baseUrl = "http://192.168.1.5:5000";
+  final String baseUrl = "http://192.168.1.5:5000";
 
-  String loginUrl = "http://192.168.1.5:5000/api/v1/user/login";
+  final String loginUrl = "http://192.168.1.5:5000/api/v1/user/login";
 
-  String registerUrl = "http://192.168.1.5:5000/api/v1/user/registerUser";
+  final String registerUrl = "http://192.168.1.5:5000/api/v1/user/registerUser";
 
-  String productsUrl = "http://192.168.1.5:5000/products";
+  final String productsUrl = "http://192.168.1.5:5000/products";
 
-  String bannersUrl = "http://192.168.1.5:5000/api/v1/getAllBanners";
+  final String bannersUrl = "http://192.168.1.5:5000/api/v1/getAllBanners";
 
-  String userUrl = "http://192.168.1.5:5000/api/v1/user/getUser";
+  final String userUrl = "http://192.168.1.5:5000/api/v1/user/getUser";
 
-  String addToCartUrl = "http://192.168.1.5:5000/api/v1/users/AddToCart";
+  final String addToCartUrl = "http://192.168.1.5:5000/api/v1/users/AddToCart";
 
-  String getUserCartUrl = "http://192.168.1.5:5000/api/v1/users/getuserCart";
+  final String getUserCartUrl =
+      "http://192.168.1.5:5000/api/v1/users/getuserCart";
 
-  String deleteUserCart = "http://192.168.1.5:5000/api/v1/users/deleteCartItem";
+  final String deleteUserCartUrl =
+      "http://192.168.1.5:5000/api/v1/users/deleteCartItem";
+
+  final String getUserOrdersUrl =
+      "http://192.168.1.5:5000/api/v1/users/getUserOrders";
+
+  final String newOrderUrl = "http://192.168.1.5:5000/api/v1/users/newOrder";
+
+  final String cancelUserOrder =
+      "http://192.168.1.5:5000/api/v1/users/newOrder";
 }
