@@ -1,0 +1,28 @@
+import 'dart:convert';
+
+import 'package:fluxestore/models/my_orders_data_model.dart';
+import 'package:fluxestore/repository/OrdersRepo/orders_repository.interface.dart';
+import 'package:http/http.dart' as http;
+import '../../network/api.dart';
+
+class OrdersRepository extends Api implements IOrdersrepository {
+  @override
+  Future<Map<String, dynamic>> newOrder(MyOrdersDataModel orderedItem) async{
+    try {
+      var mappedOrder = orderedItem.toJson();
+
+      var response = await http.post(Uri.parse(newOrderUrl),
+          headers: {"content-type": "application/json"},
+          body: jsonEncode(mappedOrder));
+      var results = jsonDecode(response.body);
+      if (response.statusCode == 201) {
+        return results;
+      } else {
+        throw Exception("failed to get data");
+      }
+    } catch (e) {
+      return {"status": false, "message": e};
+    }
+      
+  }
+}
