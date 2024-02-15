@@ -13,15 +13,15 @@ class PageLoadingState extends CheckOutPageState {}
 
 class PageLoadedSuccessState extends CheckOutPageState {}
 
-class PaymentPageActionState extends CheckOutPageActionState {
+class PaymentPageActionState extends CheckOutPageState {
   final double subTotal;
   final DeliveryAddress address;
 
   PaymentPageActionState({required this.address,required this.subTotal});
 }
 
-class PlaceOrderActionSate extends CheckOutPageActionState {}
+class PlaceOrderActionSate extends CheckOutPageState {}
 
-class PaymentCompletedActionState extends CheckOutPageActionState {}
+class PaymentCompletedState extends CheckOutPageState {}
 
-class NavigateTohomePageActionState extends CheckOutPageActionState {}
+class NavigateTohomePageActionState extends CheckOutPageState {}
