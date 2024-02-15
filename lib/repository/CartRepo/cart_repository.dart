@@ -51,7 +51,7 @@ class CartRepository extends Api implements ICartRepository {
 
       var quaries = {'docId': docId, 'userId': userId};
 
-      var response = await http.delete(Uri.parse(deleteUserCart),
+      var response = await http.delete(Uri.parse(deleteUserCartUrl),
           headers: {"content-type": "application/json"},
           body: jsonEncode(quaries));
 
