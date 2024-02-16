@@ -7,10 +7,9 @@ import '../../network/api.dart';
 
 class OrdersRepository extends Api implements IOrdersrepository {
   @override
-  Future<Map<String, dynamic>> newOrder(MyOrdersDataModel orderedItem) async{
+  Future<Map<String, dynamic>> newOrder(MyOrdersDataModel orderedItem) async {
     try {
       var mappedOrder = orderedItem.toJson();
-
       var response = await http.post(Uri.parse(newOrderUrl),
           headers: {"content-type": "application/json"},
           body: jsonEncode(mappedOrder));
@@ -23,6 +22,24 @@ class OrdersRepository extends Api implements IOrdersrepository {
     } catch (e) {
       return {"status": false, "message": e};
     }
-      
+  }
+
+  @override
+  Future<Map<String, dynamic>> getUserOrders(String userId) async {
+    try {
+      var response = await http.post(Uri.parse(getUserOrdersUrl),
+          headers: {"content-type": "application/json"},
+          body: jsonEncode({"userId": userId}));
+      var results = jsonDecode(response.body);
+      if (response.statusCode == 201) {
+        return results;
+      } else if (response.statusCode == 400) {
+        return results;
+      } else {
+        throw Exception("failed to get data");
+      }
+    } catch (e) {
+      return {"status": false, "message": e};
+    }
   }
 }
