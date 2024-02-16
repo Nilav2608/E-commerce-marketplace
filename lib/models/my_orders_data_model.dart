@@ -34,7 +34,7 @@ class MyOrdersDataModel {
     orderID = json['orderID'];
     trackingNumber = json['trackingNumber'];
     date = json['date'];
-    deliveryAddress = json['deliveryAddress'];
+    deliveryStatus = json['deliveryStatus'];
     quantity = json['quantity'];
     if (json['orderedItems'] != null) {
       orderedItems = <CartItemsModel>[];
@@ -55,7 +55,7 @@ class MyOrdersDataModel {
     data['userId'] = userId;
     data['trackingNumber'] = trackingNumber;
     data['date'] = date;
-    data['deliveryAddress'] = deliveryAddress;
+    data['deliveryStatus'] = deliveryStatus;
     data['quantity'] = quantity;
     if (orderedItems != null) {
       data['orderedItems'] = orderedItems!.map((v) => v.toJson()).toList();
