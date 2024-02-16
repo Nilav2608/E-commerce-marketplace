@@ -5,11 +5,11 @@ sealed class CheckOutPageState {}
 
 abstract class CheckOutPageActionState extends CheckOutPageState {}
 
-// final class InitialState extends CheckOutPageState{}
+class InitialState extends CheckOutPageState{}
 
-final class CheckOutPageBlocInitialState extends CheckOutPageState {}
+class CheckOutPageBlocInitialState extends CheckOutPageState {}
 
-class PageLoadingState extends CheckOutPageState {}
+class PageLoadingState extends CheckOutPageActionState {}
 
 class PageLoadedSuccessState extends CheckOutPageState {}
 
