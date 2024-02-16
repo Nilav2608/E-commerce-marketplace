@@ -34,6 +34,11 @@ class _CheckOutPageState extends State<CheckOutPage> {
     });
   }
 
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
   bool agreedToTermsAndConditions = false;
   @override
   Widget build(BuildContext context) {
@@ -47,31 +52,29 @@ class _CheckOutPageState extends State<CheckOutPage> {
                 fontWeight: FontWeight.w700)),
       ),
       body: BlocConsumer<CheckOutPageBloc, CheckOutPageState>(
-        listenWhen: (previous, current) =>
-            current is CheckOutPageActionState,
-        buildWhen: (previous, current) =>
-            current is! CheckOutPageActionState,
+        listenWhen: (previous, current) => current is CheckOutPageActionState,
+        buildWhen: (previous, current) => current is! CheckOutPageActionState,
         bloc: checkOutPageBloc,
         listener: (context, state) {
           switch (state.runtimeType) {
-            case NavigateTohomePageActionState:
-              Navigator.popAndPushNamed(context, '/');
-            
-            case PageLoadingState:
-              AlertDialog(
-                backgroundColor: Colors.lightBlue[100],
-                content: const Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    CircularProgressIndicator(),
-                    SizedBox(height: 16),
-                    Text(
-                      'Placing your order...',
-                      style: TextStyle(fontSize: 16),
-                    ),
-                  ],
-                ),
-              );
+          //   case NavigateTohomePageActionState:
+          //     Navigator.popAndPushNamed(context, '/');
+
+            // case PageLoadingState:
+            //   AlertDialog(
+            //     backgroundColor: Colors.lightBlue[100],
+            //     content: const Column(
+            //       mainAxisSize: MainAxisSize.min,
+            //       children: [
+            //         CircularProgressIndicator(),
+            //         SizedBox(height: 16),
+            //         Text(
+            //           'Placing your order...',
+            //           style: TextStyle(fontSize: 16),
+            //         ),
+            //       ],
+            //     ),
+            //   );
           }
         },
         builder: (context, state) {
@@ -116,15 +119,13 @@ class _CheckOutPageState extends State<CheckOutPage> {
                     onChanged: (agreedToTermsAndConditions) {
                       onChanged(agreedToTermsAndConditions);
                     },
-                    agreedToTermsAndConditions:
-                        agreedToTermsAndConditions,
+                    agreedToTermsAndConditions: agreedToTermsAndConditions,
                     onProceedToCheckOut: (paymentMethod) {
                       if (agreedToTermsAndConditions) {
-                        checkOutPageBloc.add(
-                            CheckOutPagePlaceOrderEvent(
-                                dataModel: widget.myOrdersData,
-                                addressData: successData.address,
-                                paymentMode: paymentMethod));
+                        checkOutPageBloc.add(CheckOutPagePlaceOrderEvent(
+                            dataModel: widget.myOrdersData,
+                            addressData: successData.address,
+                            paymentMode: paymentMethod));
                       } else {
                         ScaffoldMessenger.of(context)
                             .showSnackBar(const SnackBar(
@@ -225,13 +226,11 @@ class _CheckOutPageState extends State<CheckOutPage> {
                           width: double.infinity,
                           child: ElevatedButton(
                               onPressed: () {
-                                checkOutPageBloc
-                                    .add(NavigateBackToHomePageEvent());
+                                Navigator.popAndPushNamed(context, '/');
                               },
                               style: const ButtonStyle(
-                                  backgroundColor:
-                                      MaterialStatePropertyAll(
-                                          Color(0xFF343434))),
+                                  backgroundColor: MaterialStatePropertyAll(
+                                      Color(0xFF343434))),
                               child: const Text(
                                 "Continue shopping",
                                 style: TextStyle(
@@ -245,7 +244,7 @@ class _CheckOutPageState extends State<CheckOutPage> {
                   )
                 ],
               );
-            
+
             default:
               return const SizedBox();
           }
