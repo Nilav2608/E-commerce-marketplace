@@ -27,7 +27,7 @@ class CartPageBloc extends Bloc<CartPageEvent, CartPageState> {
       var data = results['data'];
 
       for (var i = 0; i < data.length; i++) {
-        //simple json Api response is mapped in to CartItemsModel
+        //simple json Api response is mapped into CartItemsModel
         CartItemsModel responseCartItems = CartItemsModel.fromJson(data[i]);
         tempCartList.add(responseCartItems);
       }
