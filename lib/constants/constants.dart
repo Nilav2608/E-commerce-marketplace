@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:fluxestore/data/my_order_status_data.dart';
 import '../models/tab_catagory_model.dart';
 import '../models/user_data_model.dart';
-import '../presentation/pages/MyOrders/my_orders_list.dart';
 import '../utils/icons_constants/primary_icons_icons.dart';
 import '../utils/icons_constants/secondary_icons_icons.dart';
 
@@ -27,11 +25,6 @@ late  String userId;
 late  String email;
 UserModel? user;
 
-List<Widget> myOrderStatusContainer = [
-  OrdersList(items: pendingItems),
-  OrdersList(items: deliveredItems),
-  OrdersList(items: cancelledItems),
-];
 
 List<TabCategoryModel> categoryList = [
   TabCategoryModel("Pending", true),
