@@ -226,7 +226,7 @@ class _CheckOutPageState extends State<CheckOutPage> {
                           width: double.infinity,
                           child: ElevatedButton(
                               onPressed: () {
-                                Navigator.popAndPushNamed(context, '/');
+                                Navigator.of(context).pushNamedAndRemoveUntil('/',(Route<dynamic> route) => false);
                               },
                               style: const ButtonStyle(
                                   backgroundColor: MaterialStatePropertyAll(
