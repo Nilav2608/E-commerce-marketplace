@@ -12,14 +12,23 @@ class MyOrdersPage extends StatefulWidget {
 }
 
 int tabIndex = 0;
-PageController _pageController = PageController();
 final MyOrdersPageBloc myOrdersPagebloc = MyOrdersPageBloc();
 
-class _MyOrdersPageState extends State<MyOrdersPage> {
+class _MyOrdersPageState extends State<MyOrdersPage>
+    with SingleTickerProviderStateMixin {
+  late TabController _tabController;
   @override
   void initState() {
     super.initState();
     myOrdersPagebloc.add(OrdersPageInitialEvent(userId: email));
+    _tabController = TabController(length: categoryList.length, vsync: this);
+    
+  }
+
+   @override
+  void dispose() {
+    super.dispose();
+    _tabController.dispose();
   }
 
   @override
@@ -71,10 +80,10 @@ class _MyOrdersPageState extends State<MyOrdersPage> {
                                 categoryList[index].isSelected = true;
                                 tabIndex = index;
                               });
-                              _pageController.animateToPage(
+                              _tabController.animateTo(
                                 tabIndex,
                                 duration: const Duration(milliseconds: 300),
-                                curve: Curves.linear,
+                                curve: Curves.ease,
                               );
                               // print(tabIndex);
                             },
@@ -85,23 +94,17 @@ class _MyOrdersPageState extends State<MyOrdersPage> {
                     const SizedBox(
                       height: 10,
                     ),
-                    Expanded(
-                      child: Container(
-                        margin: const EdgeInsets.only(top: 10),
-                        width: double.infinity,
-                        height: double.infinity,
-                        child: PageView.builder(
-                          itemCount: 3,
-                          controller: _pageController,
-                          // physics: const NeverScrollableScrollPhysics(),
-                          itemBuilder: (context, index) {
-                            return Column(
-                              children: [myOrderStatusContainer[tabIndex]],
-                            );
-                          },
-                        ),
-                      ),
-                    ),
+                     Expanded(
+                       child: TabBarView(
+                         controller: _tabController,
+                         physics: const NeverScrollableScrollPhysics(),
+                         children: [
+                           myOrderStatusContainer[0],
+                           myOrderStatusContainer[1],
+                           myOrderStatusContainer[2],
+                         ],
+                       ),
+                     )
                   ],
                 ),
               );
