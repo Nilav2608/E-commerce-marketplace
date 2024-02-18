@@ -12,46 +12,46 @@ class OrderDetailsPage extends StatefulWidget {
 
 bool isCancelling = true;
 
-cancelDialog(context,String orderId) {
+cancelDialog(context, String orderId) {
   return showDialog(
       context: context,
       builder: (context) =>
-      // isCancelling
-      //     ? const Center(
-      //         child: CircularProgressIndicator(),
-      //       )
-      //     :
-      AlertDialog(
-              title: const Text('Cancel Order'),
-              content: Text(
-                  'Are you sure you want to cancel this order? #$orderId'),
-              actions: [
-                TextButton(
-                  onPressed: () {
-                    // User clicked on "Cancel" button
-                    Navigator.of(context).popUntil((route) => route.isFirst);
-                  },
-                  child: const Text('Cancel'),
-                ),
-                TextButton(
-                  onPressed: () async {
-                    showDialog(
-                      context: context,
-                      builder: (context) => const Center(
-                        child: CircularProgressIndicator(),
-                      ),
-                    );
-                    await Future.delayed(const Duration(seconds: 2));
+          // isCancelling
+          //     ? const Center(
+          //         child: CircularProgressIndicator(),
+          //       )
+          //     :
+          AlertDialog(
+            title: const Text('Cancel Order'),
+            content:
+                Text('Are you sure you want to cancel this order? #$orderId'),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  // User clicked on "Cancel" button
+                  Navigator.of(context).popUntil((route) => route.isFirst);
+                },
+                child: const Text('Cancel'),
+              ),
+              TextButton(
+                onPressed: () async {
+                  showDialog(
+                    context: context,
+                    builder: (context) => const Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                  );
+                  await Future.delayed(const Duration(seconds: 2));
 
-                    Navigator.of(context).popUntil((route) => route.isFirst);
+                  Navigator.of(context).popUntil((route) => route.isFirst);
 
-                    // Alternatively, you can use popUntil with a specific route
-                    // Navigator.of(context).popUntil(ModalRoute.withName('MyOrders'));
-                  },
-                  child: const Text('Confirm'),
-                ),
-              ],
-            ));
+                  // Alternatively, you can use popUntil with a specific route
+                  // Navigator.of(context).popUntil(ModalRoute.withName('MyOrders'));
+                },
+                child: const Text('Confirm'),
+              ),
+            ],
+          ));
 }
 
 class _OrderDetailsPageState extends State<OrderDetailsPage> {
@@ -222,12 +222,16 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
                                 color: Color.fromARGB(97, 96, 97, 109),
                                 fontWeight: FontWeight.w400),
                           ),
-                          Text(
-                            "${widget.data.deliveryAddress!.street ?? ''}, ${widget.data.deliveryAddress!.city ?? ''}",
-                            style: const TextStyle(
-                                fontSize: 14,
-                                color: Color(0xff141416),
-                                fontWeight: FontWeight.w400),
+                          const SizedBox(width: 100),
+                          Expanded(
+                            child: Text(
+                              "${widget.data.deliveryAddress!.street ?? ''}, ${widget.data.deliveryAddress!.city ?? ''}",
+                              maxLines: 1,
+                              style: const TextStyle(
+                                  fontSize: 14,
+                                  color: Color(0xff141416),
+                                  fontWeight: FontWeight.w400),
+                            ),
                           ),
                         ],
                       ),
@@ -383,7 +387,7 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
                           // width: 170,
                           child: ElevatedButton(
                               onPressed: () {
-                                Navigator.of(context).popAndPushNamed('/');
+                                Navigator.of(context).pushNamedAndRemoveUntil('/',(Route<dynamic> route) => false);
                               },
                               style: const ButtonStyle(
                                   backgroundColor: MaterialStatePropertyAll(
@@ -410,7 +414,9 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
                                 await Future.delayed(
                                     const Duration(seconds: 2));
 
-                                cancelDialog(context,'#${widget.data.orderID}');
+                                // ignore: use_build_context_synchronously
+                                cancelDialog(
+                                    context, '#${widget.data.orderID}');
                               },
                               style: OutlinedButton.styleFrom(
                                 side: const BorderSide(
@@ -434,7 +440,7 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
                           width: 168,
                           child: OutlinedButton(
                               onPressed: () {
-                                Navigator.of(context).pushNamed('/');
+                                Navigator.of(context).pushNamedAndRemoveUntil('/',(Route<dynamic> route) => false);
                               },
                               child: const Text("Return home",
                                   style: TextStyle(
