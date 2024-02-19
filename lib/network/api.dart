@@ -25,5 +25,5 @@ class Api {
   final String newOrderUrl = "http://192.168.1.5:5000/api/v1/users/newOrder";
 
   final String cancelUserOrder =
-      "http://192.168.1.5:5000/api/v1/users/newOrder";
+      "http://192.168.1.5:5000/api/v1/users/cancelOrder";
 }
