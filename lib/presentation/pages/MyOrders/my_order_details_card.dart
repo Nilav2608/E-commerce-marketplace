@@ -5,6 +5,8 @@ import 'package:fluxestore/models/my_orders_data_model.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 
+import '../../../enums/delivarystatus.enum.dart';
+
 class MyOrderDetailsCard extends StatelessWidget {
   final MyOrdersDataModel data;
   const MyOrderDetailsCard({super.key, required this.data});
@@ -20,19 +22,24 @@ class MyOrderDetailsCard extends StatelessWidget {
     String delivaryStatus = data.deliveryStatus.toString();
     Color statusTextColor;
     Color statusBgColor;
+    DeliveryStatus status;
 
     if (delivaryStatus == "PENDING") {
       statusTextColor = const Color(0xffFF8730);
       statusBgColor = const Color(0xffFFF7E1);
+      status = DeliveryStatus.pending;
     } else if (delivaryStatus == "DELIVERED") {
       statusTextColor = const Color(0xff00AB56);
       statusBgColor = const Color(0xffEFFFF4);
+      status = DeliveryStatus.delivered;
     } else if (delivaryStatus == "CANCELLED") {
       statusTextColor = const Color(0xffFF424E);
       statusBgColor = const Color(0xffFFF0F1);
+      status = DeliveryStatus.cancelled;
     } else {
       statusTextColor = Colors.black;
       statusBgColor = Colors.white;
+      status = DeliveryStatus.cancelled;
     }
     return Container(
       width: 336,
@@ -42,9 +49,7 @@ class MyOrderDetailsCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
         boxShadow: const [
           BoxShadow(
-              color: Color(0xffe8e8e8),
-              blurRadius: 10.0,
-              offset: Offset(0, 1))
+              color: Color(0xffe8e8e8), blurRadius: 10.0, offset: Offset(0, 1))
         ],
       ),
       child: Padding(
@@ -161,7 +166,11 @@ class MyOrderDetailsCard extends StatelessWidget {
                   ),
                   OutlinedButton(
                       onPressed: () {
-                        Navigator.of(context).pushNamed("orderDetailsPage",arguments: data);
+                        Navigator.of(context).pushNamed("orderDetailsPage",
+                            arguments: {
+                              "myordersData": data,
+                              "status": status
+                            });
                       },
                       child: const Text("Details",
                           style: TextStyle(
