@@ -42,4 +42,27 @@ class OrdersRepository extends Api implements IOrdersrepository {
       return {"status": false, "message": e};
     }
   }
+
+  @override
+  Future<Map<String, dynamic>> cancelUserOrders(
+      String userId, String orderId) async {
+    print(userId);
+    print(orderId);
+    try {
+      var response = await http.put(Uri.parse(cancelUserOrder),
+          headers: {"content-type": "application/json"},
+          body: jsonEncode({"userId": userId, "orderId": orderId}));
+      var results = jsonDecode(response.body);
+      print(results);
+      if (response.statusCode == 201) {
+        return results;
+      } else if (response.statusCode == 400) {
+        return results;
+      } else {
+        throw Exception("failed to get data");
+      }
+    } catch (e) {
+      return {"status": false, "message": e};
+    }
+  }
 }
