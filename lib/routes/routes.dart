@@ -7,7 +7,7 @@ import 'package:fluxestore/models/my_orders_data_model.dart';
 import 'package:fluxestore/presentation/authentication/authentication_page.dart';
 import 'package:fluxestore/presentation/authentication/bloc/auth_page_bloc.dart';
 import 'package:fluxestore/presentation/landing_page.dart';
-import 'package:fluxestore/presentation/pages/order_details_page.dart';
+import 'package:fluxestore/presentation/pages/OrderDetails/order_details_page.dart';
 import 'package:fluxestore/presentation/pages/checkout/checkout_main.view.dart';
 import 'package:fluxestore/presentation/pages/collections_page.dart';
 import 'package:fluxestore/presentation/pages/notification_page.dart';
@@ -63,7 +63,7 @@ class MyGenerateRoute {
       case 'productDetails':
         final ProductDataModel productData =
             settings.arguments as ProductDataModel;
-        // final String userId = settings.arguments as String;
+
         return CustomPageTransition(
             //for bottom up transition
             dx: 0.0,
@@ -105,14 +105,18 @@ class MyGenerateRoute {
           ),
         );
       case 'orderDetailsPage':
+        final Map<String, dynamic> args =
+            settings.arguments as Map<String, dynamic>;
         final MyOrdersDataModel myordersData =
-            settings.arguments as MyOrdersDataModel;
+            args['myordersData'] as MyOrdersDataModel;
+        final dynamic status = args['status'];
         return CustomPageTransition(
             curves: Curves.easeInOutCirc,
             dx: 1.0,
             dy: 0.0,
             child: OrderDetailsPage(
               data: myordersData,
+              status: status,
             ));
       case 'WishListPage':
         return CustomPageTransition(
