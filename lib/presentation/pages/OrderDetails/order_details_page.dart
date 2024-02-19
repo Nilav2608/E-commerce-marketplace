@@ -37,12 +37,12 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
       listenWhen: (previous, current) => current is OrderDetailsPageActionState,
       buildWhen: (previous, current) => current is! OrderDetailsPageActionState,
       listener: (context, state) {
-        if (state is ShowLoadingActionState) {
-          showDialog(
-              context: context,
-              builder: (context) => const AlertDialog(
-                  content: Center(child: CircularProgressIndicator())));
-        }
+        // if (state is ShowLoadingActionState) {
+        //   showDialog(
+        //       context: context,
+        //       builder: (context) => const AlertDialog(
+        //           content: Center(child: CircularProgressIndicator())));
+        // }
         if (state is ShowConfirmationDialogActionState) {
           showDialog(
               context: context,
