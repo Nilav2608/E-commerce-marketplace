@@ -57,8 +57,14 @@ class _CartPageState extends State<CartPage> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Lottie.asset("assets/lottie/empty_box_lottie.json"),
-                        const Text("YOUR CART IS EMPTY"),
+                        Lottie.asset(
+                          "assets/lottie/empty-cart-grey.json",
+                          // "assets/lottie/empty-cart1.json",
+                          width: 300,
+                          height: 300,
+                          repeat: false,
+                        ),
+                        const Text("Your Cart Is Empty!"),
                       ],
                     ),
                   )
