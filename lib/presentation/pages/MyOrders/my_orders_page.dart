@@ -21,14 +21,17 @@ class _MyOrdersPageState extends State<MyOrdersPage>
   void initState() {
     super.initState();
     myOrdersPagebloc.add(OrdersPageInitialEvent(userId: email));
-    _tabController = TabController(length: categoryList.length, vsync: this);
-    
+    tabIndex = 0;
+    _tabController = TabController(initialIndex: 0, length: 3, vsync: this);
+    print(_tabController.index.toString());
   }
 
-   @override
+  @override
   void dispose() {
     super.dispose();
     _tabController.dispose();
+    _tabController = TabController(initialIndex: 0, length: 3, vsync: this);
+    print("on dispose called");
   }
 
   @override
@@ -94,17 +97,17 @@ class _MyOrdersPageState extends State<MyOrdersPage>
                     const SizedBox(
                       height: 10,
                     ),
-                     Expanded(
-                       child: TabBarView(
-                         controller: _tabController,
-                         physics: const NeverScrollableScrollPhysics(),
-                         children: [
-                           myOrderStatusContainer[0],
-                           myOrderStatusContainer[1],
-                           myOrderStatusContainer[2],
-                         ],
-                       ),
-                     )
+                    Expanded(
+                      child: TabBarView(
+                        controller: _tabController,
+                        physics: const NeverScrollableScrollPhysics(),
+                        children: [
+                          myOrderStatusContainer[0],
+                          myOrderStatusContainer[1],
+                          myOrderStatusContainer[2],
+                        ],
+                      ),
+                    )
                   ],
                 ),
               );
