@@ -85,24 +85,26 @@ class CanformationDialog extends StatelessWidget {
                     ),
                   ),
                 ),
-                // const SizedBox(
-                //   width: 10,
-                // ),
-                InkWell(
-                  onTap: onCancel,
-                  child: Container(
-                    width: 130,
-                    height: 37,
-                    decoration: BoxDecoration(
-                        color: const Color(0xffD1293D),
-                        borderRadius: BorderRadius.circular(8)),
-                    child: const Center(
-                      child: Text(
-                        "Confirm",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 14,
-                            fontWeight: FontWeight.w400),
+                const SizedBox(
+                  width: 10,
+                ),
+                Expanded(
+                  child: InkWell(
+                    onTap: onCancel,
+                    child: Container(
+                      width: 130,
+                      height: 37,
+                      decoration: BoxDecoration(
+                          color: const Color(0xffD1293D),
+                          borderRadius: BorderRadius.circular(8)),
+                      child: const Center(
+                        child: Text(
+                          "Confirm",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w400),
+                        ),
                       ),
                     ),
                   ),
