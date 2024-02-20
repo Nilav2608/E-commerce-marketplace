@@ -16,22 +16,23 @@ final MyOrdersPageBloc myOrdersPagebloc = MyOrdersPageBloc();
 
 class _MyOrdersPageState extends State<MyOrdersPage>
     with SingleTickerProviderStateMixin {
+
   late TabController _tabController;
+
   @override
   void initState() {
     super.initState();
     myOrdersPagebloc.add(OrdersPageInitialEvent(userId: email));
-    tabIndex = 0;
     _tabController = TabController(initialIndex: 0, length: 3, vsync: this);
-    print(_tabController.index.toString());
   }
 
   @override
   void dispose() {
     super.dispose();
     _tabController.dispose();
-    _tabController = TabController(initialIndex: 0, length: 3, vsync: this);
-    print("on dispose called");
+    categoryList[0].isSelected = true;
+    categoryList[1].isSelected = false;
+    categoryList[2].isSelected = false;
   }
 
   @override
@@ -88,7 +89,6 @@ class _MyOrdersPageState extends State<MyOrdersPage>
                                 duration: const Duration(milliseconds: 300),
                                 curve: Curves.ease,
                               );
-                              // print(tabIndex);
                             },
                           );
                         },
