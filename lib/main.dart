@@ -30,7 +30,6 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      
       initialRoute: (token != null && JwtDecoder.isExpired(token.toString()) == false) ? '/' : 'Authentication',
       routes: {'/': (context) => LandingPage(token: token??'')},
       onGenerateRoute: MyGenerateRoute().generateRoute,
