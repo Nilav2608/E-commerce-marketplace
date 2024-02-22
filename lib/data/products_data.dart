@@ -19,7 +19,7 @@ final List<ProductDataModel> productsList = [
       descriptionn: "xxxxxxx",
       price: 80.00,
       imageUrl:
-          "https://myphotographer.wedding/wp-content/uploads/2022/09/clothingstore2-woman-pic5.webp",
+          "https://autos.divloo.com/wp-content/uploads/2022/09/clothingstore2-woman-pic5.webp",
       sizes: ["S", "M", "L", "XL"],
       colors: [Colors.orangeAccent, Colors.black, Colors.pink],
       favorite: false,
