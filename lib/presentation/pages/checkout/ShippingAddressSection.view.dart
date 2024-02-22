@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:csc_picker/csc_picker.dart';
 import 'package:fluxestore/models/delivery_address_model.dart';
-import '../../../Business_Logic/CheckOutPageBloc/check_out_page_bloc.dart';
+import 'bloc/check_out_page_bloc.dart';
 
 class ShippingAddressSection extends StatefulWidget {
   final Function(DeliveryAddress)? onPressed;

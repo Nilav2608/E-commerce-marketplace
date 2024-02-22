@@ -3,11 +3,9 @@ import 'package:fluxestore/models/delivery_address_model.dart';
 import 'package:fluxestore/models/my_orders_data_model.dart';
 import 'package:fluxestore/presentation/pages/checkout/PaymentSection.view.dart';
 import 'package:fluxestore/presentation/pages/checkout/ShippingAddressSection.view.dart';
-// ignore: depend_on_referenced_packages
 import 'package:lottie/lottie.dart';
-import '../../../Business_Logic/CheckOutPageBloc/check_out_page_bloc.dart';
-import 'checkout_status_items_view.dart';
-// ignore: depend_on_referenced_packages
+import 'bloc/check_out_page_bloc.dart';
+import 'widgets/checkout_status_items.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CheckOutPage extends StatefulWidget {
