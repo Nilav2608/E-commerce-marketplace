@@ -13,12 +13,13 @@ class ProductsRepository extends Api implements IproductsRepository {
     List<ProductDataModel> tempList = [];
     try {
       var response = await http.get(Uri.parse(productsUrl));
-
       if (response.statusCode == 200) {
         var data = jsonDecode(response.body);
+
         var products = data['data'];
 
         for (var i = 0; i < products.length; i++) {
+          products.remove('__v');
           ProductDataModel productData = ProductDataModel.fromJson(products[i]);
           tempList.add(productData);
         }
@@ -28,7 +29,6 @@ class ProductsRepository extends Api implements IproductsRepository {
       }
     } catch (e) {
       return [];
-      // return {"status": false, "message": e};
     }
   }
 
@@ -38,7 +38,6 @@ class ProductsRepository extends Api implements IproductsRepository {
 
     try {
       var response = await http.get(Uri.parse(bannersUrl));
-
       if (response.statusCode == 200) {
         var data = jsonDecode(response.body);
         var banners = data['data'];
@@ -49,6 +48,27 @@ class ProductsRepository extends Api implements IproductsRepository {
         return tempList;
       } else {
         throw "Unable to load banners";
+      }
+    } catch (e) {
+      return [];
+    }
+  }
+
+  @override
+  Future<List<ProductDataModel>> getRecommendations() async {
+    try {
+      var response = await http.get(Uri.parse(recommendationsUrl));
+      var results = jsonDecode(response.body);
+      List<ProductDataModel> tempList = [];
+      if (response.statusCode == 200) {
+        var products = results['data'];
+        for (var i = 0; i < products.length; i++) {
+          ProductDataModel items = ProductDataModel.fromJson(products[i]);
+          tempList.add(items);
+        }
+        return tempList;
+      } else {
+        throw Exception(results['message']);
       }
     } catch (e) {
       return [];

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluxestore/Business_Logic/ProductDetailsPageBloc/product_details_page_bloc.dart';
 import 'package:fluxestore/utils/Mappers/mappers.dart';
-import 'package:fluxestore/data/product_recomendation_data.dart';
 import 'package:fluxestore/models/cart_items_model.dart';
-import 'package:fluxestore/models/colors_category_model.dart';
 import 'package:fluxestore/models/product_review_model.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:fluxestore/presentation/reuseables/product_list_view_builder.dart';
@@ -12,23 +10,27 @@ import 'package:fluxestore/presentation/reuseables/product_rating_progress_bars.
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluxestore/utils/formatters/formatter.dart';
 import '../../models/product_data_model.dart';
+import '../../repository/productsRepo/products_repository.dart';
 import '../../utils/icons_constants/primary_icons_icons.dart';
 import '../../utils/icons_constants/secondary_icons_icons.dart';
 import '../reuseables/product_reviews_tile.dart';
 
 class ProductDetailsPage extends StatefulWidget {
   final ProductDataModel data;
-  const ProductDetailsPage({super.key, required this.data,});
+  const ProductDetailsPage({
+    super.key,
+    required this.data,
+  });
 
   @override
   State<ProductDetailsPage> createState() => _ProductDetailsPageState();
 }
 
-List<ColorsCatagoryModel> colorsIsSelected = [
-  ColorsCatagoryModel(0xffE7C0A7, true),
-  ColorsCatagoryModel(0xff050302, false),
-  ColorsCatagoryModel(0xffEE6969, false)
-];
+// List<ColorsCatagoryModel> colorsIsSelected = [
+//   ColorsCatagoryModel(0xffE7C0A7, true),
+//   ColorsCatagoryModel(0xff050302, false),
+//   ColorsCatagoryModel(0xffEE6969, false)
+// ];
 
 List ratingData = [
   ["5", 0.8, 80],
@@ -72,6 +74,8 @@ List availableColors = [];
 class _ProductDetailsPageState extends State<ProductDetailsPage> {
   final ProductDetailsPageBloc productDetailsPageBloc =
       ProductDetailsPageBloc();
+
+  List<ProductDataModel> recommendations = [];
   @override
   void initState() {
     productDetailsPageBloc.add(ProductDetailsPageInitialEvent());
@@ -79,19 +83,32 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
       Color colors = Formatters().getColorName(widget.data.colors![i]);
       availableColors.add(colors);
     }
+    fetchRecomendations();
+    // var results = await ProductsRepository().getRecommendations();
     super.initState();
   }
 
-  void onFavoriteStatusChanged(bool newFavoriteStatus) {
-    // Update the product's favorite status here
+  Future fetchRecomendations() async {
+    try {
+      var data = await ProductsRepository().getRecommendations();
+        setState(() {
+          recommendations = data;
+        });
+    } catch (e) {
+      debugPrint("Error fetching recommendations: $e");
+    }
+  }
 
-    // Navigate back to the wishlist page
+  void onFavoriteStatusChanged(bool newFavoriteStatus) {
+    // Updates the product's favorite status here
+    // Navigates back to the wishlist page
     Navigator.of(context).pop(newFavoriteStatus);
   }
 
   // int? sizeLength = widget.data.sizes?.length;
   @override
   Widget build(BuildContext context) {
+    // print(recommendations);
     return BlocConsumer<ProductDetailsPageBloc, ProductDetailsPageState>(
         bloc: productDetailsPageBloc,
         listenWhen: (previous, current) =>
@@ -105,7 +122,8 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                 padding: const EdgeInsets.all(10),
                 duration: const Duration(milliseconds: 800),
                 behavior: SnackBarBehavior.floating,
-                backgroundColor: state.status ? const Color(0xFF508A7B) : Colors.red,
+                backgroundColor:
+                    state.status ? const Color(0xFF508A7B) : Colors.red,
                 content: Text(
                   state.message,
                   style: const TextStyle(color: Colors.white),
@@ -684,20 +702,25 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                     ),
                                   ),
 
-                                  ProductDetailsExpansionPanel(
-                                      headingHorizontalPadding: 18,
-                                      expansionCallback: (p0, p1) {
-                                        setState(() {
-                                          _isSimilarProductsExpanded =
-                                              !_isSimilarProductsExpanded;
-                                        });
-                                      },
-                                      isExpanded: _isSimilarProductsExpanded,
-                                      headingText: "Similar Product",
-                                      body: ProductListViewBuilder(
-                                        items: recomendationsList,
-                                        requiredItemCount: 3,
-                                      )),
+                                  recommendations.isNotEmpty
+                                      ? ProductDetailsExpansionPanel(
+                                          headingHorizontalPadding: 18,
+                                          expansionCallback: (p0, p1) {
+                                            setState(() {
+                                              _isSimilarProductsExpanded =
+                                                  !_isSimilarProductsExpanded;
+                                            });
+                                          },
+                                          isExpanded:
+                                              _isSimilarProductsExpanded,
+                                          headingText: "Similar Product",
+                                          body: ProductListViewBuilder(
+                                            items: recommendations,
+                                            requiredItemCount: 3,
+                                          ))
+                                      : const SizedBox(
+                                          height: 30,
+                                        ),
 
                                   const SizedBox(
                                     height: 50,
