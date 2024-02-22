@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:fluxestore/Business_Logic/ProductDetailsPageBloc/product_details_page_bloc.dart';
 import 'package:fluxestore/utils/Mappers/mappers.dart';
 import 'package:fluxestore/models/cart_items_model.dart';
 import 'package:fluxestore/models/product_review_model.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:fluxestore/presentation/reuseables/product_list_view_builder.dart';
-import 'package:fluxestore/presentation/reuseables/expansion_panel.dart';
-import 'package:fluxestore/presentation/reuseables/product_rating_progress_bars.dart';
+import 'package:fluxestore/presentation/product_details_page/widgets/expansion_panel.dart';
+import 'package:fluxestore/presentation/product_details_page/widgets/product_rating_progress_bars.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluxestore/utils/formatters/formatter.dart';
 import '../../models/product_data_model.dart';
 import '../../repository/productsRepo/products_repository.dart';
 import '../../utils/icons_constants/primary_icons_icons.dart';
 import '../../utils/icons_constants/secondary_icons_icons.dart';
-import '../reuseables/product_reviews_tile.dart';
+import 'widgets/product_reviews_tile.dart';
+import 'bloc/product_details_page_bloc.dart';
 
 class ProductDetailsPage extends StatefulWidget {
   final ProductDataModel data;

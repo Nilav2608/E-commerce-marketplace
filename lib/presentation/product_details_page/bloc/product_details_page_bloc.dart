@@ -4,9 +4,8 @@ import 'package:fluxestore/data/cart_items.dart';
 import 'package:fluxestore/data/wish_listed_data.dart';
 import 'package:fluxestore/models/product_data_model.dart';
 import 'package:fluxestore/repository/CartRepo/cart_repository.dart';
-// import 'package:fluxestore/repository/productsRepo/products_repository.dart';
 import 'package:meta/meta.dart';
-import '../../models/cart_items_model.dart';
+import '../../../models/cart_items_model.dart';
 part 'product_details_page_event.dart';
 part 'product_details_page_state.dart';
 
