@@ -9,7 +9,7 @@ import 'package:jwt_decoder/jwt_decoder.dart';
 import '../Business_Logic/landing_page_bloc/landing_page_bloc.dart';
 import '../utils/icons_constants/primary_icons_icons.dart';
 import 'package:fluxestore/presentation/pages/account.dart';
-import 'package:fluxestore/presentation/pages/cart_page.dart';
+import 'package:fluxestore/presentation/pages/cart/cart_page.dart';
 import 'package:fluxestore/presentation/pages/home/home.dart';
 import 'package:fluxestore/presentation/pages/search.dart';
 

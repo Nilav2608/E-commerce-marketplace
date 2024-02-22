@@ -4,8 +4,8 @@ import 'package:fluxestore/models/my_orders_data_model.dart';
 import 'package:fluxestore/presentation/reuseables/cart_product_tile.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
-import '../../Business_Logic/CartPageBloc/cart_page_bloc.dart';
-import '../../utils/Mappers/mappers.dart';
+import '../../../utils/Mappers/mappers.dart';
+import 'bloc/cart_page_bloc.dart';
 
 class CartPage extends StatefulWidget {
   final String email;
@@ -33,7 +33,6 @@ class _CartPageState extends State<CartPage> {
 
   @override
   Widget build(BuildContext context) {
-    // succesState = context.watch<CartPageBloc>().state as CartSuccessState;
     final double screenWidth = MediaQuery.of(context).size.width;
     final double screenHeight = MediaQuery.of(context).size.height;
     return BlocConsumer<CartPageBloc, CartPageState>(
@@ -59,7 +58,6 @@ class _CartPageState extends State<CartPage> {
                       children: [
                         Lottie.asset(
                           "assets/lottie/empty-cart-grey.json",
-                          // "assets/lottie/empty-cart1.json",
                           width: 300,
                           height: 300,
                           repeat: false,
@@ -83,7 +81,6 @@ class _CartPageState extends State<CartPage> {
                           borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(15),
                               topRight: Radius.circular(15))),
-                      // ignore: prefer_const_constructors
                       child: Padding(
                         padding: const EdgeInsets.all(10.0),
                         child: Column(
@@ -187,27 +184,6 @@ class _CartPageState extends State<CartPage> {
                                       Navigator.of(context).pushNamed(
                                           'checkOut',
                                           arguments: results);
-
-                                      // Navigator.push(
-                                      //   context,
-                                      //   PageRouteBuilder(
-                                      //     pageBuilder: (context, animation,
-                                      //         secondaryAnimation) {
-                                      //       return CheckOutPage(
-                                      //         myOrdersData: results,
-                                      //       );
-                                      //     },
-                                      //     transitionsBuilder: (context,
-                                      //         animation,
-                                      //         secondaryAnimation,
-                                      //         child) {
-                                      //       return FadeTransition(
-                                      //         opacity: animation,
-                                      //         child: child,
-                                      //       );
-                                      //     },
-                                      //   ),
-                                      // );
                                     } else {
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(const SnackBar(
@@ -280,8 +256,6 @@ class _CartPageState extends State<CartPage> {
                                             successState.cartSuccessData));
                                   },
                                   delete: (context) {
-                                    print("on delete called");
-                                    print(itemsData.id);
                                     cartPageBloc.add(RemoveAnItemFromCartEvent(
                                         productId: itemsData.id ?? '',
                                         userId: email));
