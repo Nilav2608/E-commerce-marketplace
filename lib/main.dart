@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fluxestore/presentation/landing_page.dart';
+import 'package:fluxestore/presentation/landing_page/landing_page.dart';
 import 'package:fluxestore/routes/routes.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:shared_preferences/shared_preferences.dart';
