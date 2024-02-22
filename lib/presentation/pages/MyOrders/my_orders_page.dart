@@ -8,7 +8,10 @@ import '../../reuseables/my_orders_catagory_card.dart';
 class MyOrdersPage extends StatefulWidget {
   const MyOrdersPage({super.key});
   @override
-  State<MyOrdersPage> createState() => _MyOrdersPageState();
+  State<MyOrdersPage> createState() {
+    print("On create");
+    return _MyOrdersPageState();
+  }
 }
 
 int tabIndex = 0;
@@ -16,7 +19,6 @@ final MyOrdersPageBloc myOrdersPagebloc = MyOrdersPageBloc();
 
 class _MyOrdersPageState extends State<MyOrdersPage>
     with SingleTickerProviderStateMixin {
-
   late TabController _tabController;
 
   @override
@@ -24,6 +26,7 @@ class _MyOrdersPageState extends State<MyOrdersPage>
     super.initState();
     myOrdersPagebloc.add(OrdersPageInitialEvent(userId: email));
     _tabController = TabController(initialIndex: 0, length: 3, vsync: this);
+      print("On init");
   }
 
   @override
@@ -37,61 +40,64 @@ class _MyOrdersPageState extends State<MyOrdersPage>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: const Text("My Orders",
-            style: TextStyle(
-                color: Colors.black,
-                fontSize: 20,
-                fontWeight: FontWeight.w700)),
-      ),
-      body: BlocConsumer<MyOrdersPageBloc, MyOrdersPageState>(
-        bloc: myOrdersPagebloc,
-        listenWhen: (previous, current) => current is OrdersPageActionState,
-        buildWhen: (previous, current) => current is! OrdersPageActionState,
-        listener: (context, state) {},
-        builder: (context, state) {
-          switch (state.runtimeType) {
-            case OrdersPageSuccessState:
-              final successState = state as OrdersPageSuccessState;
-              List<Widget> myOrderStatusContainer = [
-                OrdersList(items: successState.pendingOrders),
-                OrdersList(items: successState.deliveredOrders),
-                OrdersList(items: successState.cancelledOrders),
-              ];
+      print("On build");
+    return BlocConsumer<MyOrdersPageBloc, MyOrdersPageState>(
+      bloc: myOrdersPagebloc,
+      listenWhen: (previous, current) => current is OrdersPageActionState,
+      buildWhen: (previous, current) => current is! OrdersPageActionState,
+      listener: (context, state) {},
+      builder: (context, state) {
+        switch (state.runtimeType) {
+          case OrdersPageSuccessState:
+            final successState = state as OrdersPageSuccessState;
+            List<Widget> myOrderStatusContainer = [
+              OrdersList(items: successState.pendingOrders),
+              OrdersList(items: successState.deliveredOrders),
+              OrdersList(items: successState.cancelledOrders),
+            ];
 
-              return Padding(
+            return Scaffold(
+              appBar: AppBar(
+                centerTitle: true,
+                title: const Text("My Orders",
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                        fontWeight: FontWeight.w700)),
+              ),
+              body: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Column(
                   children: [
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.06,
                       width: MediaQuery.of(context).size.width * 4,
-                      child: ListView.builder(
-                        physics: const BouncingScrollPhysics(
-                            decelerationRate: ScrollDecelerationRate.normal),
-                        scrollDirection: Axis.horizontal,
-                        itemCount: categoryList.length,
-                        itemBuilder: (context, index) {
-                          return CategoryCard(
-                            category: categoryList[index],
-                            onPressed: (b) {
-                              for (var category in categoryList) {
-                                category.isSelected = false;
-                              }
-                              setState(() {
-                                categoryList[index].isSelected = true;
-                                tabIndex = index;
-                              });
-                              _tabController.animateTo(
-                                tabIndex,
-                                duration: const Duration(milliseconds: 300),
-                                curve: Curves.ease,
-                              );
-                            },
-                          );
-                        },
+                      child: Expanded(
+                        child: ListView.builder(
+                          physics: const BouncingScrollPhysics(
+                            decelerationRate: ScrollDecelerationRate.normal,
+                          ),
+                          scrollDirection: Axis.horizontal,
+                          itemCount: categoryList.length,
+                          itemBuilder: (context, index) {
+                            return CategoryCard(
+                              category: categoryList[index],
+                              onPressed: (b) {
+                                for (var category in categoryList) {
+                                  category.isSelected = false;
+                                }
+                                setState(() {
+                                  categoryList[index].isSelected = true;
+                                  tabIndex = index;
+                                });
+                                _tabController.animateTo(
+                                  tabIndex,
+                                  duration: const Duration(milliseconds: 300),
+                                );
+                              },
+                            );
+                          },
+                        ),
                       ),
                     ),
                     const SizedBox(
@@ -107,15 +113,15 @@ class _MyOrdersPageState extends State<MyOrdersPage>
                           myOrderStatusContainer[2],
                         ],
                       ),
-                    )
+                    ),
                   ],
                 ),
-              );
-            default:
-              return const SizedBox();
-          }
-        },
-      ),
+              ),
+            );
+          default:
+            return const SizedBox();
+        }
+      },
     );
   }
 }
