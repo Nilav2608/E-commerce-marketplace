@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluxestore/models/my_orders_data_model.dart';
-import 'package:fluxestore/presentation/pages/MyOrders/my_order_details_card.dart';
+import 'package:fluxestore/presentation/pages/MyOrders/widgets/my_order_details_card.dart';
 import 'package:lottie/lottie.dart';
 
 class OrdersList extends StatelessWidget {

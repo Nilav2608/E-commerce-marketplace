@@ -5,7 +5,7 @@ import 'package:fluxestore/models/my_orders_data_model.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 
-import '../../../enums/delivarystatus.enum.dart';
+import '../../../../enums/delivarystatus.enum.dart';
 
 class MyOrderDetailsCard extends StatelessWidget {
   final MyOrdersDataModel data;

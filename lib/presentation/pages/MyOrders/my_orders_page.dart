@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluxestore/constants/constants.dart';
 import 'package:fluxestore/presentation/pages/MyOrders/bloc/orders_page_bloc.dart';
-import 'package:fluxestore/presentation/pages/MyOrders/my_orders_list.dart';
+import 'package:fluxestore/presentation/pages/MyOrders/widgets/my_orders_list.dart';
 import '../../reuseables/my_orders_catagory_card.dart';
 
 class MyOrdersPage extends StatefulWidget {
