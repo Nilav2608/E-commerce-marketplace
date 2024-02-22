@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:fluxestore/Business_Logic/WishListPageBloc/wish_list_page_bloc.dart';
 import 'package:fluxestore/data/wish_listed_data.dart';
 import 'package:fluxestore/models/product_data_model.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 import '../../utils/icons_constants/primary_icons_icons.dart';
+import '../pages/wish_list_page/bloc/wish_list_page_bloc.dart';
 
 class CollectionsListTile extends StatefulWidget {
   final ProductDataModel product;

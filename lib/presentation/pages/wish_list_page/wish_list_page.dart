@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fluxestore/Business_Logic/WishListPageBloc/wish_list_page_bloc.dart';
 import 'package:fluxestore/data/wish_listed_data.dart';
 import 'package:lottie/lottie.dart';
-import '../reuseables/collections_list_tile.dart';
+import '../../reuseables/collections_list_tile.dart';
+import 'bloc/wish_list_page_bloc.dart';
 
 class WishListPage extends StatefulWidget {
   const WishListPage({super.key});

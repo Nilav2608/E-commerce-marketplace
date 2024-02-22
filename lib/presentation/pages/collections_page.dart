@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:fluxestore/Business_Logic/WishListPageBloc/wish_list_page_bloc.dart';
 import 'package:fluxestore/data/collections_data.dart';
 import 'package:fluxestore/models/banners_data_model.dart';
 import 'package:fluxestore/presentation/reuseables/collections_list_tile.dart';
+
+import 'wish_list_page/bloc/wish_list_page_bloc.dart';
 
 class CollectionsPage extends StatelessWidget {
   final BannersDataModel bannerData;
