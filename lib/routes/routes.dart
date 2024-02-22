@@ -1,6 +1,4 @@
 import "package:flutter/material.dart";
-
-// ignore: depend_on_referenced_packages
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluxestore/models/banners_data_model.dart';
 import 'package:fluxestore/models/my_orders_data_model.dart';
@@ -11,15 +9,15 @@ import 'package:fluxestore/presentation/pages/OrderDetails/order_details_page.da
 import 'package:fluxestore/presentation/pages/checkout/checkout_main.view.dart';
 import 'package:fluxestore/presentation/pages/collections_page.dart';
 import 'package:fluxestore/presentation/pages/notification_page.dart';
-import 'package:fluxestore/presentation/pages/product_details_page.dart';
-import 'package:fluxestore/presentation/pages/product_feedback.dart';
+import 'package:fluxestore/presentation/product_details_page/product_details_page.dart';
+import 'package:fluxestore/presentation/pages/product_feedback_page.dart';
 import 'package:fluxestore/presentation/pages/settings_page.dart';
 import 'package:fluxestore/presentation/pages/wish_list_page.dart';
 import 'package:fluxestore/routes/custom_transition_routes.dart';
-import '../Business_Logic/CheckOutPageBloc/check_out_page_bloc.dart';
 import '../Business_Logic/landing_page_bloc/landing_page_bloc.dart';
 import '../models/product_data_model.dart';
 import '../presentation/pages/MyOrders/my_orders_page.dart';
+import '../presentation/pages/checkout/bloc/check_out_page_bloc.dart';
 
 class MyGenerateRoute {
   final AuthPageBloc authPagebloc = AuthPageBloc();
