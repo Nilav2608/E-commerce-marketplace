@@ -3,8 +3,8 @@ import 'package:fluxestore/models/user_data_model.dart';
 
 import 'package:fluxestore/presentation/reuseables/account_page_utils_row.dart';
 
-import '../../utils/icons_constants/primary_icons_icons.dart';
-import '../../utils/icons_constants/secondary_icons_icons.dart';
+import '../../../utils/icons_constants/primary_icons_icons.dart';
+import '../../../utils/icons_constants/secondary_icons_icons.dart';
 
 class AccountPage extends StatelessWidget {
   final UserModel? userData;
