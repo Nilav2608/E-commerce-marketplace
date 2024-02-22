@@ -4,6 +4,7 @@ import 'package:fluxestore/data/cart_items.dart';
 import 'package:fluxestore/data/wish_listed_data.dart';
 import 'package:fluxestore/models/product_data_model.dart';
 import 'package:fluxestore/repository/CartRepo/cart_repository.dart';
+// import 'package:fluxestore/repository/productsRepo/products_repository.dart';
 import 'package:meta/meta.dart';
 import '../../models/cart_items_model.dart';
 part 'product_details_page_event.dart';
@@ -23,17 +24,25 @@ class ProductDetailsPageBloc
     var results = await CartRepository().addTocart(event.productData);
     if (results['status']) {
       emit(AddToCartActionState(
-        subTotal: CartItemsModel().subTotal(cartItems), cartItems: cartItems, message: 'Added to cart!', status: true));
-    }else{
+          subTotal: CartItemsModel().subTotal(cartItems),
+          cartItems: cartItems,
+          message: 'Added to cart!',
+          status: true));
+    } else {
       emit(AddToCartActionState(
-        subTotal: CartItemsModel().subTotal(cartItems), cartItems: cartItems, message: results['message'], status: false));
+          subTotal: CartItemsModel().subTotal(cartItems),
+          cartItems: cartItems,
+          message: results['message'],
+          status: false));
     }
   }
 
   FutureOr<void> productDetailsPageInitialEvent(
       ProductDetailsPageInitialEvent event,
-      Emitter<ProductDetailsPageState> emit) {
-    emit(ProductDetailsPageSuccessState(isWishListed: false));
+      Emitter<ProductDetailsPageState> emit) async {
+    emit(ProductDetailsPageSuccessState(
+      isWishListed: false,
+    ));
   }
 
   FutureOr<void> wishListButtonClickedEvent(
@@ -43,6 +52,8 @@ class ProductDetailsPageBloc
     } else {
       wishListedItems.remove(event.product);
     }
-    emit(ProductDetailsPageSuccessState(isWishListed: event.isWishListed));
+    emit(ProductDetailsPageSuccessState(
+      isWishListed: event.isWishListed,
+    ));
   }
 }
