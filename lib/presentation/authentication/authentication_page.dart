@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluxestore/presentation/authentication/bloc/auth_page_bloc.dart';
-import 'package:fluxestore/presentation/landing_page.dart';
+import 'package:fluxestore/presentation/landing_page/landing_page.dart';
 import 'package:fluxestore/presentation/pages/login_page.dart';
 import 'package:fluxestore/presentation/pages/sign_up_page.dart';
 
