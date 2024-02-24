@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -8,7 +7,7 @@ import 'package:fluxestore/models/my_orders_data_model.dart';
 import 'package:fluxestore/presentation/reuseables/bill_details.dart';
 import 'package:lottie/lottie.dart';
 
-import '../../reuseables/conformation_dialog.dart';
+import 'widgets/conformation_dialog.dart';
 import 'bloc/order_details_page_bloc.dart';
 
 class OrderDetailsPage extends StatefulWidget {
@@ -55,13 +54,17 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
         if (state is ShowConfirmationDialogActionState) {
           showDialog(
               context: context,
-              builder: (context) => CanformationDialog(
+              builder: (context) => 
+              // const ConfirmationDialog()
+          CanformationDialog(
                     onCancel: () => {
                       orderDetailsPageBloc.add(ConfirmCancellationEvent(
                           userId: state.userId, orderId: state.orderId)),
                       Navigator.of(context).pop()
                     },
-                  ));
+                  )
+                  );
+         
         }
         if (state is CancellationSuccessActionState) {
           showDialog(
@@ -152,7 +155,8 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
                                     ),
                                   ],
                                 ),
-                                SvgPicture.asset("assets/images/Frame.svg")
+                                SvgPicture.asset("assets/images/Frame.svg"),
+                                //  Lottie.asset("assets/lottie/moving-truck.json")
                               ],
                             ),
                           ),
