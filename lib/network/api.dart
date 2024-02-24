@@ -24,4 +24,6 @@ class Api {
   final String cancelUserOrder = "$baseUrl/api/v1/users/cancelOrder";
 
   final String recommendationsUrl = "$baseUrl/api/v1/products/getRecomendations";
+  
+  final String searchByProductsUrl = "$baseUrl/api/v1/products";
 }
