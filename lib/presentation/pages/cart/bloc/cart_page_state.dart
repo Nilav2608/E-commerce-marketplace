@@ -20,4 +20,4 @@ class UpdatedCartState extends CartPageState{
   UpdatedCartState({required this.updatedCartData});
 }
 
-class CartPageLoadingState extends CartPageActionState{}
+class CartPageLoadingState extends CartPageState{}

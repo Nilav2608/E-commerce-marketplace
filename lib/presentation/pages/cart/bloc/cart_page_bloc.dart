@@ -31,6 +31,7 @@ class CartPageBloc extends Bloc<CartPageEvent, CartPageState> {
         CartItemsModel responseCartItems = CartItemsModel.fromJson(data[i]);
         tempCartList.add(responseCartItems);
       }
+      await Future.delayed(const Duration(seconds: 1));
       emit(CartSuccessState(
           cartSuccessData: tempCartList,
           subTotal: CartItemsModel().subTotal(tempCartList)));
@@ -61,7 +62,7 @@ class CartPageBloc extends Bloc<CartPageEvent, CartPageState> {
   
   //*UPDATE Cart items
   FutureOr<void> updateCartItemEvent(
-      UpdateCartItemEvent event, Emitter<CartPageState> emit) {
+      UpdateCartItemEvent event, Emitter<CartPageState> emit) async {
     // getting the current list items as event.originalcartList  via the list tile    
     for (int i = 0; i < event.originalcartList.length; i++) {
       //checking and just updating for a single state only
