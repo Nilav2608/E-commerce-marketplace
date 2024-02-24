@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fluxestore/constants/constants.dart';
 import 'package:fluxestore/models/my_orders_data_model.dart';
-import 'package:fluxestore/presentation/reuseables/cart_product_tile.dart';
+import 'package:fluxestore/presentation/pages/cart/widgets/cartTile_shimmer.dart';
+import 'package:fluxestore/presentation/pages/cart/widgets/cart_product_tile.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 import '../../../utils/Mappers/mappers.dart';
@@ -40,14 +41,19 @@ class _CartPageState extends State<CartPage> {
       listenWhen: (previous, current) => current is CartPageActionState,
       buildWhen: (previous, current) => current is! CartPageActionState,
       listener: (BuildContext context, CartPageState state) {
-        if (state is CartPageLoadingState) {
-          const Center(
-            child: CircularProgressIndicator(),
-          );
-        }
+        // if (state is CartPageLoadingState) {
+        //   const Center(
+        //     child: CircularProgressIndicator(),
+        //   );
+        // }
       },
       builder: (context, state) {
         switch (state.runtimeType) {
+          case CartPageLoadingState:
+            return Scaffold(
+                body: ListView.builder(
+                    itemCount: 3,
+                    itemBuilder: (context, index) => const CartTileShimmer()));
           case CartSuccessState:
             final successState = state as CartSuccessState;
             String total = successState.subTotal.toStringAsFixed(2);
