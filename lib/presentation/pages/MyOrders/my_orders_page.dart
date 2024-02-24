@@ -8,10 +8,7 @@ import '../../reuseables/my_orders_catagory_card.dart';
 class MyOrdersPage extends StatefulWidget {
   const MyOrdersPage({super.key});
   @override
-  State<MyOrdersPage> createState() {
-    print("On create");
-    return _MyOrdersPageState();
-  }
+  State<MyOrdersPage> createState() => _MyOrdersPageState();
 }
 
 int tabIndex = 0;
@@ -26,7 +23,6 @@ class _MyOrdersPageState extends State<MyOrdersPage>
     super.initState();
     myOrdersPagebloc.add(OrdersPageInitialEvent(userId: email));
     _tabController = TabController(initialIndex: 0, length: 3, vsync: this);
-      print("On init");
   }
 
   @override
@@ -40,7 +36,6 @@ class _MyOrdersPageState extends State<MyOrdersPage>
 
   @override
   Widget build(BuildContext context) {
-      print("On build");
     return BlocConsumer<MyOrdersPageBloc, MyOrdersPageState>(
       bloc: myOrdersPagebloc,
       listenWhen: (previous, current) => current is OrdersPageActionState,
