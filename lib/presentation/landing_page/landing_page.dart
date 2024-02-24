@@ -10,7 +10,7 @@ import '../../utils/icons_constants/primary_icons_icons.dart';
 import 'package:fluxestore/presentation/pages/account/account_page.dart';
 import 'package:fluxestore/presentation/pages/cart/cart_page.dart';
 import 'package:fluxestore/presentation/pages/home/home.dart';
-import 'package:fluxestore/presentation/pages/search.dart';
+import 'package:fluxestore/presentation/pages/Search/search.dart';
 
 import 'bloc/landing_page_bloc.dart';
 
