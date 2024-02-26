@@ -21,8 +21,8 @@ const List<BottomNavigationBarItem> bottomNavItems = <BottomNavigationBarItem>[
   BottomNavigationBarItem(icon: Icon(PrimaryIcons.profile), label: "Account"),
 ];
 
-late  String userId;
-late  String email;
+late String userId;
+late String email;
 UserModel? user;
 
 
