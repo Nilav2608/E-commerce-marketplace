@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluxestore/constants/constants.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluxestore/models/user_data_model.dart';
-import 'package:fluxestore/presentation/pages/home/home_utils/drawer.dart';
+import 'package:fluxestore/presentation/pages/home/widgets/drawer.dart';
 import 'package:fluxestore/repository/UserRepo/user_repository.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 import '../../utils/icons_constants/primary_icons_icons.dart';
