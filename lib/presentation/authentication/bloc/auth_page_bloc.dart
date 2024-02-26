@@ -33,6 +33,8 @@ class AuthPageBloc extends Bloc<AuthPageEvent, AuthPageState> {
     emit(ShowSignUpPageState());
   }
 
+  late String rawToken;
+
   FutureOr<void> authPageLogInEvent(
       AuthPageLogInEvent event, Emitter<AuthPageState> emit) async {
     late SharedPreferences prefs;
@@ -43,7 +45,7 @@ class AuthPageBloc extends Bloc<AuthPageEvent, AuthPageState> {
     var responseStatus = results['status'];
     if (results['status']) {
       //get the token
-      String rawToken = results['token'];
+       rawToken = results['token'];
       // assign it to the prefs string token
       prefs.setString('token', rawToken);
       // Map<String, dynamic> decodedToken = JwtDecoder.decode(rawToken);
@@ -54,7 +56,7 @@ class AuthPageBloc extends Bloc<AuthPageEvent, AuthPageState> {
           message: responseMessage, status: responseStatus));
       //emit landing page
       emit(AuthenticationSuccesState(token: rawToken));
-    }else{
+    } else {
       emit(ShowSnackBarActionState(
           message: responseMessage, status: responseStatus));
     }
