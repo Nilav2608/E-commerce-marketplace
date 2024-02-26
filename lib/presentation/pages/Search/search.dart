@@ -153,11 +153,18 @@ class _SearchPageState extends State<SearchPage> {
                                     ),
                                     title: Container(
                                       height: 16,
-                                      color: Colors.grey[300],
+                                      decoration: BoxDecoration(
+                                        color: Colors.grey[200],
+                                        borderRadius: BorderRadius.circular(2),
+                                      ),
                                     ),
                                     subtitle: Container(
+                                      width: 150,
                                       height: 12,
-                                      color: Colors.grey[300],
+                                      decoration: BoxDecoration(
+                                        color: Colors.grey[200],
+                                        borderRadius: BorderRadius.circular(2),
+                                      ),
                                     ),
                                   ),
                                 );
@@ -176,12 +183,15 @@ class _SearchPageState extends State<SearchPage> {
                                 ProductDataModel data =
                                     successState.responseItems[index];
                                 return InkWell(
-                                  onTap: ()=> Navigator.of(context).pushNamed("productDetails",arguments: data),
+                                  onTap: () => Navigator.of(context).pushNamed(
+                                      "productDetails",
+                                      arguments: data),
                                   child: ListTile(
                                       leading: ClipRRect(
-                                          borderRadius: BorderRadius.circular(5),
-                                          child:
-                                              Image.network(data.imageUrl ?? '')),
+                                          borderRadius:
+                                              BorderRadius.circular(5),
+                                          child: Image.network(
+                                              data.imageUrl ?? '')),
                                       title: Text(data.productName ?? ''),
                                       subtitle:
                                           Text("\$${data.price.toString()}")),
@@ -195,7 +205,7 @@ class _SearchPageState extends State<SearchPage> {
                           children: [
                             Lottie.asset("assets/lottie/no-search-results.json",
                                 reverse: true),
-                           const Text("No results found!")    
+                            const Text("No results found!")
                           ],
                         );
                     }
