@@ -4,24 +4,25 @@ import 'package:fluxestore/routes/routes.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-void main() async {
+int? initScreen;
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SharedPreferences prefs = await SharedPreferences.getInstance();
-  runApp(
-    MyApp(
-      token: prefs.getString("token")
-      )
-    );
+
+  initScreen = prefs.getInt("initScreen");
+  await prefs.setInt("initScreen", 1);
+
+  runApp(MyApp(token: prefs.getString("token"),initScreen: initScreen,));
 }
 
 class MyApp extends StatelessWidget {
   final String? token;
-  const MyApp({super.key, required this.token});
+    final int? initScreen;
+  const MyApp({super.key, required this.token, required this.initScreen});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         //  textTheme:  _buildTextTheme(ThemeData.light().textTheme),
@@ -30,8 +31,11 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      initialRoute: (token != null && JwtDecoder.isExpired(token.toString()) == false) ? '/' : 'Authentication',
-      routes: {'/': (context) => LandingPage(token: token??'')},
+      initialRoute:
+          (token != null && JwtDecoder.isExpired(token.toString()) == false)
+              ? '/'
+              : (initScreen == 0 || initScreen == null) ? "onBording" : 'Authentication',
+      routes: {'/': (context) => LandingPage(token: token ?? '')},
       onGenerateRoute: MyGenerateRoute().generateRoute,
     );
   }
