@@ -1,10 +1,12 @@
 import "package:flutter/material.dart";
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluxestore/constants/constants.dart';
 import 'package:fluxestore/models/banners_data_model.dart';
 import 'package:fluxestore/models/my_orders_data_model.dart';
 import 'package:fluxestore/presentation/authentication/authentication_page.dart';
 import 'package:fluxestore/presentation/authentication/bloc/auth_page_bloc.dart';
 import 'package:fluxestore/presentation/landing_page/landing_page.dart';
+import 'package:fluxestore/presentation/pages/Intro_page/intro_page.dart';
 import 'package:fluxestore/presentation/pages/OrderDetails/order_details_page.dart';
 import 'package:fluxestore/presentation/pages/checkout/checkout_main.view.dart';
 import 'package:fluxestore/presentation/pages/collections_page.dart';
@@ -26,22 +28,23 @@ class MyGenerateRoute {
   Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case 'Authentication':
-        return MaterialPageRoute(
-          builder: (_) => BlocProvider<AuthPageBloc>.value(
-            value: authPagebloc,
+        return CustomPageTransition(
             child: const AuthenticationPage(),
-          ),
-        );
+            dx: 1.0,
+            dy: 0.0,
+            curves: Curves.easeInOutCirc);
 
       case "/":
         return MaterialPageRoute(
           builder: (_) => BlocProvider<AuthPageBloc>.value(
             value: authPagebloc,
-            child: const LandingPage(
-              token: '',
+            child:  LandingPage(
+              token: authPagebloc.rawToken,
             ),
           ),
         );
+      case "onBording":
+        return MaterialPageRoute(builder: (_) => const OnboardingScreen());
 
       case 'notifications':
         return CustomPageTransition(
