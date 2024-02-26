@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluxestore/constants/constants.dart';
 import 'package:fluxestore/models/my_orders_data_model.dart';
-import 'package:fluxestore/presentation/pages/cart/widgets/cartTile_shimmer.dart';
+import 'package:fluxestore/presentation/pages/cart/widgets/cart_tile_shimmer.dart';
 import 'package:fluxestore/presentation/pages/cart/widgets/cart_product_tile.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
