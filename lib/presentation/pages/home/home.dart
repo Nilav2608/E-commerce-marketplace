@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluxestore/presentation/pages/home/bloc/home_bloc.dart';
+import 'package:fluxestore/presentation/pages/home/widgets/home_page_shimmers.dart';
 import 'package:fluxestore/presentation/reuseables/banner_cards.dart';
 import 'package:fluxestore/presentation/reuseables/circle_tabs.dart';
-import 'package:fluxestore/presentation/pages/home/home_utils/curosal_slide_widget_banner.dart';
+import 'package:fluxestore/presentation/pages/home/widgets/curosal_slide_widget_banner.dart';
 import 'package:fluxestore/presentation/reuseables/product_list_view_builder.dart';
 import 'package:fluxestore/presentation/reuseables/row_heading_seemore.dart';
-import 'package:fluxestore/presentation/pages/home/home_utils/vertical_banner_last.dart';
+import 'package:fluxestore/presentation/pages/home/widgets/vertical_banner_last.dart';
 
 import '../../../utils/icons_constants/primary_icons_icons.dart';
 import '../../reuseables/recommended_products_.dart';
@@ -37,9 +38,10 @@ class _HomePageState extends State<HomePage> {
       builder: (context, state) {
         switch (state.runtimeType) {
           case HomePageLoadingState:
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
+            return const HomePageLoadingShimmers();
+          // return const Center(
+          //   child: CircularProgressIndicator(),
+          // );
           case HomePageLoadedSuccessState:
             final successState = state as HomePageLoadedSuccessState;
             return Scaffold(

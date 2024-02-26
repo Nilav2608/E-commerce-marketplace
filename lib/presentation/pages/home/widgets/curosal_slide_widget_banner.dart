@@ -43,11 +43,14 @@ class _CurosalSliderWidgetState extends State<CurosalSliderWidget> {
                         Navigator.of(context)
                             .pushNamed("viewCollections", arguments: e);
                       },
-                      child: Stack(children: [
-                        Image.network(e.imagePath,
+                      child: Stack(
+                        children: [
+                        Image.network(
+                          e.imagePath,
                             fit: BoxFit.cover,
                             // width: 412
-                            width: double.infinity),
+                            width: double.infinity
+                          ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
