@@ -8,7 +8,7 @@ class ProductFeedBackPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // ignore: unused_local_variable
-    double userRating =0;
+    double userRating = 0;
 
     return Scaffold(
       appBar: AppBar(
@@ -125,7 +125,9 @@ class ProductFeedBackPage extends StatelessWidget {
                 width: double.infinity,
                 height: 48,
                 child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
                     style: const ButtonStyle(
                         backgroundColor:
                             MaterialStatePropertyAll(Color(0xFF343434))),
