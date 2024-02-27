@@ -11,21 +11,22 @@ class OrdersList extends StatelessWidget {
   Widget build(BuildContext context) {
     final double screenWidth = MediaQuery.of(context).size.width;
     final double screenHeight = MediaQuery.of(context).size.height;
-    return Expanded(
-      child: Column(
-        // mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          items.isEmpty
-              ? SizedBox(
-                  // width: screenWidth*0.100,
-                  // height: screenHeight*0.100,
-                  child: Lottie.asset(
-                    "assets/lottie/empty_order.json",
-                    width: screenWidth * 0.50,
-                    height: screenHeight * 0.50,
-                  ),
-                )
-              : Expanded(
+    return Column(
+      // mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        items.isEmpty
+            ? SizedBox(
+                // width: screenWidth*0.100,
+                // height: screenHeight*0.100,
+                child: Lottie.asset(
+                  "assets/lottie/empty_order.json",
+                  width: screenWidth * 0.50,
+                  height: screenHeight * 0.50,
+                ),
+              )
+            : Expanded(
+                child: SizedBox(
+                  width: double.infinity,
                   child: ListView.builder(
                     itemCount: items.length,
                     itemBuilder: (context, index) {
@@ -38,9 +39,9 @@ class OrdersList extends StatelessWidget {
                       );
                     },
                   ),
-                )
-        ],
-      ),
+                ),
+              )
+      ],
     );
   }
 }

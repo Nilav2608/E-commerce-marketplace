@@ -67,32 +67,30 @@ class _MyOrdersPageState extends State<MyOrdersPage>
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.06,
                       width: MediaQuery.of(context).size.width * 4,
-                      child: Expanded(
-                        child: ListView.builder(
-                          physics: const BouncingScrollPhysics(
-                            decelerationRate: ScrollDecelerationRate.normal,
-                          ),
-                          scrollDirection: Axis.horizontal,
-                          itemCount: categoryList.length,
-                          itemBuilder: (context, index) {
-                            return CategoryCard(
-                              category: categoryList[index],
-                              onPressed: (b) {
-                                for (var category in categoryList) {
-                                  category.isSelected = false;
-                                }
-                                setState(() {
-                                  categoryList[index].isSelected = true;
-                                  tabIndex = index;
-                                });
-                                _tabController.animateTo(
-                                  tabIndex,
-                                  duration: const Duration(milliseconds: 300),
-                                );
-                              },
-                            );
-                          },
+                      child: ListView.builder(
+                        physics: const BouncingScrollPhysics(
+                          decelerationRate: ScrollDecelerationRate.normal,
                         ),
+                        scrollDirection: Axis.horizontal,
+                        itemCount: categoryList.length,
+                        itemBuilder: (context, index) {
+                          return CategoryCard(
+                            category: categoryList[index],
+                            onPressed: (b) {
+                              for (var category in categoryList) {
+                                category.isSelected = false;
+                              }
+                              setState(() {
+                                categoryList[index].isSelected = true;
+                                tabIndex = index;
+                              });
+                              _tabController.animateTo(
+                                tabIndex,
+                                duration: const Duration(milliseconds: 300),
+                              );
+                            },
+                          );
+                        },
                       ),
                     ),
                     const SizedBox(
