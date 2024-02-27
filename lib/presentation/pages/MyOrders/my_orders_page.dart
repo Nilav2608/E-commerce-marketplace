@@ -4,6 +4,7 @@ import 'package:fluxestore/constants/constants.dart';
 import 'package:fluxestore/presentation/pages/MyOrders/bloc/orders_page_bloc.dart';
 import 'package:fluxestore/presentation/pages/MyOrders/widgets/my_orders_list.dart';
 import '../../reuseables/my_orders_catagory_card.dart';
+import 'widgets/orders_page_shimmer_loaders.dart';
 
 class MyOrdersPage extends StatefulWidget {
   const MyOrdersPage({super.key});
@@ -43,6 +44,8 @@ class _MyOrdersPageState extends State<MyOrdersPage>
       listener: (context, state) {},
       builder: (context, state) {
         switch (state.runtimeType) {
+          case OrdersPageLoadingState:
+            return const OrdersPageShimmerLoader();
           case OrdersPageSuccessState:
             final successState = state as OrdersPageSuccessState;
             List<Widget> myOrderStatusContainer = [

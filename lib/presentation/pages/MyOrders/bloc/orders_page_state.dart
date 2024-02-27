@@ -7,7 +7,7 @@ final class OrdersPageInitial extends MyOrdersPageState {}
 
 class OrdersPageActionState extends MyOrdersPageState {}
 
-class OrdersPageLoadingState extends OrdersPageActionState {}
+class OrdersPageLoadingState extends MyOrdersPageState {}
 
 class OrdersPageSuccessState extends MyOrdersPageState {
   final List<MyOrdersDataModel> pendingOrders;
