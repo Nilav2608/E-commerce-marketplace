@@ -24,7 +24,7 @@ class AuthRepository extends Api implements IAuthRepository {
         return results;
       }
     } catch (e) {
-      return {"status": false, "message": "An Internal error accurd"};
+      return {"status": false, "message": "An Internal error occurd"};
     }
   }
 
