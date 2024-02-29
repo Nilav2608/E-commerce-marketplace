@@ -45,7 +45,7 @@ class _PaymentSectionViewState extends State<PaymentSectionView> {
 
   @override
   Widget build(BuildContext context) {
-    final double screenWidth = MediaQuery.of(context).size.width;
+    final double w = MediaQuery.of(context).size.width;
 
     return Expanded(
       child: ListView(controller: scrollController, children: [
@@ -88,15 +88,9 @@ class _PaymentSectionViewState extends State<PaymentSectionView> {
                           setState(() {
                             currentPaymentMethodIndex = index;
                           });
-                          if (!pageController.hasClients) {
-                            pageController.animateToPage(
-                                currentPaymentMethodIndex,
-                                duration: const Duration(milliseconds: 200),
-                                curve: Curves.linear);
-                          }
                         },
                         child: Padding(
-                          padding: const EdgeInsets.only(left: 26.0),
+                          padding: const EdgeInsets.only(left: 20.0),
                           child: AnimatedContainer(
                             duration: const Duration(milliseconds: 300),
                             // margin: const EdgeInsets.only(right: 16),
@@ -141,157 +135,179 @@ class _PaymentSectionViewState extends State<PaymentSectionView> {
                         ),
                       );
                     })),
-            Padding(
-              padding:
-                  EdgeInsets.symmetric(horizontal: horizontal, vertical: 15),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text(
-                    "Choose your card",
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.w700,
-                        fontSize: 16),
-                  ),
-                  TextButton(
-                    onPressed: () {},
-                    child: const Text(
-                      "Add new+",
-                      style: TextStyle(color: Color(0xffF20000), fontSize: 12),
-                    ),
+            currentPaymentMethodIndex == 1
+                ? Column(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: horizontal, vertical: 15),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const Text(
+                              "Choose your card",
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 16),
+                            ),
+                            TextButton(
+                              onPressed: () {
+                                showBottomSheet(
+                                    context: context,
+                                    builder: (context) => Container(
+                                          color: Colors.amber,
+                                        ));
+                              },
+                              child: const Text(
+                                "Add new+",
+                                style: TextStyle(
+                                    color: Color(0xffF20000), fontSize: 12),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        width: w * 90,
+                        height: 191,
+                        child: PageView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: cardBgUrls.length,
+                            itemBuilder: (context, index) {
+                              var card = cardBgUrls[index];
+                              return CrediCard(
+                                cardUrl: card,
+                              );
+                            }),
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                    ],
                   )
-                ],
-              ),
-            ),
-            const SizedBox(
-              height: 5,
-            ),
-            SizedBox(
-              width: screenWidth * 90,
-              height: 191,
-              child: PageView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: cardBgUrls.length,
-                  itemBuilder: (context, index) {
-                    var card = cardBgUrls[index];
-                    return CrediCard(
-                      cardUrl: card,
-                    );
-                  }),
-            ),
-
-            // const CrediCard(),
-            const SizedBox(
-              height: 20,
-            ),
-            Padding(
-              padding:
-                  EdgeInsets.symmetric(horizontal: horizontal, vertical: 5),
-              child: const Text(
-                "or check out with",
-                style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.w400,
-                    fontSize: 12),
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Padding(
-              padding:
-                  EdgeInsets.symmetric(horizontal: horizontal, vertical: 5),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  InkWell(
-                    child: Container(
-                      width: 50,
-                      height: 34,
-                      decoration: BoxDecoration(
-                          border: Border.all(color: const Color(0XFFEFF1F6)),
-                          borderRadius: BorderRadius.circular(4.2)),
-                      child: Center(
-                        child: SvgPicture.asset(
-                          "assets/images/PayPal.svg",
-                          height: 18,
-                          width: 18,
-                        ),
-                      ),
-                    ),
+                : const SizedBox(
+                    height: 30,
                   ),
-                  InkWell(
-                    child: Container(
-                      width: 50,
-                      height: 34,
-                      decoration: BoxDecoration(
-                          border: Border.all(color: const Color(0XFFEFF1F6)),
-                          borderRadius: BorderRadius.circular(4.2)),
-                      child: Center(
-                        child: SvgPicture.asset(
-                          "assets/images/visa-logo.svg",
-                          height: 10,
-                          width: 10,
+            currentPaymentMethodIndex == 2
+                ? Column(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: horizontal, vertical: 5),
+                        child: const Text(
+                          "or check out with",
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.w400,
+                              fontSize: 12),
                         ),
                       ),
-                    ),
-                  ),
-                  InkWell(
-                    child: Container(
-                      width: 50,
-                      height: 34,
-                      decoration: BoxDecoration(
-                          border: Border.all(color: const Color(0XFFEFF1F6)),
-                          borderRadius: BorderRadius.circular(4.2)),
-                      child: Center(
-                        child: SvgPicture.asset(
-                          "assets/images/Mastercard.svg",
-                          height: 18,
-                          width: 18,
-                        ),
-                      ),
-                    ),
-                  ),
-                  InkWell(
-                    child: Container(
-                      width: 50,
-                      height: 34,
-                      decoration: BoxDecoration(
-                          border: Border.all(color: const Color(0XFFEFF1F6)),
-                          borderRadius: BorderRadius.circular(4.2)),
-                      child: Center(
-                        child: SvgPicture.asset(
-                          "assets/images/Alipay.svg",
-                          height: 10,
-                          width: 10,
-                        ),
-                      ),
-                    ),
-                  ),
-                  InkWell(
-                    child: Container(
-                      width: 50,
-                      height: 34,
-                      decoration: BoxDecoration(
-                          color: const Color(0xff1F72CD),
-                          border: Border.all(color: const Color(0XFF5590D4)),
-                          borderRadius: BorderRadius.circular(4.2)),
-                      child: Center(
-                        child: SvgPicture.asset(
-                          "assets/images/amex.svg",
-                          height: 10,
-                          width: 10,
-                        ),
-                      ),
-                    ),
+                      Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: horizontal, vertical: 5),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              InkWell(
+                                child: Container(
+                                  width: 50,
+                                  height: 34,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(
+                                          color: const Color(0XFFEFF1F6)),
+                                      borderRadius: BorderRadius.circular(4.2)),
+                                  child: Center(
+                                    child: SvgPicture.asset(
+                                      "assets/images/PayPal.svg",
+                                      height: 18,
+                                      width: 18,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              InkWell(
+                                child: Container(
+                                  width: 50,
+                                  height: 34,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(
+                                          color: const Color(0XFFEFF1F6)),
+                                      borderRadius: BorderRadius.circular(4.2)),
+                                  child: Center(
+                                    child: SvgPicture.asset(
+                                      "assets/images/visa-logo.svg",
+                                      height: 10,
+                                      width: 10,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              InkWell(
+                                child: Container(
+                                  width: 50,
+                                  height: 34,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(
+                                          color: const Color(0XFFEFF1F6)),
+                                      borderRadius: BorderRadius.circular(4.2)),
+                                  child: Center(
+                                    child: SvgPicture.asset(
+                                      "assets/images/Mastercard.svg",
+                                      height: 18,
+                                      width: 18,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              InkWell(
+                                child: Container(
+                                  width: 50,
+                                  height: 34,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(
+                                          color: const Color(0XFFEFF1F6)),
+                                      borderRadius: BorderRadius.circular(4.2)),
+                                  child: Center(
+                                    child: SvgPicture.asset(
+                                      "assets/images/Alipay.svg",
+                                      height: 10,
+                                      width: 10,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              InkWell(
+                                child: Container(
+                                  width: 50,
+                                  height: 34,
+                                  decoration: BoxDecoration(
+                                      color: const Color(0xff1F72CD),
+                                      border: Border.all(
+                                          color: const Color(0XFF5590D4)),
+                                      borderRadius: BorderRadius.circular(4.2)),
+                                  child: Center(
+                                    child: SvgPicture.asset(
+                                      "assets/images/amex.svg",
+                                      height: 10,
+                                      width: 10,
+                                    ),
+                                  ),
+                                ),
+                              )
+                            ],
+                          )),
+                      const SizedBox(
+                        height: 20,
+                      )
+                    ],
                   )
-                ],
-              ),
-            ),
-            const SizedBox(
-              height: 30,
-            ),
+                : const SizedBox(
+                    height: 0,
+                  ),
             Container(
               width: double.infinity,
               height: 300,
