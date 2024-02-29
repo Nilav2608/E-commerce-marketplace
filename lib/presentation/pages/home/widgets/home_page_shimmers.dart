@@ -19,40 +19,116 @@ class HomePageLoadingShimmers extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: hori, vertical: vert),
                 child: SizedBox(
                   height: 80,
-                  width: double.infinity,
-                  child: ListView.separated(
-                      shrinkWrap: true,
-                      scrollDirection: Axis.horizontal,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemBuilder: (context, index) => Column(
-                            children: [
-                              Shimmer.fromColors(
-                                  baseColor: Colors.grey[300]!,
-                                  highlightColor: Colors.grey[100]!,
-                                  child: CircleAvatar(
-                                    backgroundColor: Colors.grey[300],
-                                    radius: 20,
-                                  )),
-                              const SizedBox(
-                                height: 12,
-                              ),
-                              Shimmer.fromColors(
-                                baseColor: Colors.grey[300]!,
-                                highlightColor: Colors.grey[100]!,
-                                child: Container(
-                                  width: 40,
-                                  height: 8,
-                                  decoration: BoxDecoration(
-                                    color: Colors.grey[300],
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                ),
-                              )
-                            ],
+                  // width: double.infinity,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        children: [
+                          Shimmer.fromColors(
+                              baseColor: Colors.grey[300]!,
+                              highlightColor: Colors.grey[100]!,
+                              child: CircleAvatar(
+                                backgroundColor: Colors.grey[300],
+                                radius: 20,
+                              )),
+                          const SizedBox(
+                            height: 12,
                           ),
-                      separatorBuilder: (context, index) =>
-                           SizedBox(width: MediaQuery.of(context).size.width *0.15),
-                      itemCount: 4),
+                          Shimmer.fromColors(
+                            baseColor: Colors.grey[300]!,
+                            highlightColor: Colors.grey[100]!,
+                            child: Container(
+                              width: 40,
+                              height: 8,
+                              decoration: BoxDecoration(
+                                color: Colors.grey[300],
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          Shimmer.fromColors(
+                              baseColor: Colors.grey[300]!,
+                              highlightColor: Colors.grey[100]!,
+                              child: CircleAvatar(
+                                backgroundColor: Colors.grey[300],
+                                radius: 20,
+                              )),
+                          const SizedBox(
+                            height: 12,
+                          ),
+                          Shimmer.fromColors(
+                            baseColor: Colors.grey[300]!,
+                            highlightColor: Colors.grey[100]!,
+                            child: Container(
+                              width: 40,
+                              height: 8,
+                              decoration: BoxDecoration(
+                                color: Colors.grey[300],
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          Shimmer.fromColors(
+                              baseColor: Colors.grey[300]!,
+                              highlightColor: Colors.grey[100]!,
+                              child: CircleAvatar(
+                                backgroundColor: Colors.grey[300],
+                                radius: 20,
+                              )),
+                          const SizedBox(
+                            height: 12,
+                          ),
+                          Shimmer.fromColors(
+                            baseColor: Colors.grey[300]!,
+                            highlightColor: Colors.grey[100]!,
+                            child: Container(
+                              width: 40,
+                              height: 8,
+                              decoration: BoxDecoration(
+                                color: Colors.grey[300],
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          Shimmer.fromColors(
+                              baseColor: Colors.grey[300]!,
+                              highlightColor: Colors.grey[100]!,
+                              child: CircleAvatar(
+                                backgroundColor: Colors.grey[300],
+                                radius: 20,
+                              )),
+                          const SizedBox(
+                            height: 12,
+                          ),
+                          Shimmer.fromColors(
+                            baseColor: Colors.grey[300]!,
+                            highlightColor: Colors.grey[100]!,
+                            child: Container(
+                              width: 40,
+                              height: 8,
+                              decoration: BoxDecoration(
+                                color: Colors.grey[300],
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ],
+                  ),
                 )),
             // corosal slider
             Padding(
@@ -75,7 +151,7 @@ class HomePageLoadingShimmers extends StatelessWidget {
                 )),
             // see more
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: hori, vertical: 26),
+              padding: EdgeInsets.symmetric(horizontal: hori, vertical: 24),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -171,8 +247,8 @@ class HomePageLoadingShimmers extends StatelessWidget {
               ),
             ),
             Shimmer.fromColors(
-               baseColor: Colors.grey[300]!,
-                    highlightColor: Colors.grey[100]!,
+              baseColor: Colors.grey[300]!,
+              highlightColor: Colors.grey[100]!,
               child: Container(
                 width: MediaQuery.of(context).size.width,
                 height: 162,
@@ -198,7 +274,9 @@ class HomePageLoadingShimmers extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(height: 20,)
+            const SizedBox(
+              height: 20,
+            )
           ],
         )
       ],
