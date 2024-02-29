@@ -51,9 +51,12 @@ class _CartPageState extends State<CartPage> {
         switch (state.runtimeType) {
           case CartPageLoadingState:
             return Scaffold(
-                body: ListView.builder(
-                    itemCount: 3,
-                    itemBuilder: (context, index) => const CartTileShimmer()));
+                body: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ListView.builder(
+                      itemCount: 2,
+                      itemBuilder: (context, index) => const CartTileShimmer()),
+                ));
           case CartSuccessState:
             final successState = state as CartSuccessState;
             String total = successState.subTotal.toStringAsFixed(2);
