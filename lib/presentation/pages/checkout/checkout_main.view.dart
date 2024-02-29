@@ -16,15 +16,24 @@ class CheckOutPage extends StatefulWidget {
   State<CheckOutPage> createState() => _CheckOutPageState();
 }
 
-final PageController pageController = PageController();
-
 class _CheckOutPageState extends State<CheckOutPage> {
-  final CheckOutPageBloc checkOutPageBloc = CheckOutPageBloc();
+  late final CheckOutPageBloc checkOutPageBloc;
   @override
   void initState() {
-    checkOutPageBloc.add(CheckOutInitialEvent());
     super.initState();
+    checkOutPageBloc = CheckOutPageBloc();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      checkOutPageBloc.add(CheckOutInitialEvent());
+    });
   }
+
+  @override
+  void dispose() {
+    checkOutPageBloc.close();
+    super.dispose();
+  }
+
+  bool agreedToTermsAndConditions = false;
 
   onChanged(bool? value) {
     setState(() {
@@ -32,12 +41,6 @@ class _CheckOutPageState extends State<CheckOutPage> {
     });
   }
 
-  @override
-  void dispose() {
-    super.dispose();
-  }
-
-  bool agreedToTermsAndConditions = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,28 +58,41 @@ class _CheckOutPageState extends State<CheckOutPage> {
         bloc: checkOutPageBloc,
         listener: (context, state) {
           switch (state.runtimeType) {
-          //   case NavigateTohomePageActionState:
-          //     Navigator.popAndPushNamed(context, '/');
+            //   case NavigateTohomePageActionState:
+            //     Navigator.popAndPushNamed(context, '/');
 
             // case PageLoadingState:
-            //   AlertDialog(
-            //     backgroundColor: Colors.lightBlue[100],
-            //     content: const Column(
-            //       mainAxisSize: MainAxisSize.min,
-            //       children: [
-            //         CircularProgressIndicator(),
-            //         SizedBox(height: 16),
-            //         Text(
-            //           'Placing your order...',
-            //           style: TextStyle(fontSize: 16),
-            //         ),
-            //       ],
+            //   Dialog(
+            //     elevation: 0,
+            //     shape: RoundedRectangleBorder(
+            //         borderRadius: BorderRadius.circular(10)),
+            //     backgroundColor: Colors.white,
+            //     child: Container(
+            //       height: 100,
+            //       color: Colors.amber,
+            //       child: const Column(
+            //         mainAxisSize: MainAxisSize.min,
+            //         children: [
+            //           CircularProgressIndicator(),
+            //           SizedBox(height: 16),
+            //           Text(
+            //             'Placing your order...',
+            //             style: TextStyle(fontSize: 16),
+            //           ),
+            //         ],
+            //       ),
             //     ),
             //   );
           }
         },
         builder: (context, state) {
           switch (state.runtimeType) {
+            case PageLoadingState:
+              return const Center(
+                child: CircularProgressIndicator(
+                  color: Colors.black87,
+                ),
+              );
             case CheckOutPageBlocInitialState:
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -101,8 +117,8 @@ class _CheckOutPageState extends State<CheckOutPage> {
                   )
                 ],
               );
-            case PaymentPageActionState:
-              final successData = state as PaymentPageActionState;
+            case PaymentPageState:
+              final successData = state as PaymentPageState;
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -224,7 +240,8 @@ class _CheckOutPageState extends State<CheckOutPage> {
                           width: double.infinity,
                           child: ElevatedButton(
                               onPressed: () {
-                                Navigator.of(context).pushNamedAndRemoveUntil('/',(Route<dynamic> route) => false);
+                                Navigator.of(context).pushNamedAndRemoveUntil(
+                                    '/', (Route<dynamic> route) => false);
                               },
                               style: const ButtonStyle(
                                   backgroundColor: MaterialStatePropertyAll(
