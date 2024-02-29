@@ -9,15 +9,15 @@ class InitialState extends CheckOutPageState{}
 
 class CheckOutPageBlocInitialState extends CheckOutPageState {}
 
-class PageLoadingState extends CheckOutPageActionState {}
+class PageLoadingState extends CheckOutPageState {}
 
 class PageLoadedSuccessState extends CheckOutPageState {}
 
-class PaymentPageActionState extends CheckOutPageState {
+class PaymentPageState extends CheckOutPageState {
   final double subTotal;
   final DeliveryAddress address;
 
-  PaymentPageActionState({required this.address,required this.subTotal});
+  PaymentPageState({required this.address,required this.subTotal});
 }
 
 class PlaceOrderActionSate extends CheckOutPageState {}

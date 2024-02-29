@@ -19,8 +19,8 @@ class CheckOutPageBloc extends Bloc<CheckOutPageEvent, CheckOutPageState> {
 
   Future<FutureOr<void>> checkOutInitialEvent(
       CheckOutInitialEvent event, Emitter<CheckOutPageState> emit) async {
-    // emit(PageLoadingState());
-    // await Future.delayed(const Duration(seconds: 3));
+    emit(PageLoadingState());
+    await Future.delayed(const Duration(seconds: 3));
     emit(CheckOutPageBlocInitialState());
   }
 
@@ -28,13 +28,13 @@ class CheckOutPageBloc extends Bloc<CheckOutPageEvent, CheckOutPageState> {
       CheckOutPagePaymentEvent event, Emitter<CheckOutPageState> emit) async {
     // emit(PageLoadingState());
     await Future.delayed(const Duration(seconds: 1));
-    emit(PaymentPageActionState(
+    emit(PaymentPageState(
         subTotal: event.subTotal, address: event.addressData));
   }
 
   FutureOr<void> checkOutPagePlaceOrderEvent(CheckOutPagePlaceOrderEvent event,
       Emitter<CheckOutPageState> emit) async {
-    // emit(PageLoadingState());
+    emit(PageLoadingState());
 
     event.dataModel.deliveryAddress = event.addressData;
     event.dataModel.paymentMethod = event.paymentMode;
@@ -42,6 +42,7 @@ class CheckOutPageBloc extends Bloc<CheckOutPageEvent, CheckOutPageState> {
     event.dataModel.shippingCharges.toString();
 
     var results = await OrdersRepository().newOrder(event.dataModel);
+    await Future.delayed(const Duration(seconds: 2));
     if (results['status']) {
       emit(PaymentCompletedState());
     }
@@ -49,7 +50,7 @@ class CheckOutPageBloc extends Bloc<CheckOutPageEvent, CheckOutPageState> {
 
   FutureOr<void> navigateBackToHomePageEvent(NavigateBackToHomePageEvent event,
       Emitter<CheckOutPageState> emit) async {
-    emit(PageLoadingState());
+    // emit(PageLoadingState());
     await Future.delayed(const Duration(seconds: 2));
     emit(NavigateTohomePageActionState());
   }
