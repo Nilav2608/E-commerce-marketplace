@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:csc_picker/csc_picker.dart';
 import 'package:fluxestore/models/delivery_address_model.dart';
 import 'bloc/check_out_page_bloc.dart';
+import 'widgets/country_picker.dart';
 
 class ShippingAddressSection extends StatefulWidget {
   final Function(DeliveryAddress)? onPressed;
@@ -13,8 +13,6 @@ class ShippingAddressSection extends StatefulWidget {
   @override
   State<ShippingAddressSection> createState() => _ShippingAddressSectionState();
 }
-
-
 
 TextEditingController firstNameController = TextEditingController();
 TextEditingController lastNameController = TextEditingController();
@@ -52,17 +50,8 @@ class _ShippingAddressSectionState extends State<ShippingAddressSection> {
     });
   }
 
-  void dialog() {
-    showDialog(
-        context: context,
-        builder: (context) {
-          return const AlertDialog(
-            title: Text("incorrect email"),
-          );
-        });
-  }
-
   final CheckOutPageBloc checkOutPageBloc = CheckOutPageBloc();
+
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -186,45 +175,11 @@ class _ShippingAddressSectionState extends State<ShippingAddressSection> {
                     const SizedBox(
                       height: 0,
                     ),
-
-                  
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 20.0),
-                      child: CSCPicker(
-                        layout: Layout.vertical,
-                        flagState: CountryFlag.DISABLE,
-                        // dropdownHeadingStyle: const TextStyle(color: Color(0xff777E90)),
-
-                        dropdownDecoration: const BoxDecoration(
-                            border: Border(
-                                bottom: BorderSide(
-                                    width: 0.8, color: Color(0xff000000)))),
-                        disabledDropdownDecoration: const BoxDecoration(
-                            border: Border(
-                                bottom: BorderSide(
-                                    width: 0.8, color: Color(0xff000000)))),
-                        onCountryChanged: (country) {
-                          setState(() {
-                            selectedCountry = country.toString();
-                          });
-                          debugPrint(selectedCountry);
-                 
-                        },
-                        onCityChanged: (city) {
-                          setState(() {
-                              selectedCity = city.toString();
-                          });
-                          debugPrint(selectedCity);
-                
-                        },
-                        onStateChanged: (state) {
-                          setState(() {
-                            selectedState = state.toString();
-                          });
-                          debugPrint(selectedState);
-                     
-                        },
-                      ),
+                    
+                    CountryPicker(
+                      scountry: (country) => selectedCountry = country,
+                      scity: (city) => selectedCity = city,
+                      sstate: (state) => selectedState = state,
                     ),
                     //*Zip code
                     TextFormField(
@@ -242,8 +197,7 @@ class _ShippingAddressSectionState extends State<ShippingAddressSection> {
                           suffixStyle: TextStyle(
                               color: Colors.red), // Color of the asterisk
                           focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Colors.black), // Adjust border color
+                            borderSide: BorderSide(color: Colors.black),
                           ),
                         ),
                         validator: (value) {
@@ -272,8 +226,7 @@ class _ShippingAddressSectionState extends State<ShippingAddressSection> {
                           suffixStyle: TextStyle(
                               color: Colors.red), // Color of the asterisk
                           focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Colors.black), // Adjust border color
+                            borderSide: BorderSide(color: Colors.black),
                           ),
                         ),
                         validator: (value) {
@@ -328,13 +281,11 @@ class _ShippingAddressSectionState extends State<ShippingAddressSection> {
                                   fontWeight: FontWeight.w400))
                         ],
                       ),
-                      // secondary: const Text("Home delivary"),
                       subtitle: const Text("Delivery from 3 to 7 business days",
                           style: TextStyle(
                               color: Color(0xffA3A5AD),
                               fontSize: 12,
                               fontWeight: FontWeight.w400)),
-                      //Delivery from 3 to 7 business days
                     ),
                     const Divider(color: Color(0xFFF1F2F3)),
                     RadioListTile(
@@ -345,7 +296,6 @@ class _ShippingAddressSectionState extends State<ShippingAddressSection> {
                         selectedRadioFunc(val);
                       },
                       title: const Row(
-                        // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Text("\$9.99",
                               style: TextStyle(
@@ -362,13 +312,11 @@ class _ShippingAddressSectionState extends State<ShippingAddressSection> {
                                   fontWeight: FontWeight.w400))
                         ],
                       ),
-                      // secondary: const Text("Home delivary"),
                       subtitle: const Text("Delivery from 4 to 6 business days",
                           style: TextStyle(
                               color: Color(0xffA3A5AD),
                               fontSize: 12,
                               fontWeight: FontWeight.w400)),
-                      //Delivery from 3 to 7 business days
                     ),
                     const Divider(color: Color(0xFFF1F2F3)),
                     RadioListTile(
@@ -379,7 +327,6 @@ class _ShippingAddressSectionState extends State<ShippingAddressSection> {
                         selectedRadioFunc(val);
                       },
                       title: const Row(
-                        // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Text("\$9.90",
                               style: TextStyle(
@@ -396,13 +343,11 @@ class _ShippingAddressSectionState extends State<ShippingAddressSection> {
                                   fontWeight: FontWeight.w400))
                         ],
                       ),
-                      // secondary: const Text("Home delivary"),
                       subtitle: const Text("Delivery from 2 to 3 business days",
                           style: TextStyle(
                               color: Color(0xffA3A5AD),
                               fontSize: 12,
                               fontWeight: FontWeight.w400)),
-                      //Delivery from 3 to 7 business days
                     )
                   ],
                 ),
@@ -495,6 +440,7 @@ class _ShippingAddressSectionState extends State<ShippingAddressSection> {
                 child: ElevatedButton(
                     onPressed: () {
                       widget.onPressed!(addressMapper());
+                      debugPrint(addressMapper().toJson().toString());
                     },
                     style: const ButtonStyle(
                         backgroundColor:
