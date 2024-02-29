@@ -54,34 +54,47 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
         if (state is ShowConfirmationDialogActionState) {
           showDialog(
               context: context,
-              builder: (context) => 
-              // const ConfirmationDialog()
-          CanformationDialog(
+              builder: (context) =>
+                  CanformationDialog(
                     onCancel: () => {
                       orderDetailsPageBloc.add(ConfirmCancellationEvent(
                           userId: state.userId, orderId: state.orderId)),
                       Navigator.of(context).pop()
                     },
-                  )
-                  );
-         
+                  ));
         }
         if (state is CancellationSuccessActionState) {
           showDialog(
               context: context,
-              builder: (context) => AlertDialog(
-                    actions: [
-                      Lottie.asset("assets/lottie/cancel-confirm.json",
-                          repeat: false),
-                      const SizedBox(
-                        height: 20,
+              builder: (context) => Dialog(
+                    elevation: 0,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    backgroundColor: Colors.white,
+                    child: SizedBox(
+                      height: 200,
+                      child: Column(
+                        children: [
+                          Expanded(
+                            child: Lottie.asset(
+                              "assets/lottie/cancel-confirm.json",
+                              height: 100,
+                                repeat: false),
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text("Order ID ${widget.data.orderID} is cancelled!",
+                                style: const TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w700)),
+                          ),
+                        ],
                       ),
-                      Text("Order ID ${widget.data.orderID} is cancelled!",
-                          style: const TextStyle(
-                              color: Colors.black,
-                              fontSize: 14,
-                              fontWeight: FontWeight.w700)),
-                    ],
+                    ),
                   ));
           orderDetailsPageBloc.add(
               OrderDetailsPageInitialEvent(status: DeliveryStatus.cancelled));
@@ -89,18 +102,15 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
       },
       builder: (context, state) {
         if (_isLoading) {
-          return const AlertDialog(
-            actions: [
-              SizedBox(
-                width: 200,
-                height: 300,
-                child: Column(
-                  children: [
-                    Center(child: CircularProgressIndicator()),
-                  ],
-                ),
-              ),
-            ],
+          return Dialog(
+            elevation: 0,
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+            backgroundColor: Colors.white,
+            child: const SizedBox(
+              height: 200,
+              child:  Center(child: CircularProgressIndicator()),
+            ),
           );
         } else {
           switch (state.runtimeType) {
