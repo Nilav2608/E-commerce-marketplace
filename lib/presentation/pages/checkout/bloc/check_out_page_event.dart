@@ -5,13 +5,13 @@ sealed class CheckOutPageEvent {}
 
 class CheckOutInitialEvent extends CheckOutPageEvent {}
 
-class CheckOutPagePaymentEvent extends CheckOutInitialEvent {
+class CheckOutPagePaymentEvent extends CheckOutPageEvent {
   final double subTotal;
   final DeliveryAddress addressData;
   CheckOutPagePaymentEvent({required this.addressData, required this.subTotal});
 }
 
-class CheckOutPagePlaceOrderEvent extends CheckOutInitialEvent {
+class CheckOutPagePlaceOrderEvent extends CheckOutPageEvent {
   final MyOrdersDataModel dataModel;
   final DeliveryAddress addressData;
   final String paymentMode;
@@ -23,4 +23,4 @@ class CheckOutPagePlaceOrderEvent extends CheckOutInitialEvent {
   });
 }
 
-class NavigateBackToHomePageEvent extends CheckOutInitialEvent {}
+class NavigateBackToHomePageEvent extends CheckOutPageEvent {}
