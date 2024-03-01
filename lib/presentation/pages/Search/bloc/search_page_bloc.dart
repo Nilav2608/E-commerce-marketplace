@@ -23,11 +23,22 @@ class SearchPageBloc extends Bloc<SearchPageEvent, SearchPageState> {
       SearchPageOnSearchEvent event, Emitter<SearchPageState> emit) async {
     emit(SearchLoadingState());
     var results = await SearchRepository().searchProducts(event.query);
-    if (results.isNotEmpty) {
-      emit(SearchLoadedSucessstate(responseItems: results));
-    } else {
-      await Future.delayed(const Duration(seconds: 5));
-      emit(SearchPageNoResponseState());
+   
+    if (results['status']) {
+      var products = results['data'];
+       List<ProductDataModel> responseItmes = [];
+      for (var i = 0; i < products.length; i++) {
+        products.remove('__v');
+        ProductDataModel productData = ProductDataModel.fromJson(products[i]);
+        responseItmes.add(productData);
+      }
+
+      if (responseItmes.isNotEmpty) {
+        emit(SearchLoadedSucessstate(responseItems: responseItmes));
+      } else {
+        await Future.delayed(const Duration(seconds: 5));
+        emit(SearchPageNoResponseState());
+      }
     }
   }
 }
