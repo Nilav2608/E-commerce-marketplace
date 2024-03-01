@@ -1,7 +1,8 @@
 import 'dart:convert';
 
+import 'package:fluxestore/network/Exceptions/exception_handlers.dart';
 import 'package:http/http.dart' as http;
-import 'package:fluxestore/network/api.dart';
+import 'package:fluxestore/network/Api/api.dart';
 import 'package:fluxestore/repository/AuthRepo/auth_repository.interface.dart';
 
 class AuthRepository extends Api implements IAuthRepository {
@@ -24,7 +25,7 @@ class AuthRepository extends Api implements IAuthRepository {
         return results;
       }
     } catch (e) {
-      return {"status": false, "message": "An Internal error occurd"};
+      return ExceptionHandlers().getExceptionString(e);
     }
   }
 
@@ -49,7 +50,7 @@ class AuthRepository extends Api implements IAuthRepository {
         return results;
       }
     } catch (e) {
-      return {"status": false, "message": "An Internal error accurd"};
+      return ExceptionHandlers().getExceptionString(e);
     }
   }
 }
