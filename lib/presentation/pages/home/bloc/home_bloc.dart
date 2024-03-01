@@ -19,9 +19,31 @@ class HomePageBloc extends Bloc<HomePageEvent, HomePageState> {
 
     var products = await ProductsRepository().getAllProducts();
     var banners = await ProductsRepository().getAllBanners();
+     
+    if (products["status"] && banners["status"]) {
+      List<ProductDataModel> productsList = [];
+      var productsData = products['data'];
+
+      for (var i = 0; i < productsData.length; i++) {
+        products.remove('__v');
+        ProductDataModel item =
+            ProductDataModel.fromJson(productsData[i]);
+        productsList.add(item);
+      }
+
+      List<BannersDataModel> bannersList = [];
+      var bannersData = banners['data'];
+      for (var i = 0; i < bannersData.length; i++) {
+        BannersDataModel item =
+            BannersDataModel.fromJson(bannersData[i]);
+        bannersList.add(item);
+      }
+
+      await Future.delayed(const Duration(seconds: 3));
+      emit(HomePageLoadedSuccessState(
+          loadedProductsList: productsList, loadedBannersList: bannersList));
+    }
+    //   return tempList;
     // await Future.delayed(const Duration(minutes: 5));
-    await Future.delayed(const Duration(seconds: 3));
-    emit(HomePageLoadedSuccessState(
-        loadedProductsList: products, loadedBannersList: banners));
   }
 }
