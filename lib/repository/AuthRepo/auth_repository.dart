@@ -5,6 +5,8 @@ import 'package:http/http.dart' as http;
 import 'package:fluxestore/network/Api/api.dart';
 import 'package:fluxestore/repository/AuthRepo/auth_repository.interface.dart';
 
+import '../../network/Exceptions/app_exceptions.dart';
+
 class AuthRepository extends Api implements IAuthRepository {
   @override
   Future<Map<String, dynamic>> login(String email, String password) async {
@@ -14,16 +16,7 @@ class AuthRepository extends Api implements IAuthRepository {
       var response = await http.post(Uri.parse(loginUrl),
           headers: {"content-type": "application/json"},
           body: jsonEncode(credentials));
-      var results = jsonDecode(response.body);
-      if (response.statusCode == 201) {
-        return results;
-      } else if (response.statusCode == 401) {
-        return results;
-      } else if (response.statusCode == 400) {
-        return results;
-      } else {
-        return results;
-      }
+      return processResponse(response);    
     } catch (e) {
       return ExceptionHandlers().getExceptionString(e);
     }
@@ -41,14 +34,7 @@ class AuthRepository extends Api implements IAuthRepository {
       var response = await http.post(Uri.parse(registerUrl),
           headers: {"content-type": "application/json"},
           body: jsonEncode(details));
-      var results = jsonDecode(response.body);
-      if (response.statusCode == 201) {
-        return results;
-      } else if (response.statusCode == 400) {
-        return results;
-      } else {
-        return results;
-      }
+      return processResponse(response);
     } catch (e) {
       return ExceptionHandlers().getExceptionString(e);
     }
