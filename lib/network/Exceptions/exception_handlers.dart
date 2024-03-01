@@ -13,8 +13,8 @@ class ExceptionHandlers {
       return {"status": false, "message": 'Invalid data format'};
     } else if (error is TimeoutException) {
       return {"status": false, "message": 'Request timedout.'};
-    }else if (error is BadRequestException) {
-      return  {"status": false, "message": error.message.toString()};
+    } else if (error is BadRequestException) {
+      return {"status": false, "message": error.message.toString()};
     } else if (error is UnAuthorizedException) {
       return {"status": false, "message": error.message.toString()};
     } else if (error is NotFoundException) {
