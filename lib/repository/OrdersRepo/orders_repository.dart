@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:fluxestore/models/my_orders_data_model.dart';
 import 'package:fluxestore/repository/OrdersRepo/orders_repository.interface.dart';
 import 'package:http/http.dart' as http;
-import '../../network/api.dart';
+import '../../network/Api/api.dart';
 
 class OrdersRepository extends Api implements IOrdersrepository {
   @override

@@ -1,8 +1,7 @@
-import '../../models/banners_data_model.dart';
 import '../../models/product_data_model.dart';
 
 abstract class IproductsRepository {
-  Future<List<ProductDataModel>> getAllProducts();
-  Future<List<BannersDataModel>> getAllBanners();
+  Future<Map<String, dynamic>> getAllProducts();
+  Future<Map<String, dynamic>> getAllBanners();
   Future<List<ProductDataModel>>  getRecommendations();
 }

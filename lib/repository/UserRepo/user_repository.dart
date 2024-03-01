@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:fluxestore/repository/UserRepo/user_repository.interface.dart';
 
-import '../../network/api.dart';
+import '../../network/Api/api.dart';
 
 class USerRepository extends Api implements IUserRepository {
   @override

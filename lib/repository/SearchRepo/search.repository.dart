@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:fluxestore/models/product_data_model.dart';
 import 'package:fluxestore/repository/SearchRepo/search.repository.interface.dart';
-import '../../network/api.dart';
+import '../../network/Api/api.dart';
 import 'package:http/http.dart' as http;
 
 class SearchRepository extends Api implements ISearchRepository{

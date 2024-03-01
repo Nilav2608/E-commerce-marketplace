@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:fluxestore/models/cart_items_model.dart';
 import 'package:fluxestore/repository/CartRepo/cart_repository.interface.dart';
 import 'package:http/http.dart' as http;
-import '../../network/api.dart';
+import '../../network/Api/api.dart';
 
 class CartRepository extends Api implements ICartRepository {
   @override
