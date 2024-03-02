@@ -26,13 +26,7 @@ class ProductDetailsPage extends StatefulWidget {
   State<ProductDetailsPage> createState() => _ProductDetailsPageState();
 }
 
-// List<ColorsCatagoryModel> colorsIsSelected = [
-//   ColorsCatagoryModel(0xffE7C0A7, true),
-//   ColorsCatagoryModel(0xff050302, false),
-//   ColorsCatagoryModel(0xffEE6969, false)
-// ];
-
-List ratingData = [
+List fakeRatingData = [
   ["5", 0.8, 80],
   ["4", 0.6, 12],
   ["3", 0.4, 5],
@@ -40,7 +34,7 @@ List ratingData = [
   ["1", 0.0, 0],
 ];
 
-List<ProductReviewModel> reviews = [
+List<ProductReviewModel> fakeReviews = [
   ProductReviewModel(
       name: "Jennifer Rose",
       profileImage: "assets/images/girl1.png",
@@ -59,23 +53,24 @@ List<ProductReviewModel> reviews = [
       productImages: []),
 ];
 
-int currentColorIndex = 0;
-int currentSizeIndex = 0;
-bool selectedColor = true;
-bool selectedSize = false;
-bool _isDescriptionExpanded = true;
-bool _isReviewsExpanded = true;
-bool _isSimilarProductsExpanded = true;
-
-double horizontal = 20;
-double vertical = 5;
-List availableColors = [];
-
 class _ProductDetailsPageState extends State<ProductDetailsPage> {
   final ProductDetailsPageBloc productDetailsPageBloc =
       ProductDetailsPageBloc();
 
   List<ProductDataModel> recommendations = [];
+  List availableColors = [];
+
+  int currentColorIndex = 0;
+  int currentSizeIndex = 0;
+  bool selectedColor = true;
+  bool selectedSize = false;
+  bool _isDescriptionExpanded = true;
+  bool _isReviewsExpanded = true;
+  bool _isSimilarProductsExpanded = true;
+
+  double horizontal = 20;
+  double vertical = 5;
+
   @override
   void initState() {
     productDetailsPageBloc.add(ProductDetailsPageInitialEvent());
@@ -84,16 +79,15 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
       availableColors.add(colors);
     }
     fetchRecomendations();
-    // var results = await ProductsRepository().getRecommendations();
     super.initState();
   }
 
   Future fetchRecomendations() async {
     try {
       var data = await ProductsRepository().getRecommendations();
-        setState(() {
-          recommendations = data;
-        });
+      setState(() {
+        recommendations = data;
+      });
     } catch (e) {
       debugPrint("Error fetching recommendations: $e");
     }
@@ -105,7 +99,6 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
     Navigator.of(context).pop(newFavoriteStatus);
   }
 
-  // int? sizeLength = widget.data.sizes?.length;
   @override
   Widget build(BuildContext context) {
     // print(recommendations);
@@ -181,11 +174,8 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                     children: [
                       ClipRRect(
                         child: Image.network(
-                            //  width:375,
-                            //  height:400,
                             widget.data.imageUrl ?? ""
                             // "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=60&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y2xvdGhpbmclMjBtb2RlbCUyMHBvc2V8ZW58MHx8MHx8fDA%3D"
-
                             ),
                       ),
                       Row(
@@ -245,7 +235,6 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                           ),
                         ],
                       ),
-                      // scroll()
                       DraggableScrollableSheet(
                         initialChildSize: 0.6,
                         maxChildSize: 1.0,
@@ -373,13 +362,8 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                                       GestureDetector(
                                                         onTap: () {
                                                           setState(() {
-                                                            // colorsIsSelected[i]
-                                                            //         .selectedColor =
-                                                            //     !colorsIsSelected[i]
-                                                            //         .selectedColor;
                                                             currentColorIndex =
                                                                 i;
-                                                            // !colorsIsSelected[i][1];
                                                           });
                                                         },
                                                         child: Padding(
@@ -389,35 +373,29 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                                           child: Stack(
                                                             children: [
                                                               Material(
-                                                                // shape: const CircleBorder(side:  BorderSide(width: 1) ),
                                                                 borderRadius:
                                                                     BorderRadius
                                                                         .circular(
                                                                             20),
-                                                                // elevation: 2,
+                                                                elevation: 2,
                                                                 child:
                                                                     Container(
-                                                                        // color: Colors.white,
-                                                                        decoration: BoxDecoration(
-                                                                            color: Colors
-                                                                                .white,
-                                                                            shape: BoxShape
-                                                                                .circle,
-                                                                            border: Border.all(
-                                                                                width: currentColorIndex == i
-                                                                                    ? 3
-                                                                                    : 0,
-                                                                                color: Colors
-                                                                                    .white),
-                                                                            boxShadow: [
-                                                                              currentColorIndex == i ? BoxShadow(blurRadius: 6, color: Colors.grey.shade400, offset: const Offset(0.001, 6), spreadRadius: 0.5) : const BoxShadow()
-                                                                            ]),
+                                                                        decoration:
+                                                                            BoxDecoration(
+                                                                          shape:
+                                                                              BoxShape.circle,
+                                                                          border: Border.all(
+                                                                              width: currentColorIndex == i ? 3 : 0,
+                                                                              color: Colors.grey.shade500),
+                                                                          boxShadow: [
+                                                                            currentColorIndex == i ? BoxShadow(blurRadius: 6, color: Colors.grey.shade400, offset: const Offset(0.001, 6), spreadRadius: 0.5) : const BoxShadow()
+                                                                          ]
+                                                                        ),
                                                                         child: CircleAvatar(
                                                                             radius:
                                                                                 12,
                                                                             backgroundColor:
                                                                                 availableColors[i]
-                                                                            // Color(colorsIsSelected[i].color),
                                                                             )),
                                                               ),
                                                             ],
@@ -434,11 +412,10 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.start,
                                               children: [
-                                                // ignore: prefer_const_constructors
-                                                Padding(
+                                                const Padding(
                                                   padding:
-                                                      const EdgeInsets.all(4.0),
-                                                  child: const Text(
+                                                      EdgeInsets.all(4.0),
+                                                  child: Text(
                                                     "Size",
                                                     style: TextStyle(
                                                         fontSize: 14,
@@ -618,19 +595,20 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                               )
                                             ],
                                           ),
-                                          // for (int i = 0; i < ratingData.length;i++)
 
                                           ListView.builder(
-                                            itemCount: ratingData.length,
+                                            itemCount: fakeRatingData.length,
                                             shrinkWrap: true,
                                             physics:
                                                 const NeverScrollableScrollPhysics(),
                                             scrollDirection: Axis.vertical,
                                             itemBuilder: (context, index) =>
                                                 ProductRatingProgressBar(
-                                              percentage: ratingData[index][2],
-                                              starNumber: ratingData[index][0],
-                                              value: ratingData[index][1],
+                                              percentage: fakeRatingData[index]
+                                                  [2],
+                                              starNumber: fakeRatingData[index]
+                                                  [0],
+                                              value: fakeRatingData[index][1],
                                             ),
                                           ),
 
@@ -677,19 +655,17 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                             ),
                                           ),
                                           ListView.builder(
-                                              itemCount: reviews.length,
+                                              itemCount: fakeReviews.length,
                                               shrinkWrap: true,
                                               physics:
                                                   const NeverScrollableScrollPhysics(),
                                               scrollDirection: Axis.vertical,
                                               itemBuilder: (context, index) {
-                                                var data = reviews[index];
+                                                var data = fakeReviews[index];
                                                 return ProductReviewsTile(
                                                   data: data,
                                                 );
                                               }
-
-                                              // ProductReviewsTile(data: reviews,)
                                               ),
                                           const SizedBox(
                                             height: 10,
