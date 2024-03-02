@@ -19,7 +19,6 @@ class HomePageLoadingShimmers extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: hori, vertical: vert),
                 child: SizedBox(
                   height: 80,
-                  // width: double.infinity,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -139,7 +138,6 @@ class HomePageLoadingShimmers extends StatelessWidget {
                       baseColor: Colors.grey[300]!,
                       highlightColor: Colors.grey[100]!,
                       child: Container(
-                        // width: MediaQuery.of(context).size.width,
                         height: 174,
                         decoration: BoxDecoration(
                           color: Colors.grey[300],
@@ -198,7 +196,6 @@ class HomePageLoadingShimmers extends StatelessWidget {
                       children: [
                         ClipRRect(
                           borderRadius: BorderRadius.circular(8),
-                          // clipBehavior: Clip.antiAliasWithSaveLayer, // Add border radius
                           child: Shimmer.fromColors(
                             baseColor: Colors.grey[200]!,
                             highlightColor: Colors.grey[100]!,
