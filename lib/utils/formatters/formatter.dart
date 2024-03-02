@@ -1,15 +1,63 @@
-
 import 'package:flutter/material.dart';
 
-class Formatters{
+class Formatters {
   Color getColorName(String color) {
+    switch (color.toLowerCase()) {
+      case 'black':
+        return const Color(0xFF000000);
+      case 'white':
+        return const Color(0xFFFFFFFF);
+      case 'orange':
+        return const Color(0xFFFFA500);
+      case 'pink':
+        return const Color(0xFFFFC0CB);
+      case 'green':
+        return const Color(0xFFAED581); // Soft green color
+      case 'peach':
+        return const Color(0xFFFFE0B2); // Soft peach color
+      case 'blue':
+        return const Color(0xFF81D4FA); // Soft blue color
+      case 'red':
+        return const Color(0xFFFF8A80); // Soft red color
+      case 'yellow':
+        return const Color(0xFFFFFF8D); // Soft yellow color
+      case 'purple':
+        return const Color(0xFFCE93D8); // Soft purple color
+      case 'cyan':
+        return const Color(0xFF80DEEA); // Soft cyan color
+      case 'teal':
+        return const Color(0xFF80CBC4); // Soft teal color
+      case 'amber':
+        return const Color(0xFFFFD54F); // Soft amber color
+      case 'lime':
+        return const Color(0xFFDCE775); // Soft lime color
+      case 'indigo':
+        return const Color(0xFF9FA8DA); // Soft indigo color
+      case 'brown':
+        return const Color(0xFFBCAAA4); // Soft brown color
+      case 'grey':
+        return const Color(0xFFE0E0E0); // Soft grey color
+      case 'deeporange':
+        return const Color(0xFFFFAB91); // Soft deep orange color
+      case 'deeppurple':
+        return const Color(0xFFB39DDB); // Soft deep purple color
+      case 'lightblue':
+        return const Color(0xFF81D4FA); // Soft light blue color
+      case 'lightgreen':
+        return const Color(0xFFAED581); // Soft light green color
+      default:
+        return const Color(0xFF9E9E9E); // Default value for unknown colors
+    }
+  }
+
+  Color getColorNameWithoutCode(String color) {
   switch (color.toLowerCase()) {
     case 'black':
       return Colors.black;
     case 'white':
-      return Colors.white;  
+      return Colors.white;
     case 'orange':
-      return Colors.orangeAccent;  
+      return Colors.orangeAccent;
     case 'pink':
       return Colors.pink;
     case 'green':
