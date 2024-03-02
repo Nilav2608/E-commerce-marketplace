@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fluxestore/data/wish_listed_data.dart';
 import 'package:fluxestore/models/product_data_model.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:shimmer/shimmer.dart';
 
 import '../../utils/icons_constants/primary_icons_icons.dart';
 import '../pages/wish_list_page/bloc/wish_list_page_bloc.dart';
@@ -30,6 +31,7 @@ class _CollectionsListTileState extends State<CollectionsListTile> {
       wishListedItems.remove(widget.product);
     }
   }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -43,12 +45,32 @@ class _CollectionsListTileState extends State<CollectionsListTile> {
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(8),
-                  // clipBehavior: Clip.hardEdge, // Add border radius
                   child: Image.network(
                     width: 141,
                     height: 186,
                     widget.product.imageUrl.toString(),
-                    fit: BoxFit.cover, // Adjust the fit as needed
+                    fit: BoxFit.cover,
+                    loadingBuilder: (context, child, loadinProgress) {
+                      if (loadinProgress == null) {
+                        return child;
+                      } else {
+                        return ClipRRect(
+                          borderRadius: BorderRadius.circular(8),
+                          child: Shimmer.fromColors(
+                            baseColor: Colors.grey[200]!,
+                            highlightColor: Colors.grey[100]!,
+                            child: Container(
+                              width: 141,
+                              height: 186,
+                              decoration: BoxDecoration(
+                                color: Colors.grey[200],
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                            ),
+                          ));
+                        
+                      }
+                    },
                   ),
                 ),
                 Row(
@@ -94,7 +116,6 @@ class _CollectionsListTileState extends State<CollectionsListTile> {
             )),
         const SizedBox(height: 5),
         Text(
-          // "",
           widget.product.productName.toString(),
           style: const TextStyle(
             fontSize: 12,
