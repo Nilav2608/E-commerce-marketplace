@@ -28,7 +28,7 @@ class ProductsPageBloc extends Bloc<ProductsPageEvent, ProductsPageState> {
         productsList.add(item);
       }
       productsList.shuffle();
-      await Future.delayed(const Duration(seconds: 3));
+      await Future.delayed(const Duration(seconds: 2));
       emit(ProductPageSuccessState(products: productsList));
     }
   }

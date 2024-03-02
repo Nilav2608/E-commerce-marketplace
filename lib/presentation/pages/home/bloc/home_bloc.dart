@@ -39,7 +39,7 @@ class HomePageBloc extends Bloc<HomePageEvent, HomePageState> {
         bannersList.add(item);
       }
 
-      await Future.delayed(const Duration(seconds: 3));
+      await Future.delayed(const Duration(seconds: 2));
       emit(HomePageLoadedSuccessState(
           loadedProductsList: productsList, loadedBannersList: bannersList));
     }
