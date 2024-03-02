@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shimmer/shimmer.dart';
 
 import '../../models/product_data_model.dart';
 
@@ -13,12 +14,31 @@ class ProductCardTile extends StatelessWidget {
       children: [
         ClipRRect(
           borderRadius: BorderRadius.circular(8),
-          // clipBehavior: Clip.antiAliasWithSaveLayer, // Add border radius
           child: Image.network(
             width: 126,
             height: 172,
             product.imageUrl.toString(),
-            fit: BoxFit.cover, // Adjust the fit as needed
+            fit: BoxFit.cover,
+            loadingBuilder: (context, child, loadinProgress) {
+              if (loadinProgress == null) {
+                return child;
+              } else {
+                return ClipRRect(
+                    borderRadius: BorderRadius.circular(8),
+                    child: Shimmer.fromColors(
+                      baseColor: Colors.grey[200]!,
+                      highlightColor: Colors.grey[100]!,
+                      child: Container(
+                        width: 126,
+                        height: 172,
+                        decoration: BoxDecoration(
+                          color: Colors.grey[200],
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
+                    ));
+              }
+            },
           ),
         ),
         const SizedBox(height: 5),
