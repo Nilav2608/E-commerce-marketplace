@@ -94,8 +94,10 @@ class _HomePageState extends State<HomePage> {
                     Padding(
                       padding: EdgeInsets.symmetric(
                           horizontal: hori, vertical: vert),
-                      child: const RowHeadsSeeMore(
-                          text1: "Feature Products", text2: "Show all"),
+                      child:  RowHeadsSeeMore(
+                          text1: "Feature Products", text2: "Show all",
+                          onTapseeMore: ()=>  Navigator.of(context).pushNamed("productsPage"),
+                          ),
                     ),
                     ProductListViewBuilder(
                       items: successState.loadedProductsList,
