@@ -5,7 +5,7 @@ import 'package:fluxestore/models/my_orders_data_model.dart';
 import 'package:fluxestore/presentation/authentication/authentication_page.dart';
 import 'package:fluxestore/presentation/authentication/bloc/auth_page_bloc.dart';
 import 'package:fluxestore/presentation/landing_page/landing_page.dart';
-import 'package:fluxestore/presentation/pages/Intro_page/intro_page.dart';
+import 'package:fluxestore/presentation/pages/Onbording_page/onbording_page.dart';
 import 'package:fluxestore/presentation/pages/OrderDetails/order_details_page.dart';
 import 'package:fluxestore/presentation/pages/checkout/checkout_main.view.dart';
 import 'package:fluxestore/presentation/pages/collections_page.dart';
