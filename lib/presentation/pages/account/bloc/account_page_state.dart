@@ -12,3 +12,7 @@ class AccountPageLoadingState extends AccountPageActionState{}
 class AccountPageLogOutConfirmationActionState extends AccountPageActionState{}
 
 class LogoutSuccessActionState extends AccountPageActionState{}
+
+class NavigateToMyordersPageActionState extends AccountPageActionState{}
+
+class NavigateToWishListPageActionState extends AccountPageActionState{}

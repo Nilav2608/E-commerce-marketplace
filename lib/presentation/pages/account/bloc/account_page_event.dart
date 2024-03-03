@@ -7,6 +7,8 @@ class AccountPageLogOutEvent extends AccountPageEvent {}
 
 class AccountPageNavigateToMyOrdersPageEvent extends AccountPageEvent {}
 
+class AccountPageNavigateToWishListPageEvent extends AccountPageEvent {}
+
 class AccountPageLogoutConfirmedEvent extends AccountPageEvent {
   final SharedPreferences prefs;
 

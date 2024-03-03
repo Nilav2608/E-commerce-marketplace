@@ -11,6 +11,10 @@ class AccountPageBloc extends Bloc<AccountPageEvent, AccountPageState> {
   AccountPageBloc() : super(AccountPageInitial()) {
     on<AccountPageLogOutEvent>(accountPageLogOutEvent);
     on<AccountPageLogoutConfirmedEvent>(accountPageLogoutConfirmedEvent);
+    on<AccountPageNavigateToMyOrdersPageEvent>(
+        accountPageNavigateToMyOrdersPageEvent);
+    on<AccountPageNavigateToWishListPageEvent>(
+        accountPageNavigateToWishListPageEvent);
   }
 
   FutureOr<void> accountPageLogOutEvent(
@@ -25,5 +29,17 @@ class AccountPageBloc extends Bloc<AccountPageEvent, AccountPageState> {
     await event.prefs.remove("token");
     await Future.delayed(const Duration(seconds: 2));
     emit(LogoutSuccessActionState());
+  }
+
+  FutureOr<void> accountPageNavigateToMyOrdersPageEvent(
+      AccountPageNavigateToMyOrdersPageEvent event,
+      Emitter<AccountPageState> emit) {
+    emit(NavigateToMyordersPageActionState());
+  }
+
+  FutureOr<void> accountPageNavigateToWishListPageEvent(
+      AccountPageNavigateToWishListPageEvent event,
+      Emitter<AccountPageState> emit) {
+    emit(NavigateToWishListPageActionState());
   }
 }

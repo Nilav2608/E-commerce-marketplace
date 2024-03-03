@@ -38,6 +38,12 @@ class _AccountPageState extends State<AccountPage> {
       body: BlocListener<AccountPageBloc, AccountPageState>(
         bloc: accountPageBloc,
         listener: (context, state) {
+          if (state is NavigateToMyordersPageActionState) {
+            Navigator.of(context).pushNamed("MyOrders");
+          }
+          if (state is NavigateToWishListPageActionState) {
+            Navigator.of(context).pushNamed("WishListPage");
+          }
           if (state is AccountPageLoadingState) {
             showDialog(
                 context: context,
@@ -122,7 +128,7 @@ class _AccountPageState extends State<AccountPage> {
               child: Column(
                 children: [
                   AccountPageUtilsRow(
-                    onTap: () => Navigator.of(context).pushNamed("MyOrders"),
+                    onTap: () => accountPageBloc.add(AccountPageNavigateToMyOrdersPageEvent()),
                     icon: SecondaryIcons.bag,
                     text: "My Orders",
                     size: 21,
@@ -154,7 +160,7 @@ class _AccountPageState extends State<AccountPage> {
                       )),
                   AccountPageUtilsRow(
                     onTap: () =>
-                        Navigator.of(context).pushNamed("WishListPage"),
+                        accountPageBloc.add(AccountPageNavigateToWishListPageEvent()),
                     icon: PrimaryIcons.heart,
                     text: "My Wishlist",
                     size: 23,
