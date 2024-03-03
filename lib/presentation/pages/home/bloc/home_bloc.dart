@@ -43,7 +43,5 @@ class HomePageBloc extends Bloc<HomePageEvent, HomePageState> {
       emit(HomePageLoadedSuccessState(
           loadedProductsList: productsList, loadedBannersList: bannersList));
     }
-    //   return tempList;
-    // await Future.delayed(const Duration(minutes: 5));
   }
 }

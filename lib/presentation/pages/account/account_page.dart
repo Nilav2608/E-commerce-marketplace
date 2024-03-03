@@ -116,19 +116,9 @@ class _AccountPageState extends State<AccountPage> {
               width: screenWidth * 0.85,
               height: screenHeight * 0.60,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  color: Colors.white,
-                  boxShadow: const [
-                    // BoxShadow(blurRadius: 0.5, offset: Offset(0, 1)),
-                    // BoxShadow(
-                    //     color: Colors.white,
-                    //     blurRadius: 0.5,
-                    //     offset: Offset(-5, 0)),
-                    // BoxShadow(
-                    //     color: Colors.white,
-                    //     blurRadius: 0.5,
-                    //     offset: Offset(5, 0)),
-                  ]),
+                borderRadius: BorderRadius.circular(15),
+                color: Colors.white,
+              ),
               child: Column(
                 children: [
                   AccountPageUtilsRow(
