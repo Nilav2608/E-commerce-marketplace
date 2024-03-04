@@ -37,9 +37,9 @@ class AuthPageBloc extends Bloc<AuthPageEvent, AuthPageState> {
 
   FutureOr<void> authPageLogInEvent(
       AuthPageLogInEvent event, Emitter<AuthPageState> emit) async {
+        emit(AuthenticationLoadingState());
     late SharedPreferences prefs;
     prefs = await SharedPreferences.getInstance();
-    emit(ShowLoadingActionState());
     var results = await AuthRepository().login(event.email, event.password);
     var responseMessage = results['message'];
     var responseStatus = results['status'];
@@ -64,7 +64,7 @@ class AuthPageBloc extends Bloc<AuthPageEvent, AuthPageState> {
 
   FutureOr<void> authPageSignUpEvent(
       AuthPageSignUpEvent event, Emitter<AuthPageState> emit) async {
-    emit(ShowLoadingActionState());
+    emit(AuthenticationLoadingState());
     var results = await AuthRepository()
         .register(event.username, event.email, event.password);
     var responseMessage = results['message'];
