@@ -154,7 +154,6 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
                                 ],
                               ),
                               SvgPicture.asset("assets/images/Frame.svg"),
-                              //  Lottie.asset("assets/lottie/moving-truck.json")
                             ],
                           ),
                         ),
