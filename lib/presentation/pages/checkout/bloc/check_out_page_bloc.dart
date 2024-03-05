@@ -26,7 +26,7 @@ class CheckOutPageBloc extends Bloc<CheckOutPageEvent, CheckOutPageState> {
 
   Future<FutureOr<void>> checkOutPaymentEvent(
       CheckOutPagePaymentEvent event, Emitter<CheckOutPageState> emit) async {
-    // emit(PageLoadingState());
+    emit(PageLoadingDialogActionState());
     await Future.delayed(const Duration(seconds: 1));
     emit(PaymentPageState(
         subTotal: event.subTotal, address: event.addressData));
@@ -34,7 +34,7 @@ class CheckOutPageBloc extends Bloc<CheckOutPageEvent, CheckOutPageState> {
 
   FutureOr<void> checkOutPagePlaceOrderEvent(CheckOutPagePlaceOrderEvent event,
       Emitter<CheckOutPageState> emit) async {
-    emit(PageLoadingState());
+    emit(PageLoadingDialogActionState());
 
     event.dataModel.deliveryAddress = event.addressData;
     event.dataModel.paymentMethod = event.paymentMode;
