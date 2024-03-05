@@ -342,7 +342,7 @@ class _PaymentSectionViewState extends State<PaymentSectionView> {
                             ),
                           ),
                           Text(
-                            "\$${widget.subTotal.toString()}",
+                            "\$${widget.subTotal.toStringAsFixed(2)}",
                             style: const TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w400,
@@ -398,7 +398,7 @@ class _PaymentSectionViewState extends State<PaymentSectionView> {
                             ),
                           ),
                           Text(
-                            "\$${widget.subTotal.toString()}",
+                            "\$${widget.subTotal.toStringAsFixed(2)}",
                             style: const TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.w700,
