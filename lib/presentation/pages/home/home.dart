@@ -39,9 +39,6 @@ class _HomePageState extends State<HomePage> {
         switch (state.runtimeType) {
           case HomePageLoadingState:
             return const HomePageLoadingShimmers();
-          // return const Center(
-          //   child: CircularProgressIndicator(),
-          // );
           case HomePageLoadedSuccessState:
             final successState = state as HomePageLoadedSuccessState;
             return Scaffold(
@@ -111,7 +108,6 @@ class _HomePageState extends State<HomePage> {
                         bottom: 0,
                         liteText: "| NEW COLLECTION",
                         mainText: "HANG OUT & PARTY",
-                        // imagePath: "assets/images/glassGirl.svg"
                         imagePath: "assets/images/glass.png"),
                     const SizedBox(
                       height: 20,
@@ -143,7 +139,6 @@ class _HomePageState extends State<HomePage> {
                           bottom: 10,
                           liteText: "| SALE UPTO 40%",
                           mainText: "FOR SLIM & BEAUTY",
-                          // imagePath: "assets/images/glassGirl.svg"
                           imagePath: "assets/images/yellow.png"),
                     ),
                     Padding(
@@ -158,7 +153,6 @@ class _HomePageState extends State<HomePage> {
                         bottom: 10,
                         liteText: "| WINTER COLLECTION ",
                         mainText: "Most sexy & fabulous design ",
-                        // imagePath: "assets/images/glassGirl.svg"
                         imagePath: "assets/images/coatNew.png",
                       ),
                     ),
