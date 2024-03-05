@@ -10,7 +10,6 @@ import 'package:fluxestore/presentation/pages/OrderDetails/order_details_page.da
 import 'package:fluxestore/presentation/pages/checkout/checkout_main.view.dart';
 import 'package:fluxestore/presentation/pages/collections_page.dart';
 import 'package:fluxestore/presentation/pages/notification_page.dart';
-import '../presentation/pages/products_page/products_page.dart';
 import 'package:fluxestore/presentation/pages/product_feedback_page.dart';
 import 'package:fluxestore/presentation/pages/settings_page.dart';
 import 'package:fluxestore/presentation/pages/wish_list_page/wish_list_page.dart';
@@ -20,6 +19,7 @@ import '../presentation/landing_page/bloc/landing_page_bloc.dart';
 import '../presentation/pages/MyOrders/my_orders_page.dart';
 import '../presentation/pages/checkout/bloc/check_out_page_bloc.dart';
 import '../presentation/pages/product_details_page/product_details_page.dart';
+import '../presentation/pages/products_page/products_page.dart';
 
 class MyGenerateRoute {
   final AuthPageBloc authPagebloc = AuthPageBloc();
@@ -156,3 +156,14 @@ class MyGenerateRoute {
     });
   }
 }
+
+// return PageRouteBuilder(
+//           pageBuilder: (context, animation, secondaryAnimation) =>
+//               const MyOrdersPage(),
+//           transitionsBuilder: (context, animation, secondaryAnimation, child) {
+//             return FadeTransition(
+//               opacity: animation,
+//               child: child,
+//             );
+//           },
+//         );
