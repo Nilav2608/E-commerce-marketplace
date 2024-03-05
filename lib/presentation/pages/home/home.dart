@@ -53,7 +53,6 @@ class _HomePageState extends State<HomePage> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            // SizedBox(width: 15,),
                             CircleTab(
                               icon: PrimaryIcons.vector,
                               isSelected: true,
@@ -132,7 +131,6 @@ class _HomePageState extends State<HomePage> {
                           horizontal: hori, vertical: vert),
                       child: const BannerCards(
                           height: 158,
-                          //  right: 20,
                           top: 20,
                           left: 20,
                           right: 10,
@@ -146,7 +144,6 @@ class _HomePageState extends State<HomePage> {
                           horizontal: hori, vertical: vert),
                       child: const BannerCards(
                         height: 210,
-                        // right: 20,
                         top: 35,
                         left: 20,
                         right: 0,
