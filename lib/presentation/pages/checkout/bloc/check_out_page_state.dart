@@ -11,6 +11,8 @@ class CheckOutPageBlocInitialState extends CheckOutPageState {}
 
 class PageLoadingState extends CheckOutPageState {}
 
+class PageLoadingDialogActionState extends CheckOutPageActionState {}
+
 class PageLoadedSuccessState extends CheckOutPageState {}
 
 class PaymentPageState extends CheckOutPageState {
