@@ -76,7 +76,7 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
                         children: [
                           Expanded(
                             child: Lottie.asset(
-                                "assets/lottie/cancel-confirm.json",
+                                "assets/lottie/cancel-confirmed.json",
                                 height: 100,
                                 repeat: false),
                           ),
