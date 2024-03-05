@@ -4,6 +4,7 @@ import 'package:fluxestore/presentation/authentication/bloc/auth_page_bloc.dart'
 import 'package:fluxestore/presentation/landing_page/landing_page.dart';
 import 'package:fluxestore/presentation/pages/login_page.dart';
 import 'package:fluxestore/presentation/pages/sign_up_page.dart';
+import 'package:toastification/toastification.dart';
 
 class AuthenticationPage extends StatefulWidget {
   const AuthenticationPage({super.key});
@@ -30,24 +31,40 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
         switch (state.runtimeType) {
           case ShowSnackBarActionState:
             final snackBarState = state as ShowSnackBarActionState;
-            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                margin: const EdgeInsets.only(bottom: 5),
-                padding: const EdgeInsets.all(10),
-                duration: const Duration(milliseconds: 2000),
-                behavior: SnackBarBehavior.floating,
-                backgroundColor: snackBarState.status ? const Color(0xFF508A7B) : Colors.red,
-                content: Text(
-                  snackBarState.message,
-                  style: const TextStyle(color: Colors.white),
-                )));
+          
+            if (snackBarState.status == true) {
+              toastification.show(
+                  context: context,
+                  title: Text(snackBarState.message),
+                  type: ToastificationType.success,
+                  style: ToastificationStyle.fillColored,
+                  animationDuration: const Duration(milliseconds: 600),
+                  autoCloseDuration: const Duration(milliseconds: 4500),
+                  showProgressBar: false,
+                  alignment: Alignment.bottomCenter);
+            } else {
+              toastification.show(
+                  context: context,
+                  title: Text(snackBarState.message),
+                  type: ToastificationType.error,
+                  style: ToastificationStyle.fillColored,
+                  animationDuration: const Duration(milliseconds: 600),
+                  autoCloseDuration: const Duration(milliseconds: 4500),
+                  showProgressBar: false,
+                  alignment: Alignment.bottomCenter);
+            }
+
             break;
-          case ShowLoadingActionState:
-            if (!(state is! RegistrationSuccessState || state is !AuthenticationSuccesState)) {
+          case AuthenticationLoadingState:
+            if (!(state is! RegistrationSuccessState ||
+                state is! AuthenticationSuccesState)) {
               showDialog(
                   context: context,
-                  builder: (BuildContext context) {
-                    return const Center(child: CircularProgressIndicator());
-                  });
+                  builder: (context) => const Center(
+                        child: CircularProgressIndicator(
+                          color: Colors.black54,
+                        ),
+                      ));
             }
             break;
         }
@@ -60,7 +77,9 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
             return LoginPage(bloc: authPagebloc);
           case AuthenticationSuccesState:
             final successState = state as AuthenticationSuccesState;
-            return  LandingPage(token: successState.token,);
+            return LandingPage(
+              token: successState.token,
+            );
         }
         return const SizedBox();
       },
