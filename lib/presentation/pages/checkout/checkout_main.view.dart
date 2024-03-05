@@ -4,6 +4,7 @@ import 'package:fluxestore/models/my_orders_data_model.dart';
 import 'package:fluxestore/presentation/pages/checkout/PaymentSection.view.dart';
 import 'package:fluxestore/presentation/pages/checkout/ShippingAddressSection.view.dart';
 import 'package:lottie/lottie.dart';
+import 'package:toastification/toastification.dart';
 import 'bloc/check_out_page_bloc.dart';
 import 'widgets/checkout_status_items.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -61,28 +62,36 @@ class _CheckOutPageState extends State<CheckOutPage> {
             //   case NavigateTohomePageActionState:
             //     Navigator.popAndPushNamed(context, '/');
 
-            // case PageLoadingState:
-            //   Dialog(
-            //     elevation: 0,
-            //     shape: RoundedRectangleBorder(
-            //         borderRadius: BorderRadius.circular(10)),
-            //     backgroundColor: Colors.white,
-            //     child: Container(
-            //       height: 100,
-            //       color: Colors.amber,
-            //       child: const Column(
-            //         mainAxisSize: MainAxisSize.min,
-            //         children: [
-            //           CircularProgressIndicator(),
-            //           SizedBox(height: 16),
-            //           Text(
-            //             'Placing your order...',
-            //             style: TextStyle(fontSize: 16),
-            //           ),
-            //         ],
-            //       ),
-            //     ),
-            //   );
+            // case PageLoadingDialogActionState:
+            //   if (!(state is! PaymentPageState &&
+            //       state is! PaymentCompletedState)) {
+            //     showDialog(
+            //         context: context,
+            //         builder: (context) {
+            //           return Dialog(
+            //             elevation: 0,
+            //             shape: RoundedRectangleBorder(
+            //                 borderRadius: BorderRadius.circular(10)),
+            //             backgroundColor: Colors.white,
+            //             child: Container(
+            //               height: 200,
+            //               color: Colors.white,
+            //               child: const Column(
+            //                 mainAxisSize: MainAxisSize.min,
+            //                 crossAxisAlignment: CrossAxisAlignment.center,
+            //                 children: [
+            //                   CircularProgressIndicator(),
+            //                   SizedBox(height: 16),
+            //                   Text(
+            //                     'Placing your order...',
+            //                     style: TextStyle(fontSize: 16),
+            //                   ),
+            //                 ],
+            //               ),
+            //             ),
+            //           );
+            //         });
+            //   }
           }
         },
         builder: (context, state) {
@@ -141,14 +150,19 @@ class _CheckOutPageState extends State<CheckOutPage> {
                             addressData: successData.address,
                             paymentMode: paymentMethod));
                       } else {
-                        ScaffoldMessenger.of(context)
-                            .showSnackBar(const SnackBar(
-                                behavior: SnackBarBehavior.floating,
-                                backgroundColor: Color(0xFFFF8080),
-                                content: Text(
-                                  "Please verify terms and conditions to proceed!",
-                                  style: TextStyle(color: Colors.white),
-                                )));
+                        toastification.show(
+                            context: context,
+                            title: const Text(
+                                "Please verify terms and conditions to proceed!"),
+                            type: ToastificationType.error,
+                            backgroundColor: const Color(0xFFFF8080) ,
+                            style: ToastificationStyle.fillColored,
+                            animationDuration:
+                                const Duration(milliseconds: 600),
+                            autoCloseDuration:
+                                const Duration(milliseconds: 4000),
+                            showProgressBar: false,
+                            alignment: Alignment.bottomCenter);
                       }
                     },
                   )
