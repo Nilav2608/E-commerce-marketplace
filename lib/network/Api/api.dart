@@ -1,5 +1,5 @@
 class Api {
-  static const String baseUrl = "http://192.168.1.2:5000";
+  static const String baseUrl = "http://192.168.1.5:5000";
 
   final String loginUrl = "$baseUrl/api/v1/user/login";
 
