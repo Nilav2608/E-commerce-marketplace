@@ -6,6 +6,7 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:fluxestore/presentation/reuseables/product_list_view_builder.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluxestore/utils/formatters/formatter.dart';
+import 'package:toastification/toastification.dart';
 import '../../../models/product_data_model.dart';
 import '../../../repository/productsRepo/products_repository.dart';
 import '../../../utils/icons_constants/primary_icons_icons.dart';
@@ -110,17 +111,30 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
             current is! ProductDetailsPageActionState,
         listener: (context, state) {
           if (state is AddToCartActionState) {
-            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                margin: const EdgeInsets.only(bottom: 100),
-                padding: const EdgeInsets.all(10),
-                duration: const Duration(milliseconds: 800),
-                behavior: SnackBarBehavior.floating,
-                backgroundColor:
-                    state.status ? const Color(0xFF508A7B) : Colors.red,
-                content: Text(
-                  state.message,
-                  style: const TextStyle(color: Colors.white),
-                )));
+            final snackBarState = state;
+            if (snackBarState.status == true) {
+              toastification.show(
+                  context: context,
+                  title: Text(snackBarState.message),
+                  type: ToastificationType.success,
+                  icon: const Icon(SecondaryIcons.cart_outlined),
+                  style: ToastificationStyle.flat,
+                  animationDuration: const Duration(milliseconds: 500),
+                  autoCloseDuration: const Duration(milliseconds: 4500),
+                  showProgressBar: false,
+                  applyBlurEffect: true,
+                  alignment: Alignment.topCenter);
+            } else {
+              toastification.show(
+                  context: context,
+                  title: Text(snackBarState.message),
+                  type: ToastificationType.error,
+                  style: ToastificationStyle.fillColored,
+                  animationDuration: const Duration(milliseconds: 500),
+                  autoCloseDuration: const Duration(milliseconds: 4500),
+                  showProgressBar: false,
+                  alignment: Alignment.topCenter);
+            }
           }
         },
         builder: (context, state) {
@@ -173,8 +187,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                   child: Stack(
                     children: [
                       ClipRRect(
-                        child: Image.network(
-                            widget.data.imageUrl ?? ""
+                        child: Image.network(widget.data.imageUrl ?? ""
                             // "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=60&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y2xvdGhpbmclMjBtb2RlbCUyMHBvc2V8ZW58MHx8MHx8fDA%3D"
                             ),
                       ),
@@ -380,23 +393,23 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                                                 elevation: 2,
                                                                 child:
                                                                     Container(
-                                                                        decoration:
-                                                                            BoxDecoration(
-                                                                          shape:
-                                                                              BoxShape.circle,
-                                                                          border: Border.all(
-                                                                              width: currentColorIndex == i ? 3 : 0,
-                                                                              color: Colors.grey.shade500),
-                                                                          boxShadow: [
-                                                                            currentColorIndex == i ? BoxShadow(blurRadius: 6, color: Colors.grey.shade400, offset: const Offset(0.001, 6), spreadRadius: 0.5) : const BoxShadow()
-                                                                          ]
-                                                                        ),
+                                                                        decoration: BoxDecoration(
+                                                                            shape: BoxShape
+                                                                                .circle,
+                                                                            border: Border.all(
+                                                                                width: currentColorIndex == i
+                                                                                    ? 3
+                                                                                    : 0,
+                                                                                color: Colors
+                                                                                    .grey.shade500),
+                                                                            boxShadow: [
+                                                                              currentColorIndex == i ? BoxShadow(blurRadius: 6, color: Colors.grey.shade400, offset: const Offset(0.001, 6), spreadRadius: 0.5) : const BoxShadow()
+                                                                            ]),
                                                                         child: CircleAvatar(
                                                                             radius:
                                                                                 12,
                                                                             backgroundColor:
-                                                                                availableColors[i]
-                                                                            )),
+                                                                                availableColors[i])),
                                                               ),
                                                             ],
                                                           ),
@@ -413,8 +426,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                                   CrossAxisAlignment.start,
                                               children: [
                                                 const Padding(
-                                                  padding:
-                                                      EdgeInsets.all(4.0),
+                                                  padding: EdgeInsets.all(4.0),
                                                   child: Text(
                                                     "Size",
                                                     style: TextStyle(
@@ -665,8 +677,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                                 return ProductReviewsTile(
                                                   data: data,
                                                 );
-                                              }
-                                              ),
+                                              }),
                                           const SizedBox(
                                             height: 10,
                                           ),
