@@ -16,7 +16,6 @@ import 'bloc/landing_page_bloc.dart';
 
 class LandingPage extends StatefulWidget {
   final String token;
-  // final String userEmail;
   const LandingPage({
     super.key,
     required this.token,
@@ -33,7 +32,6 @@ class _LandingPageState extends State<LandingPage> {
     Map<String, dynamic> decodedToken = JwtDecoder.decode(widget.token);
     userId = decodedToken['_id'];
     email = decodedToken['email'];
-    // fetchUserDetails(userId);
     super.initState();
   }
 
@@ -43,7 +41,6 @@ class _LandingPageState extends State<LandingPage> {
       var userData = results['data'];
       userData.remove('__v');
       try {
-        // Map each item in the list to a UserModel instance
         setState(() {
           user = UserModel.fromJson(userData);
         });
@@ -75,7 +72,6 @@ class _LandingPageState extends State<LandingPage> {
         bloc: landingPageBloc,
         listener: (context, state) {},
         builder: (context, state) {
-          // final successState = state as LandingPageLoadedState;
           return Scaffold(
               appBar: AppBar(
                 title: Center(
@@ -86,7 +82,6 @@ class _LandingPageState extends State<LandingPage> {
                       fontSize: 20,
                       fontWeight: FontWeight.w700),
                 )),
-                // backgroundColor: const Color.fromARGB(0, 165, 24, 24),
                 elevation: 0,
                 leading: Builder(
                   builder: (context) => Padding(
@@ -96,13 +91,6 @@ class _LandingPageState extends State<LandingPage> {
                           Scaffold.of(context).openDrawer();
                         },
                         icon: SvgPicture.asset("assets/images/menu.svg")
-                        // icon: const ImageIcon(
-                        //   AssetImage('assets/images/more.png')
-                        // ),
-                        // icon: const Icon(
-                        //   Icons.menu_rounded,
-                        //   grade: 10,
-                        // )
                         ),
                   ),
                 ),
@@ -136,6 +124,3 @@ class _LandingPageState extends State<LandingPage> {
   }
 }
 
-// If image looks not as expected please convert to compound path manually.
-
-// Skipped tags and attributes: stroke-width,stroke-linecap,stroke-linejoin,stroke
