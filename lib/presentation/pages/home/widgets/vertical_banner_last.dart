@@ -28,7 +28,7 @@ class VerticalCards extends StatelessWidget {
             
                           alignment: Alignment.centerRight,
                           child: Image.asset(
-                            "assets/images/tshrt.png",
+                            "assets/images/tshirt.png",
                             //  width: 150,height: 150,
                           ))),
                   const Column(
