@@ -130,7 +130,7 @@ class MyOrderDetailsCard extends StatelessWidget {
                           fontWeight: FontWeight.w700),
                     ),
                     Text(
-                      "\$${data.subTotal}",
+                      "\$${data.subTotal!.toStringAsFixed(2)}",
                       style: const TextStyle(
                           fontSize: 16,
                           color: Color(0xff141416),
