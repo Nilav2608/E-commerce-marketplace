@@ -38,7 +38,7 @@ class OrderDetailsPageBloc
 
   FutureOr<void> confirmCancellationEvent(ConfirmCancellationEvent event,
       Emitter<OrderDetailsPageState> emit) async {
-    emit(ShowLoadingActionState());
+    // emit(ShowLoadingActionState());
      await Future.delayed( const Duration(seconds: 3));
     var results =
         await OrdersRepository().cancelUserOrders(event.userId, event.orderId);
