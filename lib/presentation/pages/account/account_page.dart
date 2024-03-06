@@ -120,7 +120,7 @@ class _AccountPageState extends State<AccountPage> {
             ),
             Container(
               width: screenWidth * 0.85,
-              height: screenHeight * 0.60,
+              height: screenHeight * 0.40,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
                 color: Colors.white,
@@ -138,26 +138,27 @@ class _AccountPageState extends State<AccountPage> {
                       child: Divider(
                         color: Color(0xffF3F3F6),
                       )),
-                  const AccountPageUtilsRow(
-                    icon: SecondaryIcons.wallet,
-                    text: "Payment method",
-                    size: 20,
-                  ),
-                  const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 8.0),
-                      child: Divider(
-                        color: Color(0xffF3F3F6),
-                      )),
-                  const AccountPageUtilsRow(
-                    icon: SecondaryIcons.ticket,
-                    text: "Voucher",
-                    size: 19,
-                  ),
-                  const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 8.0),
-                      child: Divider(
-                        color: Color(0xffF3F3F6),
-                      )),
+                  //? For next release!
+                  // const AccountPageUtilsRow(
+                  //   icon: SecondaryIcons.wallet,
+                  //   text: "Payment method",
+                  //   size: 20,
+                  // ),
+                  // const Padding(
+                  //     padding: EdgeInsets.symmetric(horizontal: 8.0),
+                  //     child: Divider(
+                  //       color: Color(0xffF3F3F6),
+                  //     )),
+                  // const AccountPageUtilsRow(
+                  //   icon: SecondaryIcons.ticket,
+                  //   text: "Voucher",
+                  //   size: 19,
+                  // ),
+                  // const Padding(
+                  //     padding: EdgeInsets.symmetric(horizontal: 8.0),
+                  //     child: Divider(
+                  //       color: Color(0xffF3F3F6),
+                  //     )),
                   AccountPageUtilsRow(
                     onTap: () =>
                         accountPageBloc.add(AccountPageNavigateToWishListPageEvent()),
