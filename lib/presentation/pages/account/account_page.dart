@@ -6,6 +6,7 @@ import 'package:fluxestore/presentation/pages/account/widgets/logout_dialog.dart
 
 import 'package:fluxestore/presentation/reuseables/account_page_utils_row.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:toastification/toastification.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../utils/icons_constants/primary_icons_icons.dart';
 import '../../../utils/icons_constants/secondary_icons_icons.dart';
@@ -31,6 +32,18 @@ class _AccountPageState extends State<AccountPage> {
 
   final AccountPageBloc accountPageBloc = AccountPageBloc();
   final repoUrl = Uri.parse("https://github.com/Nilav2608");
+
+  showUnableToLaunchUtlError() {
+    toastification.show(
+        context: context,
+        title: const Text("An Error occurd!"),
+        type: ToastificationType.error,
+        style: ToastificationStyle.fillColored,
+        animationDuration: const Duration(milliseconds: 600),
+        autoCloseDuration: const Duration(milliseconds: 4500),
+        showProgressBar: false,
+        alignment: Alignment.bottomCenter);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -177,9 +190,9 @@ class _AccountPageState extends State<AccountPage> {
                   AccountPageUtilsRow(
                     onTap: () async {
                       if (await canLaunchUrl(repoUrl)) {
-                        await launchUrl(repoUrl,
-                            mode: LaunchMode.inAppWebView);
+                        await launchUrl(repoUrl);
                       } else {
+                        showUnableToLaunchUtlError();
                         throw throw Exception('Could not launch $repoUrl');
                       }
                     },
