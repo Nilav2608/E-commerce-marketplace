@@ -31,4 +31,15 @@
             android:value="2" />
     </application>
     <uses-permission android:name = "android.permission.Internet" />
+    <queries>
+    <!-- checks for SMS support -->
+     <intent>
+      <action android:name="android.intent.action.VIEW" />
+      <data android:scheme="sms" />
+     </intent>
+    <!--for inAppBrowserView launch mode support -->
+     <intent>
+       <action android:name="android.support.customtabs.action.CustomTabsService" />
+     </intent>
+   </queries>
 </manifest>
