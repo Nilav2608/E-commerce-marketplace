@@ -74,10 +74,13 @@ class _PaymentSectionViewState extends State<PaymentSectionView> {
             const SizedBox(
               height: 20,
             ),
-            SizedBox(
-                height: 64,
-                width: double.infinity,
-                child: ListView.builder(
+            Padding(
+              padding:
+                  EdgeInsets.symmetric(horizontal: horizontal, vertical: 0),
+              child: SizedBox(
+                  height: 66,
+                  width: double.infinity,
+                  child: ListView.builder(
                     physics: const NeverScrollableScrollPhysics(),
                     itemCount: paymentModes.length,
                     shrinkWrap: true,
@@ -89,52 +92,58 @@ class _PaymentSectionViewState extends State<PaymentSectionView> {
                             currentPaymentMethodIndex = index;
                           });
                         },
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 20.0),
-                          child: AnimatedContainer(
-                            duration: const Duration(milliseconds: 300),
-                            // margin: const EdgeInsets.only(right: 16),
-                            width: 94,
-                            height: 64,
-                            decoration: BoxDecoration(
-                                color: currentPaymentMethodIndex == index
-                                    ? const Color(0xff43484B)
-                                    : Colors.white,
-                                borderRadius: BorderRadius.circular(6),
-                                boxShadow: const [
-                                  BoxShadow(
-                                      color: Color(0xffe8e8e8),
-                                      blurRadius: 10.0,
-                                      offset: Offset(0, 1))
-                                ]),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                SvgPicture.asset(
-                                  height: double.parse(paymentModes[index][2]),
-                                  width: 35,
-                                  paymentModes[index][1].toString(),
-                                  colorFilter: ColorFilter.mode(
-                                      currentPaymentMethodIndex == index
-                                          ? Colors.white
-                                          : const Color(0xff6E768A),
-                                      BlendMode.srcIn),
-                                ),
-                                Text(
-                                  paymentModes[index][0],
-                                  style: TextStyle(
-                                      color: currentPaymentMethodIndex == index
-                                          ? Colors.white
-                                          : const Color(0xff6E768A),
-                                      fontSize: 12),
-                                )
-                              ],
-                            ),
+                        child: AnimatedContainer(
+                          duration: const Duration(milliseconds: 300),
+                          margin: const EdgeInsets.only(
+                            right: 18,
+                          ),
+                          width: MediaQuery.of(context).size.width * 0.26,
+                          height: 66,
+                          decoration: BoxDecoration(
+                              color: currentPaymentMethodIndex == index
+                                  ? const Color(0xff43484B)
+                                  : Colors.white,
+                              borderRadius: BorderRadius.circular(6),
+                              boxShadow: const [
+                                BoxShadow(
+                                    color: Color(0xffe8e8e8),
+                                    blurRadius: 10.0,
+                                    offset: Offset(0, 1))
+                              ]),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              SvgPicture.asset(
+                                height: double.parse(paymentModes[index][2]),
+                                width: 35,
+                                paymentModes[index][1].toString(),
+                                colorFilter: ColorFilter.mode(
+                                    currentPaymentMethodIndex == index
+                                        ? Colors.white
+                                        : const Color(0xff6E768A),
+                                    BlendMode.srcIn),
+                              ),
+                              Text(
+                                paymentModes[index][0],
+                                style: TextStyle(
+                                    color: currentPaymentMethodIndex == index
+                                        ? Colors.white
+                                        : const Color(0xff6E768A),
+                                    fontSize: 12),
+                              )
+                            ],
                           ),
                         ),
                       );
-                    })),
+                    },
+                    // separatorBuilder: (BuildContext context, int index) {
+                    //   return const SizedBox(
+                    //     width: 0,
+                    //   );
+                    // },
+                  )),
+            ),
             currentPaymentMethodIndex == 1
                 ? Column(
                     children: [
@@ -153,11 +162,11 @@ class _PaymentSectionViewState extends State<PaymentSectionView> {
                             ),
                             TextButton(
                               onPressed: () {
-                                showBottomSheet(
-                                    context: context,
-                                    builder: (context) => Container(
-                                          color: Colors.amber,
-                                        ));
+                                // showBottomSheet(
+                                //     context: context,
+                                //     builder: (context) => Container(
+                                //           color: Colors.amber,
+                                //         ));
                               },
                               child: const Text(
                                 "Add new+",
