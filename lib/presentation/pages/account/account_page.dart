@@ -6,7 +6,7 @@ import 'package:fluxestore/presentation/pages/account/widgets/logout_dialog.dart
 
 import 'package:fluxestore/presentation/reuseables/account_page_utils_row.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
+import 'package:url_launcher/url_launcher.dart';
 import '../../../utils/icons_constants/primary_icons_icons.dart';
 import '../../../utils/icons_constants/secondary_icons_icons.dart';
 
@@ -30,6 +30,8 @@ class _AccountPageState extends State<AccountPage> {
   }
 
   final AccountPageBloc accountPageBloc = AccountPageBloc();
+  final repoUrl = Uri.parse("https://github.com/Nilav2608");
+
   @override
   Widget build(BuildContext context) {
     final double screenWidth = MediaQuery.of(context).size.width;
@@ -128,7 +130,8 @@ class _AccountPageState extends State<AccountPage> {
               child: Column(
                 children: [
                   AccountPageUtilsRow(
-                    onTap: () => accountPageBloc.add(AccountPageNavigateToMyOrdersPageEvent()),
+                    onTap: () => accountPageBloc
+                        .add(AccountPageNavigateToMyOrdersPageEvent()),
                     icon: SecondaryIcons.bag,
                     text: "My Orders",
                     size: 21,
@@ -160,8 +163,8 @@ class _AccountPageState extends State<AccountPage> {
                   //       color: Color(0xffF3F3F6),
                   //     )),
                   AccountPageUtilsRow(
-                    onTap: () =>
-                        accountPageBloc.add(AccountPageNavigateToWishListPageEvent()),
+                    onTap: () => accountPageBloc
+                        .add(AccountPageNavigateToWishListPageEvent()),
                     icon: PrimaryIcons.heart,
                     text: "My Wishlist",
                     size: 23,
@@ -171,7 +174,15 @@ class _AccountPageState extends State<AccountPage> {
                       child: Divider(
                         color: Color(0xffF3F3F6),
                       )),
-                  const AccountPageUtilsRow(
+                  AccountPageUtilsRow(
+                    onTap: () async {
+                      if (await canLaunchUrl(repoUrl)) {
+                        await launchUrl(repoUrl,
+                            mode: LaunchMode.inAppWebView);
+                      } else {
+                        throw throw Exception('Could not launch $repoUrl');
+                      }
+                    },
                     icon: Icons.star,
                     text: "Rate this app",
                     size: 23,
