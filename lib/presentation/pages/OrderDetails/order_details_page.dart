@@ -231,10 +231,10 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
                                         color: Color.fromARGB(97, 96, 97, 109),
                                         fontWeight: FontWeight.w400),
                                   ),
-                                  const SizedBox(width: 100),
+                                  const SizedBox(width: 20),
                                   Expanded(
                                     child: Text(
-                                      "${widget.data.deliveryAddress!.street ?? ''}, ${widget.data.deliveryAddress!.city ?? ''}",
+                                      "${widget.data.deliveryAddress!.street},${widget.data.deliveryAddress!.city},${widget.data.deliveryAddress!.city}",
                                       maxLines: 1,
                                       style: const TextStyle(
                                           fontSize: 14,
@@ -438,10 +438,10 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
                                         color: Color.fromARGB(97, 96, 97, 109),
                                         fontWeight: FontWeight.w400),
                                   ),
-                                  const SizedBox(width: 100),
+                                  const SizedBox(width: 20),
                                   Expanded(
                                     child: Text(
-                                      "${widget.data.deliveryAddress!.street ?? ''}, ${widget.data.deliveryAddress!.city ?? ''}",
+                                      "${widget.data.deliveryAddress!.street},${widget.data.deliveryAddress!.city},${widget.data.deliveryAddress!.city}",
                                       maxLines: 1,
                                       style: const TextStyle(
                                           fontSize: 14,
@@ -656,13 +656,13 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
                                       style: TextStyle(
                                           fontSize: 14,
                                           color:
-                                              Color.fromARGB(97, 96, 97, 109),
+                                              Color.fromARGB(98, 20, 33, 128),
                                           fontWeight: FontWeight.w400),
                                     ),
-                                    const SizedBox(width: 100),
+                                    const SizedBox(width: 20),
                                     Expanded(
                                       child: Text(
-                                        "${widget.data.deliveryAddress!.street ?? ''}, ${widget.data.deliveryAddress!.city ?? ''}",
+                                        "${widget.data.deliveryAddress!.street},${widget.data.deliveryAddress!.city},${widget.data.deliveryAddress!.city}",
                                         maxLines: 1,
                                         style: const TextStyle(
                                             fontSize: 14,
