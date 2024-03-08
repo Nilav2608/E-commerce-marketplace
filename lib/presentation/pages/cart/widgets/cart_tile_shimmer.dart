@@ -65,7 +65,7 @@ class CartTileShimmer extends StatelessWidget {
                             baseColor: Colors.grey[300]!,
                             highlightColor: Colors.grey[100]!,
                             child: Container(
-                              width: 150,
+                              width: 120,
                               height: 16,
                               decoration: BoxDecoration(
                                   color: Colors.grey[300],
