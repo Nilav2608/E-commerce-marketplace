@@ -188,7 +188,6 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                     children: [
                       ClipRRect(
                         child: Image.network(widget.data.imageUrl ?? ""
-                            // "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=60&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y2xvdGhpbmclMjBtb2RlbCUyMHBvc2V8ZW58MHx8MHx8fDA%3D"
                             ),
                       ),
                       Row(
@@ -510,7 +509,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                       },
                                       isExpanded: _isDescriptionExpanded,
                                       headingText: "Description",
-                                      body: const Column(
+                                      body: Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
@@ -518,13 +517,13 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                             width: 305,
                                             height: 90,
                                             child: Text(
-                                                'Sportswear is no longer under culture, it is no longer indie or cobbled together as it once was. Sport is fashion today. The top is oversized in fit and style, may need to size down.',
-                                                style: TextStyle(
+                                                widget.data.descriptionn ?? "",
+                                                style: const TextStyle(
                                                     fontSize: 12,
                                                     fontWeight:
                                                         FontWeight.w400)),
                                           ),
-                                          Divider(
+                                          const Divider(
                                             color: Color(0xffF3F3F6),
                                           ),
                                         ],

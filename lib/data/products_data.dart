@@ -3,7 +3,7 @@ import '../models/product_data_model.dart';
 
 final List<ProductDataModel> productsList = [
   ProductDataModel(
-      id:"3",
+      id: "3",
       productName: "Turtleneck Sweater",
       descriptionn: "xxxxxxx",
       price: 39.99,
@@ -42,7 +42,7 @@ final List<ProductDataModel> productsList = [
       price: 39.99,
       imageUrl:
           "https://www.hawtcelebs.com/wp-content/uploads/2021/05/gigi-paris-for-shein-accessoires-2021-5.jpg",
-      // imageUrl: "assets/images/TurtleNeck.svg",
+      // "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=60&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y2xvdGhpbmclMjBtb2RlbCUyMHBvc2V8ZW58MHx8MHx8fDA%3D"
       sizes: ["S", "M", "L", "XL"],
       colors: [Colors.orangeAccent, Colors.black, Colors.pink],
       favorite: false,
