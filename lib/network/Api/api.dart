@@ -1,5 +1,7 @@
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 class Api {
-  static const String baseUrl = "http://192.168.1.5:5000";
+  static  String baseUrl = dotenv.get("BASE_URL_PRODUCTION");
 
   final String loginUrl = "$baseUrl/api/v1/user/login";
 
