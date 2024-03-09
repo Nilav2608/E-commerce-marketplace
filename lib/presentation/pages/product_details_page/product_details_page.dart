@@ -102,7 +102,6 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
 
   @override
   Widget build(BuildContext context) {
-    // print(recommendations);
     return BlocConsumer<ProductDetailsPageBloc, ProductDetailsPageState>(
         bloc: productDetailsPageBloc,
         listenWhen: (previous, current) =>

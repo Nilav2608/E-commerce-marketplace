@@ -17,8 +17,6 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
     var height = MediaQuery.of(context).size.height;
-    // var width = MediaQuery.of(context).size.width;
-
     return Scaffold(
       key: scaffoldKey,
       body: SingleChildScrollView(
@@ -141,27 +139,6 @@ class _LoginPageState extends State<LoginPage> {
                                 fontSize: 16),
                           )),
                         )),
-                    // child: GestureDetector(
-                    //   onTap: () {
-                    //     print("clicked");
-                    //   },
-                    //   child: Container(
-                    //     width: 147,
-                    //     height: 51,
-                    //     // alignment: Alignment.center,
-                    //     decoration: BoxDecoration(
-                    //         color: const Color(0xff2D201C),
-                    //         borderRadius: BorderRadius.circular(30)),
-                    //     child: const Center(
-                    //         child: Text(
-                    //       "SIGN UP",
-                    //       style: TextStyle(
-                    //           color: Colors.white,
-                    //           fontWeight: FontWeight.w700,
-                    //           fontSize: 16),
-                    //     )),
-                    //   ),
-                    // ),
                   ],
                 ),
               ),

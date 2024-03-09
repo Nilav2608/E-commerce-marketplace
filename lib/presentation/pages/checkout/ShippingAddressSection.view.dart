@@ -440,7 +440,6 @@ class _ShippingAddressSectionState extends State<ShippingAddressSection> {
                 child: ElevatedButton(
                     onPressed: () {
                       widget.onPressed!(addressMapper());
-                      debugPrint(addressMapper().toJson().toString());
                     },
                     style: const ButtonStyle(
                         backgroundColor:

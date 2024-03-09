@@ -28,7 +28,7 @@ class MyOrdersPageBloc extends Bloc<OrdersPageEvent, MyOrdersPageState> {
       List<MyOrdersDataModel> pendingList = [];
       List<MyOrdersDataModel> deliveredList = [];
       List<MyOrdersDataModel> cancelledList = [];
-      //add orders to different list based on delivary status
+      //add orders to different list based on delivery status
       for (var i = 0; i < tempList.length; i++) {
         String status = tempList[i].deliveryStatus!;
         switch (status) {
@@ -41,7 +41,6 @@ class MyOrdersPageBloc extends Bloc<OrdersPageEvent, MyOrdersPageState> {
           default:
         }
       }
-      // print(pendingItems);
       await Future.delayed(const Duration(seconds: 2));
       emit(OrdersPageSuccessState(
           pendingOrders: pendingList,
