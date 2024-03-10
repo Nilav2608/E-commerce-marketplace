@@ -46,6 +46,7 @@ dependencies:
   carousel_slider: ^4.2.1
   lottie: ^2.7.0
   http:
+  intl: ^0.17.0
   sliding_switch: ^1.1.0
   carousel_indicator: ^1.0.6
   jwt_decoder: ^2.0.1
@@ -62,7 +63,6 @@ dev_dependencies:
   flutter_toggle_tab: ^1.4.1
   google_fonts: ^6.1.0
   toggle_switch: ^2.1.0
-  intl: ^0.17.0
   expandable: ^5.0.1
   customizable_counter: ^1.0.4
   step_progress_indicator: ^1.0.2
