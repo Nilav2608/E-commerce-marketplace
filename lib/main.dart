@@ -10,6 +10,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SharedPreferences prefs = await SharedPreferences.getInstance();
   initScreen = prefs.getInt("initScreen");
+  //To show the onbording screen only at the first installation
   await prefs.setInt("initScreen", 1);
   await dotenv.load(fileName: '.env');
   runApp(MyApp(
