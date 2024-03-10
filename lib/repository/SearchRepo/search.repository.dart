@@ -1,11 +1,11 @@
 import 'package:fluxestore/repository/SearchRepo/search.repository.interface.dart';
-import '../../network/Api/api.dart';
+import '../../network/Api/api_endpoints.dart';
 import 'package:http/http.dart' as http;
 
 import '../../network/Exceptions/app_exceptions.dart';
 import '../../network/Exceptions/exception_handlers.dart';
 
-class SearchRepository extends Api implements ISearchRepository{
+class SearchRepository extends ApiEndpoints implements ISearchRepository{
   @override
   Future<Map<String, dynamic>> searchProducts(String query) async {
     

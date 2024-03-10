@@ -4,11 +4,11 @@ import 'package:fluxestore/models/product_data_model.dart';
 import 'package:fluxestore/network/Exceptions/app_exceptions.dart';
 import 'package:fluxestore/network/Exceptions/exception_handlers.dart';
 
-import '../../network/Api/api.dart';
+import '../../network/Api/api_endpoints.dart';
 import 'products_repository.interface.dart';
 import 'package:http/http.dart' as http;
 
-class ProductsRepository extends Api implements IproductsRepository {
+class ProductsRepository extends ApiEndpoints implements IproductsRepository {
   @override
   Future<Map<String, dynamic>> getAllProducts() async {
     try {

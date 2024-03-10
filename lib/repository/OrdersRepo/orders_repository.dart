@@ -3,11 +3,11 @@ import 'dart:convert';
 import 'package:fluxestore/models/my_orders_data_model.dart';
 import 'package:fluxestore/repository/OrdersRepo/orders_repository.interface.dart';
 import 'package:http/http.dart' as http;
-import '../../network/Api/api.dart';
+import '../../network/Api/api_endpoints.dart';
 import '../../network/Exceptions/app_exceptions.dart';
 import '../../network/Exceptions/exception_handlers.dart';
 
-class OrdersRepository extends Api implements IOrdersrepository {
+class OrdersRepository extends ApiEndpoints implements IOrdersrepository {
   @override
   Future<Map<String, dynamic>> newOrder(MyOrdersDataModel orderedItem) async {
     try {

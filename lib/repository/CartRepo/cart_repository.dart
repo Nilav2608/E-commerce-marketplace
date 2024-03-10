@@ -3,11 +3,11 @@ import 'dart:convert';
 import 'package:fluxestore/models/cart_items_model.dart';
 import 'package:fluxestore/repository/CartRepo/cart_repository.interface.dart';
 import 'package:http/http.dart' as http;
-import '../../network/Api/api.dart';
+import '../../network/Api/api_endpoints.dart';
 import '../../network/Exceptions/app_exceptions.dart';
 import '../../network/Exceptions/exception_handlers.dart';
 
-class CartRepository extends Api implements ICartRepository {
+class CartRepository extends ApiEndpoints implements ICartRepository {
   @override
   Future<Map<String, dynamic>> addTocart(CartItemsModel data) async {
     try {

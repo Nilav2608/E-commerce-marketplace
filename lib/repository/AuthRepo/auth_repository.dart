@@ -2,12 +2,12 @@ import 'dart:convert';
 
 import 'package:fluxestore/network/Exceptions/exception_handlers.dart';
 import 'package:http/http.dart' as http;
-import 'package:fluxestore/network/Api/api.dart';
+import 'package:fluxestore/network/Api/api_endpoints.dart';
 import 'package:fluxestore/repository/AuthRepo/auth_repository.interface.dart';
 
 import '../../network/Exceptions/app_exceptions.dart';
 
-class AuthRepository extends Api implements IAuthRepository {
+class AuthRepository extends ApiEndpoints implements IAuthRepository {
   @override
   Future<Map<String, dynamic>> login(String email, String password) async {
     try {

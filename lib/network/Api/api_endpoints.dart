@@ -1,6 +1,6 @@
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-class Api {
+class ApiEndpoints {
   static  String baseUrl = dotenv.get("BASE_URL_PRODUCTION");
 
   final String loginUrl = "$baseUrl/api/v1/user/login";
