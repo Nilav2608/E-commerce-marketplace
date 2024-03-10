@@ -27,8 +27,6 @@ class AuthenticationLoadingState extends AuthPageActionState {}
 class RegistrationSuccessState extends AuthPageState {}
 
 class AuthenticationSuccesState extends AuthPageState {
-  // final String decodedUserId;
-  // final String decodedUserEmail;
   final String token;
 
   AuthenticationSuccesState({required this.token});

@@ -75,10 +75,9 @@ class CrediCard extends StatelessWidget {
               const SizedBox(
                 height: 10,
               ),
-              // ignore: prefer_const_constructors
-              Padding(
-                padding: const EdgeInsets.all(14.0),
-                child: const Row(
+              const Padding(
+                padding: EdgeInsets.all(14.0),
+                child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Column(

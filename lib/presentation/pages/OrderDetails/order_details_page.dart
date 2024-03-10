@@ -34,7 +34,6 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
     super.dispose();
   }
 
-  // bool _isLoading = false;
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<OrderDetailsPageBloc, OrderDetailsPageState>(
@@ -42,15 +41,6 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
       listenWhen: (previous, current) => current is OrderDetailsPageActionState,
       buildWhen: (previous, current) => current is! OrderDetailsPageActionState,
       listener: (context, state) {
-        // if (state is ShowLoadingActionState) {
-        //   setState(() {
-        //     _isLoading = true;
-        //   });
-        // } else {
-        //   setState(() {
-        //     _isLoading = false;
-        //   });
-        // }
         if (state is ShowConfirmationDialogActionState) {
           showDialog(
               context: context,
@@ -123,7 +113,6 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
                         decoration: BoxDecoration(
                             color: const Color(0xff575757),
                             borderRadius: BorderRadius.circular(10)),
-                        // ignore: prefer_const_constructors
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Row(
@@ -131,7 +120,6 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
                             children: [
                               const Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
-                                // mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Padding(
                                     padding:
@@ -264,7 +252,6 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
                         children: [
                           SizedBox(
                             height: 48,
-                            // width: 170,
                             child: ElevatedButton(
                                 onPressed: () {
                                   Navigator.of(context).pushNamedAndRemoveUntil(
@@ -330,7 +317,6 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
                         decoration: BoxDecoration(
                             color: const Color(0xff575757),
                             borderRadius: BorderRadius.circular(10)),
-                        // ignore: prefer_const_constructors
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Row(
@@ -338,7 +324,6 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
                             children: [
                               const Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
-                                // mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Padding(
                                     padding:
@@ -539,7 +524,6 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
                           decoration: BoxDecoration(
                               color: const Color(0xff575757),
                               borderRadius: BorderRadius.circular(10)),
-                          // ignore: prefer_const_constructors
                           child: Padding(
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 16.0, vertical: 10),
@@ -548,7 +532,6 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
                               children: [
                                 const Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
-                                  // mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Padding(
                                       padding:

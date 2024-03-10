@@ -8,11 +8,9 @@ final class ProductDetailsPageInitialState extends ProductDetailsPageState {}
 abstract class ProductDetailsPageActionState extends ProductDetailsPageState {}
 
 class ProductDetailsPageSuccessState extends ProductDetailsPageState {
-  // final List<ProductDataModel> recommendationsList;
   final bool isWishListed;
 
   ProductDetailsPageSuccessState(
-    // this.recommendationsList,
      {required this.isWishListed});
 }
 

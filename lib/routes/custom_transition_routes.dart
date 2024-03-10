@@ -29,10 +29,3 @@ class CustomPageTransition extends PageRouteBuilder {
     );
   }
 }
-
-
-//Tween<Offset>(
-      //   begin: const Offset(1, 0),
-      //   end: Offset.zero,
-        
-      // ).animate(animation),

@@ -50,8 +50,6 @@ class CheckOutPageBloc extends Bloc<CheckOutPageEvent, CheckOutPageState> {
 
   FutureOr<void> navigateBackToHomePageEvent(NavigateBackToHomePageEvent event,
       Emitter<CheckOutPageState> emit) async {
-    // emit(PageLoadingState());
-    await Future.delayed(const Duration(seconds: 2));
     emit(NavigateTohomePageActionState());
   }
 }

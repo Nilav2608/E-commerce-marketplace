@@ -19,7 +19,6 @@ class CollectionsPage extends StatelessWidget {
               width: double.infinity,
               height: 270,
               bannerData.imagePath,
-              // "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=60&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y2xvdGhpbmclMjBtb2RlbCUyMHBvc2V8ZW58MHx8MHx8fDA%3D"
               fit: BoxFit.cover,
             ),
           ),

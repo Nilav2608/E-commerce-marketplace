@@ -196,7 +196,6 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                             padding: const EdgeInsets.all(20.0),
                             child: IconButton(
                                 style: ButtonStyle(
-                                  // fixedSize: const MaterialStatePropertyAll(Size(10, 10)),
                                   elevation: const MaterialStatePropertyAll(5),
                                   backgroundColor:
                                       const MaterialStatePropertyAll(

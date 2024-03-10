@@ -29,7 +29,6 @@ class VerticalCards extends StatelessWidget {
                           alignment: Alignment.centerRight,
                           child: Image.asset(
                             "assets/images/tshirt.png",
-                            //  width: 150,height: 150,
                           ))),
                   const Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -99,7 +98,6 @@ class VerticalCards extends StatelessWidget {
                           alignment: Alignment.centerRight,
                           child: Image.asset(
                             "assets/images/elegant.png",
-                            //  width: 150,height: 150,
                           ))),
                 ],
               ),

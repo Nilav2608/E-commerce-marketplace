@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluxestore/models/product_review_model.dart';
-// ignore: depend_on_referenced_packages
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-// ignore: depend_on_referenced_packages
 import 'package:intl/intl.dart';
 
 class ProductReviewsTile extends StatelessWidget {
@@ -20,7 +18,6 @@ class ProductReviewsTile extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Row(
-              // mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 20.0),
@@ -35,9 +32,6 @@ class ProductReviewsTile extends StatelessWidget {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          // SizedBox(
-                          //   height: 45,
-                          // ),
                           Text(
                             data.name ?? '',
                             style: const TextStyle(

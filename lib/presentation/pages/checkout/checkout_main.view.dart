@@ -166,40 +166,6 @@ class _CheckOutPageState extends State<CheckOutPage> {
                       }
                     },
                   )
-                  // Positioned(
-                  //   left: 0,
-                  //   right: 0,
-                  //   bottom: 0,
-                  //   height: 80, // Height of the bottom container
-                  //   child: Container(
-                  //     height: 300,
-                  //     color: Colors.blue, // Example background color
-                  //     child: Column(
-                  //       mainAxisAlignment:
-                  //           MainAxisAlignment.spaceAround,
-                  //       children: [
-                  //         IconButton(
-                  //           icon: Icon(Icons.home),
-                  //           onPressed: () {
-                  //             // Handle button tap
-                  //           },
-                  //         ),
-                  //         IconButton(
-                  //           icon: Icon(Icons.settings),
-                  //           onPressed: () {
-                  //             // Handle button tap
-                  //           },
-                  //         ),
-                  //         IconButton(
-                  //           icon: Icon(Icons.person),
-                  //           onPressed: () {
-                  //             // Handle button tap
-                  //           },
-                  //         ),
-                  //       ],
-                  //     ),
-                  //   ),
-                  // ),
                 ],
               );
             case PaymentCompletedState:

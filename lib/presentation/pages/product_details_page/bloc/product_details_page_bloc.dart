@@ -19,7 +19,6 @@ class ProductDetailsPageBloc
 
   FutureOr<void> addToCartEvent(
       AddToCartEvent event, Emitter<ProductDetailsPageState> emit) async {
-    // cartItems.add(event.productData);
     var results = await CartRepository().addTocart(event.productData);
     if (results['status']) {
       emit(AddToCartActionState(

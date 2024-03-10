@@ -6,8 +6,6 @@ class BannerCards extends StatelessWidget {
   final double left;
   final double right;
   final double bottom;
-  // final double vertical;
-  // final double right;
   final String liteText;
   final String mainText;
   final String imagePath;
@@ -18,11 +16,9 @@ class BannerCards extends StatelessWidget {
     required this.mainText,
     required this.imagePath,
     required this.top,
-    // required this.vertical,
     required this.left,
     required this.right,
     required this.bottom,
-    //  required this.right
   });
 
   @override
@@ -47,7 +43,6 @@ class BannerCards extends StatelessWidget {
                       fontWeight: FontWeight.w100,
                       color: Color(0xFF777E90),
                       fontSize: 12),
-                  // const TextStyle(color: Color(0xFF353945), fontSize: 12),
                 ),
                 const SizedBox(
                   height: 20,

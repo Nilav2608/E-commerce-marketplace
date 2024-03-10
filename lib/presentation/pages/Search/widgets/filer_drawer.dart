@@ -286,8 +286,9 @@ class _FilterDrawerState extends State<FilterDrawer> {
                   const SizedBox(
                     height: 5,
                   ),
+                  //? For next release
                   // SizedBox(
-                  //   // height: 300,
+                    // height: 300,
                   //   child: Expanded(
                   //     child: GridView.builder(
                   //       itemCount: 2,

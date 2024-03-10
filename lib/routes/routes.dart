@@ -52,6 +52,7 @@ class MyGenerateRoute {
             dx: 1.0,
             dy: 0.0,
             curves: Curves.easeInOutCirc);
+
       case 'viewCollections':
         final BannersDataModel data = settings.arguments as BannersDataModel;
         return CustomPageTransition(
@@ -61,10 +62,10 @@ class MyGenerateRoute {
             child: CollectionsPage(
               bannerData: data,
             ));
+
       case 'productDetails':
         final ProductDataModel productData =
             settings.arguments as ProductDataModel;
-    
         return CustomPageTransition(
             //for bottom up transition
             dx: 0.0,
@@ -74,32 +75,28 @@ class MyGenerateRoute {
               // currentUserId: userId,
               data: productData,
             ));
+
       case 'productsPage':
         return CustomPageTransition(
             curves: Curves.easeInOutCirc,
             dx: 1.0,
             dy: 0.0,
-            child: const ProductsPage());      
+            child: const ProductsPage());  
+
       case 'MyOrders':
         return CustomPageTransition(
             curves: Curves.easeInOutCirc,
             dx: 1.0,
             dy: 0.0,
             child: const MyOrdersPage());
+
       case 'settings':
         return CustomPageTransition(
             curves: Curves.easeInOutCirc,
             dx: 1.0,
             dy: 0.0,
             child: const SettingsPage());
-      // case 'checkOut':
-      //   final MyOrdersDataModel myordersData =
-      //       settings.arguments as MyOrdersDataModel;
-      //   return MaterialPageRoute(
-      //     builder: (_) => CheckOutPage(
-      //       myOrdersData: myordersData,
-      //     ),
-      //   );
+
       case "checkOut":
         final MyOrdersDataModel myordersData =
             settings.arguments as MyOrdersDataModel;
@@ -111,6 +108,7 @@ class MyGenerateRoute {
             ),
           ),
         );
+
       case 'orderDetailsPage':
         final Map<String, dynamic> args =
             settings.arguments as Map<String, dynamic>;
@@ -125,12 +123,14 @@ class MyGenerateRoute {
               data: myordersData,
               status: status,
             ));
+
       case 'WishListPage':
         return CustomPageTransition(
             curves: Curves.easeInOutCirc,
             dx: 1.0,
             dy: 0.0,
             child: const WishListPage());
+
       case 'productFeedbackPage':
         return CustomPageTransition(
             //for bottom up transition
@@ -138,6 +138,7 @@ class MyGenerateRoute {
             dy: 1.0,
             curves: Curves.fastOutSlowIn,
             child: const ProductFeedBackPage());
+            
       default:
         return _errorRoute();
     }
@@ -156,14 +157,3 @@ class MyGenerateRoute {
     });
   }
 }
-
-// return PageRouteBuilder(
-//           pageBuilder: (context, animation, secondaryAnimation) =>
-//               const MyOrdersPage(),
-//           transitionsBuilder: (context, animation, secondaryAnimation, child) {
-//             return FadeTransition(
-//               opacity: animation,
-//               child: child,
-//             );
-//           },
-//         );

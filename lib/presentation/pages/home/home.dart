@@ -165,7 +165,7 @@ class _HomePageState extends State<HomePage> {
               ]),
             );
           default:
-            return const SizedBox(); // Return a default widget
+            return const SizedBox();
         }
       },
     );

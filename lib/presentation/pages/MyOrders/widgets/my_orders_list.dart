@@ -12,7 +12,6 @@ class OrdersList extends StatelessWidget {
     final double screenWidth = MediaQuery.of(context).size.width;
     final double screenHeight = MediaQuery.of(context).size.height;
     return Column(
-      // mainAxisAlignment: MainAxisAlignment.center,
       children: [
         items.isEmpty
             ? SizedBox(

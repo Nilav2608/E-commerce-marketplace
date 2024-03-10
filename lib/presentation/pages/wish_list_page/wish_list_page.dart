@@ -35,8 +35,6 @@ class _WishListPageState extends State<WishListPage> {
              Navigator.of(context).pushNamed(
                 "productDetails",
                 arguments: productState.productDataModel);
-            // wishListPageBloc.add(RemoveItemFromWishListEvent(
-            //     productDataModel: productState.productDataModel));
 
             break;
           default:
@@ -151,10 +149,9 @@ class _WishListPageState extends State<WishListPage> {
                               const SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2,
                             childAspectRatio: 3 / 5,
-                            crossAxisSpacing: 4.0, // Adjust spacing as needed
+                            crossAxisSpacing: 4.0, 
                             mainAxisSpacing: 4.0,
                           ),
-                          // Assign scrollController here
 
                           itemBuilder: (context, index) {
                             var data =

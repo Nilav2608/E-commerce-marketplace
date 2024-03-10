@@ -44,13 +44,8 @@ class AuthPageBloc extends Bloc<AuthPageEvent, AuthPageState> {
     var responseMessage = results['message'];
     var responseStatus = results['status'];
     if (results['status']) {
-      //get the token
        rawToken = results['token'];
-      // assign it to the prefs string token
       prefs.setString('token', rawToken);
-      // Map<String, dynamic> decodedToken = JwtDecoder.decode(rawToken);
-      // String id = decodedToken['_id'];
-      // String email = decodedToken['email'];
       //emit snackbar
       emit(ShowSnackBarActionState(
           message: responseMessage, status: responseStatus));

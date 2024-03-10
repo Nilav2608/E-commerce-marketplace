@@ -18,7 +18,6 @@ class CountryPicker extends StatelessWidget {
       child: CSCPicker(
         layout: Layout.vertical,
         flagState: CountryFlag.DISABLE,
-        // dropdownHeadingStyle: const TextStyle(color: Color(0xff777E90)),
         dropdownDecoration: const BoxDecoration(
             border: Border(
                 bottom: BorderSide(width: 0.8, color: Color(0xff000000)))),

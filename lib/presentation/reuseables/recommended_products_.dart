@@ -46,7 +46,6 @@ class RecomendedTileWidget extends StatelessWidget {
       padding: const EdgeInsets.only(left: 20),
       child: Container(
           width: 213,
-          // height: 66,
           decoration: BoxDecoration(
             color: const Color.fromARGB(26, 251, 251, 251),
             border: Border.all(width: 2.0, color: const Color(0xffF9F9F9)),
@@ -81,7 +80,6 @@ class RecomendedTileWidget extends StatelessWidget {
                   Text(
                     "\$${list.price ?? ""}",
                     style: const TextStyle(
-                        // fontWeight: FontWeight.w800,
                         fontSize: 18,
                         color: Color(0xff1D1F22)),
                   )
@@ -94,12 +92,3 @@ class RecomendedTileWidget extends StatelessWidget {
 }
 
 
-
-// [
-//       BoxShadow(
-//         color: Colors.grey, // Shadow color
-//         offset: Offset(0, 4), // Offset of the shadow (horizontal, vertical)
-//         blurRadius: 5, // Spread of the shadow
-//         spreadRadius: 0, // Optional: Spread the shadow
-//       ),
-//     ],

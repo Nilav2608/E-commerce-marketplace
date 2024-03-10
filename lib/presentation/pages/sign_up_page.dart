@@ -15,13 +15,6 @@ TextEditingController _passwordController = TextEditingController();
 TextEditingController _confirmPasswordController = TextEditingController();
 
 class _SignUpPageState extends State<SignUpPage> {
-  // @override
-  // void dispose() {
-  //   _nameController.dispose();
-  //   _emailController.dispose();
-  //   _passwordController.dispose();
-  //   super.dispose();
-  // }
 
   final formKey = GlobalKey<FormState>();
 
@@ -175,9 +168,6 @@ class _SignUpPageState extends State<SignUpPage> {
                           ),
                           onPressed: () {
                             if (formKey.currentState!.validate()) {
-                              // ScaffoldMessenger.of(context).showSnackBar(
-                              //     const SnackBar(
-                              //         content: Text("Submitting form")));
                               widget.bloc.add(AuthPageSignUpEvent(
                                   username: _nameController.text,
                                   email: _emailController.text,

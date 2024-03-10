@@ -7,8 +7,7 @@ class ProductFeedBackPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // ignore: unused_local_variable
-    double userRating = 0;
+    // double userRating = 0;
 
     return Scaffold(
       appBar: AppBar(
@@ -69,7 +68,7 @@ class ProductFeedBackPage extends StatelessWidget {
                       );
                     },
                     onRatingUpdate: (rating) {
-                      userRating = rating;
+                      // userRating = rating;
                     }),
               ),
               Container(

@@ -41,11 +41,6 @@ class _CartPageState extends State<CartPage> {
       listenWhen: (previous, current) => current is CartPageActionState,
       buildWhen: (previous, current) => current is! CartPageActionState,
       listener: (BuildContext context, CartPageState state) {
-        // if (state is CartPageLoadingState) {
-        //   const Center(
-        //     child: CircularProgressIndicator(),
-        //   );
-        // }
       },
       builder: (context, state) {
         switch (state.runtimeType) {
@@ -190,8 +185,6 @@ class _CartPageState extends State<CartPage> {
                                     } else {
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(const SnackBar(
-                                              // margin: EdgeInsets.only(bottom: 100),
-                                              // padding: EdgeInsets.all(10),
                                               duration:
                                                   Duration(milliseconds: 1000),
                                               behavior:
@@ -224,7 +217,6 @@ class _CartPageState extends State<CartPage> {
                       padding: const EdgeInsets.all(8.0),
                       child: Column(
                         children: [
-                          // Cart_Product_Tile()
                           Expanded(
                             child: ListView.builder(
                               physics: const BouncingScrollPhysics(),

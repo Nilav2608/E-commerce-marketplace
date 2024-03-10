@@ -4,15 +4,10 @@ import 'package:carousel_indicator/carousel_indicator.dart';
 
 import '../../../../models/banners_data_model.dart';
 
-// ignore: must_be_immutable
 class CurosalSliderWidget extends StatefulWidget {
-  // final double contentWidth;
-  // final double contentHeight;
   final List<BannersDataModel> banners;
   const CurosalSliderWidget({
     super.key, required this.banners,
-    //  required this.contentWidth,
-    // required this.contentHeight
   });
 
   @override
@@ -27,9 +22,7 @@ class _CurosalSliderWidgetState extends State<CurosalSliderWidget> {
     final double screenWidth = MediaQuery.of(context).size.width;
     return Container(
       width: screenWidth,
-      // height: 174,
       decoration: BoxDecoration(
-          // color: Colors.grey.shade600,
           borderRadius: BorderRadius.circular(15)),
       child: Stack(children: [
         ClipRRect(

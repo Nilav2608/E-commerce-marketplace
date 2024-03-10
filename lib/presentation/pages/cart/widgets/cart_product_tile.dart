@@ -92,14 +92,6 @@ class CartProductTile extends StatelessWidget {
                             ),
                             Checkbox(
                               value: data.selected ?? false,
-                              // ignore: unnecessary_null_comparison
-
-                              // onChanged: onCheckBoxChanged != null
-                              //     ? (bool? value) {
-                              //         onCheckBoxChanged!(value ?? false);
-                              //       }
-                              //     : null,
-
                               onChanged: (bool? value) {
                                 onCheckBoxChanged!(value ?? false);
                               },
