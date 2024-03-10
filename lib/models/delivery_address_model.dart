@@ -4,7 +4,7 @@ class DeliveryAddress {
   String? state;
   String? postalCode;
   String? country;
-  String? phoneNumber; // Added phone number field
+  String? phoneNumber;
 
   DeliveryAddress({
     this.street,
@@ -21,7 +21,7 @@ class DeliveryAddress {
     state = json['state'];
     postalCode = json['postalCode'];
     country = json['country'];
-    phoneNumber = json['phoneNumber']; // Retrieve phone number from JSON
+    phoneNumber = json['phoneNumber'];
   }
 
   Map<String, dynamic> toJson() {
@@ -31,7 +31,7 @@ class DeliveryAddress {
     data['state'] = state;
     data['postalCode'] = postalCode;
     data['country'] = country;
-    data['phoneNumber'] = phoneNumber; // Include phone number in JSON
+    data['phoneNumber'] = phoneNumber;
     return data;
   }
 }
