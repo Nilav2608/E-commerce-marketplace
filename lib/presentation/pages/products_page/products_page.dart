@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shimmer/shimmer.dart';
-
 import '../../reuseables/collections_list_tile.dart';
 import '../wish_list_page/bloc/wish_list_page_bloc.dart';
 import 'bloc/products_page_bloc.dart';
@@ -27,7 +26,6 @@ class _ProductsPageState extends State<ProductsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          // centerTitle: true,
           title: const Text("Products",
               style: TextStyle(
                   color: Colors.black,
@@ -44,91 +42,8 @@ class _ProductsPageState extends State<ProductsPage> {
             builder: (BuildContext context, ProductsPageState state) {
               switch (state.runtimeType) {
                 case ProductPageLoadingState:
-                   return GridView.builder(
-                    itemCount: 8,
-                    scrollDirection: Axis.vertical,
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      childAspectRatio: 3 / 5,
-                      crossAxisSpacing:7 , // Adjust spacing as needed
-                      mainAxisSpacing: 8,
-                    ),
-                    itemBuilder: (context, index) {
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 18.0, vertical: 5),
-                        child:  Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(8),
-                          child: Shimmer.fromColors(
-                            baseColor: Colors.grey[200]!,
-                            highlightColor: Colors.grey[100]!,
-                            child: Container(
-                              width: 141,
-                              height: 186,
-                              decoration: BoxDecoration(
-                                color: Colors.grey[200],
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                            ),
-                          ),
-                        ),
-                        const SizedBox(height: 5),
-                        Shimmer.fromColors(
-                          baseColor: Colors.grey[200]!,
-                          highlightColor: Colors.grey[100]!,
-                          child: Container(
-                            width: 100,
-                            height: 14,
-                            decoration: BoxDecoration(
-                              color: Colors.grey[200],
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 5,
-                        ),
-                        Shimmer.fromColors(
-                          baseColor: Colors.grey[200]!,
-                          highlightColor: Colors.grey[100]!,
-                          child: Container(
-                            width: 56,
-                            height: 18,
-                            decoration: BoxDecoration(
-                              color: Colors.grey[200],
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 5,
-                        ),
-                        Shimmer.fromColors(
-                          baseColor: Colors.grey[200]!,
-                          highlightColor: Colors.grey[100]!,
-                          child: Container(
-                            width: 120,
-                            height: 18,
-                            decoration: BoxDecoration(
-                              color: Colors.grey[200],
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                      );
-                    },
-                  );
-                  
-                case ProductPageSuccessState:
-                  final successData = state as ProductPageSuccessState;
                   return GridView.builder(
-                    itemCount: successData.products.length,
+                    itemCount: 8,
                     scrollDirection: Axis.vertical,
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
@@ -136,6 +51,88 @@ class _ProductsPageState extends State<ProductsPage> {
                       childAspectRatio: 3 / 5,
                       crossAxisSpacing: 8, // Adjust spacing as needed
                       mainAxisSpacing: 8,
+                    ),
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 18.0, vertical: 5),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(8),
+                              child: Shimmer.fromColors(
+                                baseColor: Colors.grey[200]!,
+                                highlightColor: Colors.grey[100]!,
+                                child: Container(
+                                  width: 141,
+                                  height: 186,
+                                  decoration: BoxDecoration(
+                                    color: Colors.grey[200],
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            const SizedBox(height: 5),
+                            Shimmer.fromColors(
+                              baseColor: Colors.grey[200]!,
+                              highlightColor: Colors.grey[100]!,
+                              child: Container(
+                                width: 100,
+                                height: 14,
+                                decoration: BoxDecoration(
+                                  color: Colors.grey[200],
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            Shimmer.fromColors(
+                              baseColor: Colors.grey[200]!,
+                              highlightColor: Colors.grey[100]!,
+                              child: Container(
+                                width: 56,
+                                height: 18,
+                                decoration: BoxDecoration(
+                                  color: Colors.grey[200],
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            Shimmer.fromColors(
+                              baseColor: Colors.grey[200]!,
+                              highlightColor: Colors.grey[100]!,
+                              child: Container(
+                                width: 120,
+                                height: 18,
+                                decoration: BoxDecoration(
+                                  color: Colors.grey[200],
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                  );
+
+                case ProductPageSuccessState:
+                  final successData = state as ProductPageSuccessState;
+                  return GridView.builder(
+                    itemCount: successData.products.length,
+                    scrollDirection: Axis.vertical,
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      childAspectRatio: 3 / 5,
+                      crossAxisSpacing: 8,//calculateSpacing(context),
+                      mainAxisSpacing: 8,//calculateSpacing(context),
                     ),
                     itemBuilder: (context, index) {
                       var data = successData.products[index];
