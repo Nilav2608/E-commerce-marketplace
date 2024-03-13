@@ -55,20 +55,19 @@ class _CollectionsListTileState extends State<CollectionsListTile> {
                         return child;
                       } else {
                         return ClipRRect(
-                          borderRadius: BorderRadius.circular(8),
-                          child: Shimmer.fromColors(
-                            baseColor: Colors.grey[200]!,
-                            highlightColor: Colors.grey[100]!,
-                            child: Container(
-                              width: 141,
-                              height: 186,
-                              decoration: BoxDecoration(
-                                color: Colors.grey[200],
-                                borderRadius: BorderRadius.circular(8),
+                            borderRadius: BorderRadius.circular(8),
+                            child: Shimmer.fromColors(
+                              baseColor: Colors.grey[200]!,
+                              highlightColor: Colors.grey[100]!,
+                              child: Container(
+                                width: 141,
+                                height: 186,
+                                decoration: BoxDecoration(
+                                  color: Colors.grey[200],
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
                               ),
-                            ),
-                          ));
-                        
+                            ));
                       }
                     },
                   ),
