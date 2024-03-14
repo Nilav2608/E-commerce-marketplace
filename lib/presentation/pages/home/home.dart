@@ -114,8 +114,10 @@ class _HomePageState extends State<HomePage> {
                     Padding(
                       padding: EdgeInsets.symmetric(
                           horizontal: hori, vertical: vert),
-                      child: const RowHeadsSeeMore(
-                          text1: "Recommended", text2: "Show all"),
+                      child:  RowHeadsSeeMore(
+                          text1: "Recommended", text2: "Show all",
+                          onTapseeMore: ()=>  Navigator.of(context).pushNamed("productsPage"),
+                          ),
                     ),
                     RecomendedProductsListTile(
                       recomenedItemsData: successState.loadedProductsList,
@@ -123,34 +125,42 @@ class _HomePageState extends State<HomePage> {
                     Padding(
                       padding: EdgeInsets.symmetric(
                           horizontal: hori, vertical: vert),
-                      child: const RowHeadsSeeMore(
-                          text1: "Top Collection", text2: "Show all"),
+                      child:  RowHeadsSeeMore(
+                          text1: "Top Collection", text2: "Show all",
+                          onTapseeMore: ()=>  Navigator.of(context).pushNamed("productsPage"),
+                          ),
                     ),
                     Padding(
                       padding: EdgeInsets.symmetric(
                           horizontal: hori, vertical: vert),
-                      child: const BannerCards(
-                          height: 158,
-                          top: 20,
+                      child: InkWell(
+                        onTap: ()=>  Navigator.of(context).pushNamed("productsPage"),
+                        child: const BannerCards(
+                            height: 158,
+                            top: 20,
+                            left: 20,
+                            right: 10,
+                            bottom: 10,
+                            liteText: "| SALE UPTO 40%",
+                            mainText: "FOR SLIM & BEAUTY",
+                            imagePath: "assets/images/yellow.png"),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: hori, vertical: vert),
+                      child: InkWell(
+                        onTap: ()=>  Navigator.of(context).pushNamed("productsPage"),
+                        child: const BannerCards(
+                          height: 210,
+                          top: 35,
                           left: 20,
-                          right: 10,
+                          right: 0,
                           bottom: 10,
-                          liteText: "| SALE UPTO 40%",
-                          mainText: "FOR SLIM & BEAUTY",
-                          imagePath: "assets/images/yellow.png"),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: hori, vertical: vert),
-                      child: const BannerCards(
-                        height: 210,
-                        top: 35,
-                        left: 20,
-                        right: 0,
-                        bottom: 10,
-                        liteText: "| WINTER COLLECTION ",
-                        mainText: "Most sexy & fabulous design ",
-                        imagePath: "assets/images/coatNew.png",
+                          liteText: "| WINTER COLLECTION ",
+                          mainText: "Most sexy & fabulous design ",
+                          imagePath: "assets/images/coatNew.png",
+                        ),
                       ),
                     ),
                     Padding(
