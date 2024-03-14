@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluxestore/models/user_data_model.dart';
+import 'package:toastification/toastification.dart';
+import 'package:url_launcher/url_launcher.dart';
 // import 'package:sliding_switch/sliding_switch.dart';
 
 import '../../../../utils/icons_constants/primary_icons_icons.dart';
@@ -17,6 +19,19 @@ bool switchOn = false;
 class _HomeDrawerState extends State<HomeDrawer> {
   Color buttonColor =
       switchOn ? const Color(0xff23262F) : const Color(0xffFCFCFC);
+  final repoUrl = Uri.parse("https://github.com/Nilav2608");    
+
+   showUnableToLaunchUtlError() {
+    toastification.show(
+        context: context,
+        title: const Text("An Error occurd!"),
+        type: ToastificationType.error,
+        style: ToastificationStyle.fillColored,
+        animationDuration: const Duration(milliseconds: 600),
+        autoCloseDuration: const Duration(milliseconds: 4500),
+        showProgressBar: false,
+        alignment: Alignment.bottomCenter);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -96,15 +111,25 @@ class _HomeDrawerState extends State<HomeDrawer> {
               // tileColor: Colors.black,
             ),
           ),
-          const Padding(
-            padding: EdgeInsets.all(10),
-            child: ListTile(
-              leading: Icon(Icons.announcement_rounded),
-              title: Text("About Us",
-                  style: TextStyle(
-                      color: Color.fromARGB(255, 92, 98, 111),
-                      fontWeight: FontWeight.w700)),
-              // tileColor: Colors.black,
+           Padding(
+            padding: const EdgeInsets.all(10),
+            child: InkWell(
+              onTap: () async{
+                 if (await canLaunchUrl(repoUrl)) {
+                        await launchUrl(repoUrl);
+                      } else {
+                        showUnableToLaunchUtlError();
+                        throw throw Exception('Could not launch $repoUrl');
+                      }
+              },
+              child: const ListTile(
+                leading: Icon(Icons.announcement_rounded),
+                title: Text("About Us",
+                    style: TextStyle(
+                        color: Color.fromARGB(255, 92, 98, 111),
+                        fontWeight: FontWeight.w700)),
+                // tileColor: Colors.black,
+              ),
             ),
           ),
           const SizedBox(
