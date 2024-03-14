@@ -41,7 +41,6 @@ class MyOrdersPageBloc extends Bloc<OrdersPageEvent, MyOrdersPageState> {
           default:
         }
       }
-      await Future.delayed(const Duration(seconds: 2));
       emit(OrdersPageSuccessState(
           pendingOrders: pendingList,
           deliveredOrders: deliveredList,

@@ -31,6 +31,7 @@
             android:value="2" />
     </application>
     <uses-permission android:name = "android.permission.Internet" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <queries>
     <!-- checks for SMS support -->
      <intent>
