@@ -4,6 +4,7 @@ import 'package:fluxestore/presentation/authentication/bloc/auth_page_bloc.dart'
 import 'package:fluxestore/presentation/landing_page/landing_page.dart';
 import 'package:fluxestore/presentation/pages/login_page.dart';
 import 'package:fluxestore/presentation/pages/sign_up_page.dart';
+import 'package:fluxestore/utils/dialogs/loading_dialog.dart';
 import 'package:toastification/toastification.dart';
 
 class AuthenticationPage extends StatefulWidget {
@@ -15,6 +16,7 @@ class AuthenticationPage extends StatefulWidget {
 
 class _AuthenticationPageState extends State<AuthenticationPage> {
   final AuthPageBloc authPagebloc = AuthPageBloc();
+  CloseDialog? _closeDialogHandle;
   @override
   void initState() {
     authPagebloc.add(AuthPageInitailEvent());
@@ -31,7 +33,7 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
         switch (state.runtimeType) {
           case ShowSnackBarActionState:
             final snackBarState = state as ShowSnackBarActionState;
-          
+
             if (snackBarState.status == true) {
               toastification.show(
                   context: context,
@@ -56,15 +58,13 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
 
             break;
           case AuthenticationLoadingState:
-            if (!(state is! RegistrationSuccessState ||
-                state is! AuthenticationSuccesState)) {
-              showDialog(
-                  context: context,
-                  builder: (context) => const Center(
-                        child: CircularProgressIndicator(
-                          color: Colors.black54,
-                        ),
-                      ));
+            final currentState = state as AuthenticationLoadingState;
+            final closeDialog = _closeDialogHandle;
+            if (!currentState.isLoading && closeDialog != null) {
+              closeDialog();
+              _closeDialogHandle = null;
+            } else if (currentState.isLoading && closeDialog == null) {
+              _closeDialogHandle = showLoadingDialog(context: context);
             }
             break;
         }

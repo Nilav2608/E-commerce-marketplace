@@ -5,25 +5,30 @@ sealed class OrderDetailsPageState {}
 
 final class OrderDetailsPageInitial extends OrderDetailsPageState {}
 
-abstract class OrderDetailsPageActionState extends OrderDetailsPageState{}
+abstract class OrderDetailsPageActionState extends OrderDetailsPageState {}
 
-class ShowLoadingActionState extends OrderDetailsPageActionState{}
+class ShowLoadingActionState extends OrderDetailsPageActionState {
+  final bool isLoading;
 
-class ShowConfirmationDialogActionState extends OrderDetailsPageActionState{
-    final String userId;
-  final String orderId;
-
-  ShowConfirmationDialogActionState({required this.userId, required this.orderId});
+  ShowLoadingActionState({required this.isLoading});
 }
 
-class PendingOrdersDetailsState extends OrderDetailsPageState{}
+class ShowConfirmationDialogActionState extends OrderDetailsPageActionState {
+  final String userId;
+  final String orderId;
 
-class DeliveredOrdersDetailsState extends OrderDetailsPageState{}
+  ShowConfirmationDialogActionState(
+      {required this.userId, required this.orderId});
+}
 
-class CancelledOrdersDetailsState extends OrderDetailsPageState{}
+class PendingOrdersDetailsState extends OrderDetailsPageState {}
 
-class CancellationSuccessActionState extends OrderDetailsPageActionState{
-   final String message;
+class DeliveredOrdersDetailsState extends OrderDetailsPageState {}
+
+class CancelledOrdersDetailsState extends OrderDetailsPageState {}
+
+class CancellationSuccessActionState extends OrderDetailsPageActionState {
+  final String message;
 
   CancellationSuccessActionState({required this.message});
 }

@@ -5,6 +5,7 @@ import 'package:fluxestore/constants/constants.dart';
 import 'package:fluxestore/enums/delivarystatus.enum.dart';
 import 'package:fluxestore/models/my_orders_data_model.dart';
 import 'package:fluxestore/presentation/reuseables/bill_details.dart';
+import 'package:fluxestore/utils/dialogs/loading_dialog.dart';
 import 'package:lottie/lottie.dart';
 
 import 'widgets/conformation_dialog.dart';
@@ -21,7 +22,7 @@ class OrderDetailsPage extends StatefulWidget {
 
 class _OrderDetailsPageState extends State<OrderDetailsPage> {
   final OrderDetailsPageBloc orderDetailsPageBloc = OrderDetailsPageBloc();
-
+  CloseDialog? _closeDialogHandler;
   @override
   void initState() {
     super.initState();
@@ -41,6 +42,15 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
       listenWhen: (previous, current) => current is OrderDetailsPageActionState,
       buildWhen: (previous, current) => current is! OrderDetailsPageActionState,
       listener: (context, state) {
+        if (state is ShowLoadingActionState) {
+          final closeDialog = _closeDialogHandler;
+          if (!state.isLoading && closeDialog != null) {
+            closeDialog();
+            _closeDialogHandler = null;
+          } else if (state.isLoading && closeDialog == null) {
+            _closeDialogHandler = showLoadingDialog(context: context);
+          }
+        }
         if (state is ShowConfirmationDialogActionState) {
           showDialog(
               context: context,

@@ -22,7 +22,11 @@ class ShowSnackBarActionState extends AuthPageActionState {
 
 class RegisterationLoadingState extends AuthPageActionState {}
 
-class AuthenticationLoadingState extends AuthPageActionState {}
+class AuthenticationLoadingState extends AuthPageActionState {
+  final bool isLoading;
+
+  AuthenticationLoadingState({required this.isLoading});
+}
 
 class RegistrationSuccessState extends AuthPageState {}
 

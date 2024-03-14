@@ -37,7 +37,7 @@ class AuthPageBloc extends Bloc<AuthPageEvent, AuthPageState> {
 
   FutureOr<void> authPageLogInEvent(
       AuthPageLogInEvent event, Emitter<AuthPageState> emit) async {
-        emit(AuthenticationLoadingState());
+        emit(AuthenticationLoadingState(isLoading: true));
     late SharedPreferences prefs;
     prefs = await SharedPreferences.getInstance();
     var results = await AuthRepository().login(event.email, event.password);
@@ -46,12 +46,14 @@ class AuthPageBloc extends Bloc<AuthPageEvent, AuthPageState> {
     if (results['status']) {
        rawToken = results['token'];
       prefs.setString('token', rawToken);
+      emit(AuthenticationLoadingState(isLoading: false));
       //emit snackbar
       emit(ShowSnackBarActionState(
           message: responseMessage, status: responseStatus));
       //emit landing page
       emit(AuthenticationSuccesState(token: rawToken));
     } else {
+      emit(AuthenticationLoadingState(isLoading: false));
       emit(ShowSnackBarActionState(
           message: responseMessage, status: responseStatus));
     }
@@ -59,7 +61,7 @@ class AuthPageBloc extends Bloc<AuthPageEvent, AuthPageState> {
 
   FutureOr<void> authPageSignUpEvent(
       AuthPageSignUpEvent event, Emitter<AuthPageState> emit) async {
-    emit(AuthenticationLoadingState());
+    emit(AuthenticationLoadingState(isLoading: true));
     var results = await AuthRepository()
         .register(event.username, event.email, event.password);
     var responseMessage = results['message'];
@@ -67,7 +69,7 @@ class AuthPageBloc extends Bloc<AuthPageEvent, AuthPageState> {
     if (responseStatus) {
       emit(ShowSnackBarActionState(
           message: responseMessage, status: responseStatus));
-      emit(RegisterationLoadingState());
+       emit(AuthenticationLoadingState(isLoading: false));
       emit(ShowLoginPagePageState());
     }
   }
