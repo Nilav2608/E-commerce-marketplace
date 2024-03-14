@@ -53,6 +53,7 @@ class _HomePageState extends State<HomePage> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
+                            //It will be functionable on next update
                             CircleTab(
                               icon: PrimaryIcons.vector,
                               isSelected: true,
