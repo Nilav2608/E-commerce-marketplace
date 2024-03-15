@@ -54,11 +54,12 @@ class CanformationDialog extends StatelessWidget {
               height: 10,
             ),
             const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 12.0),
+              padding: EdgeInsets.symmetric(horizontal: 14.0),
               child: SizedBox(
                 width: 260,
                 child: Text(
                   "This order will be cancelled and refund will be initiated!",
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Color(0xff8D8E98),
                     fontSize: 12,

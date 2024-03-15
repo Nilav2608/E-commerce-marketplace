@@ -4,9 +4,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluxestore/constants/constants.dart';
 import 'package:fluxestore/enums/delivarystatus.enum.dart';
 import 'package:fluxestore/models/my_orders_data_model.dart';
+import 'package:fluxestore/presentation/pages/OrderDetails/widgets/cancellation_success_dialog.dart';
 import 'package:fluxestore/presentation/reuseables/bill_details.dart';
 import 'package:fluxestore/utils/dialogs/loading_dialog.dart';
-import 'package:lottie/lottie.dart';
 
 import 'widgets/conformation_dialog.dart';
 import 'bloc/order_details_page_bloc.dart';
@@ -65,37 +65,9 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
         if (state is CancellationSuccessActionState) {
           showDialog(
               context: context,
-              builder: (context) => Dialog(
-                    elevation: 0,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10)),
-                    backgroundColor: Colors.white,
-                    child: SizedBox(
-                      height: 200,
-                      child: Column(
-                        children: [
-                          Expanded(
-                            child: Lottie.asset(
-                                "assets/lottie/cancel-confirmed.json",
-                                height: 100,
-                                repeat: false),
-                          ),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                                "Order ID ${widget.data.orderID} is cancelled!",
-                                style: const TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w700)),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ));
+              barrierDismissible: false,
+              builder: (context) => CancellationSuccessDialog(orderId: widget.data.orderID.toString())
+                  );
           orderDetailsPageBloc.add(
               OrderDetailsPageInitialEvent(status: DeliveryStatus.cancelled));
         }
