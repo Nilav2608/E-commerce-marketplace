@@ -102,7 +102,7 @@ class _ShippingAddressSectionState extends State<ShippingAddressSection> {
                             color: Colors.red), // Color of the asterisk
                         focusedBorder: UnderlineInputBorder(
                           borderSide: BorderSide(
-                              color: Colors.black), // Adjust border color
+                              color: Colors.black), 
                         ),
                       ),
                       validator: (value) {
@@ -127,12 +127,12 @@ class _ShippingAddressSectionState extends State<ShippingAddressSection> {
                             fontSize: 14,
                             fontWeight: FontWeight.w400,
                           ),
-                          suffixText: "*", // Asterisk as suffix text
+                          suffixText: "*",
                           suffixStyle: TextStyle(
-                              color: Colors.red), // Color of the asterisk
+                              color: Colors.red), 
                           focusedBorder: UnderlineInputBorder(
                             borderSide: BorderSide(
-                                color: Colors.black), // Adjust border color
+                                color: Colors.black), 
                           ),
                         ),
                         validator: (value) {
@@ -157,12 +157,12 @@ class _ShippingAddressSectionState extends State<ShippingAddressSection> {
                             fontSize: 14,
                             fontWeight: FontWeight.w400,
                           ),
-                          suffixText: "*", // Asterisk as suffix text
+                          suffixText: "*", 
                           suffixStyle: TextStyle(
-                              color: Colors.red), // Color of the asterisk
+                              color: Colors.red), 
                           focusedBorder: UnderlineInputBorder(
                             borderSide: BorderSide(
-                                color: Colors.black), // Adjust border color
+                                color: Colors.black), 
                           ),
                         ),
                         validator: (value) {
@@ -187,15 +187,14 @@ class _ShippingAddressSectionState extends State<ShippingAddressSection> {
                         decoration: const InputDecoration(
                           hintText: "Zip code *",
                           focusColor: Colors.black,
-                          // border: OutlineInputBorder(borderSide: BorderSide(color: Color(0xffF1F2F3))),
                           hintStyle: TextStyle(
                             color: Color(0xff777E90),
                             fontSize: 14,
                             fontWeight: FontWeight.w400,
                           ),
-                          suffixText: "*", // Asterisk as suffix text
+                          suffixText: "*", 
                           suffixStyle: TextStyle(
-                              color: Colors.red), // Color of the asterisk
+                              color: Colors.red), 
                           focusedBorder: UnderlineInputBorder(
                             borderSide: BorderSide(color: Colors.black),
                           ),
@@ -222,9 +221,9 @@ class _ShippingAddressSectionState extends State<ShippingAddressSection> {
                             fontSize: 14,
                             fontWeight: FontWeight.w400,
                           ),
-                          suffixText: "*", // Asterisk as suffix text
+                          suffixText: "*", 
                           suffixStyle: TextStyle(
-                              color: Colors.red), // Color of the asterisk
+                              color: Colors.red), 
                           focusedBorder: UnderlineInputBorder(
                             borderSide: BorderSide(color: Colors.black),
                           ),
@@ -264,7 +263,6 @@ class _ShippingAddressSectionState extends State<ShippingAddressSection> {
                         selectedRadioFunc(val);
                       },
                       title: const Row(
-                        // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Text("Free",
                               style: TextStyle(
