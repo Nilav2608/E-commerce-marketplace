@@ -26,15 +26,16 @@ class CheckOutPageBloc extends Bloc<CheckOutPageEvent, CheckOutPageState> {
 
   Future<FutureOr<void>> checkOutPaymentEvent(
       CheckOutPagePaymentEvent event, Emitter<CheckOutPageState> emit) async {
-    emit(PageLoadingDialogActionState());
+    emit(PageLoadingDialogActionState(isLoading:true));
     await Future.delayed(const Duration(seconds: 1));
+     emit(PageLoadingDialogActionState(isLoading:false));
     emit(PaymentPageState(
         subTotal: event.subTotal, address: event.addressData));
   }
 
   FutureOr<void> checkOutPagePlaceOrderEvent(CheckOutPagePlaceOrderEvent event,
       Emitter<CheckOutPageState> emit) async {
-    emit(PageLoadingDialogActionState());
+    emit(PageLoadingDialogActionState(isLoading:true));
 
     event.dataModel.deliveryAddress = event.addressData;
     event.dataModel.paymentMethod = event.paymentMode;
@@ -44,12 +45,16 @@ class CheckOutPageBloc extends Bloc<CheckOutPageEvent, CheckOutPageState> {
     var results = await OrdersRepository().newOrder(event.dataModel);
     await Future.delayed(const Duration(seconds: 2));
     if (results['status']) {
+      emit(PageLoadingDialogActionState(isLoading:false));
       emit(PaymentCompletedState());
     }
   }
 
   FutureOr<void> navigateBackToHomePageEvent(NavigateBackToHomePageEvent event,
       Emitter<CheckOutPageState> emit) async {
+    emit(PageLoadingDialogActionState(isLoading:true));
+    await Future.delayed(const Duration(seconds: 1));
+     emit(PageLoadingDialogActionState(isLoading:false));    
     emit(NavigateTohomePageActionState());
   }
 }
