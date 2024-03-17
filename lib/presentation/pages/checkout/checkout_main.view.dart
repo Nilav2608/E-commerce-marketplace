@@ -5,6 +5,7 @@ import 'package:fluxestore/presentation/pages/checkout/PaymentSection.view.dart'
 import 'package:fluxestore/presentation/pages/checkout/ShippingAddressSection.view.dart';
 import 'package:lottie/lottie.dart';
 import 'package:toastification/toastification.dart';
+import '../../../utils/dialogs/loading_dialog.dart';
 import 'bloc/check_out_page_bloc.dart';
 import 'widgets/checkout_status_items.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,6 +20,8 @@ class CheckOutPage extends StatefulWidget {
 
 class _CheckOutPageState extends State<CheckOutPage> {
   late final CheckOutPageBloc checkOutPageBloc;
+
+  CloseDialog? _closeDialogHandler;
   @override
   void initState() {
     super.initState();
@@ -59,39 +62,20 @@ class _CheckOutPageState extends State<CheckOutPage> {
         bloc: checkOutPageBloc,
         listener: (context, state) {
           switch (state.runtimeType) {
-            //   case NavigateTohomePageActionState:
-            //     Navigator.popAndPushNamed(context, '/');
+            case NavigateTohomePageActionState:
+              Navigator.of(context).pop();
+              Navigator.of(context).pushNamedAndRemoveUntil(
+                  '/', (Route<dynamic> route) => false);
 
-            // case PageLoadingDialogActionState:
-            //   if (!(state is! PaymentPageState &&
-            //       state is! PaymentCompletedState)) {
-            //     showDialog(
-            //         context: context,
-            //         builder: (context) {
-            //           return Dialog(
-            //             elevation: 0,
-            //             shape: RoundedRectangleBorder(
-            //                 borderRadius: BorderRadius.circular(10)),
-            //             backgroundColor: Colors.white,
-            //             child: Container(
-            //               height: 200,
-            //               color: Colors.white,
-            //               child: const Column(
-            //                 mainAxisSize: MainAxisSize.min,
-            //                 crossAxisAlignment: CrossAxisAlignment.center,
-            //                 children: [
-            //                   CircularProgressIndicator(),
-            //                   SizedBox(height: 16),
-            //                   Text(
-            //                     'Placing your order...',
-            //                     style: TextStyle(fontSize: 16),
-            //                   ),
-            //                 ],
-            //               ),
-            //             ),
-            //           );
-            //         });
-            //   }
+            case PageLoadingDialogActionState:
+              final currentState = state as PageLoadingDialogActionState;
+              final closeDialog = _closeDialogHandler;
+              if (!currentState.isLoading && closeDialog != null) {
+                closeDialog();
+                _closeDialogHandler = null;
+              } else if (currentState.isLoading && closeDialog == null) {
+                _closeDialogHandler = showLoadingDialog(context: context);
+              }
           }
         },
         builder: (context, state) {
@@ -118,9 +102,6 @@ class _CheckOutPageState extends State<CheckOutPage> {
                         checkOutPageBloc.add(CheckOutPagePaymentEvent(
                             subTotal: widget.myOrdersData.subTotal!,
                             addressData: deliveryAddress));
-                        // ScaffoldMessenger.of(context).showSnackBar(
-                        //     const SnackBar(
-                        //         content: Text("Submitting form")));
                       }
                     },
                   )
@@ -155,7 +136,7 @@ class _CheckOutPageState extends State<CheckOutPage> {
                             title: const Text(
                                 "Please verify terms and conditions to proceed!"),
                             type: ToastificationType.error,
-                            backgroundColor: const Color(0xFFFF8080) ,
+                            backgroundColor: const Color(0xFFFF8080),
                             style: ToastificationStyle.fillColored,
                             animationDuration:
                                 const Duration(milliseconds: 600),
@@ -220,8 +201,8 @@ class _CheckOutPageState extends State<CheckOutPage> {
                           width: double.infinity,
                           child: ElevatedButton(
                               onPressed: () {
-                                Navigator.of(context).pushNamedAndRemoveUntil(
-                                    '/', (Route<dynamic> route) => false);
+                                checkOutPageBloc
+                                    .add(NavigateBackToHomePageEvent());
                               },
                               style: const ButtonStyle(
                                   backgroundColor: MaterialStatePropertyAll(
