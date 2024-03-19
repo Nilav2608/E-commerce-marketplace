@@ -23,3 +23,5 @@ class AuthPageLogInEvent extends AuthPageEvent {
 
   AuthPageLogInEvent({required this.email, required this.password});
 }
+
+class AuthPageInvalidPasswordInSignUpEvent extends AuthPageEvent{}

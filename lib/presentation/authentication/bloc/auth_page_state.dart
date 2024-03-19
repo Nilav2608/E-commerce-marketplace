@@ -35,3 +35,5 @@ class AuthenticationSuccesState extends AuthPageState {
 
   AuthenticationSuccesState({required this.token});
 }
+
+class AuthPageInvalidPasswordActionState extends AuthPageActionState{}

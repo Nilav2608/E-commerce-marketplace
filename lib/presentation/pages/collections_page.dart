@@ -30,7 +30,6 @@ class CollectionsPage extends StatelessWidget {
                     const EdgeInsets.symmetric(horizontal: 20.0, vertical: 30),
                 child: IconButton(
                     style: ButtonStyle(
-                      // fixedSize: const MaterialStatePropertyAll(Size(10, 10)),
                       elevation: const MaterialStatePropertyAll(5),
                       backgroundColor:
                           const MaterialStatePropertyAll(Colors.white),
@@ -85,11 +84,11 @@ class CollectionsPage extends StatelessWidget {
                         const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
                       childAspectRatio: 3 / 5,
-                      crossAxisSpacing: 8, // Adjust spacing as needed
+                      crossAxisSpacing: 8, 
                       mainAxisSpacing: 8,
                     ),
                     controller:
-                        scrollController, // Assign scrollController here
+                        scrollController,
 
                     itemBuilder: (context, index) {
                       var data = seasonCollectionsData[index];

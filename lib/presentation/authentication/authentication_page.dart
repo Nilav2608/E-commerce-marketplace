@@ -31,6 +31,17 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
       buildWhen: (previous, current) => current is! AuthPageActionState,
       listener: (context, state) {
         switch (state.runtimeType) {
+          case AuthPageInvalidPasswordActionState:
+             toastification.show(
+                  context: context,
+                  title: const Text("Enter a valid password (at least 8 characters, containing at least one uppercase letter, one lowercase letter, one digit, and one special character)"),
+                  type: ToastificationType.error,
+                  style: ToastificationStyle.fillColored,
+                  animationDuration: const Duration(milliseconds: 600),
+                  autoCloseDuration: const Duration(milliseconds: 4500),
+                  showProgressBar: false,
+                  alignment: Alignment.topCenter);
+            
           case ShowSnackBarActionState:
             final snackBarState = state as ShowSnackBarActionState;
 

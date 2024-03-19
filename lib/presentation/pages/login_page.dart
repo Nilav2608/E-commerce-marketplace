@@ -79,10 +79,7 @@ class _LoginPageState extends State<LoginPage> {
                       controller: passwordController,
                       obscureText: true,
                       validator: (value) {
-                        if (value!.isEmpty
-                            // !RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$')
-                            //     .hasMatch(value)
-                            ) {
+                        if (value!.isEmpty) {
                           return "Enter valid password";
                         } else {
                           return null;

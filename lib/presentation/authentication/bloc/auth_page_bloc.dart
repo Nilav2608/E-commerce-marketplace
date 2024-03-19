@@ -16,6 +16,8 @@ class AuthPageBloc extends Bloc<AuthPageEvent, AuthPageState> {
     on<AuthPageShowSignUpPageEvent>(authPageShowSignUpPageEvent);
     on<AuthPageLogInEvent>(authPageLogInEvent);
     on<AuthPageSignUpEvent>(authPageSignUpEvent);
+    on<AuthPageInvalidPasswordInSignUpEvent>(
+        authPageInvalidPasswordInSignUpEvent);
   }
 
   FutureOr<void> authPageInitailEvent(
@@ -37,14 +39,14 @@ class AuthPageBloc extends Bloc<AuthPageEvent, AuthPageState> {
 
   FutureOr<void> authPageLogInEvent(
       AuthPageLogInEvent event, Emitter<AuthPageState> emit) async {
-        emit(AuthenticationLoadingState(isLoading: true));
+    emit(AuthenticationLoadingState(isLoading: true));
     late SharedPreferences prefs;
     prefs = await SharedPreferences.getInstance();
     var results = await AuthRepository().login(event.email, event.password);
     var responseMessage = results['message'];
     var responseStatus = results['status'];
     if (results['status']) {
-       rawToken = results['token'];
+      rawToken = results['token'];
       prefs.setString('token', rawToken);
       emit(AuthenticationLoadingState(isLoading: false));
       //emit snackbar
@@ -69,8 +71,13 @@ class AuthPageBloc extends Bloc<AuthPageEvent, AuthPageState> {
     if (responseStatus) {
       emit(ShowSnackBarActionState(
           message: responseMessage, status: responseStatus));
-       emit(AuthenticationLoadingState(isLoading: false));
+      emit(AuthenticationLoadingState(isLoading: false));
       emit(ShowLoginPagePageState());
     }
+  }
+
+  FutureOr<void> authPageInvalidPasswordInSignUpEvent(
+      AuthPageInvalidPasswordInSignUpEvent event, Emitter<AuthPageState> emit) {
+    emit(AuthPageInvalidPasswordActionState());
   }
 }

@@ -15,7 +15,6 @@ TextEditingController _passwordController = TextEditingController();
 TextEditingController _confirmPasswordController = TextEditingController();
 
 class _SignUpPageState extends State<SignUpPage> {
-
   final formKey = GlobalKey<FormState>();
 
   bool matchingPassword() {
@@ -114,7 +113,9 @@ class _SignUpPageState extends State<SignUpPage> {
                         if (value!.isEmpty ||
                             !RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$')
                                 .hasMatch(value)) {
-                          return "Enter valid password";
+                          widget.bloc
+                              .add(AuthPageInvalidPasswordInSignUpEvent());
+                          return "Enter a valid password";
                         } else {
                           return null;
                         }
@@ -188,7 +189,7 @@ class _SignUpPageState extends State<SignUpPage> {
               ),
 
               //Google and apple signin for next relase
-              
+
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
