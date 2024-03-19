@@ -187,91 +187,39 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
               ),
 
-              //For next relase
+              //Google and apple signin for next relase
               
-              // Column(
-              //   crossAxisAlignment: CrossAxisAlignment.center,
-              //   children: [
-              //     const SizedBox(
-              //       height: 20,
-              //     ),
-              //     const Center(
-              //         child: Text(
-              //       "or sign up with",
-              //       style: TextStyle(color: Colors.black, fontSize: 12),
-              //     )),
-              //     const SizedBox(
-              //       height: 20,
-              //     ),
-              //     Row(
-              //       mainAxisAlignment: MainAxisAlignment.center,
-              //       children: [
-              //         Padding(
-              //           padding: const EdgeInsets.only(left: 0),
-              //           child: Container(
-              //             width: 42,
-              //             height: 42,
-              //             decoration: BoxDecoration(
-              //                 shape: BoxShape.circle,
-              //                 border:
-              //                     Border.all(color: const Color(0xffE2E0DF))),
-              //             child: Center(
-              //               child: Image.asset(
-              //                 "assets/images/apple.png",
-              //                 width: 22,
-              //                 height: 22,
-              //               ),
-              //             ),
-              //           ),
-              //         ),
-              //         Padding(
-              //           padding: const EdgeInsets.only(left: 20),
-              //           child: Container(
-              //             width: 42,
-              //             height: 42,
-              //             decoration: BoxDecoration(
-              //                 shape: BoxShape.circle,
-              //                 border:
-              //                     Border.all(color: const Color(0xffE2E0DF))),
-              //             child: Center(
-              //               child: Image.asset(
-              //                 "assets/images/google.png",
-              //                 width: 22,
-              //                 height: 22,
-              //               ),
-              //             ),
-              //           ),
-              //         ),
-              //       ],
-              //     ),
-              //     const SizedBox(
-              //       height: 30,
-              //     ),
-              //     Row(
-              //       mainAxisAlignment: MainAxisAlignment.center,
-              //       children: [
-              //         const Text(
-              //           "Already have account?",
-              //           style: TextStyle(color: Colors.black, fontSize: 14),
-              //         ),
-              //         InkWell(
-              //           onTap: () =>
-              //               widget.bloc.add(AuthPageShowLoginPageEvent()),
-              //           child: const Padding(
-              //             padding: EdgeInsets.only(left: 8.0),
-              //             child: Text(
-              //               "Log In",
-              //               style: TextStyle(
-              //                   decoration: TextDecoration.underline,
-              //                   color: Colors.black,
-              //                   fontSize: 14),
-              //             ),
-              //           ),
-              //         ),
-              //       ],
-              //     ),
-              //   ],
-              // )
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text(
+                        "Already have account?",
+                        style: TextStyle(color: Colors.black, fontSize: 14),
+                      ),
+                      InkWell(
+                        onTap: () =>
+                            widget.bloc.add(AuthPageShowLoginPageEvent()),
+                        child: const Padding(
+                          padding: EdgeInsets.only(left: 8.0),
+                          child: Text(
+                            "Log In",
+                            style: TextStyle(
+                                decoration: TextDecoration.underline,
+                                color: Colors.black,
+                                fontSize: 14),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              )
             ],
           ),
         ),
