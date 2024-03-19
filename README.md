@@ -63,9 +63,9 @@ To install and run Fluxestore locally, follow these steps:
 
 Example
 
- ```bash
+```bash
    BASE_URL_PRODUCTION = http://<your IPv4 address>:5000
- ```
+```
 
 7. Now run this app using terminal or using command pallate.
 
