@@ -71,7 +71,7 @@ Example
 
 ```bash
    flutter run
- ```
+```
 ## UML for Schema modelling and Mapping DTO
 ### [Figma file link](https://www.figma.com/file/luprctFouG76P8qDZTvl0Z/Fluxstore-Schema-modelling-and-Mapping-DTO?type=whiteboard&node-id=0%3A1&t=7cgjsjl2duQcvi8O-1)
 ![uml fluxstore](https://github.com/Nilav2608/fluxestore_E-commerce/assets/86877145/837b8bca-bc79-4185-9239-3b0ad92f0ed9)
