@@ -1,4 +1,3 @@
-
 class CartItemsModel {
   String? id;
   String? userId;
@@ -38,6 +37,7 @@ class CartItemsModel {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
+    data['_id'] = id;
     data['userId'] = userId;
     data['productId'] = productId;
     data['productName'] = productName;
