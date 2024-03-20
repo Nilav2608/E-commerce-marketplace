@@ -22,7 +22,6 @@ class _CartPageState extends State<CartPage> {
   @override
   void initState() {
     cartPageBloc.add(CartPageInitialEvent(currentUserId: email));
-    // CartItemsModel().subTotal(cartItems);
     super.initState();
   }
 
