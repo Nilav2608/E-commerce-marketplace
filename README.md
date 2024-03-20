@@ -1,6 +1,9 @@
 # fluxestore
 
-A new Flutter project.
+A D2C E-Commerce app built in Flutter.
+
+![Thumbnail](https://github.com/Nilav2608/fluxestore_E-commerce/assets/86877145/35bd593c-2f5d-4fd3-a865-5c2a984b7426)
+
 
 ## Getting Started
 
