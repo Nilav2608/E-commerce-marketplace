@@ -31,7 +31,7 @@ class _AccountPageState extends State<AccountPage> {
   }
 
   final AccountPageBloc accountPageBloc = AccountPageBloc();
-  final repoUrl = Uri.parse("https://github.com/Nilav2608");
+  final repoUrl = Uri.parse("https://github.com/Nilav2608/fluxestore_E-commerce");
 
   showUnableToLaunchUtlError() {
     toastification.show(
