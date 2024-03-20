@@ -50,6 +50,24 @@ class _ShippingAddressSectionState extends State<ShippingAddressSection> {
     });
   }
 
+  @override
+  void dispose() {
+    clearControllers();
+    super.dispose();
+  }
+
+  void clearControllers() {
+    firstNameController.clear();
+    lastNameController.clear();
+    streetNameController.clear();
+    cityController.clear();
+    stateProvinceController.clear();
+    stateNameController.clear();
+    zipCode.clear();
+    phoneNumber.clear();
+    cuponCodeController.clear();
+  }
+
   final CheckOutPageBloc checkOutPageBloc = CheckOutPageBloc();
 
   @override
@@ -101,8 +119,7 @@ class _ShippingAddressSectionState extends State<ShippingAddressSection> {
                         suffixStyle: TextStyle(
                             color: Colors.red), // Color of the asterisk
                         focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                              color: Colors.black), 
+                          borderSide: BorderSide(color: Colors.black),
                         ),
                       ),
                       validator: (value) {
@@ -128,11 +145,9 @@ class _ShippingAddressSectionState extends State<ShippingAddressSection> {
                             fontWeight: FontWeight.w400,
                           ),
                           suffixText: "*",
-                          suffixStyle: TextStyle(
-                              color: Colors.red), 
+                          suffixStyle: TextStyle(color: Colors.red),
                           focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Colors.black), 
+                            borderSide: BorderSide(color: Colors.black),
                           ),
                         ),
                         validator: (value) {
@@ -157,12 +172,10 @@ class _ShippingAddressSectionState extends State<ShippingAddressSection> {
                             fontSize: 14,
                             fontWeight: FontWeight.w400,
                           ),
-                          suffixText: "*", 
-                          suffixStyle: TextStyle(
-                              color: Colors.red), 
+                          suffixText: "*",
+                          suffixStyle: TextStyle(color: Colors.red),
                           focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Colors.black), 
+                            borderSide: BorderSide(color: Colors.black),
                           ),
                         ),
                         validator: (value) {
@@ -175,7 +188,7 @@ class _ShippingAddressSectionState extends State<ShippingAddressSection> {
                     const SizedBox(
                       height: 0,
                     ),
-                    
+
                     CountryPicker(
                       scountry: (country) => selectedCountry = country,
                       scity: (city) => selectedCity = city,
@@ -192,9 +205,8 @@ class _ShippingAddressSectionState extends State<ShippingAddressSection> {
                             fontSize: 14,
                             fontWeight: FontWeight.w400,
                           ),
-                          suffixText: "*", 
-                          suffixStyle: TextStyle(
-                              color: Colors.red), 
+                          suffixText: "*",
+                          suffixStyle: TextStyle(color: Colors.red),
                           focusedBorder: UnderlineInputBorder(
                             borderSide: BorderSide(color: Colors.black),
                           ),
@@ -221,9 +233,8 @@ class _ShippingAddressSectionState extends State<ShippingAddressSection> {
                             fontSize: 14,
                             fontWeight: FontWeight.w400,
                           ),
-                          suffixText: "*", 
-                          suffixStyle: TextStyle(
-                              color: Colors.red), 
+                          suffixText: "*",
+                          suffixStyle: TextStyle(color: Colors.red),
                           focusedBorder: UnderlineInputBorder(
                             borderSide: BorderSide(color: Colors.black),
                           ),

@@ -15,13 +15,13 @@ class CartPageBloc extends Bloc<CartPageEvent, CartPageState> {
     on<RemoveAnItemFromCartEvent>(removeAnItemFromCartEvent);
     on<UpdateCartItemEvent>(updateCartItemEvent);
   }
-  //*GET cart items on initstate 
+  //*GET cart items on initstate
   // List get getCarts => _tempCartList;
   FutureOr<void> cartPageInitialEvent(
       CartPageInitialEvent event, Emitter<CartPageState> emit) async {
     emit(CartPageLoadingState());
     List<CartItemsModel> tempCartList = [];
-    //Cart repo fetches data 
+    //Cart repo fetches data
     var results = await CartRepository().getCartItems(event.currentUserId);
     if (results['status']) {
       var data = results['data'];
@@ -31,43 +31,45 @@ class CartPageBloc extends Bloc<CartPageEvent, CartPageState> {
         CartItemsModel responseCartItems = CartItemsModel.fromJson(data[i]);
         tempCartList.add(responseCartItems);
       }
+
       await Future.delayed(const Duration(seconds: 1));
       emit(CartSuccessState(
           cartSuccessData: tempCartList,
           subTotal: CartItemsModel().subTotal(tempCartList)));
     }
   }
+
   //*DELETE an item from cart
   FutureOr<void> removeAnItemFromCartEvent(
       RemoveAnItemFromCartEvent event, Emitter<CartPageState> emit) async {
-        emit(CartPageLoadingState());
+    emit(CartPageLoadingState());
     List<CartItemsModel> tempCartList = [];
 
     var results =
         await CartRepository().deleteCartItem(event.userId, event.productId);
 
     if (results['status']) {
-      //Delete api gives the list of all other cart items as well- so that we don't need to call the get cart api again! 
+      //Delete api gives the list of all other cart items as well- so that we don't need to call the get cart api again!
       var data = results['data'];
       for (var i = 0; i < data.length; i++) {
-        //simple json Api response is mapped in to CartItemsModel 
+        //simple json Api response is mapped in to CartItemsModel
         CartItemsModel responseCartItems = CartItemsModel.fromJson(data[i]);
         tempCartList.add(responseCartItems);
       }
-       emit(CartSuccessState(
-        cartSuccessData: tempCartList,
-        subTotal: CartItemsModel().subTotal(tempCartList)));
+      emit(CartSuccessState(
+          cartSuccessData: tempCartList,
+          subTotal: CartItemsModel().subTotal(tempCartList)));
     }
   }
-  
+
   //*UPDATE Cart items
   FutureOr<void> updateCartItemEvent(
       UpdateCartItemEvent event, Emitter<CartPageState> emit) async {
-    // getting the current list items as event.originalcartList  via the list tile    
+    // getting the current list items as event.originalcartList  via the list tile
     for (int i = 0; i < event.originalcartList.length; i++) {
       //checking and just updating for a single state only
       //the reason is the user can update at that current state of the cart by increasing the quantity or uncheck the product
-      //the unwanted item for check out
+      //unwanted item for check out
       if (event.originalcartList[i].id == event.updateditem.id) {
         //updating by assiging the updated item to the original item
         event.originalcartList[i] = event.updateditem;
