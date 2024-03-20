@@ -1,4 +1,4 @@
-# fluxestore
+# Fluxestore
 
 A D2C E-Commerce app built in Flutter.
 
