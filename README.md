@@ -20,8 +20,8 @@ Fluxestore is a Direct-to-Consumer (D2C) E-Commerce application developed using 
      <td>Product Details Screene</td>
   </tr>
   <tr>
-    <td><img src="Screenshots/11.png" width=300 height=630></td>
-    <td><img src="Screenshots/12.png" width=300 height=630></td>
+    <td><img src="Screenshots/11.png" width=300 height=650></td>
+    <td><img src="Screenshots/12.png" width=300 height=650></td>
   </tr>
  </table>
 
