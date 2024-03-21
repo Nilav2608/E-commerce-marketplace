@@ -26,6 +26,17 @@ Fluxestore is a Direct-to-Consumer (D2C) E-Commerce application developed using 
 To install and run Fluxestore locally, follow these steps:
 
 1. Clone the repository from GitHub:
+
 ```bash
   git clone https://github.com/Nilav2608/fluxestore_E-commerce
 ```
+
+2. Open a new terminal and run this command
+
+```bash
+  flutter pub get
+```
+
+3. Before running this app go this github repository
+   ### [fluxstore-backend-source-code](https://github.com/Nilav2608/fluxstore_backend)
+   follow installation process and install the backend
