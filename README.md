@@ -52,6 +52,19 @@ Fluxestore is a Direct-to-Consumer (D2C) E-Commerce application developed using 
   </tr>
  </table>
  
+### View and managae cart items
+
+<table>
+  <tr>
+    <td>Cart Page</td>
+    <td>Cart Page</td>
+  </tr>
+  <tr>
+    <td><img src="Screenshots/35.png" width=300 height=650></td>
+    <td><img src="Screenshots/18.png" width=300 height=650></td>
+  </tr>
+ </table>
+
 ### Secure checkout process for placing orders.
 
 <table>
@@ -96,7 +109,7 @@ To install and run Fluxestore locally, follow these steps:
 ```
 
 3. Before running this app go this github repository
-##[fluxstore-backend-source-code](https://github.com/Nilav2608/fluxstore_backend)
+### [fluxstore-backend-source-code](https://github.com/Nilav2608/fluxstore_backend)
  follow installation process and install the backend
 
 4.As you are running the backend locally we have to get the IPv4 address of your local meachine. So that run this command
@@ -115,7 +128,7 @@ To install and run Fluxestore locally, follow these steps:
 
 `BASE_URL_PRODUCTION`
 
-6. Now assing the local host url to the `BASE_URL_PRODUCTION` environment variable. Replace your IPv4 address with <your IPv4 address> tag 
+6. Now assing the local host url to the `BASE_URL_PRODUCTION` environment variable. Replace your IPv4 address with "<your IPv4 address>" tag 
 
 Example
 
