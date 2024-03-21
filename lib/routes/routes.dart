@@ -36,7 +36,7 @@ class MyGenerateRoute {
 
       case "/":
         return MaterialPageRoute(
-          builder: (_) => BlocProvider<AuthPageBloc>.value(
+          builder: (context) => BlocProvider<AuthPageBloc>.value(
             value: authPagebloc,
             child:  LandingPage(
               token: authPagebloc.rawToken,

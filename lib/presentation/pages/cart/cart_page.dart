@@ -39,8 +39,7 @@ class _CartPageState extends State<CartPage> {
       bloc: cartPageBloc,
       listenWhen: (previous, current) => current is CartPageActionState,
       buildWhen: (previous, current) => current is! CartPageActionState,
-      listener: (BuildContext context, CartPageState state) {
-      },
+      listener: (BuildContext context, CartPageState state) {},
       builder: (context, state) {
         switch (state.runtimeType) {
           case CartPageLoadingState:
@@ -178,7 +177,7 @@ class _CartPageState extends State<CartPage> {
                                               successState.cartSuccessData,
                                               successState.subTotal,
                                               widget.email);
-                                      Navigator.of(context).pushNamed(
+                                      Navigator.of(context).pushReplacementNamed(
                                           'checkOut',
                                           arguments: results);
                                     } else {

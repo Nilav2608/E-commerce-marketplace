@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:fluxestore/models/delivery_address_model.dart';
 import 'package:fluxestore/models/my_orders_data_model.dart';
@@ -64,9 +63,9 @@ class _CheckOutPageState extends State<CheckOutPage> {
         listener: (context, state) {
           switch (state.runtimeType) {
             case NavigateTohomePageActionState:
-              Navigator.of(context).pushNamedAndRemoveUntil(
-                  '/', ModalRoute.withName('/'));
-
+              Navigator.of(context)
+                  .pushNamedAndRemoveUntil('/', (Route<dynamic> route) => false
+                      );
             case PageLoadingDialogActionState:
               final currentState = state as PageLoadingDialogActionState;
               final closeDialog = _closeDialogHandler;
