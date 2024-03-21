@@ -87,4 +87,7 @@ Once the application is set up and running, you can access it through your prefe
 
 This project is completely for educational purpose only. The Products caltalog SKU's are designed whith limited resources and features like payment gateway are non-functional as of now!
 
+## License
+
+This project is licensed under the MIT License
 
