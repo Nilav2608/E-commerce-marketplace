@@ -14,22 +14,67 @@ Fluxestore is a Direct-to-Consumer (D2C) E-Commerce application developed using 
 ## Features
 
 ### View detailed product information, including images, descriptions, prices, and ratings.
+
 <table>
   <tr>
-    <td>Product Details Screene</td>
-     <td>Product Details Screene</td>
+    <td>Product Details Page</td>
+     <td>Product Details Page</td>
   </tr>
   <tr>
-    <td><img src="screenshots/11.png" width=270 height=480></td>
-    <td><img src="screenshots/12.png" width=270 height=480></td>
+    <td><img src="Screenshots/11.png" width=300 height=650></td>
+    <td><img src="Screenshots/12.png" width=300 height=650></td>
   </tr>
  </table>
 
 
 
 ### Browse and search for products by category, brand, or keyword.
+
+<table>
+  <tr>
+    <td>Seach Page</td>
+     <td>Seach Page</td>
+  </tr>
+  <tr>
+    <td><img src="Screenshots/13.png" width=300 height=650></td>
+    <td><img src="Screenshots/14.png" width=300 height=650></td>
+  </tr>
+ </table>
+ 
 ### Add products to a cart for later purchase.
+
+<table>
+  <tr>
+    <td>Product Details Page</td>
+  </tr>
+  <tr>
+    <td><img src="Screenshots/17.png" width=300 height=650></td>
+  </tr>
+ </table>
+ 
 ### Secure checkout process for placing orders.
+
+<table>
+  <tr>
+    <td>Checkout Page</td>
+     <td>Checkout Page</td>
+  </tr>
+  <tr>
+    <td><img src="Screenshots/19.png" width=300 height=650></td>
+    <td><img src="Screenshots/20.png" width=300 height=650></td>
+  </tr>
+ </table>
+ <table>
+  <tr>
+    <td>Checkout Page</td>
+     <td>Checkout Page</td>
+  </tr>
+  <tr>
+    <td><img src="Screenshots/21.png" width=300 height=650></td>
+    <td><img src="Screenshots/22.png" width=300 height=650></td>
+  </tr>
+ </table>
+
 ### User authentication and account management features.
 ### Order tracking and history functionality.
 ### Wishlist feature for saving favorite products.
