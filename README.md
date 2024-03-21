@@ -1,7 +1,7 @@
 # Fluxestore
 ___
 
-### A D2C E-Commerce app built in Flutter.
+## A D2C E-Commerce app built in Flutter with NodeJS and MongoDB.
 
 ![Thumbnail](https://github.com/Nilav2608/fluxestore_E-commerce/assets/86877145/35bd593c-2f5d-4fd3-a865-5c2a984b7426)
 
@@ -14,19 +14,14 @@ Fluxestore is a Direct-to-Consumer (D2C) E-Commerce application developed using 
 
 ## Features
 
-### Browse and search for products by category, brand, or keyword.
+- Seamless browsing and search for products by category, brand, or keyword.
   
-###  View detailed product information, including images, descriptions, prices, and ratings.
-
-### Add products to a cart for later purchase.
-
-### Secure checkout process for placing orders.
-
-###  User authentication and account management features.
-
-###  Order tracking and history functionality.
-
-###  Wishlist feature for saving favorite products.
+- View detailed product information, including images, descriptions, prices, and ratings.
+- Add products to a cart for later purchase.
+- Secure checkout process for placing orders.
+- User authentication and account management features.
+- Order tracking and history functionality.
+- Wishlist feature for saving favorite products.
 
 ## Installation
 
@@ -82,8 +77,8 @@ Example
 
 Once the application is set up and running, you can access it through your preferred web browser or mobile device. Use the navigation menu to explore different sections of the app, search for products, add items to your cart, and proceed through the checkout process.
 
-### **Remainder**
+## **Remainder**
 
-This project is built only for education purpose. The features like payment gateway are non-functional as of now!
+This project is completely for educational purpose only. The Products caltalog SKU's are designed whith limited resources and features like payment gateway are non-functional as of now!
 
 
