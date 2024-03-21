@@ -7,13 +7,25 @@ A D2C E-Commerce app built in Flutter.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+## Description
 
-A few resources to get you started if this is your first Flutter project:
+Fluxestore is a Direct-to-Consumer (D2C) E-Commerce application developed using the Flutter framework with NodeJS as runtime and MondoBD as database. It provides users with a seamless shopping experience, allowing them to browse, search for, and purchase a variety of products directly from their mobile devices.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Features
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Browse and search for products by category, brand, or keyword.
+- View detailed product information, including images, descriptions, prices, and ratings.
+- Add products to a cart for later purchase.
+- Secure checkout process for placing orders.
+- User authentication and account management features.
+- Order tracking and history functionality.
+- Wishlist feature for saving favorite products.
+
+## Installation
+
+To install and run Fluxestore locally, follow these steps:
+
+1. Clone the repository from GitHub:
+```bash
+  git clone https://github.com/Nilav2608/fluxestore_E-commerce
+```
