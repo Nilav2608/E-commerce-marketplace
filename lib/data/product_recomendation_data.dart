@@ -1,5 +1,6 @@
 import '../models/product_data_model.dart';
 
+//! Sample format 
 List<ProductDataModel> recomendationsList = [
   ProductDataModel(
       productName: "Rise Crop Hoodie",

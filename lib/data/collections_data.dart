@@ -1,6 +1,7 @@
 
 import '../models/product_data_model.dart';
 
+//! Sample format 
 final List<ProductDataModel> seasonCollectionsData = [
   ProductDataModel(
       id: "3",
