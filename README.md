@@ -38,5 +38,35 @@ To install and run Fluxestore locally, follow these steps:
 ```
 
 3. Before running this app go this github repository
-   ### [fluxstore-backend-source-code](https://github.com/Nilav2608/fluxstore_backend)
-   follow installation process and install the backend
+##[fluxstore-backend-source-code](https://github.com/Nilav2608/fluxstore_backend)
+ follow installation process and install the backend
+
+4.As you are running the backend locally we have to get the IPv4 address of your local meachine. So that run this command
+
+ ```bash
+  ipconfig
+ ```
+
+ copy the IPv4 address, For Example
+
+ ```bash
+   192.168.1.1
+ ```
+
+5. Now create a new .env file inside the app root folder and you will need to add the following environment variables to your .env file
+
+`BASE_URL_PRODUCTION`
+
+6. Now assing the local host url to the `BASE_URL_PRODUCTION` environment variable. Replace your IPv4 address with <your IPv4 address> tag 
+
+Example
+
+ ```bash
+   BASE_URL_PRODUCTION = http://<your IPv4 address>:5000
+ ```
+
+7. Now run this app using terminal or using command pallate.
+
+```bash
+   flutter run
+ ```
