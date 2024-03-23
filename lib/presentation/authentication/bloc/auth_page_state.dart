@@ -30,7 +30,7 @@ class AuthenticationLoadingState extends AuthPageActionState {
 
 class RegistrationSuccessState extends AuthPageState {}
 
-class AuthenticationSuccesState extends AuthPageState {
+class AuthenticationSuccesState extends AuthPageActionState {
   final String token;
 
   AuthenticationSuccesState({required this.token});

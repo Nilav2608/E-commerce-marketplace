@@ -64,8 +64,7 @@ class _CheckOutPageState extends State<CheckOutPage> {
           switch (state.runtimeType) {
             case NavigateTohomePageActionState:
               Navigator.of(context)
-                  .pushNamedAndRemoveUntil('/', (Route<dynamic> route) => false
-                      );
+                  .pushReplacementNamed('/');
             case PageLoadingDialogActionState:
               final currentState = state as PageLoadingDialogActionState;
               final closeDialog = _closeDialogHandler;
