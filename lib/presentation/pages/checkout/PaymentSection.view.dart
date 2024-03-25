@@ -52,7 +52,6 @@ class _PaymentSectionViewState extends State<PaymentSectionView> {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // ignore: prefer_const_constructors
             Padding(
               padding:
                   EdgeInsets.symmetric(horizontal: horizontal, vertical: 10),
@@ -137,11 +136,6 @@ class _PaymentSectionViewState extends State<PaymentSectionView> {
                         ),
                       );
                     },
-                    // separatorBuilder: (BuildContext context, int index) {
-                    //   return const SizedBox(
-                    //     width: 0,
-                    //   );
-                    // },
                   )),
             ),
             currentPaymentMethodIndex == 1

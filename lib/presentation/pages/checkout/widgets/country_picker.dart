@@ -20,10 +20,10 @@ class CountryPicker extends StatelessWidget {
         flagState: CountryFlag.DISABLE,
         dropdownDecoration: const BoxDecoration(
             border: Border(
-                bottom: BorderSide(width: 0.8, color: Color(0xff000000)))),
+                bottom: BorderSide(width: 0.8, color: Color(0xff777E90)))),
         disabledDropdownDecoration: const BoxDecoration(
             border: Border(
-                bottom: BorderSide(width: 0.8, color: Color(0xff000000)))),
+                bottom: BorderSide(width: 0.8, color: Color(0xff777E90)))),
         onCountryChanged: (country) => scountry!(country),
         onCityChanged: (city) => scity!(city.toString()),
         onStateChanged: (state) => sstate!(state.toString())
