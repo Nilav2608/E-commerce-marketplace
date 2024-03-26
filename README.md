@@ -19,7 +19,7 @@ Fluxestore is a Direct-to-Consumer (D2C) E-Commerce application developed using 
 - View detailed product information, including images, descriptions, prices, and ratings.
 - Add products to a cart for later purchase.
 - Secure checkout process for placing orders.
-- User authentication and account management features.
+- Token based User authentication using JWT and account management features.
 - Order tracking and history functionality.
 - Wishlist feature for saving favorite products.
 
