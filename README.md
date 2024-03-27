@@ -51,9 +51,9 @@ To install and run Fluxestore locally, follow these steps:
 
  copy the IPv4 address, For Example
 
-  ```bash
+```bash
    192.168.1.1
-  ```
+```
 
 5. Now create a new .env file inside the app root folder and you will need to add the following environment variables to your .env file
 
