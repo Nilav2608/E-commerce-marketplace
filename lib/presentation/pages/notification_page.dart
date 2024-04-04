@@ -13,7 +13,6 @@ class NotificationPage extends StatelessWidget {
           decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
            child: IconButton(
               onPressed: () => Navigator.of(context).pop(),
-              
             icon:  const Icon(Icons.arrow_back_ios,size: 20,)),
          ),
           title: const Text(
