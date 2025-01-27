@@ -3,7 +3,7 @@ ___
 
 ## A D2C E-Commerce app built in Flutter with NodeJS and MongoDB.
 
-![Thumbnail](https://github.com/Nilav2608/fluxestore_E-commerce/blob/main/screenshots/cover.jpg)
+![Thumbnail](https://github.com/Nilav2608/flutter-E-commerce-app/blob/main/screenshots/cover.jpg)
 
 
 ## Getting Started
