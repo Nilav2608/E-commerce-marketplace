@@ -1,4 +1,4 @@
-# Fluxestore
+# Flutter E-Commerce
 ___
 
 ## A D2C E-Commerce app built in Flutter with NodeJS and MongoDB.
