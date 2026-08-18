@@ -30,7 +30,7 @@ To install and run Fluxestore locally, follow these steps:
 1. Clone the repository from GitHub:
 
 ```bash
-  git clone https://github.com/Nilav2608/fluxestore_E-commerce
+  git clone https://github.com/Nilav2608/flutter-E-commerce-app
 ```
 
 2. Open a new terminal and run this command
@@ -40,7 +40,7 @@ To install and run Fluxestore locally, follow these steps:
 ```
 
 3. Before running this app, go this below mentioned github repository
-### [fluxstore-backend-source-code](https://github.com/Nilav2608/fluxstore_backend)
+### [backend-source-code](https://github.com/Nilav2608/fluxstore_backend)
  follow installation process and install the backend
 
 4.As you are running the backend locally we have to get the IPv4 address of your local meachine. So that run this command
