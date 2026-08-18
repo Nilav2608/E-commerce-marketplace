@@ -10,7 +10,7 @@ ___
 
 ## Description
 
-Fluxestore is a Direct-to-Consumer (D2C) E-Commerce application developed using the Flutter framework with NodeJS as runtime and MondoBD as database. It provides users with a seamless shopping experience, allowing them to browse, search for, purchase and track a variety of products .
+This app is developed using the Flutter with NodeJS as runtime and MondoBD. It provides users with a seamless shopping experience, allowing them to browse, search for, purchase and track a variety of products.
 
 ## Features
 
