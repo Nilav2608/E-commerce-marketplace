@@ -1,4 +1,4 @@
-# Flutter E-Commerce
+# E-Commerce marketplace
 ___
 
 ## A D2C E-Commerce app built in Flutter with NodeJS and MongoDB.
