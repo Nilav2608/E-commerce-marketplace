@@ -76,12 +76,6 @@ Example
 ### [Figma file link](https://www.figma.com/file/luprctFouG76P8qDZTvl0Z/Fluxstore-Schema-modelling-and-Mapping-DTO?type=whiteboard&node-id=0%3A1&t=7cgjsjl2duQcvi8O-1)
 ![uml fluxstore](https://github.com/Nilav2608/fluxestore_E-commerce/assets/86877145/837b8bca-bc79-4185-9239-3b0ad92f0ed9)
 
-
-## Download apk
-
-Before downloading the apk check your processor architecture and download the file accordingly. For latest devices, download arm64 based architecture by using the link below! 
-### [fluxstore-apk.zip](https://github.com/Nilav2608/fluxestore_E-commerce/releases/download/v1.0.0/app-apk.zip)
-
 ## Usage
 
 Once the application is set up and running, you can access it through your preferred web browser or mobile device. Use the navigation menu to explore different sections of the app, search for products, add items to your cart, and proceed through the checkout process.
